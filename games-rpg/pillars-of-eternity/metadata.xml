@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<use>
+		<flag name='dlc1'>Install 'The White March: Part I' addon</flag>
+		<flag name='dlc2'>Install 'The White March: Part II' addon</flag>
+		<flag name='dlc3'>Install 'Pre-Order Bonus Item and Pet' bonus</flag>
+	</use>
+</pkgmetadata>
