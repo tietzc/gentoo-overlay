@@ -1,0 +1,19 @@
+Index: sogo-connector.tb31-sogo-connector-31.0.0/Makefile
+===================================================================
+--- sogo-connector.tb31-sogo-connector-31.0.0.orig/Makefile
++++ sogo-connector.tb31-sogo-connector-31.0.0/Makefile
+@@ -1,5 +1,4 @@
+ PACKAGE = sogo-connector
+-GIT_REV = $(shell git rev-parse --verify HEAD | cut -c1-10)
+ 
+ ifeq ($(shell uname),Darwin)
+ VERSION = $(shell grep em:version install.rdf | sed -E 's@(em:version=|"| )@@g')
+@@ -7,7 +6,7 @@ else
+ VERSION = $(shell grep em:version install.rdf | sed -e 's@\(em:version=\|\"\|\ \)@@g')
+ endif
+ 
+-XPI_ARCHIVE = $(PACKAGE)-$(VERSION)-$(GIT_REV).xpi
++XPI_ARCHIVE = $(PACKAGE)-$(VERSION).xpi
+ 
+ SHELL = /bin/bash
+ ZIP = /usr/bin/zip
