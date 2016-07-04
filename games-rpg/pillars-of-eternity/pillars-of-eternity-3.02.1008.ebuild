@@ -79,8 +79,6 @@ src_install() {
 	make_wrapper ${PN} "./PillarsOfEternity" "${dir}/game"
 	make_desktop_entry ${PN} "Pillars Of Eternity"
 
-	dodoc game/Docs/pe-game-manual.pdf
-
 	dodir "${dir}"
 	rm "${S}"/game/PillarsOfEternity_Data/Plugins/x86_64/libCSteamworks.so \
 		"${S}"/game/PillarsOfEternity_Data/Plugins/x86_64/libsteam_api.so || die
