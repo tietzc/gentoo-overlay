@@ -9,9 +9,9 @@ inherit check-reqs eutils gnome2-utils unpacker
 DESCRIPTION="Pillars Of Eternity"
 HOMEPAGE="https://www.gog.com/game/pillars_of_eternity_hero_edition"
 
-BASE_SRC_URI="gog_pillars_of_eternity_2.12.0.16.sh"
-DLC1_SRC_URI="gog_pillars_of_eternity_white_march_part_1_dlc_2.6.0.8.sh"
-DLC2_SRC_URI="gog_pillars_of_eternity_white_march_part_2_dlc_2.2.0.3.sh"
+BASE_SRC_URI="gog_pillars_of_eternity_2.13.0.17.sh"
+DLC1_SRC_URI="gog_pillars_of_eternity_white_march_part_1_dlc_2.7.0.9.sh"
+DLC2_SRC_URI="gog_pillars_of_eternity_white_march_part_2_dlc_2.3.0.4.sh"
 DLC3_SRC_URI="gog_pillars_of_eternity_preorder_item_and_pet_dlc_2.0.0.2.sh"
 SRC_URI="${BASE_SRC_URI}
 	dlc1? ( ${DLC1_SRC_URI} )
