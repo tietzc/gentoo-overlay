@@ -8,12 +8,16 @@ inherit eutils gnome2-utils multilib unpacker
 
 DESCRIPTION="Baldur's Gate: Enhanced Edition"
 HOMEPAGE="https://www.gog.com/game/baldurs_gate_enhanced_edition"
-SRC_URI="gog_baldur_s_gate_enhanced_edition_2.5.0.7.sh"
+
+BASE_SRC_URI="gog_baldur_s_gate_enhanced_edition_2.5.0.7.sh"
+SOD_SRC_URI="gog_baldur_s_gate_siege_of_dragonspear_2.3.0.4.sh"
+SRC_URI="${BASE_SRC_URI}
+	sod? ( ${SOD_SRC_URI} )"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="+sod"
 RESTRICT="bindist fetch"
 
 RDEPEND="
@@ -31,15 +35,22 @@ S="${WORKDIR}/data/noarch"
 
 pkg_nofetch() {
 	einfo
-	einfo "Please buy & download \"${SRC_URI}\" from:"
+	einfo "Please buy & download \"${BASE_SRC_URI}\""
+	use sod && einfo "and \"${SOD_SRC_URI}\""
+	einfo "from:"
 	einfo "  ${HOMEPAGE}"
 	einfo "and move/link it to \"${DISTDIR}\""
 	einfo
 }
 
 src_unpack() {
-	einfo "unpacking data..."
-	unpack_zip "${DISTDIR}/${SRC_URI}"
+	einfo "unpacking base data..."
+	unpack_zip "${DISTDIR}/${BASE_SRC_URI}"
+
+	if use sod ; then
+		einfo "unpacking sod data..."
+		unpack_zip "${DISTDIR}/${SOD_SRC_URI}"
+	fi
 }
 
 src_install() {
