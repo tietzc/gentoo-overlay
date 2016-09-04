@@ -66,6 +66,7 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
+	sed -i '2iexport LC_ALL=C' /usr/bin/gone-home || die
 	gnome2_icon_cache_update
 }
 
