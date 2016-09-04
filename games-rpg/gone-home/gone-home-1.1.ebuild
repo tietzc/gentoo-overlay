@@ -46,19 +46,23 @@ src_unpack() {
 src_install() {
 	local dir="/opt/${PN}"
 
-	dodir "${dir}"
-	rm "${S}"/game/GoneHome_Data/Plugins/x86/libsteam_api.so || die
-	mv "${S}/game" "${D}${dir}/" || die
-	fperms -R 0755 "${dir}"/game/GoneHome_Data
-
 	if [[ $ARCH == amd64 ]] ; then
 		make_wrapper ${PN} "./GoneHome.x86_64" "${dir}/game"
+		rm  "${S}"/game/GoneHome.x86 \
+			"${S}"/game/GoneHome_Data/Mono/x86/libmono.so || die
 	elif [[ ${ARCH} == x86 ]] ; then
 		make_wrapper ${PN} "./GoneHome.x86" "${dir}/game"
+		rm  "${S}"/game/GoneHome.x86_64 \
+			"${S}"/game/GoneHome_Data/Mono/x86_64/libmono.so || die
 	fi
 
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Gone Home"
+
+	dodir "${dir}"
+	rm "${S}"/game/GoneHome_Data/Plugins/x86/libsteam_api.so || die
+	mv "${S}/game" "${D}${dir}/" || die
+	fperms -R 0755 "${dir}"/game/GoneHome_Data
 }
 
 pkg_preinst() {
