@@ -43,11 +43,11 @@ src_install() {
 	local dir="/opt/${PN}"
 
 	if use amd64 ; then
+		mv "${S}/game/x86_64/bs1dc_x86_64" "${S}/game/" || die
 		make_wrapper ${PN} "./bs1dc_x86_64" "${dir}/game"
-		mv "${S}/game/x86_64/bs1dc_x86_64" "${S}/game/"
 	else
+		mv "${S}/game/i386/bs1dc_i386" "${S}/game/" || die
 		make_wrapper ${PN} "./bs1dc_i386" "${dir}/game"
-		mv "${S}/game/i386/bs1dc_i386" "${S}/game/"
 	fi
 
 	newicon -s 256 support/icon.png ${PN}.png
