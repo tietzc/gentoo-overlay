@@ -12,7 +12,7 @@ SRC_URI="gog_gone_home_2.0.0.2.sh"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="-* ~amd64 ~x86"
 IUSE=""
 RESTRICT="bindist fetch"
 
@@ -46,14 +46,14 @@ src_unpack() {
 src_install() {
 	local dir="/opt/${PN}"
 
-	if [[ $ARCH == amd64 ]] ; then
+	if use amd64 ; then
 		make_wrapper ${PN} "./GoneHome.x86_64" "${dir}/game"
-		rm  "${S}"/game/GoneHome.x86 \
-			"${S}"/game/GoneHome_Data/Mono/x86/libmono.so || die
-	elif [[ ${ARCH} == x86 ]] ; then
+		rm -r "${S}"/game/GoneHome.x86 \
+			"${S}"/game/GoneHome_Data/Mono/x86 || die
+	else
 		make_wrapper ${PN} "./GoneHome.x86" "${dir}/game"
-		rm  "${S}"/game/GoneHome.x86_64 \
-			"${S}"/game/GoneHome_Data/Mono/x86_64/libmono.so || die
+		rm -r "${S}"/game/GoneHome.x86_64 \
+			"${S}"/game/GoneHome_Data/Mono/x86_64 || die
 	fi
 
 	newicon -s 256 support/icon.png ${PN}.png
