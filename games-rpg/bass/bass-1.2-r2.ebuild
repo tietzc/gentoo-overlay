@@ -42,14 +42,14 @@ src_install() {
 	doins -r data/{readme.txt,sky.*}
 
 	newicon -s 256 support/icon.png ${PN}.png
-	make_wrapper ${PN}  "scummvm -f -p "${dir}" sky"
-	make_desktop_entry ${PN} "Beneath A Steel Sky"
+	make_wrapper "${PN}" "scummvm -f -p "${dir}" sky"
+	make_desktop_entry "${PN}" "Beneath A Steel Sky"
 
 	local i
 	for i in de es fr it ; do
 		if use l10n_${i} ; then
-			make_wrapper ${PN}-${i}  "scummvm -f -p "${dir}" -q ${i} sky"
-			make_desktop_entry ${PN}-${i} "Beneath A Steel Sky (${i})"
+			make_wrapper "${PN}-${i}" "scummvm -f -p "${dir}" -q "${i}" sky"
+			make_desktop_entry "${PN}-${i}" "Beneath A Steel Sky ("${i}")"
 		fi
 	done
 }
