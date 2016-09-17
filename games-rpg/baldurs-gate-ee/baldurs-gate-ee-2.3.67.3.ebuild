@@ -28,7 +28,6 @@ RDEPEND="
 		media-libs/openal[abi_x86_32(-)]
 		virtual/opengl[abi_x86_32(-)]
 		x11-libs/libX11[abi_x86_32(-)]
-		x11-libs/libXinerama[abi_x86_32(-)]
 	)
 	x86? (
 		dev-libs/expat
@@ -37,7 +36,6 @@ RDEPEND="
 		media-libs/openal
 		virtual/opengl
 		x11-libs/libX11
-		x11-libs/libXinerama
 	)"
 
 DEPEND="app-arch/unzip"
