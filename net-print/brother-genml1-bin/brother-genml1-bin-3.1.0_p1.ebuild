@@ -12,7 +12,7 @@ SRC_URI="
 	http://download.brother.com/welcome/dlf101124/brgenml1lpr-3.1.0-1.i386.rpm
 	http://download.brother.com/welcome/dlf101126/brgenml1cupswrapper-3.1.0-1.i386.rpm"
 
-LICENSE="all-rights-reserved"
+LICENSE="brother-eula"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
@@ -22,7 +22,7 @@ RDEPEND="net-print/cups"
 
 DEPEND="${RDEPEND}"
 
-S=${WORKDIR}
+S="${WORKDIR}"
 
 pkg_setup() {
 	CONFIG_CHECK=""
