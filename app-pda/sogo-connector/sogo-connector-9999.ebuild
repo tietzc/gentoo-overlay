@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit eutils git-r3
+inherit git-r3
 
 DESCRIPTION="CardDAV plugin for mail-client/thunderbird"
 HOMEPAGE="http://www.sogo.nu/downloads/frontends.html"
