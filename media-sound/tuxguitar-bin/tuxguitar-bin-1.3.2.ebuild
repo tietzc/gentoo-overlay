@@ -7,7 +7,7 @@ EAPI=6
 inherit eutils gnome2-utils
 
 DESCRIPTION="TuxGuitar is a multitrack guitar tablature editor and player written in Java-SWT"
-HOMEPAGE="http://www.tuxguitar.com.ar/"
+HOMEPAGE="http://tuxguitar.herac.com.ar"
 SRC_URI="
 	x86? ( mirror://sourceforge/project/tuxguitar/TuxGuitar/TuxGuitar-${PV}/tuxguitar-${PV}-linux-x86.tar.gz )
 	amd64? ( mirror://sourceforge/project/tuxguitar/TuxGuitar/TuxGuitar-${PV}/tuxguitar-${PV}-linux-x86_64.tar.gz )"
@@ -15,15 +15,12 @@ SRC_URI="
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="alsa oss timidity"
+IUSE="alsa fluidsynth oss timidity"
 
 RDEPEND="
 	alsa? ( media-libs/alsa-lib )
-	timidity? (
-		alsa? ( media-sound/timidity++[alsa] )
-		oss? ( media-sound/timidity++[oss] )
-		media-sound/timidity++
-	)
+	fluidsynth? ( media-sound/fluidsynth )
+	timidity? ( media-sound/timidity++[alsa?,oss?] )
 	virtual/jre"
 
 src_unpack() {

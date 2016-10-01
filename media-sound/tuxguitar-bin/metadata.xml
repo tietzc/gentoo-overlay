@@ -6,8 +6,6 @@
 		<name>Christian Tietz</name>
 	</maintainer>
 	<use>
-		<flag name="alsa">Add support for media-libs/alsa-lib (Advanced Linux Sound Architecture)</flag>
-		<flag name="oss">Add support for OSS (Open Sound System)</flag>
-		<flag name="timidity">Build with Timidity++ (MIDI sequencer) support</flag>
+		<flag name="fluidsynth">Enable Fluidsynth MIDI software synthesis</flag>
 	</use>
 </pkgmetadata>
