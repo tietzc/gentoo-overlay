@@ -48,6 +48,7 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
+	sed -i '2iexport SWT_GTK3=0' /usr/bin/tuxguitar-bin || die
 	gnome2_icon_cache_update
 }
 
