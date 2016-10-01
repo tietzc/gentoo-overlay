@@ -16,6 +16,7 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="alsa fluidsynth oss timidity"
+RESTRICT="mirror"
 
 RDEPEND="
 	alsa? ( media-libs/alsa-lib )
