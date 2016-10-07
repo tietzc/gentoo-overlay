@@ -9,13 +9,14 @@ inherit eutils gnome2-utils unpacker
 DESCRIPTION="Indiana Jones and the Fate of Atlantis"
 HOMEPAGE="https://www.gog.com/game/indiana_jones_and_the_fate_of_atlantis"
 
-BASE_SRC_URI="gog_indiana_jones_and_the_fate_of_atlantis_2.2.0.27.sh"
 DE_SRC_URI="gog_indiana_jones_and_the_fate_of_atlantis_german_2.2.0.27.sh"
+EN_SRC_URI="gog_indiana_jones_and_the_fate_of_atlantis_2.2.0.27.sh"
 ES_SRC_URI="gog_indiana_jones_and_the_fate_of_atlantis_spanish_2.2.0.27.sh"
 FR_SRC_URI="gog_indiana_jones_and_the_fate_of_atlantis_french_2.2.0.27.sh"
 IT_SRC_URI="gog_indiana_jones_and_the_fate_of_atlantis_italian_2.2.0.27.sh"
-SRC_URI="${BASE_SRC_URI}
+SRC_URI="
 	l10n_de? ( ${DE_SRC_URI} )
+	l10n_en? ( ${EN_SRC_URI} )
 	l10n_es? ( ${ES_SRC_URI} )
 	l10n_fr? ( ${FR_SRC_URI} )
 	l10n_it? ( ${IT_SRC_URI} )"
@@ -35,11 +36,12 @@ S="${WORKDIR}/data/noarch"
 
 pkg_nofetch() {
 	einfo
-	einfo "Please buy & download \"${BASE_SRC_URI}\""
-	use l10n_de && einfo "and \"${DE_SRC_URI}\""
-	use l10n_es && einfo "and \"${ES_SRC_URI}\""
-	use l10n_fr && einfo "and \"${FR_SRC_URI}\""
-	use l10n_it && einfo "and \"${IT_SRC_URI}\""
+	einfo "Please buy & download"
+	use l10n_de && einfo "\"${DE_SRC_URI}\""
+	use l10n_en && einfo "\"${EN_SRC_URI}\""
+	use l10n_es && einfo "\"${ES_SRC_URI}\""
+	use l10n_fr && einfo "\"${FR_SRC_URI}\""
+	use l10n_it && einfo "\"${IT_SRC_URI}\""
 	einfo "from:"
 	einfo "  ${HOMEPAGE}"
 	einfo "and move/link it to \"${DISTDIR}\""
@@ -47,12 +49,14 @@ pkg_nofetch() {
 }
 
 src_unpack() {
-	einfo "unpacking base data..."
-	unpack_zip "${DISTDIR}/${BASE_SRC_URI}"
-
 	if use l10n_de ; then
 		einfo "unpacking l10n_de data..."
 		unpack_zip "${DISTDIR}/${DE_SRC_URI}"
+	fi
+
+	if use l10n_en ; then
+		einfo "unpacking l10n_en data..."
+		unpack_zip "${DISTDIR}/${EN_SRC_URI}"
 	fi
 
 	if use l10n_es ; then
@@ -75,7 +79,8 @@ src_install() {
 	local dir="/opt/${PN}"
 
 	insinto "${dir}"
-	doins data/{ATLANTIS.*,MONSTER.SOU}
+	doins data/{ATLANTIS.000,ATLANTIS.001}
+	use l10n_en && doins data/MONSTER.SOU
 
 	newicon -s 256 support/icon.png ${PN}.png
 	make_wrapper "${PN}" "scummvm -f -p "${dir}" atlantis"
