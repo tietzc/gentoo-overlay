@@ -46,15 +46,18 @@ src_unpack() {
 src_install() {
 	local dir="/opt/${PN}"
 
-	if use amd64 ; then
-		make_wrapper ${PN} "./GoneHome.x86_64" "${dir}/game"
-		rm -r "${S}"/game/GoneHome.x86 \
-			"${S}"/game/GoneHome_Data/Mono/x86 || die
-	else
-		make_wrapper ${PN} "./GoneHome.x86" "${dir}/game"
-		rm -r "${S}"/game/GoneHome.x86_64 \
-			"${S}"/game/GoneHome_Data/Mono/x86_64 || die
-	fi
+	case ${ARCH} in
+		amd64)
+			rm -r "${S}"/game/GoneHome.x86 \
+				"${S}"/game/GoneHome_Data/Mono/x86 || die
+			make_wrapper ${PN} "./GoneHome.x86_64" "${dir}/game"
+			;;
+		x86)
+			rm -r "${S}"/game/GoneHome.x86_64 \
+				"${S}"/game/GoneHome_Data/Mono/x86_64 || die
+			make_wrapper ${PN} "./GoneHome.x86" "${dir}/game"
+			;;
+	esac
 
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Gone Home"
