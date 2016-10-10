@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>martin@mvath.de</email>
-		<name>Martin Väth</name>
+		<email>christian.tietz@mailbox.org</email>
+		<name>Christian Tietz</name>
 	</maintainer>
 	<upstream>
 		<maintainer>
