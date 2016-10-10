@@ -19,15 +19,13 @@ RESTRICT="bindist fetch"
 RDEPEND="
 	amd64? (
 		dev-libs/json-c[abi_x86_32(-)]
-		media-libs/libsdl[abi_x86_32(-),opengl,pulseaudio]
+		media-libs/libsdl[abi_x86_32(-),X,opengl,pulseaudio]
 		media-libs/openal[abi_x86_32(-)]
-		x11-libs/libX11[abi_x86_32(-)]
 	)
 	x86? (
 		dev-libs/json-c
-		media-libs/libsdl[opengl,pulseaudio]
+		media-libs/libsdl[X,opengl,pulseaudio]
 		media-libs/openal
-		x11-libs/libX11
 	)"
 
 DEPEND="app-arch/unzip"
