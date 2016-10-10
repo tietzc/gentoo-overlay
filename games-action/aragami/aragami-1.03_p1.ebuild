@@ -8,7 +8,7 @@ inherit eutils gnome2-utils unpacker
 
 DESCRIPTION="Aragami"
 HOMEPAGE="https://www.gog.com/game/aragami"
-SRC_URI="gog_aragami_2.2.0.4.sh"
+SRC_URI="gog_aragami_2.3.0.5.sh"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
@@ -46,17 +46,22 @@ src_unpack() {
 src_install() {
 	local dir="/opt/${PN}"
 
-	if use amd64 ; then
-		make_wrapper ${PN} "./Aragami.x86_64" "${dir}/game"
-		rm -r "${S}"/game/Aragami.x86 \
-			"${S}"/game/Aragami_Data/Mono/x86 \
-			"${S}"/game/Aragami_Data/Plugins/x86 || die
-	else
-		make_wrapper ${PN} "./Aragami.x86" "${dir}/game"
-		rm -r "${S}"/game/Aragami.x86_64 \
-			"${S}"/game/Aragami_Data/Mono/x86_64 \
-			"${S}"/game/Aragami_Data/Plugins/x86_64 || die
-	fi
+	case ${ARCH} in
+		amd64)
+			rm -r \
+				"${S}"/game/Aragami.x86 \
+				"${S}"/game/Aragami_Data/Mono/x86 \
+				"${S}"/game/Aragami_Data/Plugins/x86 || die
+			make_wrapper ${PN} "./Aragami.x86_64" "${dir}/game"
+			;;
+		x86)
+			rm -r \
+				"${S}"/game/Aragami.x86_64 \
+				"${S}"/game/Aragami_Data/Mono/x86_64 \
+				"${S}"/game/Aragami_Data/Plugins/x86_64 || die
+			make_wrapper ${PN} "./Aragami.x86" "${dir}/game"
+			;;
+	esac
 
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Aragami"
