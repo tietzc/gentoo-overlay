@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>christian.tietz@mailbox.org</email>
+		<name>Christian Tietz</name>
+	</maintainer>
+	<use>
+		<flag name='altgamma'>Clearskies - X11-based gamma for Linux</flag>
+	</use>
+</pkgmetadata>
