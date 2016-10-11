@@ -21,7 +21,7 @@ SRC_URI="
 	l10n_fr? ( ${FR_SRC_URI} )
 	l10n_it? ( ${IT_SRC_URI} )"
 
-LICENSE="all-rights-reserved"
+LICENSE="all-rights-reserved GOG-EULA"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="l10n_de l10n_en l10n_es l10n_fr l10n_it"
