@@ -18,7 +18,7 @@ SRC_URI="${BASE_SRC_URI}
 	dlc2? ( ${DLC2_SRC_URI} )
 	dlc3? ( ${DLC3_SRC_URI} )"
 
-LICENSE="all-rights-reserved"
+LICENSE="all-rights-reserved GOG-EULA"
 SLOT="0"
 KEYWORDS="-* ~amd64"
 IUSE="+dlc1 +dlc2 +dlc3"
