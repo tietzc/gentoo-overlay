@@ -14,7 +14,7 @@ SOD_SRC_URI="gog_baldur_s_gate_siege_of_dragonspear_2.3.0.4.sh"
 SRC_URI="${BASE_SRC_URI}
 	sod? ( ${SOD_SRC_URI} )"
 
-LICENSE="all-rights-reserved"
+LICENSE="all-rights-reserved GOG-EULA"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+sod"
