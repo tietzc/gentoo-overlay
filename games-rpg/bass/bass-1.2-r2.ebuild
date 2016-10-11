@@ -10,7 +10,7 @@ DESCRIPTION="Beneath a Steel Sky"
 HOMEPAGE="https://www.gog.com/game/beneath_a_steel_sky"
 SRC_URI="gog_beneath_a_steel_sky_2.1.0.4.sh"
 
-LICENSE="all-rights-reserved"
+LICENSE="all-rights-reserved GOG-EULA"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="l10n_de l10n_es l10n_fr l10n_it"
