@@ -10,7 +10,7 @@ DESCRIPTION="Day of the Tentacle: Remastered"
 HOMEPAGE="https://www.gog.com/game/day_of_the_tentacle_remastered"
 SRC_URI="gog_day_of_the_tentacle_remastered_2.0.0.1.sh"
 
-LICENSE="all-rights-reserved"
+LICENSE="all-rights-reserved GOG-EULA"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 IUSE=""
