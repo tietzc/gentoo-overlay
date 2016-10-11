@@ -10,7 +10,7 @@ DESCRIPTION="Broken Sword: Director's Cut"
 HOMEPAGE="https://www.gog.com/game/broken_sword_directors_cut"
 SRC_URI="gog_broken_sword_director_s_cut_2.0.0.2.sh"
 
-LICENSE="all-rights-reserved"
+LICENSE="all-rights-reserved GOG-EULA"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 IUSE=""
