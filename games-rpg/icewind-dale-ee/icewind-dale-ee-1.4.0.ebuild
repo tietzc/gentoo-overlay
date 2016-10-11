@@ -10,7 +10,7 @@ DESCRIPTION="Icewind Dale: Enhanced Edition"
 HOMEPAGE="https://www.gog.com/game/icewind_dale_enhanced_edition"
 SRC_URI="gog_icewind_dale_enhanced_edition_2.1.0.4.sh"
 
-LICENSE="all-rights-reserved"
+LICENSE="all-rights-reserved GOG-EULA"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
