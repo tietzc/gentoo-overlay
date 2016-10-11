@@ -10,7 +10,7 @@ DESCRIPTION="Gone Home"
 HOMEPAGE="https://www.gog.com/game/gone_home"
 SRC_URI="gog_gone_home_2.0.0.2.sh"
 
-LICENSE="all-rights-reserved"
+LICENSE="all-rights-reserved GOG-EULA"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 IUSE=""
