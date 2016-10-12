@@ -18,10 +18,11 @@ SRC_URI="
 LICENSE="GPL-2 Q3AEULA-20000111 urbanterror-4.2-maps"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
-IUSE="+altgamma"
+IUSE="+altgamma openal server smp"
 RESTRICT="mirror"
 
 RDEPEND="
+	openal? ( media-libs/openal )
 	media-libs/libsdl[X,opengl,pulseaudio,sound,video]
 	media-libs/libvorbis
 	net-misc/curl"
@@ -31,8 +32,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=( "${FILESDIR}"/${PN}-4.3-build.patch )
 
-S=${WORKDIR}/ioq3-for-UrbanTerror-4-release-${PV}
-S_DATA=${WORKDIR}/UrbanTerror43
+S="${WORKDIR}/ioq3-for-UrbanTerror-4-release-${PV}"
 
 src_compile() {
 	emake \
@@ -40,10 +40,10 @@ src_compile() {
 		PLATFORM=linux \
 		DEFAULT_BASEDIR=/usr/share/${PN} \
 		BUILD_CLIENT=1 \
-		BUILD_CLIENT_SMP=0 \
-		BUILD_SERVER=0 \
+		BUILD_CLIENT_SMP=$(usex smp 1 0) \
+		BUILD_SERVER=$(usex server 1 0) \
 		USE_SDL=1 \
-		USE_OPENAL=0 \
+		USE_OPENAL=$(usex openal 1 0) \
 		USE_OPENAL_DLOPEN=0 \
 		USE_CODEC_VORBIS=1 \
 		USE_ALTGAMMA=$(usex altgamma 1 0) \
@@ -56,13 +56,19 @@ src_install() {
 	local my_arch=$(usex amd64 "x86_64" "i386")
 
 	dodoc ChangeLog README md4-readme.txt
-	dodoc "${S_DATA}"/q3ut4/readme43.txt
+	dodoc "${WORKDIR}"/UrbanTerror43/q3ut4/readme43.txt
 	insinto /usr/share/${PN}/q3ut4
-	doins "${S_DATA}"/q3ut4/*.pk3
+	doins "${WORKDIR}"/UrbanTerror43/q3ut4/*.pk3
 
-	newbin build/release-linux-${my_arch}/Quake3-UrT.${my_arch} ${PN}
+	newbin build/release-linux-${my_arch}/Quake3-UrT$(usex smp "-smp" "").${my_arch} ${PN}
 	doicon -s scalable "${DISTDIR}"/${PN}.svg
 	make_desktop_entry ${PN} "UrbanTerror"
+
+	if use server ; then
+		newbin build/release-linux-${my_arch}/Quake3-UrT-Ded.${my_arch} ${PN}-dedicated
+		docinto examples
+		dodoc "${WORKDIR}"/UrbanTerror43/q3ut4/{server_example.cfg,mapcycle_example.txt}
+	fi
 }
 
 pkg_preinst() {
