@@ -23,7 +23,7 @@ RESTRICT="mirror"
 
 RDEPEND="
 	openal? ( media-libs/openal )
-	media-libs/libsdl[X,opengl,pulseaudio,sound,video]
+	media-libs/libsdl[X,opengl,sound,video]
 	media-libs/libvorbis
 	net-misc/curl"
 
