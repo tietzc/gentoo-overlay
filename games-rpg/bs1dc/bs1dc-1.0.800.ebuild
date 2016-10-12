@@ -18,7 +18,8 @@ RESTRICT="bindist fetch"
 
 RDEPEND="
 	dev-libs/json-c
-	media-libs/libsdl[X,opengl,pulseaudio]
+	media-libs/libsdl[X,opengl,sound,video]
+	media-libs/libvorbis
 	media-libs/openal"
 
 DEPEND="app-arch/unzip"
