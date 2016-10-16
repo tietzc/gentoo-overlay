@@ -17,6 +17,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
+RESTRICT="mirror"
 
 DEPEND="${PYTHON_DEPS}
 	dev-python/pygtk:2[${PYTHON_USEDEP}]
@@ -32,7 +33,7 @@ python_install_all() {
 	distutils-r1_python_install_all
 
 	# delete apparmor profiles
-	rm -rv "${D}/etc/apparmor.d" || die "Failed to remove apparmor profiles"
+	rm -r "${D}/etc/apparmor.d" || die "Failed to remove apparmor profiles"
 }
 
 pkg_preinst() {
@@ -43,11 +44,8 @@ pkg_postinst() {
 	fdo-mime_desktop_database_update
 	gnome2_icon_cache_update
 
-	elog "To get additional features, a number of optional runtime"
-	elog "dependencies may be installed:"
-	elog ""
 	optfeature "updating over system TOR" "net-misc/tor dev-python/txsocksx"
-	optfeature "modem sound support" dev-python/pygame
+	optfeature "modem sound support" "dev-python/pygame"
 }
 
 pkg_postrm() {
