@@ -17,6 +17,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
+RESTRICT="mirror"
 
 RDEPEND="|| ( =mail-client/thunderbird-38*[lightning] =mail-client/thunderbird-45*[lightning] )"
 
