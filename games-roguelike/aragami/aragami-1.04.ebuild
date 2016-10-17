@@ -8,7 +8,7 @@ inherit eutils gnome2-utils unpacker
 
 DESCRIPTION="Aragami"
 HOMEPAGE="https://www.gog.com/game/aragami"
-SRC_URI="gog_aragami_2.3.0.5.sh"
+SRC_URI="gog_aragami_2.4.0.6.sh"
 
 LICENSE="all-rights-reserved GOG-EULA"
 SLOT="0"
@@ -46,25 +46,14 @@ src_unpack() {
 src_install() {
 	local dir="/opt/${PN}"
 
-	case ${ARCH} in
-		amd64)
-			rm -r \
-				"${S}"/game/Aragami.x86 \
-				"${S}"/game/Aragami_Data/Mono/x86 \
-				"${S}"/game/Aragami_Data/Plugins/x86 || die
-			make_wrapper ${PN} "./Aragami.x86_64" "${dir}/game"
-			;;
-		x86)
-			rm -r \
-				"${S}"/game/Aragami.x86_64 \
-				"${S}"/game/Aragami_Data/Mono/x86_64 \
-				"${S}"/game/Aragami_Data/Plugins/x86_64 || die
-			make_wrapper ${PN} "./Aragami.x86" "${dir}/game"
-			;;
-	esac
+	rm -r \
+		"${S}"/game/Aragami.$(usex amd64 "x86" "x86_64") \
+		"${S}"/game/Aragami_Data/Mono/$(usex amd64 "x86" "x86_64") \
+		"${S}"/game/Aragami_Data/Plugins/$(usex amd64 "x86" "x86_64") || die
 
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Aragami"
+	make_wrapper ${PN} "${dir}/game/Aragami.$(usex amd64 "x86_64" "x86")"
 
 	dodir "${dir}"
 	mv "${S}/game" "${D}${dir}/" || die
@@ -75,6 +64,10 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
+	# ugly hack to store settings et cetera in home and not install directory
+	sed -i '2i\mkdir -p "$HOME/.config/unity3d/Lince Works/Aragami"\' /usr/bin/${PN} || die
+	sed -i '3i\cd "$HOME/.config/unity3d/Lince Works/Aragami"\' /usr/bin/${PN} || die
+
 	gnome2_icon_cache_update
 }
 
