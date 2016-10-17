@@ -7,7 +7,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 DISTUTILS_SINGLE_IMPL=1
 
-inherit distutils-r1 fdo-mime gnome2-utils
+inherit distutils-r1 gnome2-utils xdg-utils
 
 DESCRIPTION="Securely and easily download, verify, install, and launch Tor Browser in Linux"
 HOMEPAGE="https://github.com/micahflee/torbrowser-launcher"
@@ -41,14 +41,14 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	fdo-mime_desktop_database_update
 	gnome2_icon_cache_update
+	xdg_desktop_database_update
 
 	optfeature "updating over system TOR" "net-misc/tor dev-python/txsocksx"
 	optfeature "modem sound support" "dev-python/pygame"
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
 	gnome2_icon_cache_update
+	xdg_desktop_database_update
 }
