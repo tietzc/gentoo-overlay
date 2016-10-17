@@ -8,7 +8,7 @@ inherit eutils gnome2-utils multilib unpacker
 
 DESCRIPTION="Day of the Tentacle: Remastered"
 HOMEPAGE="https://www.gog.com/game/day_of_the_tentacle_remastered"
-SRC_URI="gog_day_of_the_tentacle_remastered_2.0.0.1.sh"
+SRC_URI="gog_day_of_the_tentacle_remastered_2.1.0.2.sh"
 
 LICENSE="all-rights-reserved GOG-EULA"
 SLOT="0"
@@ -52,13 +52,13 @@ src_unpack() {
 src_install() {
 	local dir="/opt/${PN}"
 
-	insinto "${dir}"
-	doins -r game
-	fperms +x "${dir}"/game/Dott
-
 	make_wrapper ${PN} "./Dott" "${dir}/game"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Day Of The Tentacle: Remastered"
+
+	dodir "${dir}"
+	rm "${S}"/game/lib/libsteam_api.so || die
+	mv "${S}/game" "${D}${dir}/" || die
 }
 
 pkg_preinst() {
