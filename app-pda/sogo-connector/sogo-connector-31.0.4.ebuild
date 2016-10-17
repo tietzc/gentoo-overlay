@@ -23,6 +23,8 @@ RDEPEND="|| ( =mail-client/thunderbird-38*[lightning] =mail-client/thunderbird-4
 
 DEPEND="${RDEPEND}"
 
+PATCHES=( "${FILESDIR}"/makefile.patch )
+
 S="${WORKDIR}/${PN}.tb${THUNDERBIRD_VERSION}-${EGIT_COMMIT}"
 
 src_install() {
@@ -32,5 +34,5 @@ src_install() {
 
 	dodir ${MOZILLA_FIVE_HOME}/extensions/${emid} || die
 	cd "${ED}"${MOZILLA_FIVE_HOME}/extensions/${emid} || die
-	unzip -o "${S}/${PN}-*.xpi" || die
+	unzip -o "${S}/${P}.xpi" || die
 }

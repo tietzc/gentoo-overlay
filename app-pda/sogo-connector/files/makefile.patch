@@ -1,0 +1,17 @@
+--- sogo-connector.tb31-2253f36fb2093db6749127ddd48270f70675ed72.orig/Makefile	2016-07-22 21:35:08.000000000 +0200
++++ sogo-connector.tb31-2253f36fb2093db6749127ddd48270f70675ed72/Makefile	2016-10-17 06:51:44.719285000 +0200
+@@ -1,5 +1,4 @@
+ PACKAGE = sogo-connector
+-GIT_REV = $(shell git rev-parse --verify HEAD | cut -c1-10)
+ 
+ ifeq ($(shell uname),Darwin)
+ VERSION = $(shell grep em:version install.rdf | sed -E 's@(em:version=|"| )@@g')
+@@ -7,7 +6,7 @@
+ VERSION = $(shell grep em:version install.rdf | sed -e 's@\(em:version=\|\"\|\ \)@@g')
+ endif
+ 
+-XPI_ARCHIVE = $(PACKAGE)-$(VERSION)-$(GIT_REV).xpi
++XPI_ARCHIVE = $(PACKAGE)-$(VERSION).xpi
+ 
+ SHELL = /bin/bash
+ ZIP = /usr/bin/zip
