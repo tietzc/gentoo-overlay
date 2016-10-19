@@ -65,8 +65,7 @@ pkg_preinst() {
 
 pkg_postinst() {
 	# ugly hack to store settings et cetera in home and not install directory
-	sed -i '2i\mkdir -p "$HOME/.config/unity3d/Lince Works/Aragami"\' /usr/bin/${PN} || die
-	sed -i '3i\cd "$HOME/.config/unity3d/Lince Works/Aragami"\' /usr/bin/${PN} || die
+	sed -i '2i\mkdir -p "$HOME/.config/unity3d/Lince Works/Aragami" && cd $_\' /usr/bin/${PN} || die
 
 	gnome2_icon_cache_update
 }
