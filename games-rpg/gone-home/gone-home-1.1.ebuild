@@ -46,26 +46,17 @@ src_unpack() {
 src_install() {
 	local dir="/opt/${PN}"
 
-	case ${ARCH} in
-		amd64)
-			rm -r "${S}"/game/GoneHome.x86 \
-				"${S}"/game/GoneHome_Data/Mono/x86 || die
-			make_wrapper ${PN} "./GoneHome.x86_64" "${dir}/game"
-			;;
-		x86)
-			rm -r "${S}"/game/GoneHome.x86_64 \
-				"${S}"/game/GoneHome_Data/Mono/x86_64 || die
-			make_wrapper ${PN} "./GoneHome.x86" "${dir}/game"
-			;;
-	esac
+	dodir "${dir}"
+	rm -r \
+		"${S}"/game/GoneHome.$(usex amd64 "x86" "x86_64") \
+		"${S}"/game/GoneHome_Data/Mono/$(usex amd64 "x86" "x86_64") \
+		"${S}"/game/GoneHome_Data/Plugins/x86/libsteam_api.so || die
+	mv "${S}/game" "${D}${dir}/" || die
+	fperms -R 0755 "${dir}"/game/GoneHome_Data
 
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Gone Home"
-
-	dodir "${dir}"
-	rm "${S}"/game/GoneHome_Data/Plugins/x86/libsteam_api.so || die
-	mv "${S}/game" "${D}${dir}/" || die
-	fperms -R 0755 "${dir}"/game/GoneHome_Data
+	make_wrapper ${PN} "./GoneHome.$(usex amd64 "x86_64" "x86")" "${dir}/game"
 }
 
 pkg_preinst() {
@@ -73,7 +64,9 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	sed -i '2iexport LC_ALL=C' /usr/bin/gone-home || die
+	# work around localization issue
+	sed -i '2i\export LC_ALL=C\' /usr/bin/gone-home || die
+
 	gnome2_icon_cache_update
 }
 
