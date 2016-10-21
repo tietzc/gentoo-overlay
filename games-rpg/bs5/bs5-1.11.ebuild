@@ -17,8 +17,10 @@ IUSE=""
 RESTRICT="bindist fetch"
 
 RDEPEND="
+	dev-libs/expat
 	media-libs/openal
-	virtual/opengl"
+	virtual/opengl
+	x11-libs/libX11"
 
 DEPEND="app-arch/unzip"
 
