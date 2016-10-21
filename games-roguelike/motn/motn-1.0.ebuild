@@ -23,6 +23,7 @@ RESTRICT="bindist fetch"
 # use bundled media-libs/fmod for now
 
 RDEPEND="
+	dev-libs/expat
 	media-libs/libsdl[X,opengl,sound,video]
 	media-libs/libvorbis
 	media-libs/openal"
