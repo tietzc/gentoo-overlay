@@ -22,6 +22,8 @@ RDEPEND="net-print/cups"
 
 DEPEND="${RDEPEND}"
 
+PATCHES=( "${FILESDIR}/brother_lpdwrapper_BrGenML1.patch" )
+
 S="${WORKDIR}"
 
 pkg_setup() {
@@ -40,19 +42,14 @@ src_unpack() {
 	rpm_unpack ${A}
 }
 
-src_prepare() {
-	eapply "${FILESDIR}/brother_lpdwrapper_BrGenML1.patch"
-	default
-}
-
 src_install() {
 	cp -r var "${D}" || die
 	cp -r opt "${D}" || die
 	cp -r etc "${D}" || die
 
 	mkdir -p "${D}/usr/libexec/cups/filter" || die
-	( cd "${D}/usr/libexec/cups/filter/" && ln -s ../../../../opt/brother/Printers/BrGenML1/cupswrapper/brother_lpdwrapper_BrGenML1 ) || die
+	( cd $_ && ln -s ../../../../opt/brother/Printers/BrGenML1/cupswrapper/brother_lpdwrapper_BrGenML1 ) || die
 
 	mkdir -p "${D}/usr/share/cups/model" || die
-	( cd "${D}/usr/share/cups/model" && ln -s ../../../../opt/brother/Printers/BrGenML1/cupswrapper/brother-BrGenML1-cups-en.ppd ) || die
+	( cd $_ && ln -s ../../../../opt/brother/Printers/BrGenML1/cupswrapper/brother-BrGenML1-cups-en.ppd ) || die
 }

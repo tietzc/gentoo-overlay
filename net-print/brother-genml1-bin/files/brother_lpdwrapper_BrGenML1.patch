@@ -1,18 +1,17 @@
---- /home/tmp/portage/net-print/brother-mfc7460dn-bin-3.1.0-r1/work/opt/brother/Printers/BrGenML1/cupswrapper/brother_lpdwrapper_BrGenML1	2014-05-14 00:36:11.000000000 -0400
-+++ /opt/brother/Printers/BrGenML1/cupswrapper/brother_lpdwrapper_BrGenML1	2014-10-07 19:35:40.899637092 -0400
-@@ -50,8 +50,9 @@
+--- a/opt/brother/Printers/BrGenML1/cupswrapper/brother_lpdwrapper_BrGenML1	2014-05-14 06:36:11.000000000 +0200
++++ b/opt/brother/Printers/BrGenML1/cupswrapper/brother_lpdwrapper_BrGenML1	2016-10-21 15:06:30.099225191 +0200
+@@ -50,7 +50,9 @@
  }
  chomp($basedir);
  
 -$basedir =~ s/$PRINTER\/cupswrapper\/.*$/$PRINTER\//g;
--
 +#$basedir =~ s/$PRINTER\/cupswrapper\/.*$/$PRINTER\//g;
 +my $PRINTER = "BrGenML1";
 +my $basedir = "/opt/brother/Printers/$PRINTER";
  
+ 
  %units = ( pt   => \&pt2dot, 
- 	   mm   => \&mm2dot, 
-@@ -77,16 +78,16 @@
+@@ -77,16 +79,16 @@
  
  my $cmdoptions=$ARGV[4];
  my $PPD = $ENV{PPD};
@@ -33,7 +32,7 @@
  
  for  (my $i = 0 ; $i < @ARGV ; $i ++){
      logprint( 0 , "ARG$i      = $ARGV[$i]\n");
-@@ -733,7 +734,7 @@
+@@ -733,7 +735,7 @@
      my $lpddir = $basedir;
      my %lpr_options = %$lpr_options_ref;
  
