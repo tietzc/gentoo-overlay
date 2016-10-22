@@ -9,11 +9,11 @@ inherit eutils gnome2-utils unpacker
 DESCRIPTION="Indiana Jones and the Fate of Atlantis"
 HOMEPAGE="https://www.gog.com/game/indiana_jones_and_the_fate_of_atlantis"
 
-DE_SRC_URI="gog_indiana_jones_and_the_fate_of_atlantis_german_2.2.0.27.sh"
-EN_SRC_URI="gog_indiana_jones_and_the_fate_of_atlantis_2.2.0.27.sh"
-ES_SRC_URI="gog_indiana_jones_and_the_fate_of_atlantis_spanish_2.2.0.27.sh"
-FR_SRC_URI="gog_indiana_jones_and_the_fate_of_atlantis_french_2.2.0.27.sh"
-IT_SRC_URI="gog_indiana_jones_and_the_fate_of_atlantis_italian_2.2.0.27.sh"
+DE_SRC_URI="gog_indiana_jones_and_the_fate_of_atlantis_german_${PV}.sh"
+EN_SRC_URI="gog_indiana_jones_and_the_fate_of_atlantis_${PV}.sh"
+ES_SRC_URI="gog_indiana_jones_and_the_fate_of_atlantis_spanish_${PV}.sh"
+FR_SRC_URI="gog_indiana_jones_and_the_fate_of_atlantis_french_${PV}.sh"
+IT_SRC_URI="gog_indiana_jones_and_the_fate_of_atlantis_italian_${PV}.sh"
 SRC_URI="
 	l10n_de? ( ${DE_SRC_URI} )
 	l10n_en? ( ${EN_SRC_URI} )
@@ -83,8 +83,8 @@ src_install() {
 	use l10n_en && doins data/MONSTER.SOU
 
 	newicon -s 256 support/icon.png ${PN}.png
-	make_wrapper "${PN}" "scummvm -f -p "${dir}" atlantis"
 	make_desktop_entry "${PN}" "Indiana Jones And The Fate Of Atlantis"
+	make_wrapper "${PN}" "scummvm -f -p "${dir}" atlantis"
 }
 
 pkg_preinst() {
