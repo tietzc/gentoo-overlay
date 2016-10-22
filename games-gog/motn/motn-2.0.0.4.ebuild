@@ -9,7 +9,7 @@ inherit eutils gnome2-utils unpacker
 DESCRIPTION="Mark of the Ninja: Special Edition"
 HOMEPAGE="https://www.gog.com/game/mark_of_the_ninja_special_edition"
 
-BASE_SRC_URI="gog_mark_of_the_ninja_2.0.0.4.sh"
+BASE_SRC_URI="gog_mark_of_the_ninja_${PV}.sh"
 DLC_SRC_URI="gog_mark_of_the_ninja_special_edition_dlc_2.0.0.4.sh"
 SRC_URI="${BASE_SRC_URI}
 	dlc? ( ${DLC_SRC_URI} )"
