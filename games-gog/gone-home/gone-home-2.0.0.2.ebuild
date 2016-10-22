@@ -8,7 +8,7 @@ inherit eutils gnome2-utils unpacker
 
 DESCRIPTION="Gone Home"
 HOMEPAGE="https://www.gog.com/game/gone_home"
-SRC_URI="gog_gone_home_2.0.0.2.sh"
+SRC_URI="gog_gone_home_${PV}.sh"
 
 LICENSE="all-rights-reserved GOG-EULA"
 SLOT="0"
