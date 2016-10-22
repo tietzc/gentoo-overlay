@@ -8,7 +8,7 @@ inherit eutils gnome2-utils multilib unpacker
 
 DESCRIPTION="Broken Sword 2: Remastered"
 HOMEPAGE="https://www.gog.com/game/broken_sword_2__the_smoking_mirror"
-SRC_URI="gog_broken_sword_2_remastered_2.0.0.2.sh"
+SRC_URI="gog_broken_sword_2_remastered_${PV}.sh"
 
 LICENSE="all-rights-reserved GOG-EULA"
 SLOT="0"
