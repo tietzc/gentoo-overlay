@@ -8,7 +8,7 @@ inherit eutils gnome2-utils unpacker
 
 DESCRIPTION="Broken Sword 5: The Serpent's Curse"
 HOMEPAGE="https://www.gog.com/game/broken_sword_5_the_serpents_curse"
-SRC_URI="gog_broken_sword_5_the_serpent_s_curse_2.0.0.2.sh"
+SRC_URI="gog_broken_sword_5_the_serpent_s_curse_${PV}.sh"
 
 LICENSE="all-rights-reserved GOG-EULA"
 SLOT="0"
