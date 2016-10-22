@@ -8,7 +8,7 @@ inherit eutils gnome2-utils unpacker
 
 DESCRIPTION="Aragami"
 HOMEPAGE="https://www.gog.com/game/aragami"
-SRC_URI="gog_aragami_2.4.0.6.sh"
+SRC_URI="gog_aragami_${PV}.sh"
 
 LICENSE="all-rights-reserved GOG-EULA"
 SLOT="0"
