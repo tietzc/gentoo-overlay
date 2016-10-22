@@ -8,7 +8,7 @@ inherit eutils gnome2-utils multilib unpacker
 
 DESCRIPTION="Day of the Tentacle: Remastered"
 HOMEPAGE="https://www.gog.com/game/day_of_the_tentacle_remastered"
-SRC_URI="gog_day_of_the_tentacle_remastered_2.1.0.2.sh"
+SRC_URI="gog_day_of_the_tentacle_remastered_${PV}.sh"
 
 LICENSE="all-rights-reserved GOG-EULA"
 SLOT="0"
