@@ -6,12 +6,14 @@ EAPI=6
 
 inherit eutils gnome2-utils
 
-FULL_P=UrbanTerror431_full
+FULL_P="UrbanTerror431_full"
 
 DESCRIPTION="Hollywood tactical shooter based on the ioquake3 engine"
 HOMEPAGE="http://www.urbanterror.info"
 SRC_URI="
-	http://1.mirror.eu.urtnet.info/urt/43/releases/zips/${FULL_P}.zip
+	http://www.happyurtday.com/releases/4x/${FULL_P}.zip
+	http://cdn.fs1.urbanterror.info/urt/43/releases/zips/${FULL_P}.zip
+	http://files.cucurb.net/UrbanTerror/${FULL_P}.zip
 	https://github.com/Barbatos/ioq3-for-UrbanTerror-4/archive/release-${PV}.tar.gz -> ${P}.tar.gz
 	https://upload.wikimedia.org/wikipedia/commons/5/56/Urbanterror.svg -> ${PN}.svg"
 
