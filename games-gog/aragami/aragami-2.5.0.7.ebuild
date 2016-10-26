@@ -30,6 +30,10 @@ DEPEND="app-arch/unzip"
 
 S="${WORKDIR}/data/noarch"
 
+QA_PREBUILT="
+	opt/aragami/game/Aragami_Data/Mono/x86*/libmono.so
+	opt/aragami/game/Aragami.x86*"
+
 pkg_nofetch() {
 	einfo
 	einfo "Please buy & download \"${SRC_URI}\" from:"
@@ -46,17 +50,16 @@ src_unpack() {
 src_install() {
 	local dir="/opt/${PN}"
 
+	dodir "${dir}"
 	rm -r \
 		"${S}"/game/Aragami.$(usex amd64 "x86" "x86_64") \
 		"${S}"/game/Aragami_Data/Mono/$(usex amd64 "x86" "x86_64") \
 		"${S}"/game/Aragami_Data/Plugins/$(usex amd64 "x86" "x86_64") || die
+	mv "${S}/game" "${D}${dir}/" || die
 
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Aragami"
 	make_wrapper ${PN} "${dir}/game/Aragami.$(usex amd64 "x86_64" "x86")"
-
-	dodir "${dir}"
-	mv "${S}/game" "${D}${dir}/" || die
 }
 
 pkg_preinst() {
