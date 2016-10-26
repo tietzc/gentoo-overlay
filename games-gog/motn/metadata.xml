@@ -6,6 +6,6 @@
 		<name>Christian Tietz</name>
 	</maintainer>
 	<use>
-		<flag name='dlc'>Install 'Mark of the Ninja: Special Edition DLC'</flag>
+		<flag name="dlc">Install 'Mark of the Ninja: Special Edition DLC'</flag>
 	</use>
 </pkgmetadata>

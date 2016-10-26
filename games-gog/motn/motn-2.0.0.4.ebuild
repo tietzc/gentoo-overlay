@@ -32,6 +32,10 @@ DEPEND="app-arch/unzip"
 
 S="${WORKDIR}/data/noarch"
 
+QA_PREBUILT="
+	opt/motn/game/bin/lib*/lib*
+	opt/motn/game/bin/ninja-bin*"
+
 pkg_nofetch() {
 	einfo
 	einfo "Please buy & download \"${BASE_SRC_URI}\""
@@ -55,30 +59,17 @@ src_unpack() {
 src_install() {
 	local dir="/opt/${PN}"
 
-	case ${ARCH} in
-		amd64)
-			rm -r \
-				"${S}"/game/bin/lib32 \
-				"${S}"/game/bin/lib64/libSDL* \
-				"${S}"/game/bin/ninja-bin \
-				"${S}"/game/bin/ninja-bin32 || die
-			make_wrapper ${PN} "./ninja-bin64" "${dir}/game/bin"
-			;;
-		x86)
-			rm -r \
-				"${S}"/game/bin/lib32/libSDL* \
-				"${S}"/game/bin/lib64 \
-				"${S}"/game/bin/ninja-bin \
-				"${S}"/game/bin/ninja-bin64 || die
-			make_wrapper ${PN} "./ninja-bin32" "${dir}/game/bin"
-			;;
-	esac
+	dodir "${dir}"
+	rm -r \
+		"${S}"/game/bin/lib$(usex amd64 "32" "64") \
+		"${S}"/game/bin/lib$(usex amd64 "64" "32")/libSDL* \
+		"${S}"/game/bin/ninja-bin \
+		"${S}"/game/bin/ninja-bin$(usex amd64 "32" "64") || die
+	mv "${S}/game" "${D}${dir}/" || die
 
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Mark Of The Ninja: Special Edition"
-
-	dodir "${dir}"
-	mv "${S}/game" "${D}${dir}/" || die
+	make_wrapper ${PN} "./ninja-bin$(usex amd64 "64" "32")" "${dir}/game/bin"
 }
 
 pkg_preinst() {
