@@ -38,6 +38,8 @@ DEPEND="app-arch/unzip"
 
 S="${WORKDIR}/data/noarch"
 
+QA_PREBUILT="opt/baldurs-gate-2-ee/game/BaldursGateII"
+
 pkg_nofetch() {
 	einfo
 	einfo "Please buy & download \"${SRC_URI}\" from:"
@@ -62,8 +64,8 @@ src_install() {
 	dosym /usr/$(get_abi_LIBDIR x86)/libjson-c.so "${dir}"/lib/libjson.so.0
 
 	newicon -s 256 support/icon.png ${PN}.png
-	make_wrapper ${PN} "./BaldursGateII" "${dir}/game" "${dir}/lib"
 	make_desktop_entry ${PN} "Baldurs Gate 2: Enhanced Edition"
+	make_wrapper ${PN} "./BaldursGateII" "${dir}/game" "${dir}/lib"
 }
 
 pkg_preinst() {
