@@ -8,12 +8,16 @@ inherit eutils gnome2-utils unpacker
 
 DESCRIPTION="Layers of Fear"
 HOMEPAGE="https://www.gog.com/game/layers_of_fear"
-SRC_URI="gog_layers_of_fear_${PV}.sh"
+
+BASE_SRC_URI="gog_layers_of_fear_${PV}.sh"
+DLC_SRC_URI="gog_layers_of_fear_inheritance_dlc_2.0.0.1.sh"
+SRC_URI="${BASE_SRC_URI}
+	dlc? ( ${DLC_SRC_URI} )"
 
 LICENSE="all-rights-reserved GOG-EULA"
 SLOT="0"
 KEYWORDS="-* ~amd64"
-IUSE=""
+IUSE="+dlc"
 RESTRICT="bindist fetch"
 
 RDEPEND="
@@ -30,9 +34,15 @@ DEPEND="app-arch/unzip"
 
 S="${WORKDIR}/data/noarch"
 
+QA_PREBUILT="
+	opt/layers-of-fear/game/LOF
+	opt/layers-of-fear/game/LOF_Data/Mono/x86_64/libmono.so"
+
 pkg_nofetch() {
 	einfo
-	einfo "Please buy & download \"${SRC_URI}\" from:"
+	einfo "Please buy & download \"${BASE_SRC_URI}\""
+	use dlc && einfo "and \"${DLC_SRC_URI}\""
+	einfo "from:"
 	einfo "  ${HOMEPAGE}"
 	einfo "and move/link it to \"${DISTDIR}\""
 	einfo
@@ -40,7 +50,12 @@ pkg_nofetch() {
 
 src_unpack() {
 	einfo "unpacking data..."
-	unpack_zip "${DISTDIR}/${SRC_URI}"
+	unpack_zip "${DISTDIR}/${BASE_SRC_URI}"
+
+	if use dlc ; then
+		einfo "unpacking dlc data..."
+		unpack_zip "${DISTDIR}/${DLC_SRC_URI}"
+	fi
 }
 
 src_install() {
