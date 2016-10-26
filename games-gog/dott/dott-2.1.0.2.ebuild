@@ -36,6 +36,10 @@ DEPEND="app-arch/unzip"
 
 S="${WORKDIR}/data/noarch"
 
+QA_PREBUILT="
+	opt/dott/game/lib/libfmod.so.8
+	opt/dott/game/Dott"
+
 pkg_nofetch() {
 	einfo
 	einfo "Please buy & download \"${SRC_URI}\" from:"
@@ -52,13 +56,13 @@ src_unpack() {
 src_install() {
 	local dir="/opt/${PN}"
 
-	make_wrapper ${PN} "./Dott" "${dir}/game"
-	newicon -s 256 support/icon.png ${PN}.png
-	make_desktop_entry ${PN} "Day Of The Tentacle: Remastered"
-
 	dodir "${dir}"
 	rm "${S}"/game/lib/libsteam_api.so || die
 	mv "${S}/game" "${D}${dir}/" || die
+
+	newicon -s 256 support/icon.png ${PN}.png
+	make_desktop_entry ${PN} "Day Of The Tentacle: Remastered"
+	make_wrapper ${PN} "./Dott" "${dir}/game"
 }
 
 pkg_preinst() {
