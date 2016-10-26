@@ -30,6 +30,10 @@ DEPEND="app-arch/unzip"
 
 S="${WORKDIR}/data/noarch"
 
+QA_PREBUILT="
+	opt/gone-home/game/GoneHome.x86*
+	opt/gone-home/game/GoneHome_Data/Mono/x86*/libmono.so"
+
 pkg_nofetch() {
 	einfo
 	einfo "Please buy & download \"${SRC_URI}\" from:"
