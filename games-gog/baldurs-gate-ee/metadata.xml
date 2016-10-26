@@ -6,6 +6,6 @@
 		<name>Christian Tietz</name>
 	</maintainer>
 	<use>
-		<flag name='sod'>Install 'Siege of Dragonspear' addon</flag>
+		<flag name="sod">Install 'Siege of Dragonspear' addon</flag>
 	</use>
 </pkgmetadata>
