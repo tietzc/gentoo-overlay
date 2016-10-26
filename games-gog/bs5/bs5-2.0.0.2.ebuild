@@ -26,6 +26,10 @@ DEPEND="app-arch/unzip"
 
 S="${WORKDIR}/data/noarch"
 
+QA_PREBUILT="
+	opt/bs5/game/BS5_i386
+	opt/bs5/game/BS5_x86_64"
+
 pkg_nofetch() {
 	einfo
 	einfo "Please buy & download \"${SRC_URI}\" from:"
@@ -43,11 +47,11 @@ src_install() {
 	local dir="/opt/${PN}"
 
 	dodir "${dir}"
-	mv "${S}/game/x86_64/BS5_$(usex amd64 "x86_64" "i386")" "${S}/game/" || die
+	mv "${S}/game/$(usex amd64 "x86_64" "i386")/BS5_$(usex amd64 "x86_64" "i386")" "${S}/game/" || die
 	rm -r \
-		"${S}"/game/x86_64 \
+		"${S}"/game/BS5 \
 		"${S}"/game/i386 \
-		"${S}"/game/BS5 || die
+		"${S}"/game/x86_64 || die
 	mv "${S}/game" "${D}${dir}/" || die
 
 	newicon -s 256 support/icon.png ${PN}.png
