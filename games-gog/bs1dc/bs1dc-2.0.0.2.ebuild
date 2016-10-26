@@ -26,6 +26,10 @@ DEPEND="app-arch/unzip"
 
 S="${WORKDIR}/data/noarch"
 
+QA_PREBUILT="
+	opt/bs1dc/game/bs1dc_i386
+	opt/bs1dc/game/bs1dc_x86_64"
+
 pkg_nofetch() {
 	einfo
 	einfo "Please buy & download \"${SRC_URI}\" from:"
@@ -42,26 +46,17 @@ src_unpack() {
 src_install() {
 	local dir="/opt/${PN}"
 
-	case ${ARCH} in
-		amd64)
-			mv "${S}/game/x86_64/bs1dc_x86_64" "${S}/game/" || die
-			make_wrapper ${PN} "./bs1dc_x86_64" "${dir}/game"
-			;;
-		x86)
-			mv "${S}/game/i386/bs1dc_i386" "${S}/game/" || die
-			make_wrapper ${PN} "./bs1dc_i386" "${dir}/game"
-			;;
-	esac
+	dodir "${dir}"
+	mv "${S}/game/$(usex amd64 "x86_64" "i386")/bs1dc_$(usex amd64 "x86_64" "i386")" "${S}/game/" || die
+	rm -r \
+		"${S}"/game/BS1DC \
+		"${S}"/game/i386 \
+		"${S}"/game/x86_64 || die
+	mv "${S}/game" "${D}${dir}/" || die
 
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Broken Sword: Director's Cut"
-
-	dodir "${dir}"
-	rm -r \
-		"${S}"/game/x86_64 \
-		"${S}"/game/i386 \
-		"${S}"/game/BS1DC || die
-	mv "${S}/game" "${D}${dir}/" || die
+	make_wrapper ${PN} "./bs1dc_$(usex amd64 "x86_64" "i386")" "${dir}/game"
 }
 
 pkg_preinst() {
