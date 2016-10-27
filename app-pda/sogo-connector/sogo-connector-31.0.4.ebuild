@@ -21,9 +21,10 @@ RESTRICT="mirror"
 
 RDEPEND="|| ( =mail-client/thunderbird-38*[lightning] =mail-client/thunderbird-45*[lightning] )"
 
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	app-arch/unzip"
 
-PATCHES=( "${FILESDIR}"/makefile.patch )
+PATCHES=( "${FILESDIR}/makefile.patch" )
 
 S="${WORKDIR}/${PN}.tb${THUNDERBIRD_VERSION}-${EGIT_COMMIT}"
 
