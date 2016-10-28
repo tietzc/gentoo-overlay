@@ -24,8 +24,6 @@ KEYWORDS="-* ~amd64"
 IUSE="+dlc1 +dlc2 +dlc3"
 RESTRICT="bindist fetch"
 
-CHECKREQS_DISK_BUILD="25G"
-
 RDEPEND="
 	dev-libs/atk
 	media-libs/fontconfig
@@ -54,6 +52,22 @@ pkg_nofetch() {
 	einfo "  ${HOMEPAGE}"
 	einfo "and move/link it to \"${DISTDIR}\""
 	einfo
+}
+
+pkg_pretend() {
+	local build_size=15000
+	use dlc1 && build_size=21000
+
+	if use dlc2 ; then
+		(( build_size += 5000 ))
+	fi
+
+	local CHECKREQS_DISK_BUILD=${build_size}M
+	check-reqs_pkg_pretend
+}
+
+pkg_setup() {
+	pkg_pretend
 }
 
 src_unpack() {
