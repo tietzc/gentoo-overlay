@@ -40,6 +40,10 @@ DEPEND="app-arch/unzip"
 
 S="${WORKDIR}/data/noarch"
 
+QA_PREBUILT="
+	opt/pillars-of-eternity/game/PillarsOfEternity
+	opt/pillars-of-eternity/game/PillarsOfEternity_Data/Mono/x86_64/libmono.so"
+
 pkg_nofetch() {
 	einfo
 	einfo "Please buy & download \"${BASE_SRC_URI}\""
@@ -75,15 +79,14 @@ src_unpack() {
 src_install() {
 	local dir="/opt/${PN}"
 
-	newicon -s 512 game/PillarsOfEternity.png ${PN}.png
-	make_wrapper ${PN} "./PillarsOfEternity" "${dir}/game"
-	make_desktop_entry ${PN} "Pillars Of Eternity"
-
 	dodir "${dir}"
 	rm "${S}"/game/PillarsOfEternity_Data/Plugins/x86_64/libCSteamworks.so \
 		"${S}"/game/PillarsOfEternity_Data/Plugins/x86_64/libsteam_api.so || die
 	mv "${S}/game" "${D}${dir}/" || die
-	fperms +x "${dir}"/game/PillarsOfEternity
+
+	newicon -s 256 support/icon.png ${PN}.png
+	make_desktop_entry ${PN} "Pillars Of Eternity"
+	make_wrapper ${PN} "./PillarsOfEternity" "${dir}/game"
 }
 
 pkg_preinst() {
