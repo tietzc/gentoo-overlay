@@ -38,6 +38,8 @@ DEPEND="app-arch/unzip"
 
 S="${WORKDIR}/data/noarch"
 
+QA_PREBUILT="opt/icewind-dale-ee/game/IcewindDale"
+
 pkg_nofetch() {
 	einfo
 	einfo "Please buy & download \"${SRC_URI}\" from:"
@@ -62,8 +64,8 @@ src_install() {
 	dosym /usr/$(get_abi_LIBDIR x86)/libjson-c.so "${dir}"/lib/libjson.so.0
 
 	newicon -s 256 support/icon.png ${PN}.png
-	make_wrapper ${PN} "./IcewindDale" "${dir}/game" "${dir}/lib"
 	make_desktop_entry ${PN} "Icewind Dale: Enhanced Edition"
+	make_wrapper ${PN} "./IcewindDale" "${dir}/game" "${dir}/lib"
 }
 
 pkg_preinst() {
