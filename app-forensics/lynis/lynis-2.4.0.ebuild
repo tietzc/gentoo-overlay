@@ -13,20 +13,22 @@ SRC_URI="https://cisofy.com/files/${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+cron"
+IUSE=""
 RESTRICT="mirror"
 
-RDEPEND="app-shells/bash:*"
+RDEPEND="
+	app-shells/bash:*
+	virtual/mailx"
 
 DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${PN}"
 
 src_install() {
-	doman lynis.8
+	doman ${PN}.8
 	dodoc CHANGELOG.md FAQ README
 
-	dobashcomp extras/bash_completion.d/lynis
+	dobashcomp extras/bash_completion.d/${PN}
 
 	# stricter default perms, bug #507436
 	diropts -m0700
@@ -40,12 +42,12 @@ src_install() {
 	insinto /etc/${PN}
 	doins default.prf
 
-	if use cron ; then
-		exeinto /etc/cron.weekly
-		newexe "${FILESDIR}"/${PN}.cron lynis
-	fi
+	exeinto /etc/cron.weekly
+	newexe "${FILESDIR}/${PN}.cron" ${PN}
 }
 
 pkg_postinst() {
-	use cron && einfo "A cron script has been installed to /etc/cron.weekly/lynis."
+	elog "A cron script has been installed to /etc/cron.weekly/lynis."
+	elog "To enable it, edit /etc/cron.weekly/lynis and follow the"
+	elog "directions."
 }
