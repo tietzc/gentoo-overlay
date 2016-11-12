@@ -13,12 +13,15 @@ SRC_URI="https://cisofy.com/files/${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="+cron"
 RESTRICT="mirror"
 
 RDEPEND="
 	app-shells/bash:*
-	virtual/mailx"
+	cron? (
+		virtual/cron
+		virtual/mailx
+	)"
 
 DEPEND="${RDEPEND}"
 
@@ -42,12 +45,16 @@ src_install() {
 	insinto /etc/${PN}
 	doins default.prf
 
-	exeinto /etc/cron.weekly
-	newexe "${FILESDIR}/${PN}.cron" ${PN}
+	if use cron ; then
+		exeinto /etc/cron.weekly
+		newexe "${FILESDIR}/${PN}.cron" ${PN}
+	fi
 }
 
 pkg_postinst() {
-	elog "A cron script has been installed to /etc/cron.weekly/lynis."
-	elog "To enable it, edit /etc/cron.weekly/lynis and follow the"
-	elog "directions."
+	if use cron ; then
+		elog "A cron script has been installed to /etc/cron.weekly/lynis."
+		elog "To enable it, edit /etc/cron.weekly/lynis and follow the"
+		elog "directions."
+	fi
 }
