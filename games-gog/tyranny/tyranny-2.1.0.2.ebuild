@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit eutils gnome2-utils multilib unpacker
+inherit check-reqs eutils gnome2-utils multilib unpacker
 
 DESCRIPTION="Tyranny"
 HOMEPAGE="https://www.gog.com/game/tyranny_commander_edition"
@@ -46,9 +46,12 @@ DEPEND="app-arch/unzip"
 
 S="${WORKDIR}/data/noarch"
 
+CHECKREQS_DISK_BUILD="14G"
+
 QA_PREBUILT="
 	opt/tyranny/game/Tyranny
-	opt/tyranny/game/Tyranny_Data/Mono/x86/libmono.so"
+	opt/tyranny/game/Tyranny_Data/Mono/x86/libmono.so
+	opt/tyranny/game/Tyranny_Data/Plugins/x86/libpops_api.so"
 
 pkg_nofetch() {
 	einfo
