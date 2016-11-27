@@ -10,8 +10,8 @@ DESCRIPTION="Pillars of Eternity"
 HOMEPAGE="https://www.gog.com/game/pillars_of_eternity_hero_edition"
 
 BASE_SRC_URI="gog_pillars_of_eternity_${PV}.sh"
-DLC1_SRC_URI="gog_pillars_of_eternity_white_march_part_1_dlc_2.8.0.10.sh"
-DLC2_SRC_URI="gog_pillars_of_eternity_white_march_part_2_dlc_2.4.0.5.sh"
+DLC1_SRC_URI="gog_pillars_of_eternity_white_march_part_1_dlc_2.9.0.11.sh"
+DLC2_SRC_URI="gog_pillars_of_eternity_white_march_part_2_dlc_2.5.0.6.sh"
 DLC3_SRC_URI="gog_pillars_of_eternity_preorder_item_and_pet_dlc_2.0.0.2.sh"
 SRC_URI="${BASE_SRC_URI}
 	dlc1? ( ${DLC1_SRC_URI} )
