@@ -21,8 +21,7 @@ RESTRICT="mirror"
 
 DEPEND="${PYTHON_DEPS}
 	dev-python/pygtk:2[${PYTHON_USEDEP}]
-	>=dev-python/twisted-core-14.0.1[${PYTHON_USEDEP},crypt]
-	>=dev-python/twisted-web-14.0.1[${PYTHON_USEDEP}]"
+	dev-python/twisted[${PYTHON_USEDEP},crypt]"
 
 RDEPEND="${DEPEND}
 	app-crypt/gnupg
@@ -45,7 +44,7 @@ pkg_postinst() {
 	xdg_desktop_database_update
 
 	optfeature "updating over system TOR" "net-misc/tor dev-python/txsocksx"
-	optfeature "modem sound support" "dev-python/pygame"
+	optfeature "modem sound support" dev-python/pygame
 }
 
 pkg_postrm() {
