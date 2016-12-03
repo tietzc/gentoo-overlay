@@ -17,7 +17,7 @@ IUSE="+cron"
 RESTRICT="mirror"
 
 RDEPEND="
-	app-shells/bash:*
+	app-shells/bash:0
 	cron? (
 		virtual/cron
 		virtual/mailx
