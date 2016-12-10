@@ -16,27 +16,17 @@ SRC_URI="${BASE_SRC_URI}
 
 LICENSE="all-rights-reserved GOG-EULA"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="-* ~amd64 ~x86"
 IUSE="+sod"
 RESTRICT="bindist fetch"
 
 RDEPEND="
-	amd64? (
-		dev-libs/expat[abi_x86_32(-)]
-		dev-libs/json-c[abi_x86_32(-)]
-		dev-libs/openssl[abi_x86_32(-)]
-		media-libs/openal[abi_x86_32(-)]
-		virtual/opengl[abi_x86_32(-)]
-		x11-libs/libX11[abi_x86_32(-)]
-	)
-	x86? (
-		dev-libs/expat
-		dev-libs/json-c
-		dev-libs/openssl
-		media-libs/openal
-		virtual/opengl
-		x11-libs/libX11
-	)"
+	dev-libs/expat[abi_x86_32(-)]
+	dev-libs/json-c[abi_x86_32(-)]
+	dev-libs/openssl[abi_x86_32(-)]
+	media-libs/openal[abi_x86_32(-)]
+	virtual/opengl[abi_x86_32(-)]
+	x11-libs/libX11[abi_x86_32(-)]"
 
 DEPEND="app-arch/unzip"
 
