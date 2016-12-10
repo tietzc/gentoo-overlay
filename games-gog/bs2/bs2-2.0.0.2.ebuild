@@ -17,18 +17,10 @@ IUSE=""
 RESTRICT="bindist fetch"
 
 RDEPEND="
-	amd64? (
-		dev-libs/json-c[abi_x86_32(-)]
-		media-libs/libsdl[abi_x86_32(-),X,opengl,sound,video]
-		media-libs/libvorbis[abi_x86_32(-)]
-		media-libs/openal[abi_x86_32(-)]
-	)
-	x86? (
-		dev-libs/json-c
-		media-libs/libsdl[X,opengl,sound,video]
-		media-libs/libvorbis
-		media-libs/openal
-	)"
+	dev-libs/json-c[abi_x86_32(-)]
+	media-libs/libsdl[abi_x86_32(-),X,opengl,sound,video]
+	media-libs/libvorbis[abi_x86_32(-)]
+	media-libs/openal[abi_x86_32(-)]"
 
 DEPEND="app-arch/unzip"
 
