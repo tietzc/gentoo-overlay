@@ -21,26 +21,14 @@ IUSE="+dlc"
 RESTRICT="bindist fetch"
 
 RDEPEND="
-	amd64? (
-		dev-libs/atk[abi_x86_32(-)]
-		media-libs/fontconfig[abi_x86_32(-)]
-		media-libs/freetype:2[abi_x86_32(-)]
-		virtual/opengl[abi_x86_32(-)]
-		x11-libs/cairo[abi_x86_32(-)]
-		x11-libs/gdk-pixbuf:2[abi_x86_32(-)]
-		x11-libs/gtk+:2[abi_x86_32(-)]
-		x11-libs/pango[abi_x86_32(-)]
-	)
-	x86? (
-		dev-libs/atk
-		media-libs/fontconfig
-		media-libs/freetype:2
-		virtual/opengl
-		x11-libs/cairo
-		x11-libs/gdk-pixbuf:2
-		x11-libs/gtk+:2
-		x11-libs/pango
-	)"
+	dev-libs/atk[abi_x86_32(-)]
+	media-libs/fontconfig[abi_x86_32(-)]
+	media-libs/freetype:2[abi_x86_32(-)]
+	virtual/opengl[abi_x86_32(-)]
+	x11-libs/cairo[abi_x86_32(-)]
+	x11-libs/gdk-pixbuf:2[abi_x86_32(-)]
+	x11-libs/gtk+:2[abi_x86_32(-)]
+	x11-libs/pango[abi_x86_32(-)]"
 
 DEPEND="app-arch/unzip"
 
