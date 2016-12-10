@@ -19,18 +19,10 @@ RESTRICT="bindist fetch"
 # use bundled media-libs/fmod for now
 
 RDEPEND="
-	amd64? (
-		dev-libs/expat[abi_x86_32(-)]
-		media-libs/alsa-lib[abi_x86_32(-)]
-		virtual/opengl[abi_x86_32(-)]
-		x11-libs/libX11[abi_x86_32(-)]
-	)
-	x86? (
-		dev-libs/expat
-		media-libs/alsa-lib
-		virtual/opengl
-		x11-libs/libX11
-	)"
+	dev-libs/expat[abi_x86_32(-)]
+	media-libs/alsa-lib[abi_x86_32(-)]
+	virtual/opengl[abi_x86_32(-)]
+	x11-libs/libX11[abi_x86_32(-)]"
 
 DEPEND="app-arch/unzip"
 
