@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit eutils gnome2-utils multilib unpacker
+inherit eutils gnome2-utils unpacker
 
 DESCRIPTION="Broken Sword 2: Remastered"
 HOMEPAGE="https://www.gog.com/game/broken_sword_2__the_smoking_mirror"
