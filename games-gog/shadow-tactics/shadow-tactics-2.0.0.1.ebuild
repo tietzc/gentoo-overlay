@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit check-reqs eutils gnome2-utils multilib unpacker
+inherit check-reqs eutils gnome2-utils unpacker
 
 DESCRIPTION="Shadow Tactics: Blades of the Shogun"
 HOMEPAGE="https://www.gog.com/game/shadow_tactics_blades_of_the_shogun"
@@ -33,9 +33,9 @@ S="${WORKDIR}/data/noarch"
 CHECKREQS_DISK_BUILD="12G"
 
 QA_PREBUILT="
-	opt/shadow-tactics/game/Shadow*
-	opt/shadow-tactics/game/Shadow*/Mono/x86/libmono.so
-	opt/shadow-tactics/game/Shadow*/Plugins/x86/libRenderingPlugin.so"
+	opt/shadow-tactics/game/*
+	opt/shadow-tactics/game/*/Mono/x86/libmono.so
+	opt/shadow-tactics/game/*/Plugins/x86/libRenderingPlugin.so"
 
 pkg_nofetch() {
 	einfo
