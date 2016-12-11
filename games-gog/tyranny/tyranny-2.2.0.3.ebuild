@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit check-reqs eutils gnome2-utils multilib unpacker
+inherit check-reqs eutils gnome2-utils unpacker
 
 DESCRIPTION="Tyranny"
 HOMEPAGE="https://www.gog.com/game/tyranny_commander_edition"
