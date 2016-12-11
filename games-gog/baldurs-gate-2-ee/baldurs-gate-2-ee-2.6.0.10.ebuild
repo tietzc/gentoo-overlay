@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit eutils gnome2-utils multilib unpacker
+inherit eutils gnome2-utils unpacker
 
 DESCRIPTION="Baldur's Gate 2: Enhanced Edition"
 HOMEPAGE="https://www.gog.com/game/baldurs_gate_2_enhanced_edition"
