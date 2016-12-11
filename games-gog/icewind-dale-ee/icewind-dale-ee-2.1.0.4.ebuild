@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit eutils gnome2-utils multilib unpacker
+inherit eutils gnome2-utils unpacker
 
 DESCRIPTION="Icewind Dale: Enhanced Edition"
 HOMEPAGE="https://www.gog.com/game/icewind_dale_enhanced_edition"
