@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit eutils gnome2-utils multilib unpacker
+inherit eutils gnome2-utils unpacker
 
 DESCRIPTION="Fran Bow"
 HOMEPAGE="https://www.gog.com/game/fran_bow"
