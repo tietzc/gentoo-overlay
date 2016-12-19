@@ -17,7 +17,7 @@ SRC_URI="${BASE_SRC_URI}
 LICENSE="all-rights-reserved GOG-EULA"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
-IUSE="+dlc"
+IUSE="+dlc paradox-account"
 RESTRICT="bindist fetch"
 
 RDEPEND="
@@ -64,9 +64,14 @@ src_unpack() {
 src_install() {
 	local dir="/opt/${PN}"
 
-	dodir "${dir}"
 	rm "${S}"/game/Tyranny_Data/Plugins/x86/libCSteamworks.so \
 		"${S}"/game/Tyranny_Data/Plugins/x86/libsteam_api.so || die
+
+	if ! use paradox-account ; then
+		rm "${S}"/game/Tyranny_Data/Plugins/x86/libpops_api.so || die
+	fi
+
+	dodir "${dir}"
 	mv "${S}/game" "${D}${dir}/" || die
 
 	newicon -s 256 support/icon.png ${PN}.png
