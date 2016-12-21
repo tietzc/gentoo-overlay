@@ -53,10 +53,12 @@ src_unpack() {
 src_install() {
 	local dir="/opt/${PN}"
 
-	dodir "${dir}"
 	rm "${S}"/game/Shadow\ Tactics_Data/Plugins/x86/libCSteamworks.so \
 		"${S}"/game/Shadow\ Tactics_Data/Plugins/x86/libsteam_api.so || die
+
+	dodir "${dir}"
 	mv "${S}/game" "${D}${dir}/" || die
+
 	fperms -R 0755 "${dir}"/game
 
 	newicon -s 256 support/icon.png ${PN}.png
