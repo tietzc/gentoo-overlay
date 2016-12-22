@@ -19,10 +19,10 @@ IUSE="alsa fluidsynth oss timidity"
 RESTRICT="mirror"
 
 RDEPEND="
+	virtual/jre
 	alsa? ( media-libs/alsa-lib )
 	fluidsynth? ( media-sound/fluidsynth )
-	timidity? ( media-sound/timidity++[alsa?,oss?] )
-	virtual/jre"
+	timidity? ( media-sound/timidity++[alsa?,oss?] )"
 
 src_unpack() {
 	unpack ${A}
@@ -36,11 +36,12 @@ src_install() {
 
 	insinto "${dir}"
 	doins -r *
+
 	fperms +x "${dir}"/tuxguitar.sh
 
+	make_wrapper ${PN} "./tuxguitar.sh" "${dir}"
 	newicon -s 96 share/skins/Oxygen/icon.png ${PN}.png
-	make_wrapper "${PN}" "${dir}/tuxguitar.sh"
-	make_desktop_entry "${PN}" "TuxGuitar"
+	make_desktop_entry ${PN} "TuxGuitar"
 }
 
 pkg_preinst() {
@@ -48,7 +49,6 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	sed -i '2iexport SWT_GTK3=0' /usr/bin/tuxguitar-bin || die
 	gnome2_icon_cache_update
 }
 
