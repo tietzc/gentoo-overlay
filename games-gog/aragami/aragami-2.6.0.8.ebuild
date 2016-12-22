@@ -50,16 +50,18 @@ src_unpack() {
 src_install() {
 	local dir="/opt/${PN}"
 
-	dodir "${dir}"
 	rm -r \
 		"${S}"/game/Aragami.$(usex amd64 "x86" "x86_64") \
 		"${S}"/game/Aragami_Data/Mono/$(usex amd64 "x86" "x86_64") \
-		"${S}"/game/Aragami_Data/Plugins/$(usex amd64 "x86" "x86_64") || die
+		"${S}"/game/Aragami_Data/Plugins/$(usex amd64 "x86" "x86_64") \
+		"${S}"/game/Aragami_Data/Plugins/$(usex amd64 "x86_64" "x86")/{libCSteamworks,libsteam_api}.so || die
+
+	dodir "${dir}"
 	mv "${S}/game" "${D}${dir}/" || die
 
+	make_wrapper ${PN} "./Aragami.$(usex amd64 "x86_64" "x86")" "${dir}/game"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Aragami"
-	make_wrapper ${PN} "${dir}/game/Aragami.$(usex amd64 "x86_64" "x86")"
 }
 
 pkg_preinst() {
@@ -67,9 +69,6 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	# ugly hack to store settings et cetera in home and not install directory
-	sed -i '2i\mkdir -p "$HOME/.config/unity3d/Lince Works/Aragami" && cd $_\' /usr/bin/${PN} || die
-
 	gnome2_icon_cache_update
 }
 
