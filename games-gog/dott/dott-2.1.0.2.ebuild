@@ -20,7 +20,7 @@ RESTRICT="bindist fetch"
 
 RDEPEND="
 	dev-libs/expat[abi_x86_32(-)]
-	media-plugins/alsa-plugins[abi_x86_32(-)]
+	media-libs/alsa-lib[abi_x86_32(-)]
 	virtual/opengl[abi_x86_32(-)]
 	x11-libs/libX11[abi_x86_32(-)]"
 
