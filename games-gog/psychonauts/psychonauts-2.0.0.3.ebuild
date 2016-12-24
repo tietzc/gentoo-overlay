@@ -61,6 +61,9 @@ pkg_preinst() {
 
 pkg_postinst() {
 	gnome2_icon_cache_update
+
+	elog "If you are using opensource drivers you should consider installing:"
+	elog "  media-libs/libtxc_dxtn"
 }
 
 pkg_postrm() {
