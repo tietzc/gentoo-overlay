@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -9,8 +9,8 @@ inherit eutils gnome2-utils
 DESCRIPTION="TuxGuitar is a multitrack guitar tablature editor and player written in Java-SWT"
 HOMEPAGE="http://tuxguitar.herac.com.ar"
 SRC_URI="
-	x86? ( mirror://sourceforge/project/tuxguitar/TuxGuitar/TuxGuitar-${PV}/tuxguitar-${PV}-linux-x86.tar.gz )
-	amd64? ( mirror://sourceforge/project/tuxguitar/TuxGuitar/TuxGuitar-${PV}/tuxguitar-${PV}-linux-x86_64.tar.gz )"
+	x86? ( https://sourceforge.net/projects/tuxguitar/files/TuxGuitar/TuxGuitar-${PV}/tuxguitar-${PV}-linux-x86.tar.gz )
+	amd64? ( https://sourceforge.net/projects/tuxguitar/files/TuxGuitar/TuxGuitar-${PV}/tuxguitar-${PV}-linux-x86_64.tar.gz )"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
