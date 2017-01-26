@@ -13,7 +13,7 @@ SRC_URI="gog_grim_fandango_remastered_${PV}.sh"
 LICENSE="all-rights-reserved GOG-EULA"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
-IUSE=""
+IUSE="+savedir-patch"
 RESTRICT="bindist fetch"
 
 # use bundled dev-lang/lua for now
@@ -24,7 +24,9 @@ RDEPEND="
 	virtual/opengl[abi_x86_32(-)]
 	x11-libs/libX11[abi_x86_32(-)]"
 
-DEPEND="app-arch/unzip"
+DEPEND="
+	app-arch/unzip
+	savedir-patch? ( dev-util/xdelta:3 )"
 
 S="${WORKDIR}/data/noarch"
 
@@ -50,6 +52,7 @@ src_install() {
 	local dir="/opt/${PN}"
 
 	rm -r \
+		"${S}"/game/run.sh \
 		"${S}"/game/bin/amd64 \
 		"${S}"/game/bin/i386 \
 		"${S}"/game/bin/libSDL2-2.0.so.1 || die
@@ -59,11 +62,15 @@ src_install() {
 
 	dosym /usr/$(get_abi_LIBDIR x86)/libSDL2-2.0.so.0 "${dir}"/game/bin/libSDL2-2.0.so.1
 
-	# really ugly hack to work around savedir issue
-	dodir "${dir}"/game/bin/Saves
-	fperms 0777 "${dir}"/game/bin/Saves
+	if use savedir-patch ; then
+		pushd "${ED}"${dir}/game/bin || die
+		xdelta3 -d -s GrimFandango "${FILESDIR}/SaveDir-Patch.xdelta3" GrimFandango.new || die
+		mv GrimFandango.new GrimFandango || die
+		fperms 0755 GrimFandango
+		popd >/dev/null || die
+	fi
 
-	make_wrapper ${PN} "./run.sh" "${dir}/game"
+	make_wrapper ${PN} "./GrimFandango" "${dir}/game/bin"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Grim Fandango: Remastered"
 }
@@ -74,6 +81,11 @@ pkg_preinst() {
 
 pkg_postinst() {
 	gnome2_icon_cache_update
+
+	if ! use savedir-patch ; then
+		elog "You did not enable 'savedir-patch' USE flag."
+		elog "Saving configuration and savegames will not work."
+	fi
 }
 
 pkg_postrm() {
