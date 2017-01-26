@@ -7,6 +7,5 @@
 	</maintainer>
 	<use>
 		<flag name="dlc">Install 'Pre-Order DLC'</flag>
-		<flag name="paradox-account">Install 'libpops_api.so' in order to support login into your Paradox account</flag>
 	</use>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,7 +17,7 @@ SRC_URI="${BASE_SRC_URI}
 LICENSE="all-rights-reserved GOG-EULA"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
-IUSE="+dlc paradox-account"
+IUSE="+dlc"
 RESTRICT="bindist fetch"
 
 RDEPEND="
@@ -38,8 +38,7 @@ CHECKREQS_DISK_BUILD="14G"
 
 QA_PREBUILT="
 	opt/tyranny/game/Tyranny
-	opt/tyranny/game/Tyranny_Data/Mono/x86/libmono.so
-	opt/tyranny/game/Tyranny_Data/Plugins/x86/libpops_api.so"
+	opt/tyranny/game/Tyranny_Data/Mono/x86/libmono.so"
 
 pkg_nofetch() {
 	einfo
@@ -64,19 +63,19 @@ src_unpack() {
 src_install() {
 	local dir="/opt/${PN}"
 
-	rm "${S}"/game/Tyranny_Data/Plugins/x86/libCSteamworks.so \
+	rm -r \
+		"${S}"/game/Tyranny_Data/Mono/x86_64 \
+		"${S}"/game/Tyranny_Data/Plugins/x86_64 \
+		"${S}"/game/Tyranny_Data/Plugins/x86/libCSteamworks.so \
+		"${S}"/game/Tyranny_Data/Plugins/x86/libpops_api.so \
 		"${S}"/game/Tyranny_Data/Plugins/x86/libsteam_api.so || die
-
-	if ! use paradox-account ; then
-		rm "${S}"/game/Tyranny_Data/Plugins/x86/libpops_api.so || die
-	fi
 
 	dodir "${dir}"
 	mv "${S}/game" "${D}${dir}/" || die
 
+	make_wrapper ${PN} "./Tyranny" "${dir}/game"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Tyranny"
-	make_wrapper ${PN} "./Tyranny" "${dir}/game"
 }
 
 pkg_preinst() {
