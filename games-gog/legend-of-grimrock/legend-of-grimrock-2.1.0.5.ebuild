@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -19,7 +19,6 @@ RESTRICT="bindist fetch"
 RDEPEND="
 	|| (
 		media-libs/libtxc_dxtn
-		x11-drivers/ati-drivers
 		x11-drivers/nvidia-drivers
 	)
 	media-libs/freeimage[png]
@@ -32,7 +31,7 @@ DEPEND="app-arch/unzip"
 
 S="${WORKDIR}/data/noarch"
 
-QA_PREBUILT="opt/legend-of-grimrock/game/Grimrock.bin.x86*"
+QA_PREBUILT="opt/${PN}/game/Grimrock.bin.x86*"
 
 pkg_nofetch() {
 	einfo
@@ -50,16 +49,17 @@ src_unpack() {
 src_install() {
 	local dir="/opt/${PN}"
 
-	dodir "${dir}"
 	rm -r \
 		"${S}"/game/lib{,64} \
 		"${S}"/game/xdg-{open,utils} \
 		"${S}"/game/Grimrock.bin.$(usex amd64 "x86" "x86_64") || die
+
+	dodir "${dir}"
 	mv "${S}/game" "${D}${dir}/" || die
 
+	make_wrapper ${PN} "./Grimrock.bin.$(usex amd64 "x86_64" "x86")" "${dir}/game"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Legend Of Grimrock"
-	make_wrapper ${PN} "./Grimrock.bin.$(usex amd64 "x86_64" "x86")" "${dir}/game"
 }
 
 pkg_preinst() {
