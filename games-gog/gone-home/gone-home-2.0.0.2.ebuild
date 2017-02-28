@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -31,8 +31,8 @@ DEPEND="app-arch/unzip"
 S="${WORKDIR}/data/noarch"
 
 QA_PREBUILT="
-	opt/gone-home/game/GoneHome.x86*
-	opt/gone-home/game/GoneHome_Data/Mono/x86*/libmono.so"
+	opt/${PN}/game/GoneHome.x86*
+	opt/${PN}/game/GoneHome_Data/Mono/x86*/libmono.so"
 
 pkg_nofetch() {
 	einfo
@@ -50,17 +50,22 @@ src_unpack() {
 src_install() {
 	local dir="/opt/${PN}"
 
-	dodir "${dir}"
 	rm -r \
 		"${S}"/game/GoneHome.$(usex amd64 "x86" "x86_64") \
 		"${S}"/game/GoneHome_Data/Mono/$(usex amd64 "x86" "x86_64") \
 		"${S}"/game/GoneHome_Data/Plugins/x86/libsteam_api.so || die
+
+	dodir "${dir}"
 	mv "${S}/game" "${D}${dir}/" || die
+
 	fperms -R 0755 "${dir}"/game/GoneHome_Data
 
+	make_wrapper ${PN} "./GoneHome.$(usex amd64 "x86_64" "x86")" "${dir}/game"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Gone Home"
-	make_wrapper ${PN} "./GoneHome.$(usex amd64 "x86_64" "x86")" "${dir}/game"
+
+	# work around localization issue
+	sed -i '2i\export LC_ALL=C\' "${D}/usr/bin/${PN}" || die
 }
 
 pkg_preinst() {
@@ -68,9 +73,6 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	# work around localization issue
-	sed -i '2i\export LC_ALL=C\' /usr/bin/gone-home || die
-
 	gnome2_icon_cache_update
 }
 
