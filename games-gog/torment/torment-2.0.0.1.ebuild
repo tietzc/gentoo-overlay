@@ -20,6 +20,7 @@ RDEPEND="
 	dev-libs/atk
 	media-libs/fontconfig
 	media-libs/freetype:2
+	media-libs/libsdl2
 	virtual/opengl
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
