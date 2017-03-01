@@ -83,7 +83,7 @@ src_install() {
 
 	make_wrapper "${PN}" "scummvm -f -p "${dir}" samnmax"
 	newicon -s 256 support/icon.png ${PN}.png
-	make_desktop_entry "${PN}" "Sam & Max Hit the Road"
+	make_desktop_entry "${PN}" "Sam & Max Hit The Road"
 }
 
 pkg_preinst() {
