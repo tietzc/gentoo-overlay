@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -30,8 +30,9 @@ DEPEND="app-arch/unzip"
 S="${WORKDIR}/data/noarch"
 
 QA_PREBUILT="
-	opt/aragami/game/Aragami_Data/Mono/x86*/libmono.so
-	opt/aragami/game/Aragami.x86*"
+	opt/${PN}/game/Aragami.x86*
+	opt/${PN}/game/Aragami_Data/Mono/x86*/libmono.so
+	opt/${PN}/game/Aragami_Data/Mono/x86*/libMonoPosixHelper.so"
 
 pkg_nofetch() {
 	einfo
@@ -52,11 +53,12 @@ src_install() {
 	rm -r \
 		"${S}"/game/Aragami.$(usex amd64 "x86" "x86_64") \
 		"${S}"/game/Aragami_Data/Mono/$(usex amd64 "x86" "x86_64") \
-		"${S}"/game/Aragami_Data/Plugins/$(usex amd64 "x86" "x86_64") \
-		"${S}"/game/Aragami_Data/Plugins/$(usex amd64 "x86_64" "x86")/{libCSteamworks,libsteam_api}.so || die
+		"${S}"/game/Aragami_Data/Plugins/$(usex amd64 "x86" "x86_64") || die
 
 	dodir "${dir}"
 	mv "${S}/game" "${D}${dir}/" || die
+
+	fperms -R 0755 "${dir}"/game/Aragami_Data
 
 	make_wrapper ${PN} "./Aragami.$(usex amd64 "x86_64" "x86")" "${dir}/game"
 	newicon -s 256 support/icon.png ${PN}.png
