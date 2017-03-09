@@ -1,15 +1,15 @@
-#!/bin/sh
+#!/bin/bash
 
 # Set this to 'yes' to enable; this script does nothing otherwise
 ENABLE=no
 
 # Email variables
 EMAIL_SUBJECT="${HOSTNAME}: lynis report"
-EMAIL_RECIPIENT=root
+EMAIL_RECIPIENT="root"
 EMAIL_CMD="mail -s \"${EMAIL_SUBJECT}\" ${EMAIL_RECIPIENT}"
 
 # Exit immediately, unless enabled
-[ "${ENABLE}" == "yes" ] || exit 0
+[[ ${ENABLE} == "yes" ]] || exit 0
 
 # Run lynis
-/usr/sbin/lynis audit system --auditor "automated" --cronjob | eval "${EMAIL_CMD}"
+/usr/sbin/lynis audit system --auditor "automated" --cronjob | eval ${EMAIL_CMD}
