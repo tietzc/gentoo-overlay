@@ -24,7 +24,6 @@ DEPEND="${PYTHON_DEPS}
 
 RDEPEND="${DEPEND}
 	app-crypt/gnupg
-	dev-python/psutil[${PYTHON_USEDEP}]
 	dev-python/pyliblzma[${PYTHON_USEDEP}]"
 
 python_install_all() {
