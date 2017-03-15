@@ -58,8 +58,6 @@ src_install() {
 	dodir "${dir}"
 	mv "${S}/game" "${D}${dir}/" || die
 
-	fperms -R 0755 "${dir}"/game/Aragami_Data
-
 	make_wrapper ${PN} "./Aragami.$(usex amd64 "x86_64" "x86")" "${dir}/game"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Aragami"
