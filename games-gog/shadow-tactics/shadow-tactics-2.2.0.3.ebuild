@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -29,12 +29,12 @@ DEPEND="app-arch/unzip"
 
 S="${WORKDIR}/data/noarch"
 
-CHECKREQS_DISK_BUILD="12G"
+CHECKREQS_DISK_BUILD="10G"
 
 QA_PREBUILT="
-	opt/shadow-tactics/game/*
-	opt/shadow-tactics/game/*/Mono/x86/libmono.so
-	opt/shadow-tactics/game/*/Plugins/x86/libRenderingPlugin.so"
+	opt/${PN}/game/*
+	opt/${PN}/game/*/Mono/x86/libmono.so
+	opt/${PN}/game/*/Plugins/x86/libRenderingPlugin.so"
 
 pkg_nofetch() {
 	einfo
@@ -60,9 +60,9 @@ src_install() {
 
 	fperms -R 0755 "${dir}"/game
 
+	make_wrapper ${PN} "./Shadow\ Tactics" "${dir}/game"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Shadow Tactics: Blades Of The Shogun"
-	make_wrapper ${PN} "./Shadow\ Tactics" "${dir}/game"
 }
 
 pkg_preinst() {
