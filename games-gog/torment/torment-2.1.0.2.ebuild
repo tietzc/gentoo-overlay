@@ -19,7 +19,7 @@ RDEPEND="
 	dev-libs/atk
 	media-libs/fontconfig
 	media-libs/freetype:2
-	media-libs/libsdl2
+	media-libs/libsdl2[X,opengl,sound,video]
 	virtual/opengl
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
@@ -34,7 +34,7 @@ QA_PREBUILT="
 	opt/${PN}/game/TidesOfNumenera
 	opt/${PN}/game/TidesOfNumenera_Data/Mono/x86_64/libmono.so
 	opt/${PN}/game/TidesOfNumenera_Data/Plugins/libAkSoundEngine.so
-	opt/${PN}/game/TidesOfNumenera_Data/Plugins/x86_64/*"
+	opt/${PN}/game/TidesOfNumenera_Data/Plugins/x86_64/*.so"
 
 pkg_nofetch() {
 	einfo
