@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,16 +16,17 @@ IUSE=""
 RESTRICT="bindist fetch"
 
 RDEPEND="
-	dev-libs/json-c[abi_x86_32(-)]
+	media-libs/flac[abi_x86_32(-)]
 	media-libs/libsdl[abi_x86_32(-),X,opengl,sound,video]
 	media-libs/libvorbis[abi_x86_32(-)]
-	media-libs/openal[abi_x86_32(-)]"
+	media-libs/openal[abi_x86_32(-)]
+	x11-libs/libX11[abi_x86_32(-)]"
 
 DEPEND="app-arch/unzip"
 
 S="${WORKDIR}/data/noarch"
 
-QA_PREBUILT="opt/psychonauts/game/Psychonauts"
+QA_PREBUILT="opt/${PN}/game/Psychonauts"
 
 pkg_nofetch() {
 	einfo
