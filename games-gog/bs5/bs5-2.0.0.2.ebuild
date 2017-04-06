@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -26,8 +26,8 @@ DEPEND="app-arch/unzip"
 S="${WORKDIR}/data/noarch"
 
 QA_PREBUILT="
-	opt/bs5/game/BS5_i386
-	opt/bs5/game/BS5_x86_64"
+	opt/${PN}/game/BS5_i386
+	opt/${PN}/game/BS5_x86_64"
 
 pkg_nofetch() {
 	einfo
@@ -45,17 +45,19 @@ src_unpack() {
 src_install() {
 	local dir="/opt/${PN}"
 
-	dodir "${dir}"
 	mv "${S}/game/$(usex amd64 "x86_64" "i386")/BS5_$(usex amd64 "x86_64" "i386")" "${S}/game/" || die
+
 	rm -r \
 		"${S}"/game/BS5 \
 		"${S}"/game/i386 \
 		"${S}"/game/x86_64 || die
+
+	dodir "${dir}"
 	mv "${S}/game" "${D}${dir}/" || die
 
+	make_wrapper ${PN} "./BS5_$(usex amd64 "x86_64" "i386")" "${dir}/game"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Broken Sword 5: The Serpent's Curse"
-	make_wrapper ${PN} "./BS5_$(usex amd64 "x86_64" "i386")" "${dir}/game"
 }
 
 pkg_preinst() {
