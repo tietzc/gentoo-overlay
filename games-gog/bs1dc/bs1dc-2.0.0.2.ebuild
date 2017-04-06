@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,18 +16,19 @@ IUSE=""
 RESTRICT="bindist fetch"
 
 RDEPEND="
-	dev-libs/json-c
+	media-libs/flac
 	media-libs/libsdl[X,opengl,sound,video]
 	media-libs/libvorbis
-	media-libs/openal"
+	media-libs/openal
+	x11-libs/libX11"
 
 DEPEND="app-arch/unzip"
 
 S="${WORKDIR}/data/noarch"
 
 QA_PREBUILT="
-	opt/bs1dc/game/bs1dc_i386
-	opt/bs1dc/game/bs1dc_x86_64"
+	opt/${PN}/game/bs1dc_i386
+	opt/${PN}/game/bs1dc_x86_64"
 
 pkg_nofetch() {
 	einfo
@@ -45,17 +46,19 @@ src_unpack() {
 src_install() {
 	local dir="/opt/${PN}"
 
-	dodir "${dir}"
 	mv "${S}/game/$(usex amd64 "x86_64" "i386")/bs1dc_$(usex amd64 "x86_64" "i386")" "${S}/game/" || die
+
 	rm -r \
 		"${S}"/game/BS1DC \
 		"${S}"/game/i386 \
 		"${S}"/game/x86_64 || die
+
+	dodir "${dir}"
 	mv "${S}/game" "${D}${dir}/" || die
 
+	make_wrapper ${PN} "./bs1dc_$(usex amd64 "x86_64" "i386")" "${dir}/game"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Broken Sword: Director's Cut"
-	make_wrapper ${PN} "./bs1dc_$(usex amd64 "x86_64" "i386")" "${dir}/game"
 }
 
 pkg_preinst() {
