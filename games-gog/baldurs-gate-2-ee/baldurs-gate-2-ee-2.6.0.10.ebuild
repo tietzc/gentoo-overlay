@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -27,7 +27,7 @@ DEPEND="app-arch/unzip"
 
 S="${WORKDIR}/data/noarch"
 
-QA_PREBUILT="opt/baldurs-gate-2-ee/game/BaldursGateII"
+QA_PREBUILT="opt/${PN}/game/BaldursGateII"
 
 pkg_nofetch() {
 	einfo
@@ -47,14 +47,15 @@ src_install() {
 
 	insinto "${dir}"
 	doins -r game
+
 	fperms +x "${dir}"/game/BaldursGateII
 
 	dodir "${dir}"/lib
 	dosym /usr/$(get_abi_LIBDIR x86)/libjson-c.so "${dir}"/lib/libjson.so.0
 
+	make_wrapper ${PN} "./BaldursGateII" "${dir}/game" "${dir}/lib"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Baldurs Gate 2: Enhanced Edition"
-	make_wrapper ${PN} "./BaldursGateII" "${dir}/game" "${dir}/lib"
 }
 
 pkg_preinst() {
