@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -78,12 +78,11 @@ src_install() {
 	local dir="/opt/${PN}"
 
 	insinto "${dir}"
-	doins data/{ATLANTIS.000,ATLANTIS.001}
-	use l10n_en && doins data/MONSTER.SOU
+	doins -r data/.
 
+	make_wrapper "${PN}" "scummvm -f -p "${dir}" atlantis"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry "${PN}" "Indiana Jones And The Fate Of Atlantis"
-	make_wrapper "${PN}" "scummvm -f -p "${dir}" atlantis"
 }
 
 pkg_preinst() {
