@@ -9,7 +9,7 @@ DESCRIPTION="Broken Sword 5: The Serpent's Curse"
 HOMEPAGE="https://www.gog.com/game/broken_sword_5_the_serpents_curse"
 SRC_URI="gog_broken_sword_5_the_serpent_s_curse_${PV}.sh"
 
-LICENSE="all-rights-reserved GOG-EULA"
+LICENSE="GOG-EULA"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 IUSE=""

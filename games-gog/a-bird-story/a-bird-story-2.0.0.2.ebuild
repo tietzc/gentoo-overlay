@@ -9,7 +9,7 @@ DESCRIPTION="A Bird Story"
 HOMEPAGE="https://www.gog.com/game/a_bird_story"
 SRC_URI="gog_a_bird_story_${PV}.sh"
 
-LICENSE="all-rights-reserved GOG-EULA"
+LICENSE="GOG-EULA"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 IUSE=""

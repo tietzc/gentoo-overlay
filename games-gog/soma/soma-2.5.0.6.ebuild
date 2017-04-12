@@ -9,7 +9,7 @@ DESCRIPTION="Soma"
 HOMEPAGE="https://www.gog.com/game/soma"
 SRC_URI="gog_soma_${PV}.sh"
 
-LICENSE="all-rights-reserved GOG-EULA"
+LICENSE="GOG-EULA"
 SLOT="0"
 KEYWORDS="-* ~amd64"
 IUSE=""

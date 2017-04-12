@@ -9,7 +9,7 @@ DESCRIPTION="Indiana Jones and the Last Crusade"
 HOMEPAGE="https://www.gog.com/game/indiana_jones_and_the_last_crusade"
 SRC_URI="gog_indiana_jones_and_the_last_crusade_${PV}.sh"
 
-LICENSE="all-rights-reserved GOG-EULA"
+LICENSE="GOG-EULA"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""

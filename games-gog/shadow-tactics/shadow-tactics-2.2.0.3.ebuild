@@ -9,7 +9,7 @@ DESCRIPTION="Shadow Tactics: Blades of the Shogun"
 HOMEPAGE="https://www.gog.com/game/shadow_tactics_blades_of_the_shogun"
 SRC_URI="gog_shadow_tactics_blades_of_the_shogun_${PV}.sh"
 
-LICENSE="all-rights-reserved GOG-EULA"
+LICENSE="GOG-EULA"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 IUSE=""

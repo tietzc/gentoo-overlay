@@ -9,7 +9,7 @@ DESCRIPTION="Legend of Grimrock"
 HOMEPAGE="https://www.gog.com/game/legend_of_grimrock"
 SRC_URI="gog_legend_of_grimrock_${PV}.sh"
 
-LICENSE="all-rights-reserved GOG-EULA"
+LICENSE="GOG-EULA"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 IUSE=""

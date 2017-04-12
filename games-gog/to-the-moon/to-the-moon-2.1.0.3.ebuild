@@ -9,7 +9,7 @@ DESCRIPTION="To the Moon"
 HOMEPAGE="https://www.gog.com/game/to_the_moon"
 SRC_URI="gog_to_the_moon_${PV}.sh"
 
-LICENSE="all-rights-reserved GOG-EULA"
+LICENSE="GOG-EULA"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 IUSE=""

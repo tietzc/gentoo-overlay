@@ -9,7 +9,7 @@ DESCRIPTION="Loom"
 HOMEPAGE="https://www.gog.com/game/loom"
 SRC_URI="gog_loom_${PV}.sh"
 
-LICENSE="all-rights-reserved GOG-EULA"
+LICENSE="GOG-EULA"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""

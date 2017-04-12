@@ -13,7 +13,7 @@ DLC_SRC_URI="gog_layers_of_fear_inheritance_dlc_2.0.0.1.sh"
 SRC_URI="${BASE_SRC_URI}
 	dlc? ( ${DLC_SRC_URI} )"
 
-LICENSE="all-rights-reserved GOG-EULA"
+LICENSE="GOG-EULA"
 SLOT="0"
 KEYWORDS="-* ~amd64"
 IUSE="+dlc"

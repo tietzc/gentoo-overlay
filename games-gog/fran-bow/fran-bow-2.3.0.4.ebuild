@@ -9,7 +9,7 @@ DESCRIPTION="Fran Bow"
 HOMEPAGE="https://www.gog.com/game/fran_bow"
 SRC_URI="gog_fran_bow_${PV}.sh"
 
-LICENSE="all-rights-reserved GOG-EULA"
+LICENSE="GOG-EULA"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 IUSE=""

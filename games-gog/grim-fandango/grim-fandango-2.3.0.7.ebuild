@@ -9,7 +9,7 @@ DESCRIPTION="Grim Fandango: Remastered"
 HOMEPAGE="https://www.gog.com/game/grim_fandango_remastered"
 SRC_URI="gog_grim_fandango_remastered_${PV}.sh"
 
-LICENSE="all-rights-reserved GOG-EULA"
+LICENSE="GOG-EULA"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 IUSE="+savedir-patch"

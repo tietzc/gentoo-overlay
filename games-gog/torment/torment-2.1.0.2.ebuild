@@ -9,7 +9,7 @@ DESCRIPTION="Torment: Tides of Numenera"
 HOMEPAGE="https://www.gog.com/game/torment_tides_of_numenera"
 SRC_URI="gog_torment_tides_of_numenera_${PV}.sh"
 
-LICENSE="all-rights-reserved GOG-EULA"
+LICENSE="GOG-EULA"
 SLOT="0"
 KEYWORDS="-* ~amd64"
 IUSE=""
