@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -38,17 +38,18 @@ src_install() {
 	local dir="/opt/${PN}"
 
 	insinto "${dir}"
-	doins -r data/{readme.txt,sky.*}
+	doins -r data/.
 
 	newicon -s 256 support/icon.png ${PN}.png
-	make_desktop_entry "${PN}" "Beneath A Steel Sky"
-	make_wrapper "${PN}" "scummvm -f -p "${dir}" sky"
 
 	local i
 	for i in de es fr it ; do
 		if use l10n_${i} ; then
-			make_desktop_entry "${PN}-${i}" "Beneath A Steel Sky ("${i}")"
 			make_wrapper "${PN}-${i}" "scummvm -f -p "${dir}" -q "${i}" sky"
+			make_desktop_entry "${PN}-${i}" "Beneath A Steel Sky ("${i}")"
+		else
+			make_wrapper "${PN}" "scummvm -f -p "${dir}" sky"
+			make_desktop_entry "${PN}" "Beneath A Steel Sky"
 		fi
 	done
 }
