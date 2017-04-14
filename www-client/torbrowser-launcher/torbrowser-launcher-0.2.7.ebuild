@@ -20,7 +20,13 @@ RESTRICT="mirror"
 
 DEPEND="${PYTHON_DEPS}
 	dev-python/pygtk:2[${PYTHON_USEDEP}]
-	dev-python/twisted[${PYTHON_USEDEP},crypt]"
+	|| (
+		dev-python/twisted[${PYTHON_USEDEP},crypt]
+		(
+			>=dev-python/twisted-core-14.0.1[${PYTHON_USEDEP},crypt]
+			>=dev-python/twisted-web-14.0.1[${PYTHON_USEDEP}]
+		)
+	)"
 
 RDEPEND="${DEPEND}
 	app-crypt/gnupg
