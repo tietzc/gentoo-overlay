@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,20 +19,22 @@ RESTRICT="bindist fetch"
 
 RDEPEND="
 	dev-libs/expat
-	dev-libs/openssl
-	media-libs/freeimage[jpeg,png]
+	media-libs/freeimage[jpeg,png,tiff]
 	media-libs/freetype:2
 	media-libs/libsdl2[X,opengl,sound,video]
-	media-libs/libvorbis"
+	media-libs/libvorbis
+	sys-libs/zlib
+	virtual/opengl
+	x11-libs/libX11"
 
 DEPEND="app-arch/unzip"
 
 S="${WORKDIR}/data/noarch"
 
 QA_PREBUILT="
-	opt/torchlight2/game/lib*/*
-	opt/torchlight2/game/ModLauncher.bin.x86*
-	opt/torchlight2/game/Torchlight2.bin.x86*"
+	opt/${PN}/game/lib*/*
+	opt/${PN}/game/ModLauncher.bin.x86*
+	opt/${PN}/game/Torchlight2.bin.x86*"
 
 pkg_nofetch() {
 	einfo
@@ -50,17 +52,18 @@ src_unpack() {
 src_install() {
 	local dir="/opt/${PN}"
 
-	dodir "${dir}"
 	rm -r \
 		"${S}"/game/lib$(usex amd64 "" "64") \
 		"${S}"/game/lib$(usex amd64 "64" "")/{libfreeimage.so.3,libfreetype.so.6,libSDL2-2.0.so.0} \
 		"${S}"/game/ModLauncher.bin.$(usex amd64 "x86" "x86_64") \
 		"${S}"/game/Torchlight2.bin.$(usex amd64 "x86" "x86_64") || die
+
+	dodir "${dir}"
 	mv "${S}/game" "${D}${dir}/" || die
 
+	make_wrapper ${PN} "./Torchlight2.bin.$(usex amd64 "x86_64" "x86")" "${dir}/game"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Torchlight II"
-	make_wrapper ${PN} "./Torchlight2.bin.$(usex amd64 "x86_64" "x86")" "${dir}/game"
 }
 
 pkg_preinst() {
