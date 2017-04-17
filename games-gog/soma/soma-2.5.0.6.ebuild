@@ -18,14 +18,18 @@ RESTRICT="bindist fetch"
 # use bundled dev-games/newton, dev-libs/angelscript, and media-libs/fmod for now
 
 RDEPEND="
+	dev-libs/expat
+	media-libs/devil[jpeg,mng,png,tiff]
+	media-libs/libsdl2[X,opengl,sound,video]
+	media-libs/libtheora
+	media-libs/libvorbis
+	sys-libs/zlib
+	virtual/opengl
+	x11-libs/libX11
 	|| (
 		media-libs/libtxc_dxtn
 		x11-drivers/nvidia-drivers
-	)
-	media-libs/devil[jpeg,png]
-	media-libs/libsdl2[X,opengl,sound,video]
-	media-libs/libtheora
-	media-libs/libvorbis"
+	)"
 
 DEPEND="app-arch/unzip"
 
