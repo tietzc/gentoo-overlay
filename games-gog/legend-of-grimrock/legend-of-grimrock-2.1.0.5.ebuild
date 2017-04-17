@@ -16,15 +16,19 @@ IUSE=""
 RESTRICT="bindist fetch"
 
 RDEPEND="
-	|| (
-		media-libs/libtxc_dxtn
-		x11-drivers/nvidia-drivers
-	)
-	media-libs/freeimage[png]
+	dev-libs/expat
+	media-libs/freeimage[jpeg,png,tiff]
 	media-libs/freetype:2
 	media-libs/libsdl2[X,opengl,sound,video]
 	media-libs/libvorbis
-	media-libs/openal"
+	media-libs/openal
+	sys-libs/zlib[minizip]
+	virtual/opengl
+	x11-libs/libX11
+	|| (
+		media-libs/libtxc_dxtn
+		x11-drivers/nvidia-drivers
+	)"
 
 DEPEND="app-arch/unzip"
 
