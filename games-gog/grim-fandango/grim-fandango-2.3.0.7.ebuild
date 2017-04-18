@@ -62,10 +62,10 @@ src_install() {
 	dosym /usr/$(get_abi_LIBDIR x86)/libSDL2-2.0.so.0 "${dir}"/game/bin/libSDL2-2.0.so.1
 
 	if use savedir-patch ; then
-		pushd "${ED}"${dir}/game/bin || die
+		pushd "${D}"${dir}/game/bin >/dev/null || die
 		xdelta3 -d -s GrimFandango "${FILESDIR}/SaveDir-Patch.xdelta3" GrimFandango.new || die
 		mv GrimFandango.new GrimFandango || die
-		fperms 0755 GrimFandango
+		fperms +x GrimFandango
 		popd >/dev/null || die
 	fi
 
