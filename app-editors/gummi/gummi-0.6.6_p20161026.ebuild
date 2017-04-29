@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,6 +15,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
+RESTRICT="mirror"
 
 LANGS="ar ca cs da de el es fr hu it nl pl pt pt_BR ro ru sv zh_CN zh_TW"
 
@@ -33,8 +34,6 @@ DEPEND="${RDEPEND}
 	app-text/poppler[cairo]
 	x11-libs/gtksourceview:2.0
 	x11-libs/pango"
-
-DOCS=( AUTHORS ChangeLog README.md )
 
 S="${WORKDIR}/${PN}-${COMMIT}"
 
