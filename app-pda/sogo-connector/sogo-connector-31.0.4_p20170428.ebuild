@@ -5,7 +5,7 @@ EAPI=6
 
 inherit versionator
 
-COMMIT="2253f36fb2093db6749127ddd48270f70675ed72"
+COMMIT="9a06ad58c58ef916436ea3b2f6799c1cb02f51cd"
 THUNDERBIRD_VERSION="$(get_major_version)"
 
 DESCRIPTION="CardDAV plugin for mail-client/thunderbird"
@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 RESTRICT="mirror"
 
-RDEPEND=">=mail-client/thunderbird-45[lightning]"
+RDEPEND="mail-client/thunderbird[lightning]"
 
 DEPEND="${RDEPEND}
 	app-arch/unzip"
@@ -34,5 +34,5 @@ src_install() {
 
 	dodir ${MOZILLA_FIVE_HOME}/extensions/${emid} || die
 	cd "${ED}"${MOZILLA_FIVE_HOME}/extensions/${emid} || die
-	unzip -o "${S}/${P}.xpi" || die
+	unzip -o "${S}/${PN}-$(get_version_component_range 1-3).xpi" || die
 }
