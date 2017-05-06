@@ -5,7 +5,7 @@ EAPI=6
 
 inherit versionator
 
-COMMIT="7c1e1a9f5c53d455d4ba002b05614a77c98e187b"
+COMMIT="693129fa0dca62c0a6f43403dec3dfc4171b5295"
 THUNDERBIRD_VERSION="$(get_major_version)"
 
 DESCRIPTION="CardDAV plugin for mail-client/thunderbird"
