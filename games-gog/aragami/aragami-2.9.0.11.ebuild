@@ -31,8 +31,7 @@ S="${WORKDIR}/data/noarch"
 
 QA_PREBUILT="
 	opt/${PN}/game/Aragami.x86*
-	opt/${PN}/game/Aragami_Data/Mono/x86*/libmono.so
-	opt/${PN}/game/Aragami_Data/Mono/x86*/libMonoPosixHelper.so"
+	opt/${PN}/game/Aragami_Data/Mono/x86*/*.so"
 
 pkg_nofetch() {
 	einfo
@@ -58,13 +57,11 @@ src_install() {
 	dodir "${dir}"
 	mv "${S}/game" "${D}${dir}/" || die
 
+	fperms -R 0755 "${dir}"/game/Aragami_Data
+
 	make_wrapper ${PN} "./Aragami.$(usex amd64 "x86_64" "x86")" "${dir}/game"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Aragami"
-}
-
-pkg_preinst() {
-	gnome2_icon_savelist
 }
 
 pkg_postinst() {
