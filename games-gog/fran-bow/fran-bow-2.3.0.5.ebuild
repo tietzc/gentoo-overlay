@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -26,7 +26,7 @@ DEPEND="app-arch/unzip"
 
 S="${WORKDIR}/data/noarch"
 
-QA_PREBUILT="opt/fran-bow/game/runner"
+QA_PREBUILT="opt/${PN}/game/runner"
 
 pkg_nofetch() {
 	einfo
@@ -48,13 +48,9 @@ src_install() {
 	doins -r game
 	fperms +x "${dir}"/game/runner
 
+	make_wrapper ${PN} "./runner" "${dir}/game"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Fran Bow"
-	make_wrapper ${PN} "./runner" "${dir}/game"
-}
-
-pkg_preinst() {
-	gnome2_icon_savelist
 }
 
 pkg_postinst() {
