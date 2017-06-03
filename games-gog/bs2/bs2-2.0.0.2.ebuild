@@ -57,10 +57,6 @@ src_install() {
 	make_desktop_entry ${PN} "Broken Sword 2: Remastered"
 }
 
-pkg_preinst() {
-	gnome2_icon_savelist
-}
-
 pkg_postinst() {
 	gnome2_icon_cache_update
 }

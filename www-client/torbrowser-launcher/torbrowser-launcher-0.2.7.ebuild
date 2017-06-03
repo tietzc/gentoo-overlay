@@ -39,10 +39,6 @@ python_install_all() {
 	rm -r "${D}/etc/apparmor.d" || die "Failed to remove apparmor profiles"
 }
 
-pkg_preinst() {
-	gnome2_icon_savelist
-}
-
 pkg_postinst() {
 	gnome2_icon_cache_update
 	xdg_desktop_database_update

@@ -56,10 +56,6 @@ src_install() {
 	make_wrapper ${PN} "./Dott" "${dir}/game"
 }
 
-pkg_preinst() {
-	gnome2_icon_savelist
-}
-
 pkg_postinst() {
 	gnome2_icon_cache_update
 }

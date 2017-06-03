@@ -61,10 +61,6 @@ src_install() {
 	make_desktop_entry ${PN} "Broken Sword: Director's Cut"
 }
 
-pkg_preinst() {
-	gnome2_icon_savelist
-}
-
 pkg_postinst() {
 	gnome2_icon_cache_update
 }

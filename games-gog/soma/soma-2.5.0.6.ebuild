@@ -77,10 +77,6 @@ src_install() {
 	make_desktop_entry ${PN} "Soma"
 }
 
-pkg_preinst() {
-	gnome2_icon_savelist
-}
-
 pkg_postinst() {
 	gnome2_icon_cache_update
 }
