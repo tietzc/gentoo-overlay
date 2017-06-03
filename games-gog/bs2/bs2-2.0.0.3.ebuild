@@ -50,8 +50,6 @@ src_install() {
 	dodir "${dir}"
 	mv "${S}/game" "${D}${dir}/" || die
 
-	dosym /usr/$(get_abi_LIBDIR x86)/libSDL.so "${dir}"/game/libSDL-1.2.so.0
-
 	make_wrapper ${PN} "./BS2Remastered_i386" "${dir}/game"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Broken Sword 2: Remastered"
