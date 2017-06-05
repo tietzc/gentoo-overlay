@@ -23,6 +23,8 @@ RDEPEND="
 	fluidsynth? ( media-sound/fluidsynth )
 	timidity? ( media-sound/timidity++[alsa?,oss?] )"
 
+DOCS=( doc/{AUTHORS,CHANGES,README} )
+
 src_unpack() {
 	unpack ${A}
 	mkdir -p "${S}" || die
@@ -34,9 +36,12 @@ src_install() {
 	local dir="/opt/${PN}"
 
 	insinto "${dir}"
-	doins -r *
+	doins -r dist lib share
 
-	fperms +x "${dir}"/tuxguitar.sh
+	exeinto "${dir}"
+	doexe tuxguitar.sh
+
+	einstalldocs
 
 	make_wrapper ${PN} "./tuxguitar.sh" "${dir}"
 	newicon -s 96 share/skins/Oxygen/icon.png ${PN}.png
