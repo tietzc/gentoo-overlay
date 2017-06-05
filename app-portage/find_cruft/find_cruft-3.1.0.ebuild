@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -26,13 +26,16 @@ src_prepare() {
 
 src_install() {
 	dobin bin/*
-	dodoc README
+
 	insinto /etc
 	doins -r etc/*
+
 	insinto /usr/share/zsh/site-functions
 	doins zsh/_*
+
+	einstalldocs
 }
 
 pkg_postinst() {
-	optfeature "faster execution" "app-portage/eix"
+	optfeature "faster execution" app-portage/eix
 }
