@@ -24,11 +24,13 @@ RDEPEND="
 
 DEPEND="${RDEPEND}"
 
+DOCS=( CHANGELOG.md FAQ README )
+
 S="${WORKDIR}/${PN}"
 
 src_install() {
 	doman ${PN}.8
-	dodoc CHANGELOG.md FAQ README
+	einstalldocs
 
 	dobashcomp extras/bash_completion.d/${PN}
 
