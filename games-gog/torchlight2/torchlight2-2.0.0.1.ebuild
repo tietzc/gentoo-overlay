@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils gnome2-utils unpacker
+inherit eutils gnome2-utils
 
 DESCRIPTION="Torchlight II"
 HOMEPAGE="https://www.gog.com/game/torchlight_ii"
@@ -46,14 +46,13 @@ pkg_nofetch() {
 
 src_unpack() {
 	einfo "unpacking data..."
-	unpack_zip "${DISTDIR}/${SRC_URI}"
+	unzip -qo "${DISTDIR}/${SRC_URI}"
 }
 
 src_install() {
 	local dir="/opt/${PN}"
 
-	rm -r \
-		"${S}"/game/lib$(usex amd64 "" "64") \
+	rm -r "${S}"/game/lib$(usex amd64 "" "64") \
 		"${S}"/game/lib$(usex amd64 "64" "")/{libfreeimage.so.3,libfreetype.so.6,libSDL2-2.0.so.0} \
 		"${S}"/game/ModLauncher.bin.$(usex amd64 "x86" "x86_64") \
 		"${S}"/game/Torchlight2.bin.$(usex amd64 "x86" "x86_64") || die

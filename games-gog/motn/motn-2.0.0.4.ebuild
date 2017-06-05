@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils gnome2-utils unpacker
+inherit eutils gnome2-utils
 
 DESCRIPTION="Mark of the Ninja: Special Edition"
 HOMEPAGE="https://www.gog.com/game/mark_of_the_ninja_special_edition"
@@ -47,28 +47,28 @@ pkg_nofetch() {
 
 src_unpack() {
 	einfo "unpacking base data..."
-	unpack_zip "${DISTDIR}/${BASE_SRC_URI}"
+	unzip -qo "${DISTDIR}/${BASE_SRC_URI}"
 
 	if use dlc ; then
 		einfo "unpacking dlc data..."
-		unpack_zip "${DISTDIR}/${DLC_SRC_URI}"
+		unzip -qo "${DISTDIR}/${DLC_SRC_URI}"
 	fi
 }
 
 src_install() {
 	local dir="/opt/${PN}"
 
-	dodir "${dir}"
-	rm -r \
-		"${S}"/game/bin/lib$(usex amd64 "32" "64") \
+	rm -r "${S}"/game/bin/lib$(usex amd64 "32" "64") \
 		"${S}"/game/bin/lib$(usex amd64 "64" "32")/libSDL* \
 		"${S}"/game/bin/ninja-bin \
 		"${S}"/game/bin/ninja-bin$(usex amd64 "32" "64") || die
+
+	dodir "${dir}"
 	mv "${S}/game" "${D}${dir}/" || die
 
+	make_wrapper ${PN} "./ninja-bin$(usex amd64 "64" "32")" "${dir}/game/bin"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Mark Of The Ninja: Special Edition"
-	make_wrapper ${PN} "./ninja-bin$(usex amd64 "64" "32")" "${dir}/game/bin"
 }
 
 pkg_postinst() {

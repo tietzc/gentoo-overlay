@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils gnome2-utils unpacker
+inherit eutils gnome2-utils
 
 DESCRIPTION="A Bird Story"
 HOMEPAGE="https://www.gog.com/game/a_bird_story"
@@ -44,14 +44,13 @@ pkg_nofetch() {
 
 src_unpack() {
 	einfo "unpacking data..."
-	unpack_zip "${DISTDIR}/${SRC_URI}"
+	unzip -qo "${DISTDIR}/${SRC_URI}"
 }
 
 src_install() {
 	local dir="/opt/${PN}"
 
-	rm -r \
-		"${S}"/game/linux_launcher.sh \
+	rm -r "${S}"/game/linux_launcher.sh \
 		"${S}"/game/lib$(usex amd64 "" "64") \
 		"${S}"/game/ABirdStory.$(usex amd64 "x86" "amd64") || die
 

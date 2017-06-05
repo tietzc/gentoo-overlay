@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils gnome2-utils unpacker
+inherit eutils gnome2-utils
 
 DESCRIPTION="Sam & Max Hit the Road"
 HOMEPAGE="https://www.gog.com/game/sam_max_hit_the_road"
@@ -50,27 +50,27 @@ pkg_nofetch() {
 src_unpack() {
 	if use l10n_de ; then
 		einfo "unpacking l10n_de data..."
-		unpack_zip "${DISTDIR}/${DE_SRC_URI}"
+		unzip -qo "${DISTDIR}/${DE_SRC_URI}"
 	fi
 
 	if use l10n_en ; then
 		einfo "unpacking l10n_en data..."
-		unpack_zip "${DISTDIR}/${EN_SRC_URI}"
+		unzip -qo "${DISTDIR}/${EN_SRC_URI}"
 	fi
 
 	if use l10n_es ; then
 		einfo "unpacking l10n_es data..."
-		unpack_zip "${DISTDIR}/${ES_SRC_URI}"
+		unzip -qo "${DISTDIR}/${ES_SRC_URI}"
 	fi
 
 	if use l10n_fr ; then
 		einfo "unpacking l10n_fr data..."
-		unpack_zip "${DISTDIR}/${FR_SRC_URI}"
+		unzip -qo "${DISTDIR}/${FR_SRC_URI}"
 	fi
 
 	if use l10n_it ; then
 		einfo "unpacking l10n_it data..."
-		unpack_zip "${DISTDIR}/${IT_SRC_URI}"
+		unzip -qo "${DISTDIR}/${IT_SRC_URI}"
 	fi
 }
 
@@ -80,9 +80,9 @@ src_install() {
 	insinto "${dir}"
 	doins -r data/.
 
-	make_wrapper "${PN}" "scummvm -f -p "${dir}" samnmax"
+	make_wrapper ${PN} "scummvm -f -p "${dir}" samnmax"
 	newicon -s 256 support/icon.png ${PN}.png
-	make_desktop_entry "${PN}" "Sam & Max Hit The Road"
+	make_desktop_entry ${PN} "Sam & Max Hit The Road"
 }
 
 pkg_postinst() {

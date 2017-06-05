@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils gnome2-utils unpacker
+inherit eutils gnome2-utils
 
 DESCRIPTION="Planescape Torment: Enhanced Edition"
 HOMEPAGE="https://www.gog.com/game/planescape_torment_enhanced_edition"
@@ -38,7 +38,7 @@ pkg_nofetch() {
 
 src_unpack() {
 	einfo "unpacking data..."
-	unpack_zip "${DISTDIR}/${SRC_URI}"
+	unzip -qo "${DISTDIR}/${SRC_URI}"
 }
 
 src_install() {

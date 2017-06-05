@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils gnome2-utils unpacker
+inherit eutils gnome2-utils
 
 DESCRIPTION="Broken Sword: Director's Cut"
 HOMEPAGE="https://www.gog.com/game/broken_sword_directors_cut"
@@ -40,7 +40,7 @@ pkg_nofetch() {
 
 src_unpack() {
 	einfo "unpacking data..."
-	unpack_zip "${DISTDIR}/${SRC_URI}"
+	unzip -qo "${DISTDIR}/${SRC_URI}"
 }
 
 src_install() {
@@ -48,8 +48,7 @@ src_install() {
 
 	mv "${S}/game/$(usex amd64 "x86_64" "i386")/bs1dc_$(usex amd64 "x86_64" "i386")" "${S}/game/" || die
 
-	rm -r \
-		"${S}"/game/BS1DC \
+	rm -r "${S}"/game/BS1DC \
 		"${S}"/game/i386 \
 		"${S}"/game/x86_64 || die
 

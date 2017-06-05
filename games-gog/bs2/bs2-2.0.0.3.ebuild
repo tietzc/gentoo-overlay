@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils gnome2-utils unpacker
+inherit eutils gnome2-utils
 
 DESCRIPTION="Broken Sword 2: Remastered"
 HOMEPAGE="https://www.gog.com/game/broken_sword_2__the_smoking_mirror"
@@ -38,7 +38,7 @@ pkg_nofetch() {
 
 src_unpack() {
 	einfo "unpacking data..."
-	unpack_zip "${DISTDIR}/${SRC_URI}"
+	unzip -qo "${DISTDIR}/${SRC_URI}"
 }
 
 src_install() {

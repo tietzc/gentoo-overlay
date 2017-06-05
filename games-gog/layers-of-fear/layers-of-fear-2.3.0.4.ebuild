@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils gnome2-utils unpacker
+inherit eutils gnome2-utils
 
 DESCRIPTION="Layers of Fear"
 HOMEPAGE="https://www.gog.com/game/layers_of_fear"
@@ -34,8 +34,8 @@ DEPEND="app-arch/unzip"
 S="${WORKDIR}/data/noarch"
 
 QA_PREBUILT="
-	opt/layers-of-fear/game/LOF
-	opt/layers-of-fear/game/LOF_Data/Mono/x86_64/libmono.so"
+	opt/${PN}/game/LOF
+	opt/${PN}/game/LOF_Data/Mono/x86_64/libmono.so"
 
 pkg_nofetch() {
 	einfo
@@ -49,27 +49,27 @@ pkg_nofetch() {
 
 src_unpack() {
 	einfo "unpacking data..."
-	unpack_zip "${DISTDIR}/${BASE_SRC_URI}"
+	unzip -qo "${DISTDIR}/${BASE_SRC_URI}"
 
 	if use dlc ; then
 		einfo "unpacking dlc data..."
-		unpack_zip "${DISTDIR}/${DLC_SRC_URI}"
+		unzip -qo "${DISTDIR}/${DLC_SRC_URI}"
 	fi
 }
 
 src_install() {
 	local dir="/opt/${PN}"
 
-	dodir "${dir}"
-	rm \
-		"${S}"/game/Launcher.exe \
+	rm "${S}"/game/Launcher.exe \
 		"${S}"/game/LOF_Data/Plugins/x86_64/libCSteamworks.so \
 		"${S}"/game/LOF_Data/Plugins/x86_64/libsteam_api.so || die
+
+	dodir "${dir}"
 	mv "${S}/game" "${D}${dir}/" || die
 
+	make_wrapper ${PN} "./LOF" "${dir}/game"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Layers Of Fear"
-	make_wrapper ${PN} "./LOF" "${dir}/game"
 }
 
 pkg_postinst() {

@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils gnome2-utils unpacker
+inherit eutils gnome2-utils
 
 DESCRIPTION="Broken Sword 5: The Serpent's Curse"
 HOMEPAGE="https://www.gog.com/game/broken_sword_5_the_serpents_curse"
@@ -39,7 +39,7 @@ pkg_nofetch() {
 
 src_unpack() {
 	einfo "unpacking data..."
-	unpack_zip "${DISTDIR}/${SRC_URI}"
+	unzip -qo "${DISTDIR}/${SRC_URI}"
 }
 
 src_install() {
@@ -47,8 +47,7 @@ src_install() {
 
 	mv "${S}/game/$(usex amd64 "x86_64" "i386")/BS5_$(usex amd64 "x86_64" "i386")" "${S}/game/" || die
 
-	rm -r \
-		"${S}"/game/BS5 \
+	rm -r "${S}"/game/BS5 \
 		"${S}"/game/i386 \
 		"${S}"/game/x86_64 || die
 

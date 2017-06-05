@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils gnome2-utils unpacker
+inherit eutils gnome2-utils
 
 DESCRIPTION="Beneath a Steel Sky"
 HOMEPAGE="https://www.gog.com/game/beneath_a_steel_sky"
@@ -31,7 +31,7 @@ pkg_nofetch() {
 
 src_unpack() {
 	einfo "unpacking data..."
-	unpack_zip "${DISTDIR}/${SRC_URI}"
+	unzip -qo "${DISTDIR}/${SRC_URI}"
 }
 
 src_install() {
@@ -45,11 +45,11 @@ src_install() {
 	local i
 	for i in de es fr it ; do
 		if use l10n_${i} ; then
-			make_wrapper "${PN}-${i}" "scummvm -f -p "${dir}" -q "${i}" sky"
-			make_desktop_entry "${PN}-${i}" "Beneath A Steel Sky ("${i}")"
+			make_wrapper ${PN}-${i} "scummvm -f -p "${dir}" -q ${i} sky"
+			make_desktop_entry ${PN}-${i} "Beneath A Steel Sky (${i})"
 		else
-			make_wrapper "${PN}" "scummvm -f -p "${dir}" sky"
-			make_desktop_entry "${PN}" "Beneath A Steel Sky"
+			make_wrapper ${PN} "scummvm -f -p "${dir}" sky"
+			make_desktop_entry ${PN} "Beneath A Steel Sky"
 		fi
 	done
 }

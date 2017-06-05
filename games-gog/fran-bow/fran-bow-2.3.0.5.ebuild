@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils gnome2-utils unpacker
+inherit eutils gnome2-utils
 
 DESCRIPTION="Fran Bow"
 HOMEPAGE="https://www.gog.com/game/fran_bow"
@@ -38,7 +38,7 @@ pkg_nofetch() {
 
 src_unpack() {
 	einfo "unpacking data..."
-	unpack_zip "${DISTDIR}/${SRC_URI}"
+	unzip -qo "${DISTDIR}/${SRC_URI}"
 }
 
 src_install() {
@@ -46,6 +46,7 @@ src_install() {
 
 	insinto "${dir}"
 	doins -r game
+
 	fperms +x "${dir}"/game/runner
 
 	make_wrapper ${PN} "./runner" "${dir}/game"

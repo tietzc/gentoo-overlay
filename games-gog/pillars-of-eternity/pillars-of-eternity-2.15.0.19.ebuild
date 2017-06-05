@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit check-reqs eutils gnome2-utils unpacker
+inherit check-reqs eutils gnome2-utils
 
 DESCRIPTION="Pillars of Eternity"
 HOMEPAGE="https://www.gog.com/game/pillars_of_eternity_hero_edition"
@@ -82,26 +82,26 @@ pkg_setup() {
 
 src_unpack() {
 	einfo "unpacking base data..."
-	unpack_zip "${DISTDIR}/${BASE_SRC_URI}"
+	unzip -qo "${DISTDIR}/${BASE_SRC_URI}"
 
 	if use dlc1 ; then
 		einfo "unpacking dlc1 data..."
-		unpack_zip "${DISTDIR}/${DLC1_SRC_URI}"
+		unzip -qo "${DISTDIR}/${DLC1_SRC_URI}"
 	fi
 
 	if use dlc2 ; then
 		einfo "unpacking dlc2 data..."
-		unpack_zip "${DISTDIR}/${DLC2_SRC_URI}"
+		unzip -qo "${DISTDIR}/${DLC2_SRC_URI}"
 	fi
 
 	if use dlc3 ; then
 		einfo "unpacking dlc3 data..."
-		unpack_zip "${DISTDIR}/${DLC3_SRC_URI}"
+		unzip -qo "${DISTDIR}/${DLC3_SRC_URI}"
 	fi
 
 	if use l10n_de ; then
 		einfo "unpacking l10n_de data..."
-		7za x -o"${S}/game" "${DISTDIR}/${DE_SRC_URI}" || die
+		7za x -o"${S}/game" "${DISTDIR}/${DE_SRC_URI}"
 	fi
 }
 

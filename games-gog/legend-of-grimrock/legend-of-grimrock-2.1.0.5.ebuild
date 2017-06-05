@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils gnome2-utils unpacker
+inherit eutils gnome2-utils
 
 DESCRIPTION="Legend of Grimrock"
 HOMEPAGE="https://www.gog.com/game/legend_of_grimrock"
@@ -46,14 +46,13 @@ pkg_nofetch() {
 
 src_unpack() {
 	einfo "unpacking data..."
-	unpack_zip "${DISTDIR}/${SRC_URI}"
+	unzip -qo "${DISTDIR}/${SRC_URI}"
 }
 
 src_install() {
 	local dir="/opt/${PN}"
 
-	rm -r \
-		"${S}"/game/lib{,64} \
+	rm -r "${S}"/game/lib{,64} \
 		"${S}"/game/xdg-{open,utils} \
 		"${S}"/game/Grimrock.bin.$(usex amd64 "x86" "x86_64") || die
 

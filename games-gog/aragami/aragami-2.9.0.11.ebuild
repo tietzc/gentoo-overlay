@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils gnome2-utils unpacker
+inherit eutils gnome2-utils
 
 DESCRIPTION="Aragami"
 HOMEPAGE="https://www.gog.com/game/aragami"
@@ -43,14 +43,13 @@ pkg_nofetch() {
 
 src_unpack() {
 	einfo "unpacking data..."
-	unpack_zip "${DISTDIR}/${SRC_URI}"
+	unzip -qo "${DISTDIR}/${SRC_URI}"
 }
 
 src_install() {
 	local dir="/opt/${PN}"
 
-	rm -r \
-		"${S}"/game/Aragami.$(usex amd64 "x86" "x86_64") \
+	rm -r "${S}"/game/Aragami.$(usex amd64 "x86" "x86_64") \
 		"${S}"/game/Aragami_Data/Mono/$(usex amd64 "x86" "x86_64") \
 		"${S}"/game/Aragami_Data/Plugins/$(usex amd64 "x86" "x86_64") || die
 

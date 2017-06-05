@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit check-reqs eutils gnome2-utils unpacker
+inherit check-reqs eutils gnome2-utils
 
 DESCRIPTION="Tyranny"
 HOMEPAGE="https://www.gog.com/game/tyranny_commander_edition"
@@ -36,8 +36,8 @@ S="${WORKDIR}/data/noarch"
 CHECKREQS_DISK_BUILD="14G"
 
 QA_PREBUILT="
-	opt/tyranny/game/Tyranny
-	opt/tyranny/game/Tyranny_Data/Mono/x86/libmono.so"
+	opt/${PN}/game/Tyranny
+	opt/${PN}/game/Tyranny_Data/Mono/x86/libmono.so"
 
 pkg_nofetch() {
 	einfo
@@ -51,19 +51,18 @@ pkg_nofetch() {
 
 src_unpack() {
 	einfo "unpacking base data..."
-	unpack_zip "${DISTDIR}/${BASE_SRC_URI}"
+	unzip -qo "${DISTDIR}/${BASE_SRC_URI}"
 
 	if use dlc ; then
 		einfo "unpacking dlc data..."
-		unpack_zip "${DISTDIR}/${DLC_SRC_URI}"
+		unzip -qo "${DISTDIR}/${DLC_SRC_URI}"
 	fi
 }
 
 src_install() {
 	local dir="/opt/${PN}"
 
-	rm -r \
-		"${S}"/game/Tyranny_Data/Mono/x86_64 \
+	rm -r "${S}"/game/Tyranny_Data/Mono/x86_64 \
 		"${S}"/game/Tyranny_Data/Plugins/x86_64 \
 		"${S}"/game/Tyranny_Data/Plugins/x86/libCSteamworks.so \
 		"${S}"/game/Tyranny_Data/Plugins/x86/libpops_api.so \

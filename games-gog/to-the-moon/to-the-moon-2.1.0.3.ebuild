@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils gnome2-utils unpacker
+inherit eutils gnome2-utils
 
 DESCRIPTION="To the Moon"
 HOMEPAGE="https://www.gog.com/game/to_the_moon"
@@ -43,14 +43,13 @@ pkg_nofetch() {
 
 src_unpack() {
 	einfo "unpacking data..."
-	unpack_zip "${DISTDIR}/${SRC_URI}"
+	unzip -qo "${DISTDIR}/${SRC_URI}"
 }
 
 src_install() {
 	local dir="/opt/${PN}"
 
-	rm -r \
-		"${S}"/game/lib$(usex amd64 "" "64") \
+	rm -r "${S}"/game/lib$(usex amd64 "" "64") \
 		"${S}"/game/ToTheMoon.bin.$(usex amd64 "x86" "x86_64") || die
 
 	find "${S}"/game/lib$(usex amd64 "64" "") -type f \

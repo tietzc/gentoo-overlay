@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils gnome2-utils unpacker
+inherit eutils gnome2-utils
 
 DESCRIPTION="Day of the Tentacle: Remastered"
 HOMEPAGE="https://www.gog.com/game/day_of_the_tentacle_remastered"
@@ -28,8 +28,8 @@ DEPEND="app-arch/unzip"
 S="${WORKDIR}/data/noarch"
 
 QA_PREBUILT="
-	opt/dott/game/lib/libfmod.so.8
-	opt/dott/game/Dott"
+	opt/${PN}/game/lib/libfmod.so.8
+	opt/${PN}/game/Dott"
 
 pkg_nofetch() {
 	einfo
@@ -41,19 +41,20 @@ pkg_nofetch() {
 
 src_unpack() {
 	einfo "unpacking data..."
-	unpack_zip "${DISTDIR}/${SRC_URI}"
+	unzip -qo "${DISTDIR}/${SRC_URI}"
 }
 
 src_install() {
 	local dir="/opt/${PN}"
 
-	dodir "${dir}"
 	rm "${S}"/game/lib/libsteam_api.so || die
+
+	dodir "${dir}"
 	mv "${S}/game" "${D}${dir}/" || die
 
+	make_wrapper ${PN} "./Dott" "${dir}/game"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Day Of The Tentacle: Remastered"
-	make_wrapper ${PN} "./Dott" "${dir}/game"
 }
 
 pkg_postinst() {

@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils gnome2-utils unpacker
+inherit eutils gnome2-utils
 
 DESCRIPTION="Grim Fandango: Remastered"
 HOMEPAGE="https://www.gog.com/game/grim_fandango_remastered"
@@ -44,14 +44,13 @@ pkg_nofetch() {
 
 src_unpack() {
 	einfo "unpacking data..."
-	unpack_zip "${DISTDIR}/${SRC_URI}"
+	unzip -qo "${DISTDIR}/${SRC_URI}"
 }
 
 src_install() {
 	local dir="/opt/${PN}"
 
-	rm -r \
-		"${S}"/game/run.sh \
+	rm -r "${S}"/game/run.sh \
 		"${S}"/game/bin/amd64 \
 		"${S}"/game/bin/i386 \
 		"${S}"/game/bin/libSDL2-2.0.so.1 || die

@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils gnome2-utils unpacker
+inherit eutils gnome2-utils
 
 DESCRIPTION="Baldur's Gate: Enhanced Edition"
 HOMEPAGE="https://www.gog.com/game/baldurs_gate_enhanced_edition"
@@ -45,11 +45,11 @@ pkg_nofetch() {
 
 src_unpack() {
 	einfo "unpacking base data..."
-	unpack_zip "${DISTDIR}/${BASE_SRC_URI}"
+	unzip -qo "${DISTDIR}/${BASE_SRC_URI}"
 
 	if use sod ; then
 		einfo "unpacking sod data..."
-		unpack_zip "${DISTDIR}/${SOD_SRC_URI}"
+		unzip -qo "${DISTDIR}/${SOD_SRC_URI}"
 	fi
 }
 
