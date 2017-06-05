@@ -3,8 +3,6 @@
 
 EAPI=6
 
-inherit eutils
-
 DESCRIPTION="find cruft files not managed by portage"
 HOMEPAGE="https://github.com/vaeth/find_cruft"
 SRC_URI="https://github.com/vaeth/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
@@ -37,5 +35,5 @@ src_install() {
 }
 
 pkg_postinst() {
-	optfeature "faster execution" app-portage/eix
+	elog "Consider installing app-portage/eix for faster execution."
 }
