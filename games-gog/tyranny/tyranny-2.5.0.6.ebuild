@@ -20,14 +20,14 @@ IUSE="+dlc"
 RESTRICT="bindist fetch"
 
 RDEPEND="
-	dev-libs/atk[abi_x86_32(-)]
-	media-libs/fontconfig[abi_x86_32(-)]
-	media-libs/freetype:2[abi_x86_32(-)]
-	virtual/opengl[abi_x86_32(-)]
-	x11-libs/cairo[abi_x86_32(-)]
-	x11-libs/gdk-pixbuf:2[abi_x86_32(-)]
-	x11-libs/gtk+:2[abi_x86_32(-)]
-	x11-libs/pango[abi_x86_32(-)]"
+	dev-libs/atk
+	media-libs/fontconfig
+	media-libs/freetype:2
+	virtual/opengl
+	x11-libs/cairo
+	x11-libs/gdk-pixbuf:2
+	x11-libs/gtk+:2
+	x11-libs/pango"
 
 DEPEND="app-arch/unzip"
 
@@ -37,7 +37,8 @@ CHECKREQS_DISK_BUILD="14G"
 
 QA_PREBUILT="
 	opt/${PN}/game/Tyranny
-	opt/${PN}/game/Tyranny_Data/Mono/x86/libmono.so"
+	opt/${PN}/game/Tyranny.x86
+	opt/${PN}/game/Tyranny_Data/Mono/x86*/libmono.so"
 
 pkg_nofetch() {
 	einfo
@@ -62,16 +63,17 @@ src_unpack() {
 src_install() {
 	local dir="/opt/${PN}"
 
-	rm -r "${S}"/game/Tyranny_Data/Mono/x86_64 \
-		"${S}"/game/Tyranny_Data/Plugins/x86_64 \
-		"${S}"/game/Tyranny_Data/Plugins/x86/libCSteamworks.so \
-		"${S}"/game/Tyranny_Data/Plugins/x86/libpops_api.so \
-		"${S}"/game/Tyranny_Data/Plugins/x86/libsteam_api.so || die
+	rm -r "${S}"/game/Tyranny$(usex amd64 ".x86" "") \
+		"${S}"/game/Tyranny_Data/Mono/$(usex amd64 "x86" "x86_64") \
+		"${S}"/game/Tyranny_Data/Plugins/$(usex amd64 "x86" "x86_64") \
+		"${S}"/game/Tyranny_Data/Plugins/$(usex amd64 "x86_64" "x86")/libCSteamworks.so \
+		"${S}"/game/Tyranny_Data/Plugins/$(usex amd64 "x86_64" "x86")/libpops_api.so \
+		"${S}"/game/Tyranny_Data/Plugins/$(usex amd64 "x86_64" "x86")/libsteam_api.so || die
 
 	dodir "${dir}"
 	mv "${S}/game" "${D}${dir}/" || die
 
-	make_wrapper ${PN} "./Tyranny" "${dir}/game"
+	make_wrapper ${PN} "./Tyranny$(usex amd64 "" ".x86")" "${dir}/game"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Tyranny"
 }
