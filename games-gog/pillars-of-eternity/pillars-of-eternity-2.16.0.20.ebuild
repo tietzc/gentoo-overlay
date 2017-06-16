@@ -9,8 +9,8 @@ DESCRIPTION="Pillars of Eternity"
 HOMEPAGE="https://www.gog.com/game/pillars_of_eternity_hero_edition"
 
 BASE_SRC_URI="gog_pillars_of_eternity_${PV}.sh"
-DLC1_SRC_URI="gog_pillars_of_eternity_white_march_part_1_dlc_2.9.0.11.sh"
-DLC2_SRC_URI="gog_pillars_of_eternity_white_march_part_2_dlc_2.5.0.6.sh"
+DLC1_SRC_URI="gog_pillars_of_eternity_white_march_part_1_dlc_2.10.0.12.sh"
+DLC2_SRC_URI="gog_pillars_of_eternity_white_march_part_2_dlc_2.6.0.7.sh"
 DLC3_SRC_URI="gog_pillars_of_eternity_preorder_item_and_pet_dlc_2.0.0.2.sh"
 DE_SRC_URI="PoE_v3.04.1158_PX1_PX2_German_Fix.7z-6-1-0-5.7z"
 SRC_URI="${BASE_SRC_URI}
@@ -65,14 +65,14 @@ pkg_nofetch() {
 }
 
 pkg_pretend() {
-	local build_size=15000
-	use dlc1 && build_size=21000
+	local build_size=15
+	use dlc1 && build_size=21
 
 	if use dlc2 ; then
-		(( build_size += 5000 ))
+		(( build_size += 5 ))
 	fi
 
-	local CHECKREQS_DISK_BUILD=${build_size}M
+	local CHECKREQS_DISK_BUILD=${build_size}G
 	check-reqs_pkg_pretend
 }
 
