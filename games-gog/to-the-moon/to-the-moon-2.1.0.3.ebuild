@@ -23,7 +23,8 @@ RDEPEND="
 	media-libs/libvorbis
 	media-libs/openal
 	media-libs/sdl2-image[jpeg,png]
-	media-libs/sdl2-ttf"
+	media-libs/sdl2-ttf
+	sys-libs/zlib"
 
 DEPEND="app-arch/unzip"
 
