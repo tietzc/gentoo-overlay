@@ -4,13 +4,13 @@
 EAPI=6
 
 CRATES="
-	getopts-0.2.14
-	libc-0.2.21
-	serde-0.8.23
-	serde_json-0.8.6
 	dtoa-0.2.2
+	getopts-0.2.14
 	itoa-0.1.1
-	num-traits-0.1.37"
+	libc-0.2.21
+	num-traits-0.1.37
+	serde-0.8.23
+	serde_json-0.8.6"
 
 COMMIT="9ad6cf5e5b6742b5831382156e84cf0eb7ade11d"
 
@@ -59,14 +59,12 @@ src_prepare() {
 }
 
 src_configure() {
-	CMAKE_BUILD_TYPE=RelWithDebInfo
-
 	local mycmakeargs=(
 		-DEXTRA_DATA_DIR="${GAMES_DATADIR}"
 		-DLOCAL_BOOST_LIB=OFF
-		-DWITH_UNITTESTS=OFF
 		-DWITH_FIXMES=OFF
 		-DWITH_MAEMO=OFF
+		-DWITH_UNITTESTS=OFF
 	)
 
 	cmake-utils_src_configure
