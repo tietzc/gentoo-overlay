@@ -9,7 +9,7 @@ DESCRIPTION="Layers of Fear"
 HOMEPAGE="https://www.gog.com/game/layers_of_fear"
 
 BASE_SRC_URI="gog_layers_of_fear_${PV}.sh"
-DLC_SRC_URI="gog_layers_of_fear_inheritance_dlc_2.0.0.1.sh"
+DLC_SRC_URI="gog_layers_of_fear_inheritance_dlc_2.0.0.2.sh"
 SRC_URI="${BASE_SRC_URI}
 	dlc? ( ${DLC_SRC_URI} )"
 
@@ -64,8 +64,10 @@ src_install() {
 		"${S}"/game/LOF_Data/Plugins/x86_64/libCSteamworks.so \
 		"${S}"/game/LOF_Data/Plugins/x86_64/libsteam_api.so || die
 
-	dodir "${dir}"
-	mv "${S}/game" "${D}${dir}/" || die
+	insinto "${dir}"
+	doins -r game
+
+	fperms +x "${dir}"/game/LOF
 
 	make_wrapper ${PN} "./LOF" "${dir}/game"
 	newicon -s 256 support/icon.png ${PN}.png
