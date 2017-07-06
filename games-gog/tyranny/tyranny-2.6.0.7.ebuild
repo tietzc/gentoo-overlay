@@ -73,6 +73,11 @@ src_install() {
 	dodir "${dir}"
 	mv "${S}/game" "${D}${dir}/" || die
 
+	# ensure sane permissions
+	find "${D}${dir}"/game -type f -exec chmod 0644 '{}' + || die
+	find "${D}${dir}"/game -type d -exec chmod 0755 '{}' + || die
+	fperms +x "${dir}"/game/Tyranny$(usex amd64 "" ".x86")
+
 	make_wrapper ${PN} "./Tyranny$(usex amd64 "" ".x86")" "${dir}/game"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Tyranny"
