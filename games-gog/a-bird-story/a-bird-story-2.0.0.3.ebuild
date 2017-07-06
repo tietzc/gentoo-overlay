@@ -61,11 +61,10 @@ src_install() {
 		! -name "libSDL_sound-1.0.so.1" \
 		-delete || die
 
-	dodir "${dir}"
-	mv "${S}/game" "${D}${dir}/" || die
+	insinto "${dir}"
+	doins -r game
 
-	fperms 0755 "${dir}"/game/ABirdStory.$(usex amd64 "amd64" "x86") \
-		"${dir}"/game/lib$(usex amd64 "64" "")/{libphysfs.so.1,libruby.so.2.1,libSDL_sound-1.0.so.1}
+	fperms +x "${dir}"/game/ABirdStory.$(usex amd64 "amd64" "x86")
 
 	make_wrapper ${PN} "./ABirdStory.$(usex amd64 "amd64" "x86")" "${dir}/game"
 	newicon -s 256 support/icon.png ${PN}.png

@@ -55,8 +55,8 @@ src_install() {
 		"${S}"/game/bin/i386 \
 		"${S}"/game/bin/libSDL2-2.0.so.1 || die
 
-	dodir "${dir}"
-	mv "${S}/game" "${D}${dir}/" || die
+	insinto "${dir}"
+	doins -r game
 
 	dosym /usr/$(get_abi_LIBDIR x86)/libSDL2-2.0.so.0 "${dir}"/game/bin/libSDL2-2.0.so.1
 
@@ -64,9 +64,10 @@ src_install() {
 		pushd "${D}"${dir}/game/bin >/dev/null || die
 		xdelta3 -d -s GrimFandango "${FILESDIR}/SaveDir-Patch.xdelta3" GrimFandango.new || die
 		mv GrimFandango.new GrimFandango || die
-		fperms +x GrimFandango
 		popd >/dev/null || die
 	fi
+
+	fperms +x "${dir}"/game/bin/GrimFandango
 
 	make_wrapper ${PN} "./GrimFandango" "${dir}/game/bin"
 	newicon -s 256 support/icon.png ${PN}.png

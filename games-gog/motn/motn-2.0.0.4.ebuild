@@ -63,8 +63,10 @@ src_install() {
 		"${S}"/game/bin/ninja-bin \
 		"${S}"/game/bin/ninja-bin$(usex amd64 "32" "64") || die
 
-	dodir "${dir}"
-	mv "${S}/game" "${D}${dir}/" || die
+	insinto "${dir}"
+	doins -r game
+
+	fperms +x "${dir}"/game/bin/ninja-bin$(usex amd64 "64" "32")
 
 	make_wrapper ${PN} "./ninja-bin$(usex amd64 "64" "32")" "${dir}/game/bin"
 	newicon -s 256 support/icon.png ${PN}.png

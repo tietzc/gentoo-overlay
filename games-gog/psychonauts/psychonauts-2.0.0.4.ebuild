@@ -47,8 +47,10 @@ src_install() {
 	rm "${S}"/game/libopenal.so.1 \
 		"${S}"/game/libSDL-1.2.so.0 || die
 
-	dodir "${dir}"
-	mv "${S}/game" "${D}${dir}/" || die
+	insinto "${dir}"
+	doins -r game
+
+	fperms +x "${dir}"/game/Psychonauts
 
 	make_wrapper ${PN} "./Psychonauts" "${dir}/game"
 	newicon -s 256 support/icon.png ${PN}.png

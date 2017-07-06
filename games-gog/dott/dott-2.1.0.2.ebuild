@@ -49,8 +49,10 @@ src_install() {
 
 	rm "${S}"/game/lib/libsteam_api.so || die
 
-	dodir "${dir}"
-	mv "${S}/game" "${D}${dir}/" || die
+	insinto "${dir}"
+	doins -r game
+
+	fperms +x "${dir}"/game/Dott
 
 	make_wrapper ${PN} "./Dott" "${dir}/game"
 	newicon -s 256 support/icon.png ${PN}.png

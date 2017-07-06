@@ -46,8 +46,10 @@ src_install() {
 
 	rm "${S}"/game/Torment$(usex amd64 "" "64") || die
 
-	dodir "${dir}"
-	mv "${S}/game" "${D}${dir}/" || die
+	insinto "${dir}"
+	doins -r game
+
+	fperms +x "${dir}"/game/Torment$(usex amd64 "64" "")
 
 	make_wrapper ${PN} "./Torment$(usex amd64 "64" "")" "${dir}/game"
 	newicon -s 256 support/icon.png ${PN}.png

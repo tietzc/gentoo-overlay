@@ -55,8 +55,10 @@ src_install() {
 	rm "${S}"/game/TidesOfNumenera_Data/Plugins/x86_64/libCSteamworks.so \
 		"${S}"/game/TidesOfNumenera_Data/Plugins/x86_64/libsteam_api.so || die
 
-	dodir "${dir}"
-	mv "${S}/game" "${D}${dir}/" || die
+	insinto "${dir}"
+	doins -r game
+
+	fperms +x "${dir}"/game/TidesOfNumenera
 
 	make_wrapper ${PN} "./TidesOfNumenera" "${dir}/game"
 	newicon -s 256 support/icon.png ${PN}.png

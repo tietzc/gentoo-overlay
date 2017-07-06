@@ -53,11 +53,8 @@ src_install() {
 		"${S}"/game/GoneHome_Data/Mono/$(usex amd64 "x86" "x86_64") \
 		"${S}"/game/GoneHome_Data/Plugins/x86/libsteam_api.so || die
 
-	dodir "${dir}"
-	mv "${S}/game" "${D}${dir}/" || die
-
-	find "${D}${dir}/"game -type f -exec chmod 0644 '{}' + || die
-	find "${D}${dir}/"game -type d -exec chmod 0755 '{}' + || die
+	insinto "${dir}"
+	doins -r game
 
 	fperms +x "${dir}"/game/GoneHome.$(usex amd64 "x86_64" "x86")
 

@@ -55,11 +55,8 @@ src_install() {
 	rm "${S}"/game/Shadow\ Tactics_Data/Plugins/x86/libCSteamworks.so \
 		"${S}"/game/Shadow\ Tactics_Data/Plugins/x86/libsteam_api.so || die
 
-	dodir "${dir}"
-	mv "${S}/game" "${D}${dir}/" || die
-
-	find "${D}${dir}/"game -type f -exec chmod 0644 '{}' + || die
-	find "${D}${dir}/"game -type d -exec chmod 0755 '{}' + || die
+	insinto "${dir}"
+	doins -r game
 
 	fperms +x "${dir}"/game/Shadow\ Tactics
 

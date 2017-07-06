@@ -52,8 +52,10 @@ src_install() {
 		"${S}"/game/i386 \
 		"${S}"/game/x86_64 || die
 
-	dodir "${dir}"
-	mv "${S}/game" "${D}${dir}/" || die
+	insinto "${dir}"
+	doins -r game
+
+	fperms +x "${dir}"/game/bs1dc_$(usex amd64 "x86_64" "i386")
 
 	make_wrapper ${PN} "./bs1dc_$(usex amd64 "x86_64" "i386")" "${dir}/game"
 	newicon -s 256 support/icon.png ${PN}.png
