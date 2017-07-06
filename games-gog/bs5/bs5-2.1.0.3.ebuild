@@ -54,6 +54,11 @@ src_install() {
 	dodir "${dir}"
 	mv "${S}/game" "${D}${dir}/" || die
 
+	# ensure sane permissions
+	find "${D}${dir}"/game -type f -exec chmod 0644 '{}' + || die
+	find "${D}${dir}"/game -type d -exec chmod 0755 '{}' + || die
+	fperms +x "${dir}"/game/BS5_$(usex amd64 "x86_64" "i386")
+
 	make_wrapper ${PN} "./BS5_$(usex amd64 "x86_64" "i386")" "${dir}/game"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Broken Sword 5: The Serpent's Curse"
