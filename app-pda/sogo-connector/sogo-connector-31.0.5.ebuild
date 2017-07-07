@@ -5,11 +5,13 @@ EAPI=6
 
 inherit versionator
 
+COMMIT="6bcd074f1145355e083c177b4e464d1c45b4d102"
+
 THUNDERBIRD_VERSION="$(get_major_version)"
 
 DESCRIPTION="CardDAV plugin for mail-client/thunderbird"
 HOMEPAGE="http://www.sogo.nu/downloads/frontends.html"
-SRC_URI="https://github.com/inverse-inc/${PN}.tb${THUNDERBIRD_VERSION}/archive/${P}.tar.gz"
+SRC_URI="https://github.com/inverse-inc/${PN}.tb${THUNDERBIRD_VERSION}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -24,7 +26,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=( "${FILESDIR}/makefile.patch" )
 
-S="${WORKDIR}/${PN}.tb${THUNDERBIRD_VERSION}-${P}"
+S="${WORKDIR}/${PN}.tb${THUNDERBIRD_VERSION}-${COMMIT}"
 
 src_install() {
 	declare MOZILLA_FIVE_HOME="/usr/$(get_libdir)/thunderbird"
