@@ -28,7 +28,7 @@ RDEPEND="${PYTHON_DEPS}
 	opencc? ( app-i18n/opencc )"
 
 DEPEND="${RDEPEND}
-	dev-util/intltool
+	virtual/libintl
 	virtual/pkgconfig"
 
 src_prepare() {
