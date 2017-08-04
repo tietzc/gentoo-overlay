@@ -10,7 +10,7 @@ inherit autotools gnome2-utils python-single-r1
 
 DESCRIPTION="Intelligent Pinyin engine based on libpinyin for IBus"
 HOMEPAGE="https://github.com/libpinyin/ibus-libpinyin"
-SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/libpinyin/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
