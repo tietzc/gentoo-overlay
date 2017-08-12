@@ -28,7 +28,7 @@ IUSE=""
 RESTRICT="mirror"
 
 RDEPEND="
-	dev-libs/boost
+	dev-libs/boost:=
 	media-libs/libsdl2[X,opengl,sound,video]"
 
 DEPEND="${RDEPEND}
