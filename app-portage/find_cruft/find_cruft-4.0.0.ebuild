@@ -35,5 +35,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "Consider installing app-portage/eix for faster execution."
+	if ! has_version app-portage/eix ; then
+		elog "Consider installing app-portage/eix for faster execution."
+	fi
 }
