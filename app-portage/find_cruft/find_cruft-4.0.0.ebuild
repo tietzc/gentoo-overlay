@@ -3,7 +3,7 @@
 
 EAPI=6
 
-DESCRIPTION="find cruft files not managed by portage"
+DESCRIPTION="Find cruft files not managed by portage"
 HOMEPAGE="https://github.com/vaeth/find_cruft"
 SRC_URI="https://github.com/vaeth/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
@@ -23,13 +23,13 @@ src_prepare() {
 }
 
 src_install() {
-	dobin bin/*
+	dobin bin/${PN}
 
-	insinto /etc
-	doins -r etc/*
+	insinto /usr/lib/${PN}
+	doins -r etc/.
 
 	insinto /usr/share/zsh/site-functions
-	doins zsh/_*
+	doins -r zsh/.
 
 	einstalldocs
 }
