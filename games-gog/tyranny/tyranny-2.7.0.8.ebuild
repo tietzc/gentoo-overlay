@@ -36,9 +36,9 @@ S="${WORKDIR}/data/noarch"
 CHECKREQS_DISK_BUILD="14G"
 
 QA_PREBUILT="
-	opt/${PN}/game/Tyranny
-	opt/${PN}/game/Tyranny.x86
-	opt/${PN}/game/Tyranny_Data/Mono/x86*/libmono.so"
+	opt/${PN}/Tyranny
+	opt/${PN}/Tyranny.x86
+	opt/${PN}/Tyranny_Data/Mono/x86*/libmono.so"
 
 pkg_nofetch() {
 	einfo
@@ -51,11 +51,9 @@ pkg_nofetch() {
 }
 
 src_unpack() {
-	einfo "unpacking base data..."
 	unzip -qo "${DISTDIR}/${BASE_SRC_URI}"
 
 	if use dlc ; then
-		einfo "unpacking dlc data..."
 		unzip -qo "${DISTDIR}/${DLC_SRC_URI}"
 	fi
 }
@@ -63,22 +61,22 @@ src_unpack() {
 src_install() {
 	local dir="/opt/${PN}"
 
-	rm -r "${S}"/game/Tyranny$(usex amd64 ".x86" "") \
-		"${S}"/game/Tyranny_Data/Mono/$(usex amd64 "x86" "x86_64") \
-		"${S}"/game/Tyranny_Data/Plugins/$(usex amd64 "x86" "x86_64") \
-		"${S}"/game/Tyranny_Data/Plugins/$(usex amd64 "x86_64" "x86")/libCSteamworks.so \
-		"${S}"/game/Tyranny_Data/Plugins/$(usex amd64 "x86_64" "x86")/libpops_api.so \
-		"${S}"/game/Tyranny_Data/Plugins/$(usex amd64 "x86_64" "x86")/libsteam_api.so || die
+	rm -r game/Tyranny$(usex amd64 ".x86" "") \
+		game/Tyranny_Data/Mono/$(usex amd64 "x86" "x86_64") \
+		game/Tyranny_Data/Plugins/$(usex amd64 "x86" "x86_64") \
+		game/Tyranny_Data/Plugins/$(usex amd64 "x86_64" "x86")/libCSteamworks.so \
+		game/Tyranny_Data/Plugins/$(usex amd64 "x86_64" "x86")/libpops_api.so \
+		game/Tyranny_Data/Plugins/$(usex amd64 "x86_64" "x86")/libsteam_api.so || die
 
 	dodir "${dir}"
-	mv "${S}/game" "${D}${dir}/" || die
+	mv game/* "${D%/}${dir}" || die
 
 	# ensure sane permissions
-	find "${D}${dir}"/game -type f -exec chmod 0644 '{}' + || die
-	find "${D}${dir}"/game -type d -exec chmod 0755 '{}' + || die
-	fperms +x "${dir}"/game/Tyranny$(usex amd64 "" ".x86")
+	find "${D%/}/${dir}" -type f -exec chmod 0644 '{}' + || die
+	find "${D%/}/${dir}" -type d -exec chmod 0755 '{}' + || die
+	fperms +x "${dir}"/Tyranny$(usex amd64 "" ".x86")
 
-	make_wrapper ${PN} "./Tyranny$(usex amd64 "" ".x86")" "${dir}/game"
+	make_wrapper ${PN} "./Tyranny$(usex amd64 "" ".x86")" "${dir}"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Tyranny"
 }

@@ -31,8 +31,8 @@ DEPEND="app-arch/unzip"
 S="${WORKDIR}/data/noarch"
 
 QA_PREBUILT="
-	opt/${PN}/game/lib*/*
-	opt/${PN}/game/ToTheMoon.bin.x86*"
+	opt/${PN}/lib*/*
+	opt/${PN}/ToTheMoon.bin.x86*"
 
 pkg_nofetch() {
 	einfo
@@ -43,28 +43,27 @@ pkg_nofetch() {
 }
 
 src_unpack() {
-	einfo "unpacking data..."
 	unzip -qo "${DISTDIR}/${SRC_URI}"
 }
 
 src_install() {
 	local dir="/opt/${PN}"
 
-	rm -r "${S}"/game/lib$(usex amd64 "" "64") \
-		"${S}"/game/ToTheMoon.bin.$(usex amd64 "x86" "x86_64") || die
+	rm -r game/lib$(usex amd64 "" "64") \
+		game/ToTheMoon.bin.$(usex amd64 "x86" "x86_64") || die
 
-	find "${S}"/game/lib$(usex amd64 "64" "") -type f \
+	find game/lib$(usex amd64 "64" "") -type f \
 		! -name "libphysfs.so.1" \
 		! -name "libruby.so.2.1" \
 		! -name "libSDL_sound-1.0.so.1" \
 		-delete || die
 
 	insinto "${dir}"
-	doins -r game
+	doins -r game/.
 
-	fperms +x "${dir}"/game/ToTheMoon.bin.$(usex amd64 "x86_64" "x86")
+	fperms +x "${dir}"/ToTheMoon.bin.$(usex amd64 "x86_64" "x86")
 
-	make_wrapper ${PN} "./ToTheMoon.bin.$(usex amd64 "x86_64" "x86")" "${dir}/game"
+	make_wrapper ${PN} "./ToTheMoon.bin.$(usex amd64 "x86_64" "x86")" "${dir}"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "To The Moon"
 }

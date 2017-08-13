@@ -26,8 +26,8 @@ DEPEND="app-arch/unzip"
 S="${WORKDIR}/data/noarch"
 
 QA_PREBUILT="
-	opt/${PN}/game/BS5_i386
-	opt/${PN}/game/BS5_x86_64"
+	opt/${PN}/BS5_i386
+	opt/${PN}/BS5_x86_64"
 
 pkg_nofetch() {
 	einfo
@@ -38,28 +38,25 @@ pkg_nofetch() {
 }
 
 src_unpack() {
-	einfo "unpacking data..."
 	unzip -qo "${DISTDIR}/${SRC_URI}"
 }
 
 src_install() {
 	local dir="/opt/${PN}"
 
-	mv "${S}/game/$(usex amd64 "x86_64" "i386")/BS5_$(usex amd64 "x86_64" "i386")" "${S}/game/" || die
+	mv game/$(usex amd64 "x86_64" "i386")/BS5_$(usex amd64 "x86_64" "i386") game/ || die
 
-	rm -r "${S}"/game/BS5 \
-		"${S}"/game/i386 \
-		"${S}"/game/x86_64 || die
+	rm -r game/{BS5,i386,x86_64} || die
 
 	dodir "${dir}"
-	mv "${S}/game" "${D}${dir}/" || die
+	mv game/* "${D%/}/${dir}" || die
 
 	# ensure sane permissions
-	find "${D}${dir}"/game -type f -exec chmod 0644 '{}' + || die
-	find "${D}${dir}"/game -type d -exec chmod 0755 '{}' + || die
-	fperms +x "${dir}"/game/BS5_$(usex amd64 "x86_64" "i386")
+	find "${D%/}/${dir}" -type f -exec chmod 0644 '{}' + || die
+	find "${D%/}/${dir}" -type d -exec chmod 0755 '{}' + || die
+	fperms +x "${dir}"/BS5_$(usex amd64 "x86_64" "i386")
 
-	make_wrapper ${PN} "./BS5_$(usex amd64 "x86_64" "i386")" "${dir}/game"
+	make_wrapper ${PN} "./BS5_$(usex amd64 "x86_64" "i386")" "${dir}"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Broken Sword 5: The Serpent's Curse"
 }

@@ -31,10 +31,10 @@ DEPEND="app-arch/unzip"
 S="${WORKDIR}/data/noarch"
 
 QA_PREBUILT="
-	opt/${PN}/game/TidesOfNumenera
-	opt/${PN}/game/TidesOfNumenera_Data/Mono/x86_64/libmono.so
-	opt/${PN}/game/TidesOfNumenera_Data/Plugins/libAkSoundEngine.so
-	opt/${PN}/game/TidesOfNumenera_Data/Plugins/x86_64/*.so"
+	opt/${PN}/TidesOfNumenera
+	opt/${PN}/TidesOfNumenera_Data/Mono/x86_64/libmono.so
+	opt/${PN}/TidesOfNumenera_Data/Plugins/libAkSoundEngine.so
+	opt/${PN}/TidesOfNumenera_Data/Plugins/x86_64/*.so"
 
 pkg_nofetch() {
 	einfo
@@ -45,22 +45,21 @@ pkg_nofetch() {
 }
 
 src_unpack() {
-	einfo "unpacking data..."
 	unzip -qo "${DISTDIR}/${SRC_URI}"
 }
 
 src_install() {
 	local dir="/opt/${PN}"
 
-	rm "${S}"/game/TidesOfNumenera_Data/Plugins/x86_64/libCSteamworks.so \
-		"${S}"/game/TidesOfNumenera_Data/Plugins/x86_64/libsteam_api.so || die
+	rm game/TidesOfNumenera_Data/Plugins/x86_64/libCSteamworks.so \
+		game/TidesOfNumenera_Data/Plugins/x86_64/libsteam_api.so || die
 
 	insinto "${dir}"
-	doins -r game
+	doins -r game/.
 
-	fperms +x "${dir}"/game/TidesOfNumenera
+	fperms +x "${dir}"/TidesOfNumenera
 
-	make_wrapper ${PN} "./TidesOfNumenera" "${dir}/game"
+	make_wrapper ${PN} "./TidesOfNumenera" "${dir}"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Torment: Tides Of Numenera"
 }

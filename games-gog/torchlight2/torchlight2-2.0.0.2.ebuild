@@ -32,9 +32,9 @@ DEPEND="app-arch/unzip"
 S="${WORKDIR}/data/noarch"
 
 QA_PREBUILT="
-	opt/${PN}/game/lib*/*
-	opt/${PN}/game/ModLauncher.bin.x86*
-	opt/${PN}/game/Torchlight2.bin.x86*"
+	opt/${PN}/lib*/*
+	opt/${PN}/ModLauncher.bin.x86*
+	opt/${PN}/Torchlight2.bin.x86*"
 
 pkg_nofetch() {
 	einfo
@@ -45,24 +45,23 @@ pkg_nofetch() {
 }
 
 src_unpack() {
-	einfo "unpacking data..."
 	unzip -qo "${DISTDIR}/${SRC_URI}"
 }
 
 src_install() {
 	local dir="/opt/${PN}"
 
-	rm -r "${S}"/game/lib$(usex amd64 "" "64") \
-		"${S}"/game/lib$(usex amd64 "64" "")/{libfreeimage.so.3,libfreetype.so.6,libSDL2-2.0.so.0} \
-		"${S}"/game/ModLauncher.bin.$(usex amd64 "x86" "x86_64") \
-		"${S}"/game/Torchlight2.bin.$(usex amd64 "x86" "x86_64") || die
+	rm -r game/lib$(usex amd64 "" "64") \
+		game/lib$(usex amd64 "64" "")/{libfreeimage.so.3,libfreetype.so.6,libSDL2-2.0.so.0} \
+		game/ModLauncher.bin.$(usex amd64 "x86" "x86_64") \
+		game/Torchlight2.bin.$(usex amd64 "x86" "x86_64") || die
 
 	insinto "${dir}"
-	doins -r game
+	doins -r game/.
 
-	fperms +x "${dir}"/game/Torchlight2.bin.$(usex amd64 "x86_64" "x86")
+	fperms +x "${dir}"/Torchlight2.bin.$(usex amd64 "x86_64" "x86")
 
-	make_wrapper ${PN} "./Torchlight2.bin.$(usex amd64 "x86_64" "x86")" "${dir}/game"
+	make_wrapper ${PN} "./Torchlight2.bin.$(usex amd64 "x86_64" "x86")" "${dir}"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Torchlight II"
 }

@@ -26,7 +26,7 @@ DEPEND="app-arch/unzip"
 
 S="${WORKDIR}/data/noarch"
 
-QA_PREBUILT="opt/${PN}/game/Torment*"
+QA_PREBUILT="opt/${PN}/Torment*"
 
 pkg_nofetch() {
 	einfo
@@ -37,21 +37,20 @@ pkg_nofetch() {
 }
 
 src_unpack() {
-	einfo "unpacking data..."
 	unzip -qo "${DISTDIR}/${SRC_URI}"
 }
 
 src_install() {
 	local dir="/opt/${PN}"
 
-	rm "${S}"/game/Torment$(usex amd64 "" "64") || die
+	rm game/Torment$(usex amd64 "" "64") || die
 
 	insinto "${dir}"
-	doins -r game
+	doins -r game/.
 
-	fperms +x "${dir}"/game/Torment$(usex amd64 "64" "")
+	fperms +x "${dir}"/Torment$(usex amd64 "64" "")
 
-	make_wrapper ${PN} "./Torment$(usex amd64 "64" "")" "${dir}/game"
+	make_wrapper ${PN} "./Torment$(usex amd64 "64" "")" "${dir}"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Planescape Torment: Enhanced Edition"
 }

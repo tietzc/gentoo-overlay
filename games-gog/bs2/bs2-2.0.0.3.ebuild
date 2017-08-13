@@ -26,7 +26,7 @@ DEPEND="app-arch/unzip"
 
 S="${WORKDIR}/data/noarch"
 
-QA_PREBUILT="opt/${PN}/game/BS2Remastered_i386"
+QA_PREBUILT="opt/${PN}/BS2Remastered_i386"
 
 pkg_nofetch() {
 	einfo
@@ -37,22 +37,20 @@ pkg_nofetch() {
 }
 
 src_unpack() {
-	einfo "unpacking data..."
 	unzip -qo "${DISTDIR}/${SRC_URI}"
 }
 
 src_install() {
 	local dir="/opt/${PN}"
 
-	rm "${S}"/game/libopenal.so.1 \
-		"${S}"/game/libSDL-1.2.so.0 || die
+	rm game/{libopenal.so.1,libSDL-1.2.so.0} || die
 
 	insinto "${dir}"
-	doins -r game
+	doins -r game/.
 
-	fperms +x "${dir}"/game/BS2Remastered_i386
+	fperms +x "${dir}"/BS2Remastered_i386
 
-	make_wrapper ${PN} "./BS2Remastered_i386" "${dir}/game"
+	make_wrapper ${PN} "./BS2Remastered_i386" "${dir}"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Broken Sword 2: Remastered"
 }

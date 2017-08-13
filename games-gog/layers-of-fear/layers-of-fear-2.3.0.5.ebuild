@@ -34,8 +34,8 @@ DEPEND="app-arch/unzip"
 S="${WORKDIR}/data/noarch"
 
 QA_PREBUILT="
-	opt/${PN}/game/LOF
-	opt/${PN}/game/LOF_Data/Mono/x86_64/libmono.so"
+	opt/${PN}/LOF
+	opt/${PN}/LOF_Data/Mono/x86_64/libmono.so"
 
 pkg_nofetch() {
 	einfo
@@ -48,11 +48,9 @@ pkg_nofetch() {
 }
 
 src_unpack() {
-	einfo "unpacking data..."
 	unzip -qo "${DISTDIR}/${BASE_SRC_URI}"
 
 	if use dlc ; then
-		einfo "unpacking dlc data..."
 		unzip -qo "${DISTDIR}/${DLC_SRC_URI}"
 	fi
 }
@@ -60,16 +58,16 @@ src_unpack() {
 src_install() {
 	local dir="/opt/${PN}"
 
-	rm "${S}"/game/Launcher.exe \
-		"${S}"/game/LOF_Data/Plugins/x86_64/libCSteamworks.so \
-		"${S}"/game/LOF_Data/Plugins/x86_64/libsteam_api.so || die
+	rm game/Launcher.exe \
+		game/LOF_Data/Plugins/x86_64/libCSteamworks.so \
+		game/LOF_Data/Plugins/x86_64/libsteam_api.so || die
 
 	insinto "${dir}"
-	doins -r game
+	doins -r game/.
 
-	fperms +x "${dir}"/game/LOF
+	fperms +x "${dir}"/LOF
 
-	make_wrapper ${PN} "./LOF" "${dir}/game"
+	make_wrapper ${PN} "./LOF" "${dir}"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Layers Of Fear"
 }

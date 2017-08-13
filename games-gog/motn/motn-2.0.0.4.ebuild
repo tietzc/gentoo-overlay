@@ -32,8 +32,8 @@ DEPEND="app-arch/unzip"
 S="${WORKDIR}/data/noarch"
 
 QA_PREBUILT="
-	opt/motn/game/bin/lib*/lib*
-	opt/motn/game/bin/ninja-bin*"
+	opt/motn/bin/lib*/lib*
+	opt/motn/bin/ninja-bin*"
 
 pkg_nofetch() {
 	einfo
@@ -46,11 +46,9 @@ pkg_nofetch() {
 }
 
 src_unpack() {
-	einfo "unpacking base data..."
 	unzip -qo "${DISTDIR}/${BASE_SRC_URI}"
 
 	if use dlc ; then
-		einfo "unpacking dlc data..."
 		unzip -qo "${DISTDIR}/${DLC_SRC_URI}"
 	fi
 }
@@ -58,17 +56,17 @@ src_unpack() {
 src_install() {
 	local dir="/opt/${PN}"
 
-	rm -r "${S}"/game/bin/lib$(usex amd64 "32" "64") \
-		"${S}"/game/bin/lib$(usex amd64 "64" "32")/libSDL* \
-		"${S}"/game/bin/ninja-bin \
-		"${S}"/game/bin/ninja-bin$(usex amd64 "32" "64") || die
+	rm -r game/bin/lib$(usex amd64 "32" "64") \
+		game/bin/lib$(usex amd64 "64" "32")/libSDL* \
+		game/bin/ninja-bin \
+		game/bin/ninja-bin$(usex amd64 "32" "64") || die
 
 	insinto "${dir}"
-	doins -r game
+	doins -r game/.
 
-	fperms +x "${dir}"/game/bin/ninja-bin$(usex amd64 "64" "32")
+	fperms +x "${dir}"/bin/ninja-bin$(usex amd64 "64" "32")
 
-	make_wrapper ${PN} "./ninja-bin$(usex amd64 "64" "32")" "${dir}/game/bin"
+	make_wrapper ${PN} "./ninja-bin$(usex amd64 "64" "32")" "${dir}/bin"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Mark Of The Ninja: Special Edition"
 }

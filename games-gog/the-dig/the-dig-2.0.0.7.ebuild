@@ -49,27 +49,22 @@ pkg_nofetch() {
 
 src_unpack() {
 	if use l10n_de ; then
-		einfo "unpacking l10n_de data..."
 		unzip -qo "${DISTDIR}/${DE_SRC_URI}"
 	fi
 
 	if use l10n_en ; then
-		einfo "unpacking l10n_en data..."
 		unzip -qo "${DISTDIR}/${EN_SRC_URI}"
 	fi
 
 	if use l10n_es ; then
-		einfo "unpacking l10n_es data..."
 		unzip -qo "${DISTDIR}/${ES_SRC_URI}"
 	fi
 
 	if use l10n_fr ; then
-		einfo "unpacking l10n_fr data..."
 		unzip -qo "${DISTDIR}/${FR_SRC_URI}"
 	fi
 
 	if use l10n_it ; then
-		einfo "unpacking l10n_it data..."
 		unzip -qo "${DISTDIR}/${IT_SRC_URI}"
 	fi
 }

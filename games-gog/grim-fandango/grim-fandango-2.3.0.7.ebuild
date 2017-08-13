@@ -30,9 +30,9 @@ DEPEND="
 S="${WORKDIR}/data/noarch"
 
 QA_PREBUILT="
-	opt/${PN}/game/bin/GrimFandango
-	opt/${PN}/game/bin/libchore.so
-	opt/${PN}/game/bin/libLua.so"
+	opt/${PN}/GrimFandango
+	opt/${PN}/libchore.so
+	opt/${PN}/libLua.so"
 
 pkg_nofetch() {
 	einfo
@@ -43,33 +43,32 @@ pkg_nofetch() {
 }
 
 src_unpack() {
-	einfo "unpacking data..."
 	unzip -qo "${DISTDIR}/${SRC_URI}"
 }
 
 src_install() {
 	local dir="/opt/${PN}"
 
-	rm -r "${S}"/game/run.sh \
-		"${S}"/game/bin/amd64 \
-		"${S}"/game/bin/i386 \
-		"${S}"/game/bin/libSDL2-2.0.so.1 || die
+	rm -r game/run.sh \
+		game/bin/amd64 \
+		game/bin/i386 \
+		game/bin/libSDL2-2.0.so.1 || die
 
 	insinto "${dir}"
-	doins -r game
+	doins -r game/bin/.
 
-	dosym /usr/$(get_abi_LIBDIR x86)/libSDL2-2.0.so.0 "${dir}"/game/bin/libSDL2-2.0.so.1
+	dosym /usr/$(get_abi_LIBDIR x86)/libSDL2-2.0.so.0 "${dir}"/libSDL2-2.0.so.1
 
 	if use savedir-patch ; then
-		pushd "${D}"${dir}/game/bin >/dev/null || die
-		xdelta3 -d -s GrimFandango "${FILESDIR}/SaveDir-Patch.xdelta3" GrimFandango.new || die
+		pushd "${D%/}/${dir}" >/dev/null || die
+		xdelta3 -d -s GrimFandango "${FILESDIR}"/SaveDir-Patch.xdelta3 GrimFandango.new || die
 		mv GrimFandango.new GrimFandango || die
 		popd >/dev/null || die
 	fi
 
-	fperms +x "${dir}"/game/bin/GrimFandango
+	fperms +x "${dir}"/GrimFandango
 
-	make_wrapper ${PN} "./GrimFandango" "${dir}/game/bin"
+	make_wrapper ${PN} "./GrimFandango" "${dir}"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Grim Fandango: Remastered"
 }

@@ -26,7 +26,7 @@ DEPEND="app-arch/unzip"
 
 S="${WORKDIR}/data/noarch"
 
-QA_PREBUILT="opt/${PN}/game/Amnesia.bin.x86*"
+QA_PREBUILT="opt/${PN}/Amnesia.bin.x86*"
 
 pkg_nofetch() {
 	einfo
@@ -37,23 +37,22 @@ pkg_nofetch() {
 }
 
 src_unpack() {
-	einfo "unpacking data..."
 	unzip -qo "${DISTDIR}/${SRC_URI}"
 }
 
 src_install() {
 	local dir="/opt/${PN}"
 
-	rm -r "${S}"/game/lib{,64} \
-		"${S}"/game/Amnesia.bin.$(usex amd64 "x86" "x86_64") \
-		"${S}"/game/Launcher.bin.x86{,_64} || die
+	rm -r game/lib{,64} \
+		game/Amnesia.bin.$(usex amd64 "x86" "x86_64") \
+		game/Launcher.bin.x86{,_64} || die
 
 	insinto "${dir}"
-	doins -r game
+	doins -r game/.
 
-	fperms +x "${dir}"/game/Amnesia.bin.$(usex amd64 "x86_64" "x86")
+	fperms +x "${dir}"/Amnesia.bin.$(usex amd64 "x86_64" "x86")
 
-	make_wrapper ${PN} "./Amnesia.bin.$(usex amd64 "x86_64" "x86")" "${dir}/game"
+	make_wrapper ${PN} "./Amnesia.bin.$(usex amd64 "x86_64" "x86")" "${dir}"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Amnesia: The Dark Descent"
 }

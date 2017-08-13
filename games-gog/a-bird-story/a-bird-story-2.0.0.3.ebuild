@@ -31,9 +31,9 @@ DEPEND="app-arch/unzip"
 S="${WORKDIR}/data/noarch"
 
 QA_PREBUILT="
-	opt/${PN}/game/lib*/*
-	opt/${PN}/game/ABirdStory.amd64
-	opt/${PN}/game/ABirdStory.x86"
+	opt/${PN}/lib*/*
+	opt/${PN}/ABirdStory.amd64
+	opt/${PN}/ABirdStory.x86"
 
 pkg_nofetch() {
 	einfo
@@ -44,29 +44,28 @@ pkg_nofetch() {
 }
 
 src_unpack() {
-	einfo "unpacking data..."
 	unzip -qo "${DISTDIR}/${SRC_URI}"
 }
 
 src_install() {
 	local dir="/opt/${PN}"
 
-	rm -r "${S}"/game/linux_launcher.sh \
-		"${S}"/game/lib$(usex amd64 "" "64") \
-		"${S}"/game/ABirdStory.$(usex amd64 "x86" "amd64") || die
+	rm -r game/linux_launcher.sh \
+		game/lib$(usex amd64 "" "64") \
+		game/ABirdStory.$(usex amd64 "x86" "amd64") || die
 
-	find "${S}"/game/lib$(usex amd64 "64" "") -type f \
+	find game/lib$(usex amd64 "64" "") -type f \
 		! -name "libphysfs.so.1" \
 		! -name "libruby.so.2.1" \
 		! -name "libSDL_sound-1.0.so.1" \
 		-delete || die
 
 	insinto "${dir}"
-	doins -r game
+	doins -r game/.
 
-	fperms +x "${dir}"/game/ABirdStory.$(usex amd64 "amd64" "x86")
+	fperms +x "${dir}"/ABirdStory.$(usex amd64 "amd64" "x86")
 
-	make_wrapper ${PN} "./ABirdStory.$(usex amd64 "amd64" "x86")" "${dir}/game"
+	make_wrapper ${PN} "./ABirdStory.$(usex amd64 "amd64" "x86")" "${dir}"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "A Bird Story"
 }

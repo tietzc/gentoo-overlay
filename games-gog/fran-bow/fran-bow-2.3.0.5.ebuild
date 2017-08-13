@@ -26,7 +26,7 @@ DEPEND="app-arch/unzip"
 
 S="${WORKDIR}/data/noarch"
 
-QA_PREBUILT="opt/${PN}/game/runner"
+QA_PREBUILT="opt/${PN}/runner"
 
 pkg_nofetch() {
 	einfo
@@ -37,7 +37,6 @@ pkg_nofetch() {
 }
 
 src_unpack() {
-	einfo "unpacking data..."
 	unzip -qo "${DISTDIR}/${SRC_URI}"
 }
 
@@ -45,11 +44,11 @@ src_install() {
 	local dir="/opt/${PN}"
 
 	insinto "${dir}"
-	doins -r game
+	doins -r game/.
 
-	fperms +x "${dir}"/game/runner
+	fperms +x "${dir}"/runner
 
-	make_wrapper ${PN} "./runner" "${dir}/game"
+	make_wrapper ${PN} "./runner" "${dir}"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Fran Bow"
 }

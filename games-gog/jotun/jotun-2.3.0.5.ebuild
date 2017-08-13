@@ -30,8 +30,8 @@ DEPEND="app-arch/unzip"
 S="${WORKDIR}/data/noarch"
 
 QA_PREBUILT="
-	opt/${PN}/game/Jotun.x86*
-	opt/${PN}/game/Jotun_Data/Mono/x86*/libmono.so"
+	opt/${PN}/Jotun.x86*
+	opt/${PN}/Jotun_Data/Mono/x86*/libmono.so"
 
 pkg_nofetch() {
 	einfo
@@ -42,23 +42,22 @@ pkg_nofetch() {
 }
 
 src_unpack() {
-	einfo "unpacking data..."
 	unzip -qo "${DISTDIR}/${SRC_URI}"
 }
 
 src_install() {
 	local dir="/opt/${PN}"
 
-	rm -r "${S}"/game/Jotun.x86$(usex amd64 "" "_64") \
-		"${S}"/game/Jotun_Data/Mono/$(usex amd64 "x86" "x86_64") \
-		"${S}"/game/Jotun_Data/Plugins/$(usex amd64 "x86" "x86_64") || die
+	rm -r game/Jotun.x86$(usex amd64 "" "_64") \
+		game/Jotun_Data/Mono/$(usex amd64 "x86" "x86_64") \
+		game/Jotun_Data/Plugins/$(usex amd64 "x86" "x86_64") || die
 
 	insinto "${dir}"
-	doins -r game
+	doins -r game/.
 
-	fperms +x "${dir}"/game/Jotun.x86$(usex amd64 "_64" "")
+	fperms +x "${dir}"/Jotun.x86$(usex amd64 "_64" "")
 
-	make_wrapper ${PN} "./Jotun.x86$(usex amd64 "_64" "")" "${dir}/game"
+	make_wrapper ${PN} "./Jotun.x86$(usex amd64 "_64" "")" "${dir}"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Jotun: Valhalla Edition"
 }

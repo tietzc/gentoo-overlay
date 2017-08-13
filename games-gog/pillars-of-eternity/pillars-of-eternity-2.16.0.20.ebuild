@@ -42,8 +42,8 @@ DEPEND="
 S="${WORKDIR}/data/noarch"
 
 QA_PREBUILT="
-	opt/${PN}/game/PillarsOfEternity
-	opt/${PN}/game/PillarsOfEternity_Data/Mono/x86_64/libmono.so"
+	opt/${PN}/PillarsOfEternity
+	opt/${PN}/PillarsOfEternity_Data/Mono/x86_64/libmono.so"
 
 pkg_nofetch() {
 	einfo
@@ -81,26 +81,21 @@ pkg_setup() {
 }
 
 src_unpack() {
-	einfo "unpacking base data..."
 	unzip -qo "${DISTDIR}/${BASE_SRC_URI}"
 
 	if use dlc1 ; then
-		einfo "unpacking dlc1 data..."
 		unzip -qo "${DISTDIR}/${DLC1_SRC_URI}"
 	fi
 
 	if use dlc2 ; then
-		einfo "unpacking dlc2 data..."
 		unzip -qo "${DISTDIR}/${DLC2_SRC_URI}"
 	fi
 
 	if use dlc3 ; then
-		einfo "unpacking dlc3 data..."
 		unzip -qo "${DISTDIR}/${DLC3_SRC_URI}"
 	fi
 
 	if use l10n_de ; then
-		einfo "unpacking l10n_de data..."
 		7za x -o"${S}/game" "${DISTDIR}/${DE_SRC_URI}"
 	fi
 }
@@ -108,18 +103,18 @@ src_unpack() {
 src_install() {
 	local dir="/opt/${PN}"
 
-	rm "${S}"/game/PillarsOfEternity_Data/Plugins/x86_64/libCSteamworks.so \
-		"${S}"/game/PillarsOfEternity_Data/Plugins/x86_64/libsteam_api.so || die
+	rm game/PillarsOfEternity_Data/Plugins/x86_64/libCSteamworks.so \
+		game/PillarsOfEternity_Data/Plugins/x86_64/libsteam_api.so || die
 
 	dodir "${dir}"
-	mv "${S}/game" "${D}${dir}/" || die
+	mv game/* "${D%/}/${dir}" || die
 
 	# ensure sane permissions
-	find "${D}${dir}"/game -type f -exec chmod 0644 '{}' + || die
-	find "${D}${dir}"/game -type d -exec chmod 0755 '{}' + || die
-	fperms +x "${dir}"/game/PillarsOfEternity
+	find "${D%/}/${dir}" -type f -exec chmod 0644 '{}' + || die
+	find "${D%/}/${dir}" -type d -exec chmod 0755 '{}' + || die
+	fperms +x "${dir}"/PillarsOfEternity
 
-	make_wrapper ${PN} "./PillarsOfEternity" "${dir}/game"
+	make_wrapper ${PN} "./PillarsOfEternity" "${dir}"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Pillars Of Eternity"
 }

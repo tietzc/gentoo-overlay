@@ -32,9 +32,9 @@ S="${WORKDIR}/data/noarch"
 CHECKREQS_DISK_BUILD="10G"
 
 QA_PREBUILT="
-	opt/${PN}/game/*
-	opt/${PN}/game/*/Mono/x86/libmono.so
-	opt/${PN}/game/*/Plugins/x86/libRenderingPlugin.so"
+	opt/${PN}/*
+	opt/${PN}/*/Mono/x86/libmono.so
+	opt/${PN}/*/Plugins/x86/libRenderingPlugin.so"
 
 pkg_nofetch() {
 	einfo
@@ -45,22 +45,21 @@ pkg_nofetch() {
 }
 
 src_unpack() {
-	einfo "unpacking data..."
 	unzip -qo "${DISTDIR}/${SRC_URI}"
 }
 
 src_install() {
 	local dir="/opt/${PN}"
 
-	rm "${S}"/game/Shadow\ Tactics_Data/Plugins/x86/libCSteamworks.so \
-		"${S}"/game/Shadow\ Tactics_Data/Plugins/x86/libsteam_api.so || die
+	rm game/Shadow\ Tactics_Data/Plugins/x86/libCSteamworks.so \
+		game/Shadow\ Tactics_Data/Plugins/x86/libsteam_api.so || die
 
 	insinto "${dir}"
-	doins -r game
+	doins -r game/.
 
-	fperms +x "${dir}"/game/Shadow\ Tactics
+	fperms +x "${dir}"/Shadow\ Tactics
 
-	make_wrapper ${PN} "./Shadow\ Tactics" "${dir}/game"
+	make_wrapper ${PN} "./Shadow\ Tactics" "${dir}"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Shadow Tactics: Blades Of The Shogun"
 }

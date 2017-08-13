@@ -30,8 +30,8 @@ DEPEND="app-arch/unzip"
 S="${WORKDIR}/data/noarch"
 
 QA_PREBUILT="
-	opt/${PN}/game/Aragami.x86*
-	opt/${PN}/game/Aragami_Data/Mono/x86*/*.so"
+	opt/${PN}/Aragami.x86*
+	opt/${PN}/Aragami_Data/Mono/x86*/*.so"
 
 pkg_nofetch() {
 	einfo
@@ -42,23 +42,22 @@ pkg_nofetch() {
 }
 
 src_unpack() {
-	einfo "unpacking data..."
 	unzip -qo "${DISTDIR}/${SRC_URI}"
 }
 
 src_install() {
 	local dir="/opt/${PN}"
 
-	rm -r "${S}"/game/Aragami.$(usex amd64 "x86" "x86_64") \
-		"${S}"/game/Aragami_Data/Mono/$(usex amd64 "x86" "x86_64") \
-		"${S}"/game/Aragami_Data/Plugins/$(usex amd64 "x86" "x86_64") || die
+	rm -r game/Aragami.$(usex amd64 "x86" "x86_64") \
+		game/Aragami_Data/Mono/$(usex amd64 "x86" "x86_64") \
+		game/Aragami_Data/Plugins/$(usex amd64 "x86" "x86_64") || die
 
 	insinto "${dir}"
-	doins -r game
+	doins -r game/.
 
-	fperms +x "${dir}"/game/Aragami.$(usex amd64 "x86_64" "x86")
+	fperms +x "${dir}"/Aragami.$(usex amd64 "x86_64" "x86")
 
-	make_wrapper ${PN} "./Aragami.$(usex amd64 "x86_64" "x86")" "${dir}/game"
+	make_wrapper ${PN} "./Aragami.$(usex amd64 "x86_64" "x86")" "${dir}"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Aragami"
 }

@@ -44,11 +44,9 @@ pkg_nofetch() {
 }
 
 src_unpack() {
-	einfo "unpacking base data..."
 	unzip -qo "${DISTDIR}/${BASE_SRC_URI}"
 
 	if use sod ; then
-		einfo "unpacking sod data..."
 		unzip -qo "${DISTDIR}/${SOD_SRC_URI}"
 	fi
 }

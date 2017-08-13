@@ -30,8 +30,8 @@ DEPEND="app-arch/unzip"
 S="${WORKDIR}/data/noarch"
 
 QA_PREBUILT="
-	opt/${PN}/game/GoneHome.x86*
-	opt/${PN}/game/GoneHome_Data/Mono/x86*/libmono.so"
+	opt/${PN}/GoneHome.x86*
+	opt/${PN}/GoneHome_Data/Mono/x86*/libmono.so"
 
 pkg_nofetch() {
 	einfo
@@ -42,28 +42,27 @@ pkg_nofetch() {
 }
 
 src_unpack() {
-	einfo "unpacking data..."
 	unzip -qo "${DISTDIR}/${SRC_URI}"
 }
 
 src_install() {
 	local dir="/opt/${PN}"
 
-	rm -r "${S}"/game/GoneHome.$(usex amd64 "x86" "x86_64") \
-		"${S}"/game/GoneHome_Data/Mono/$(usex amd64 "x86" "x86_64") \
-		"${S}"/game/GoneHome_Data/Plugins/x86/libsteam_api.so || die
+	rm -r game/GoneHome.$(usex amd64 "x86" "x86_64") \
+		game/GoneHome_Data/Mono/$(usex amd64 "x86" "x86_64") \
+		game/GoneHome_Data/Plugins/x86/libsteam_api.so || die
 
 	insinto "${dir}"
-	doins -r game
+	doins -r game/.
 
-	fperms +x "${dir}"/game/GoneHome.$(usex amd64 "x86_64" "x86")
+	fperms +x "${dir}"/GoneHome.$(usex amd64 "x86_64" "x86")
 
-	make_wrapper ${PN} "./GoneHome.$(usex amd64 "x86_64" "x86")" "${dir}/game"
+	make_wrapper ${PN} "./GoneHome.$(usex amd64 "x86_64" "x86")" "${dir}"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Gone Home"
 
 	# work around localization issue
-	sed -i '2i\export LC_ALL=C\' "${D}/usr/bin/${PN}" || die
+	sed -i '2i\export LC_ALL=C\' "${D%/}/usr/bin/${PN}" || die
 }
 
 pkg_postinst() {

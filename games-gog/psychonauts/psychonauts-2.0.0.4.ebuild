@@ -26,7 +26,7 @@ DEPEND="app-arch/unzip"
 
 S="${WORKDIR}/data/noarch"
 
-QA_PREBUILT="opt/${PN}/game/Psychonauts"
+QA_PREBUILT="opt/${PN}/Psychonauts"
 
 pkg_nofetch() {
 	einfo
@@ -37,22 +37,20 @@ pkg_nofetch() {
 }
 
 src_unpack() {
-	einfo "unpacking data..."
 	unzip -qo "${DISTDIR}/${SRC_URI}"
 }
 
 src_install() {
 	local dir="/opt/${PN}"
 
-	rm "${S}"/game/libopenal.so.1 \
-		"${S}"/game/libSDL-1.2.so.0 || die
+	rm game/{libopenal.so.1,libSDL-1.2.so.0} || die
 
 	insinto "${dir}"
-	doins -r game
+	doins -r game/.
 
-	fperms +x "${dir}"/game/Psychonauts
+	fperms +x "${dir}"/Psychonauts
 
-	make_wrapper ${PN} "./Psychonauts" "${dir}/game"
+	make_wrapper ${PN} "./Psychonauts" "${dir}"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Psychonauts"
 }
@@ -60,8 +58,10 @@ src_install() {
 pkg_postinst() {
 	gnome2_icon_cache_update
 
-	elog "If you are using opensource drivers you should consider installing:"
-	elog "  media-libs/libtxc_dxtn"
+	if ! has_version media-libs/libtxc_dxtn ; then
+		elog "If you are using opensource drivers you should consider installing:"
+		elog "  media-libs/libtxc_dxtn"
+	fi
 }
 
 pkg_postrm() {
