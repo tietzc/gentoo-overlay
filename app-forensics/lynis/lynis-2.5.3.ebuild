@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit bash-completion-r1 eutils
+inherit bash-completion-r1
 
 DESCRIPTION="Security and system auditing tool"
 HOMEPAGE="https://cisofy.com/lynis"
@@ -29,11 +29,6 @@ DOCS=( CHANGELOG.md FAQ README )
 S="${WORKDIR}/${PN}"
 
 src_install() {
-	doman ${PN}.8
-	einstalldocs
-
-	dobashcomp extras/bash_completion.d/${PN}
-
 	# stricter default perms, bug #507436
 	diropts -m0700
 	insopts -m0600
@@ -41,14 +36,18 @@ src_install() {
 	insinto /usr/share/${PN}
 	doins -r db include plugins
 
-	dosbin ${PN}
-
 	insinto /etc/${PN}
 	doins default.prf
 
+	dosbin ${PN}
+
+	dobashcomp extras/bash_completion.d/${PN}
+	doman ${PN}.8
+	einstalldocs
+
 	if use cron ; then
 		exeinto /etc/cron.weekly
-		newexe "${FILESDIR}/${PN}.cron" ${PN}
+		newexe "${FILESDIR}"/${PN}.cron ${PN}
 	fi
 }
 
