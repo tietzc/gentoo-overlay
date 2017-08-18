@@ -12,17 +12,10 @@ SRC_URI="https://cisofy.com/files/${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+cron"
+IUSE=""
 RESTRICT="mirror"
 
-RDEPEND="
-	app-shells/bash:0
-	cron? (
-		virtual/cron
-		virtual/mailx
-	)"
-
-DEPEND="${RDEPEND}"
+RDEPEND="app-shells/bash:0"
 
 DOCS=( CHANGELOG.md FAQ README )
 
@@ -45,16 +38,15 @@ src_install() {
 	doman ${PN}.8
 	einstalldocs
 
-	if use cron ; then
-		exeinto /etc/cron.weekly
-		newexe "${FILESDIR}"/${PN}.cron ${PN}
-	fi
+	exeinto /etc/cron.weekly
+	newexe "${FILESDIR}"/${PN}.cron ${PN}
 }
 
 pkg_postinst() {
-	if use cron ; then
-		elog "A cron script has been installed to /etc/cron.weekly/lynis."
-		elog "To enable it, edit /etc/cron.weekly/lynis and follow the"
-		elog "directions."
-	fi
+	elog "A cron script has been installed to /etc/cron.weekly/${PN}."
+	elog "To enable it, edit /etc/cron.weekly/lynis and follow the"
+	elog "directions."
+	elog "If you want ${PN} to send mail, you will need to install"
+	elog "virtual/mailx or alter the EMAIL_CMD variable in the"
+	elog "cron script."
 }
