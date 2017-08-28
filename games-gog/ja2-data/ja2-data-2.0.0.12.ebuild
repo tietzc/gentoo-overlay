@@ -3,7 +3,7 @@
 
 EAPI=6
 
-DESCRIPTION="A port of Jagged Alliance 2 to SDL (data files)"
+DESCRIPTION="Jagged Alliance 2 (data files)"
 HOMEPAGE="https://www.gog.com/game/jagged_alliance_2"
 SRC_URI="setup_jagged_alliance2_${PV}.exe"
 
