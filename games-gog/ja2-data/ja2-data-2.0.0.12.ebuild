@@ -13,7 +13,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 RESTRICT="bindist fetch"
 
-RDEPEND="games-strategy/ja2-stracciatella"
+RDEPEND="games-engines/ja2-stracciatella"
 
 DEPEND="app-arch/innoextract"
 
