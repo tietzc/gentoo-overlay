@@ -9,14 +9,16 @@ DESCRIPTION="Tyranny"
 HOMEPAGE="https://www.gog.com/game/tyranny_commander_edition"
 
 BASE_SRC_URI="gog_tyranny_${PV}.sh"
-DLC_SRC_URI="gog_tyranny_pre_order_dlc_2.0.0.1.sh"
+DLC1_SRC_URI="gog_tyranny_tales_from_the_tiers_dlc_2.1.0.2.sh"
+DLC2_SRC_URI="gog_tyranny_pre_order_dlc_2.0.0.1.sh"
 SRC_URI="${BASE_SRC_URI}
-	dlc? ( ${DLC_SRC_URI} )"
+	dlc1? ( ${DLC1_SRC_URI} )
+	dlc2? ( ${DLC2_SRC_URI} )"
 
 LICENSE="GOG-EULA"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
-IUSE="+dlc"
+IUSE="+dlc1 +dlc2"
 RESTRICT="bindist fetch"
 
 RDEPEND="
@@ -43,7 +45,8 @@ QA_PREBUILT="
 pkg_nofetch() {
 	einfo
 	einfo "Please buy & download \"${BASE_SRC_URI}\""
-	use dlc && einfo "and \"${DLC_SRC_URI}\""
+	use dlc1 && einfo "and \"${DLC1_SRC_URI}\""
+	use dlc2 && einfo "and \"${DLC2_SRC_URI}\""
 	einfo "from:"
 	einfo "  ${HOMEPAGE}"
 	einfo "and move/link it to \"${DISTDIR}\""
@@ -53,8 +56,12 @@ pkg_nofetch() {
 src_unpack() {
 	unzip -qo "${DISTDIR}/${BASE_SRC_URI}"
 
-	if use dlc ; then
-		unzip -qo "${DISTDIR}/${DLC_SRC_URI}"
+	if use dlc1 ; then
+		unzip -qo "${DISTDIR}/${DLC1_SRC_URI}"
+	fi
+
+	if use dlc2 ; then
+		unzip -qo "${DISTDIR}/${DLC2_SRC_URI}"
 	fi
 }
 
