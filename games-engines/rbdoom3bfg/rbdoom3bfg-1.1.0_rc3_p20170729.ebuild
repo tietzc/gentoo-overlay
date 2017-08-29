@@ -54,11 +54,11 @@ src_configure() {
 	local mycmakeargs=(
 		-DOPENAL=ON
 		-DSDL2=ON
+		-DUSE_PRECOMPILED_HEADERS=OFF
 		-DUSE_SYSTEM_LIBGLEW=ON
 		-DUSE_SYSTEM_LIBJPEG=OFF # fails with media-libs/libjpeg-turbo-1.5.1
 		-DUSE_SYSTEM_LIBPNG=ON
 		-DUSE_SYSTEM_ZLIB=ON
-		-DUSE_PRECOMPILED_HEADERS=OFF
 		-Wno-dev ../neo
 	)
 
@@ -72,4 +72,11 @@ src_install() {
 	doins base/{default,extract_resources}.cfg
 
 	einstalldocs
+
+	cat <<- EOF >> "${D%/}/${GAMES_DATADIR}/base/default.cfg"
+		//
+		// Set default language to English
+		//
+		seta sys_lang "english"
+	EOF
 }
