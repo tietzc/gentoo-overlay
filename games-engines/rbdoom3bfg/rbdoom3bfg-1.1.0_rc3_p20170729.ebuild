@@ -68,8 +68,8 @@ src_configure() {
 src_install() {
 	dobin "${WORKDIR}/${P}_build/RBDoom3BFG"
 
-	insinto "${GAMES_DATADIR}"
-	doins -r base
+	insinto "${GAMES_DATADIR}/base"
+	doins base/{default,extract_resources}.cfg
 
 	einstalldocs
 }
