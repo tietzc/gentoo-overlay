@@ -3,11 +3,10 @@
 
 EAPI=6
 
-COMMIT="e5b3c697d23b9a90c654181162fe476c8c4f90d9"
+COMMIT="fab5644a75b30beb41eeddfc711e144214211e18"
+MY_PN="RBDOOM-3-BFG"
 
 inherit cmake-utils
-
-MY_PN="RBDOOM-3-BFG"
 
 DESCRIPTION="Doom 3 BFG GPL source modification"
 HOMEPAGE="https://github.com/RobertBeckebans/RBDOOM-3-BFG"
