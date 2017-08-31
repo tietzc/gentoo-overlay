@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils gnome2-utils
+inherit eutils gnome2-utils unpacker
 
 DESCRIPTION="Mark of the Ninja: Special Edition"
 HOMEPAGE="https://www.gog.com/game/mark_of_the_ninja_special_edition"
@@ -46,10 +46,10 @@ pkg_nofetch() {
 }
 
 src_unpack() {
-	unzip -qo "${DISTDIR}/${BASE_SRC_URI}"
+	unpack_zip "${DISTDIR}/${BASE_SRC_URI}"
 
 	if use dlc ; then
-		unzip -qo "${DISTDIR}/${DLC_SRC_URI}"
+		unpack_zip "${DISTDIR}/${DLC_SRC_URI}"
 	fi
 }
 

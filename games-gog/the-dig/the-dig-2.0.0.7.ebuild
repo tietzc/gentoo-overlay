@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils gnome2-utils
+inherit eutils gnome2-utils unpacker
 
 DESCRIPTION="The Dig"
 HOMEPAGE="https://www.gog.com/game/the_dig"
@@ -49,23 +49,23 @@ pkg_nofetch() {
 
 src_unpack() {
 	if use l10n_de ; then
-		unzip -qo "${DISTDIR}/${DE_SRC_URI}"
+		unpack_zip "${DISTDIR}/${DE_SRC_URI}"
 	fi
 
 	if use l10n_en ; then
-		unzip -qo "${DISTDIR}/${EN_SRC_URI}"
+		unpack_zip "${DISTDIR}/${EN_SRC_URI}"
 	fi
 
 	if use l10n_es ; then
-		unzip -qo "${DISTDIR}/${ES_SRC_URI}"
+		unpack_zip "${DISTDIR}/${ES_SRC_URI}"
 	fi
 
 	if use l10n_fr ; then
-		unzip -qo "${DISTDIR}/${FR_SRC_URI}"
+		unpack_zip "${DISTDIR}/${FR_SRC_URI}"
 	fi
 
 	if use l10n_it ; then
-		unzip -qo "${DISTDIR}/${IT_SRC_URI}"
+		unpack_zip "${DISTDIR}/${IT_SRC_URI}"
 	fi
 }
 

@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils gnome2-utils
+inherit eutils gnome2-utils unpacker
 
 DESCRIPTION="Layers of Fear"
 HOMEPAGE="https://www.gog.com/game/layers_of_fear"
@@ -48,10 +48,10 @@ pkg_nofetch() {
 }
 
 src_unpack() {
-	unzip -qo "${DISTDIR}/${BASE_SRC_URI}"
+	unpack_zip "${DISTDIR}/${BASE_SRC_URI}"
 
 	if use dlc ; then
-		unzip -qo "${DISTDIR}/${DLC_SRC_URI}"
+		unpack_zip "${DISTDIR}/${DLC_SRC_URI}"
 	fi
 }
 

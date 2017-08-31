@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils gnome2-utils
+inherit eutils gnome2-utils unpacker
 
 DESCRIPTION="Amnesia: The Dark Descent"
 HOMEPAGE="https://www.gog.com/game/amnesia_the_dark_descent"
@@ -37,7 +37,7 @@ pkg_nofetch() {
 }
 
 src_unpack() {
-	unzip -qo "${DISTDIR}/${SRC_URI}"
+	unpack_zip "${DISTDIR}/${SRC_URI}"
 }
 
 src_install() {

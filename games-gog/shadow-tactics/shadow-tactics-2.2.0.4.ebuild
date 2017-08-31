@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit check-reqs eutils gnome2-utils
+inherit check-reqs eutils gnome2-utils unpacker
 
 DESCRIPTION="Shadow Tactics: Blades of the Shogun"
 HOMEPAGE="https://www.gog.com/game/shadow_tactics_blades_of_the_shogun"
@@ -45,7 +45,7 @@ pkg_nofetch() {
 }
 
 src_unpack() {
-	unzip -qo "${DISTDIR}/${SRC_URI}"
+	unpack_zip "${DISTDIR}/${SRC_URI}"
 }
 
 src_install() {

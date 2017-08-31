@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit check-reqs eutils gnome2-utils
+inherit check-reqs eutils gnome2-utils unpacker
 
 DESCRIPTION="Soma"
 HOMEPAGE="https://www.gog.com/game/soma"
@@ -51,7 +51,7 @@ pkg_nofetch() {
 }
 
 src_unpack() {
-	unzip -qo "${DISTDIR}/${SRC_URI}"
+	unpack_zip "${DISTDIR}/${SRC_URI}"
 }
 
 src_install() {

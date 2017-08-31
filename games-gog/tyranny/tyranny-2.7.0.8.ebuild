@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit check-reqs eutils gnome2-utils
+inherit check-reqs eutils gnome2-utils unpacker
 
 DESCRIPTION="Tyranny"
 HOMEPAGE="https://www.gog.com/game/tyranny_commander_edition"
@@ -54,14 +54,14 @@ pkg_nofetch() {
 }
 
 src_unpack() {
-	unzip -qo "${DISTDIR}/${BASE_SRC_URI}"
+	unpack_zip "${DISTDIR}/${BASE_SRC_URI}"
 
 	if use dlc1 ; then
-		unzip -qo "${DISTDIR}/${DLC1_SRC_URI}"
+		unpack_zip "${DISTDIR}/${DLC1_SRC_URI}"
 	fi
 
 	if use dlc2 ; then
-		unzip -qo "${DISTDIR}/${DLC2_SRC_URI}"
+		unpack_zip "${DISTDIR}/${DLC2_SRC_URI}"
 	fi
 }
 
