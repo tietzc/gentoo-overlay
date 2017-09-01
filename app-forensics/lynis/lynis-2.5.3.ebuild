@@ -43,10 +43,12 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "A cron script has been installed to /etc/cron.weekly/${PN}."
-	elog "To enable it, edit /etc/cron.weekly/lynis and follow the"
-	elog "directions."
-	elog "If you want ${PN} to send mail, you will need to install"
-	elog "virtual/mailx or alter the EMAIL_CMD variable in the"
-	elog "cron script."
+	if [[ -z ${REPLACING_VERSIONS} ]] ; then
+		elog "A cron script has been installed to /etc/cron.weekly/${PN}."
+		elog "To enable it, edit /etc/cron.weekly/${PN} and follow the"
+		elog "directions."
+		elog "If you want ${PN} to send mail, you will need to install"
+		elog "virtual/mailx or alter the EMAIL_CMD variable in the"
+		elog "cron script."
+	fi
 }
