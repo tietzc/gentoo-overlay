@@ -3,7 +3,7 @@
 
 EAPI=6
 
-COMMIT="44e03ab08e65c2a116449eab81aec7aeb6104a82"
+COMMIT="bd73feb82581c843c116953f451f5ed673f16404"
 
 PLOCALES="
 	ar ast be bg bn bs ca cs da de el en_AU en_CA en_GB eo es et eu fa fi fo fr
@@ -12,7 +12,7 @@ PLOCALES="
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="sqlite(+)"
 
-inherit distutils-r1 eutils l10n vcs-snapshot
+inherit distutils-r1 eutils l10n
 
 DESCRIPTION="Clean junk to free disk space and to maintain privacy"
 HOMEPAGE="https://www.bleachbit.org"
@@ -31,6 +31,8 @@ DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )"
 
 DOCS=( README.md )
+
+S="${WORKDIR}/${PN}-${COMMIT}"
 
 python_prepare_all() {
 	rem_locale() {
