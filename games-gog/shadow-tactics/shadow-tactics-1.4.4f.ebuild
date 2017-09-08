@@ -3,11 +3,11 @@
 
 EAPI=6
 
-inherit check-reqs eutils gnome2-utils unpacker
+inherit check-reqs eutils gnome2-utils unpacker versionator
 
 DESCRIPTION="Shadow Tactics: Blades of the Shogun"
 HOMEPAGE="https://www.gog.com/game/shadow_tactics_blades_of_the_shogun"
-SRC_URI="gog_shadow_tactics_blades_of_the_shogun_${PV}.sh"
+SRC_URI="shadow_tactics_blades_of_the_shogun_en_$(version_format_string '$1_$2_$3_$4')_14723.sh"
 
 LICENSE="GOG-EULA"
 SLOT="0"
@@ -50,9 +50,6 @@ src_unpack() {
 
 src_install() {
 	local dir="/opt/${PN}"
-
-	rm game/Shadow\ Tactics_Data/Plugins/x86/libCSteamworks.so \
-		game/Shadow\ Tactics_Data/Plugins/x86/libsteam_api.so || die
 
 	insinto "${dir}"
 	doins -r game/.
