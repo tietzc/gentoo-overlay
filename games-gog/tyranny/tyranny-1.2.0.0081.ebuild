@@ -3,14 +3,14 @@
 
 EAPI=6
 
-inherit check-reqs eutils gnome2-utils unpacker
+inherit check-reqs eutils gnome2-utils unpacker versionator
 
 DESCRIPTION="Tyranny"
 HOMEPAGE="https://www.gog.com/game/tyranny_commander_edition"
 
-BASE_SRC_URI="gog_tyranny_${PV}.sh"
-DLC1_SRC_URI="gog_tyranny_tales_from_the_tiers_dlc_2.1.0.2.sh"
-DLC2_SRC_URI="gog_tyranny_pre_order_dlc_2.0.0.1.sh"
+BASE_SRC_URI="tyranny_en_v$(replace_all_version_separators '_')_14772.sh"
+DLC1_SRC_URI="tyranny_tales_from_the_tiers_dlc_en_1_0_14773.sh"
+DLC2_SRC_URI="tyranny_pre_order_dlc_en_1_0_14773.sh"
 SRC_URI="${BASE_SRC_URI}
 	dlc1? ( ${DLC1_SRC_URI} )
 	dlc2? ( ${DLC2_SRC_URI} )"
@@ -72,7 +72,6 @@ src_install() {
 		game/Tyranny_Data/Mono/$(usex amd64 "x86" "x86_64") \
 		game/Tyranny_Data/Plugins/$(usex amd64 "x86" "x86_64") \
 		game/Tyranny_Data/Plugins/$(usex amd64 "x86_64" "x86")/libCSteamworks.so \
-		game/Tyranny_Data/Plugins/$(usex amd64 "x86_64" "x86")/libpops_api.so \
 		game/Tyranny_Data/Plugins/$(usex amd64 "x86_64" "x86")/libsteam_api.so || die
 
 	dodir "${dir}"
