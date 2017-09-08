@@ -82,7 +82,7 @@ src_install() {
 		game/Tyranny_Data/Plugins/$(usex amd64 "x86_64" "x86")/libsteam_api.so || die
 
 	dodir "${dir}"
-	mv game/* "${D%/}${dir}" || die
+	mv game/* "${D%/}/${dir}" || die
 
 	# ensure sane permissions
 	find "${D%/}/${dir}" -type f -exec chmod 0644 '{}' + || die
