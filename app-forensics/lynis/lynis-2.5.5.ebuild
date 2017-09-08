@@ -22,6 +22,13 @@ DOCS=( CHANGELOG.md FAQ README )
 S="${WORKDIR}/${PN}"
 
 src_install() {
+	dobashcomp extras/bash_completion.d/${PN}
+	doman ${PN}.8
+	einstalldocs
+
+	exeinto /etc/cron.weekly
+	newexe "${FILESDIR}"/${PN}.cron ${PN}
+
 	# stricter default perms, bug #507436
 	diropts -m0700
 	insopts -m0600
@@ -33,13 +40,6 @@ src_install() {
 	doins default.prf
 
 	dosbin ${PN}
-
-	dobashcomp extras/bash_completion.d/${PN}
-	doman ${PN}.8
-	einstalldocs
-
-	exeinto /etc/cron.weekly
-	newexe "${FILESDIR}"/${PN}.cron ${PN}
 }
 
 pkg_postinst() {
