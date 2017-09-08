@@ -9,16 +9,18 @@ DESCRIPTION="Tyranny"
 HOMEPAGE="https://www.gog.com/game/tyranny_commander_edition"
 
 BASE_SRC_URI="tyranny_en_v$(replace_all_version_separators '_')_14772.sh"
-DLC1_SRC_URI="tyranny_tales_from_the_tiers_dlc_en_1_0_14773.sh"
-DLC2_SRC_URI="tyranny_pre_order_dlc_en_1_0_14773.sh"
+DLC1_SRC_URI="tyranny_bastard_s_wound_dlc_en_1_0_14773.sh"
+DLC2_SRC_URI="tyranny_tales_from_the_tiers_dlc_en_1_0_14773.sh"
+DLC3_SRC_URI="tyranny_pre_order_dlc_en_1_0_14773.sh"
 SRC_URI="${BASE_SRC_URI}
 	dlc1? ( ${DLC1_SRC_URI} )
-	dlc2? ( ${DLC2_SRC_URI} )"
+	dlc2? ( ${DLC2_SRC_URI} )
+	dlc3? ( ${DLC3_SRC_URI} )"
 
 LICENSE="GOG-EULA"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
-IUSE="+dlc1 +dlc2"
+IUSE="+dlc1 +dlc2 +dlc3"
 RESTRICT="bindist fetch"
 
 RDEPEND="
@@ -35,7 +37,7 @@ DEPEND="app-arch/unzip"
 
 S="${WORKDIR}/data/noarch"
 
-CHECKREQS_DISK_BUILD="14G"
+CHECKREQS_DISK_BUILD="15G"
 
 QA_PREBUILT="
 	opt/${PN}/Tyranny
@@ -47,6 +49,7 @@ pkg_nofetch() {
 	einfo "Please buy & download \"${BASE_SRC_URI}\""
 	use dlc1 && einfo "and \"${DLC1_SRC_URI}\""
 	use dlc2 && einfo "and \"${DLC2_SRC_URI}\""
+	use dlc3 && einfo "and \"${DLC3_SRC_URI}\""
 	einfo "from:"
 	einfo "  ${HOMEPAGE}"
 	einfo "and move/link it to \"${DISTDIR}\""
@@ -62,6 +65,10 @@ src_unpack() {
 
 	if use dlc2 ; then
 		unpack_zip "${DISTDIR}/${DLC2_SRC_URI}"
+	fi
+
+	if use dlc3 ; then
+		unpack_zip "${DISTDIR}/${DLC3_SRC_URI}"
 	fi
 }
 
