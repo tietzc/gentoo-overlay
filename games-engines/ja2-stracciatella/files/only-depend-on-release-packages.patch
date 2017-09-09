@@ -1,6 +1,6 @@
---- a/rust/Cargo.toml	2017-06-26 23:47:30.000000000 +0200
-+++ b/rust/Cargo.toml	2017-07-03 22:16:31.310302755 +0200
-@@ -4,11 +4,6 @@
+--- a/rust/Cargo.toml	2017-08-02 14:39:01.000000000 +0200
++++ b/rust/Cargo.toml	2017-09-09 01:56:04.717760707 +0200
+@@ -4,27 +4,13 @@
  authors = ["Stefan Lau <github@stefanlau.com>"]
  release-debuginfo = true
  
@@ -12,8 +12,12 @@
  [lib]
  crate-type = ["dylib"]
  name = "stracciatella"
-@@ -19,12 +14,3 @@
- libc = "0.2.16"
+ path = "src/stracciatella.rs"
+ 
+ [dependencies]
+-getopts = { git = "https://github.com/rust-lang-nursery/getopts", rev = "b8beaf63" }
++getopts = "0.2"
+ libc = "0.2"
  serde = "0.8"
  serde_json = "0.8"
 -

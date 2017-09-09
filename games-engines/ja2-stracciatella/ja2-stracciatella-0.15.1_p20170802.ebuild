@@ -12,7 +12,7 @@ CRATES="
 	serde-0.8.23
 	serde_json-0.8.6"
 
-COMMIT="9ad6cf5e5b6742b5831382156e84cf0eb7ade11d"
+COMMIT="99cb61bf587e445fa7eff7f0395d599cb1355363"
 
 inherit cargo cmake-utils gnome2-utils
 
@@ -34,7 +34,10 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-util/cargo"
 
-PATCHES=( "${FILESDIR}/Only-depend-on-release-packages.patch" )
+PATCHES=(
+	"${FILESDIR}"/disallow-options-with-a-single-dash.patch
+	"${FILESDIR}"/only-depend-on-release-packages.patch
+)
 
 DOCS=( README.md changes.md contributors.txt )
 

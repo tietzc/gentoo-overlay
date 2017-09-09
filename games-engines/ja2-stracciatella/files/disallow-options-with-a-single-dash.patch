@@ -1,0 +1,11 @@
+--- a/rust/src/stracciatella.rs	2017-08-02 14:39:01.000000000 +0200
++++ b/rust/src/stracciatella.rs	2017-09-09 02:23:15.267271104 +0200
+@@ -118,8 +118,6 @@
+ pub fn get_command_line_options() -> Options {
+     let mut opts = Options::new();
+ 
+-    opts.long_only(true);
+-
+     opts.optmulti(
+         "",
+         "datadir",
