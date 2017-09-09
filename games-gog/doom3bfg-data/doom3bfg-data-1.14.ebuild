@@ -42,9 +42,8 @@ src_install() {
 	insinto /usr/share/doom3bfg/base
 	doins -r app/base/.
 
-	make_wrapper ${PN} "./RBDoom3BFG" /usr/bin/
-	newicon -s 128 app/language_setup.png ${PN}.png
-	make_desktop_entry ${PN} "Doom 3: BFG Edition"
+	newicon -s 128 app/language_setup.png doom3bfg.png
+	make_desktop_entry RBDoom3BFG "Doom 3: BFG Edition" doom3bfg.png
 }
 
 pkg_postinst() {
