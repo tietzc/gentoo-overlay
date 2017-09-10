@@ -3,7 +3,7 @@
 
 EAPI=6
 
-COMMIT="fab5644a75b30beb41eeddfc711e144214211e18"
+COMMIT="09f92b95d92b4393a731eb202c1a8e49ecd8712d"
 MY_PN="RBDOOM-3-BFG"
 
 inherit cmake-utils
@@ -22,16 +22,14 @@ RDEPEND="
 	media-libs/glew:=
 	media-libs/libpng:=
 	media-libs/libsdl2[X,opengl,sound,video]
+	>=media-libs/mesa-17.2
 	media-libs/openal:=
 	media-video/ffmpeg:=
 	sys-libs/zlib:=[minizip]"
 
 DEPEND="${RDEPEND}"
 
-PATCHES=(
-	"${FILESDIR}"/libpng16.patch
-	"${FILESDIR}"/disable-hdr-by-default.patch
-)
+PATCHES=( "${FILESDIR}"/libpng16.patch )
 
 DOCS=( README.txt RELEASE-NOTES.txt )
 
@@ -65,9 +63,9 @@ src_configure() {
 }
 
 src_install() {
-	dobin "${WORKDIR}/${P}_build/RBDoom3BFG"
+	dobin "${BUILD_DIR}"/RBDoom3BFG
 
-	insinto "${GAMES_DATADIR}/base"
+	insinto "${GAMES_DATADIR}"/base
 	doins base/{default,extract_resources}.cfg
 
 	einstalldocs
