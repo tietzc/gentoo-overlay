@@ -8,7 +8,7 @@ inherit check-reqs eutils gnome2-utils unpacker versionator
 DESCRIPTION="Tyranny"
 HOMEPAGE="https://www.gog.com/game/tyranny_commander_edition"
 
-BASE_SRC_URI="tyranny_en_v$(replace_all_version_separators '_')_14772.sh"
+BASE_SRC_URI="tyranny_en_$(replace_all_version_separators '_')_14941.sh"
 DLC1_SRC_URI="tyranny_bastard_s_wound_dlc_en_1_0_14773.sh"
 DLC2_SRC_URI="tyranny_tales_from_the_tiers_dlc_en_1_0_14773.sh"
 DLC3_SRC_URI="tyranny_pre_order_dlc_en_1_0_14773.sh"
@@ -42,7 +42,8 @@ CHECKREQS_DISK_BUILD="15G"
 QA_PREBUILT="
 	opt/${PN}/Tyranny
 	opt/${PN}/Tyranny.x86
-	opt/${PN}/Tyranny_Data/Mono/x86*/libmono.so"
+	opt/${PN}/Tyranny_Data/Mono/x86*/libmono.so
+	opt/${PN}/Tyranny_Data/Plugins/x86*/libpops_api.so"
 
 pkg_nofetch() {
 	einfo
