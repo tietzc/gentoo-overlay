@@ -15,7 +15,7 @@ SRC_URI="https://github.com/RobertBeckebans/${MY_PN}/archive/${COMMIT}.tar.gz ->
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="libav"
 RESTRICT="mirror"
 
 RDEPEND="
@@ -24,8 +24,9 @@ RDEPEND="
 	media-libs/libsdl2[X,opengl,sound,video]
 	>=media-libs/mesa-17.2
 	media-libs/openal:=
-	media-video/ffmpeg:=
-	sys-libs/zlib:=[minizip]"
+	sys-libs/zlib:=[minizip]
+	libav? ( media-video/libav:= )
+	!libav? ( media-video/ffmpeg:= )"
 
 DEPEND="${RDEPEND}"
 
