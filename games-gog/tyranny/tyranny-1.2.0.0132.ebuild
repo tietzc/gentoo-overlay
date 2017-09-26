@@ -8,8 +8,8 @@ inherit check-reqs eutils gnome2-utils unpacker versionator
 DESCRIPTION="Tyranny"
 HOMEPAGE="https://www.gog.com/game/tyranny_commander_edition"
 
-BASE_SRC_URI="tyranny_en_$(replace_all_version_separators '_')_14941.sh"
-DLC1_SRC_URI="tyranny_bastard_s_wound_dlc_en_1_0_14773.sh"
+BASE_SRC_URI="tyranny_en_$(replace_all_version_separators '_')_15035.sh"
+DLC1_SRC_URI="tyranny_bastard_s_wound_dlc_en_$(replace_all_version_separators '_')_15035.sh"
 DLC2_SRC_URI="tyranny_tales_from_the_tiers_dlc_en_1_0_14773.sh"
 DLC3_SRC_URI="tyranny_pre_order_dlc_en_1_0_14773.sh"
 SRC_URI="${BASE_SRC_URI}
