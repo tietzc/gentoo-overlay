@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -21,7 +21,7 @@ RDEPEND="net-print/cups"
 
 DEPEND="${RDEPEND}"
 
-PATCHES=( "${FILESDIR}/brother_lpdwrapper_BrGenML1.patch" )
+PATCHES=( "${FILESDIR}"/brother_lpdwrapper_BrGenML1.patch )
 
 S="${WORKDIR}"
 
@@ -42,13 +42,15 @@ src_unpack() {
 }
 
 src_install() {
-	cp -r var "${D}" || die
-	cp -r opt "${D}" || die
 	cp -r etc "${D}" || die
+	cp -r opt "${D}" || die
+	cp -r var "${D}" || die
 
-	mkdir -p "${D}/usr/libexec/cups/filter" || die
-	( cd $_ && ln -s ../../../../opt/brother/Printers/BrGenML1/cupswrapper/brother_lpdwrapper_BrGenML1 ) || die
+	dodir /usr/libexec/cups/filter
+	dosym ../../../../opt/brother/Printers/BrGenML1/cupswrapper/brother_lpdwrapper_BrGenML1 \
+		/usr/libexec/cups/filter/brother_lpdwrapper_BrGenML1
 
-	mkdir -p "${D}/usr/share/cups/model" || die
-	( cd $_ && ln -s ../../../../opt/brother/Printers/BrGenML1/cupswrapper/brother-BrGenML1-cups-en.ppd ) || die
+	dodir /usr/share/cups/model
+	dosym ../../../../opt/brother/Printers/BrGenML1/cupswrapper/brother-BrGenML1-cups-en.ppd \
+		/usr/share/cups/model/brother-BrGenML1-cups-en.ppd
 }
