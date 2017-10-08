@@ -27,7 +27,7 @@ DEPEND="app-arch/unzip"
 
 S="${WORKDIR}/data/noarch"
 
-QA_PREBUILT="opt/${PN}/game/IcewindDale"
+QA_PREBUILT="opt/${PN}/IcewindDale"
 
 pkg_nofetch() {
 	einfo
@@ -43,16 +43,17 @@ src_unpack() {
 
 src_install() {
 	local dir="/opt/${PN}"
+	local ABI="x86"
 
 	insinto "${dir}"
-	doins -r game
+	doins -r game/.
 
-	fperms +x "${dir}"/game/IcewindDale
+	fperms +x "${dir}"/IcewindDale
 
 	dodir "${dir}"/lib
-	dosym /usr/$(get_abi_LIBDIR x86)/libjson-c.so "${dir}"/lib/libjson.so.0
+	dosym ../../../usr/$(get_libdir)/libjson-c.so "${dir}"/lib/libjson.so.0
 
-	make_wrapper ${PN} "./IcewindDale" "${dir}/game" "${dir}/lib"
+	make_wrapper ${PN} "./IcewindDale" "${dir}" "${dir}/lib"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Icewind Dale: Enhanced Edition"
 }
