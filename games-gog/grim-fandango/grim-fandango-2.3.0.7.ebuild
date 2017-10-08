@@ -48,6 +48,7 @@ src_unpack() {
 
 src_install() {
 	local dir="/opt/${PN}"
+	local ABI="x86"
 
 	rm -r game/run.sh \
 		game/bin/amd64 \
@@ -57,7 +58,7 @@ src_install() {
 	insinto "${dir}"
 	doins -r game/bin/.
 
-	dosym /usr/$(get_abi_LIBDIR x86)/libSDL2-2.0.so.0 "${dir}"/libSDL2-2.0.so.1
+	dosym ../../usr/$(get_libdir)/libSDL2.so "${dir}"/libSDL2-2.0.so.1
 
 	if use savedir-patch ; then
 		pushd "${D%/}/${dir}" >/dev/null || die
