@@ -35,17 +35,17 @@ src_unpack() {
 
 src_install() {
 	local dir="/opt/${PN}"
+	local lang
 
 	insinto "${dir}"
 	doins -r data/.
 
 	newicon -s 256 support/icon.png ${PN}.png
 
-	local i
-	for i in de es fr it ; do
-		if use l10n_${i} ; then
-			make_wrapper ${PN}-${i} "scummvm -f -p "${dir}" -q ${i} sky"
-			make_desktop_entry ${PN}-${i} "Beneath A Steel Sky (${i})"
+	for lang in de es fr it ; do
+		if use l10n_${lang} ; then
+			make_wrapper ${PN}-${i} "scummvm -f -p "${dir}" -q ${lang} sky"
+			make_desktop_entry ${PN}-${lang} "Beneath A Steel Sky (${lang})"
 		else
 			make_wrapper ${PN} "scummvm -f -p "${dir}" sky"
 			make_desktop_entry ${PN} "Beneath A Steel Sky"
