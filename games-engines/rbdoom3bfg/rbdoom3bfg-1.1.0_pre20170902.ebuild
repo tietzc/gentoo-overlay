@@ -28,9 +28,13 @@ RDEPEND="
 	libav? ( media-video/libav:= )
 	!libav? ( media-video/ffmpeg:= )"
 
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	dev-libs/rapidjson"
 
-PATCHES=( "${FILESDIR}"/libpng16.patch )
+PATCHES=(
+	"${FILESDIR}"/libpng16.patch
+	"${FILESDIR}"/system-rapidjson.patch
+)
 
 DOCS=( README.txt RELEASE-NOTES.txt )
 
@@ -56,6 +60,7 @@ src_configure() {
 		-DUSE_SYSTEM_LIBGLEW=ON
 		-DUSE_SYSTEM_LIBJPEG=OFF # fails with media-libs/libjpeg-turbo-1.5.1
 		-DUSE_SYSTEM_LIBPNG=ON
+		-DUSE_SYSTEM_RAPIDJSON=ON
 		-DUSE_SYSTEM_ZLIB=ON
 		-Wno-dev ../neo
 	)
