@@ -32,6 +32,7 @@ RDEPEND="
 	media-libs/libsdl2[X,opengl,sound,video]"
 
 DEPEND="${RDEPEND}
+	dev-libs/rapidjson
 	dev-util/cargo"
 
 PATCHES=( "${FILESDIR}"/only-use-release-profile.patch )
@@ -64,7 +65,7 @@ src_configure() {
 		-DINSTALL_LIB_DIR="/usr/$(get_libdir)"
 		-DLOCAL_BOOST_LIB=OFF
 		-DLOCAL_GTEST_LIB=OFF
-		-DLOCAL_RAPIDJSON_LIB=ON
+		-DLOCAL_RAPIDJSON_LIB=OFF
 		-DLOCAL_SDL_LIB=OFF
 		-DWITH_FIXMES=OFF
 		-DWITH_MAEMO=OFF
