@@ -1,0 +1,24 @@
+--- a/rust/Cargo.toml	2017-10-14 12:34:44.000000000 +0200
++++ b/rust/Cargo.toml	2017-10-15 02:47:16.092231905 +0200
+@@ -4,8 +4,6 @@
+ authors = ["Stefan Lau <github@stefanlau.com>"]
+ release-debuginfo = true
+ 
+-[profile.dev]
+-rpath = true
+ [profile.release]
+ rpath = true
+ 
+@@ -19,12 +17,3 @@
+ libc = "0.2"
+ serde = "0.8"
+ serde_json = "0.8"
+-
+-[dev-dependencies]
+-regex = "0.1"
+-tempdir = "0.3"
+-
+-[target.'cfg(windows)'.dependencies]
+-winapi = "0.2"
+-user32-sys = "0.2"
+-shell32-sys = "0.1"

@@ -5,14 +5,14 @@ EAPI=6
 
 CRATES="
 	dtoa-0.2.2
-	getopts-0.2.14
+	getopts-0.2.15
 	itoa-0.1.1
 	libc-0.2.21
 	num-traits-0.1.37
 	serde-0.8.23
 	serde_json-0.8.6"
 
-COMMIT="99cb61bf587e445fa7eff7f0395d599cb1355363"
+COMMIT="37efe63e1c8d95d748a2cc9e10a77b06be36b4f0"
 
 inherit cargo cmake-utils gnome2-utils
 
@@ -34,10 +34,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-util/cargo"
 
-PATCHES=(
-	"${FILESDIR}"/disallow-options-with-a-single-dash.patch
-	"${FILESDIR}"/only-depend-on-release-packages.patch
-)
+PATCHES=( "${FILESDIR}"/only-use-release-profile.patch )
 
 DOCS=( README.md changes.md contributors.txt )
 
@@ -55,8 +52,8 @@ src_prepare() {
 		-e "s:/some/place/where/the/data/is:${GAMES_DATADIR}:g" \
 		rust/src/stracciatella.rs || die
 
-	mkdir "${PORTAGE_BUILDDIR}/homedir/.cargo" || die
-	cp "${WORKDIR}/cargo_home/config" "${PORTAGE_BUILDDIR}/homedir/.cargo/config" || die
+	mkdir "${PORTAGE_BUILDDIR}"/homedir/.cargo || die
+	cp "${WORKDIR}"/cargo_home/config "${PORTAGE_BUILDDIR}"/homedir/.cargo/config || die
 
 	cmake-utils_src_prepare
 }
@@ -64,7 +61,11 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DEXTRA_DATA_DIR="${GAMES_DATADIR}"
+		-DINSTALL_LIB_DIR="/usr/$(get_libdir)"
 		-DLOCAL_BOOST_LIB=OFF
+		-DLOCAL_GTEST_LIB=OFF
+		-DLOCAL_RAPIDJSON_LIB=ON
+		-DLOCAL_SDL_LIB=OFF
 		-DWITH_FIXMES=OFF
 		-DWITH_MAEMO=OFF
 		-DWITH_UNITTESTS=OFF
@@ -75,7 +76,7 @@ src_configure() {
 
 src_install(){
 	cmake-utils_src_install
-	keepdir "${GAMES_DATADIR}/data"
+	keepdir "${GAMES_DATADIR}"/data
 }
 
 pkg_postinst() {
