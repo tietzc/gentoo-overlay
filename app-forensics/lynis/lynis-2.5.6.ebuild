@@ -29,6 +29,8 @@ src_install() {
 	exeinto /etc/cron.weekly
 	newexe "${FILESDIR}"/${PN}.cron ${PN}
 
+	dosbin ${PN}
+
 	# stricter default perms, bug #507436
 	diropts -m0700
 	insopts -m0600
@@ -38,8 +40,6 @@ src_install() {
 
 	insinto /etc/${PN}
 	doins default.prf
-
-	dosbin ${PN}
 }
 
 pkg_postinst() {
