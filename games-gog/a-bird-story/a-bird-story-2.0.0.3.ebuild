@@ -50,8 +50,9 @@ src_unpack() {
 src_install() {
 	local dir="/opt/${PN}"
 
-	rm -r game/linux_launcher.sh \
+	rm -r game/legal \
 		game/lib$(usex amd64 "" "64") \
+		game/linux_launcher.sh \
 		game/ABirdStory.$(usex amd64 "x86" "amd64") || die
 
 	find game/lib$(usex amd64 "64" "") -type f \
