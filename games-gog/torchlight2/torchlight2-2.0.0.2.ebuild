@@ -53,6 +53,7 @@ src_install() {
 
 	rm -r game/lib$(usex amd64 "" "64") \
 		game/lib$(usex amd64 "64" "")/{libfreeimage.so.3,libfreetype.so.6,libSDL2-2.0.so.0} \
+		game/licenses \
 		game/ModLauncher.bin.$(usex amd64 "x86" "x86_64") \
 		game/Torchlight2.bin.$(usex amd64 "x86" "x86_64") || die
 
