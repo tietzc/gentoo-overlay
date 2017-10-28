@@ -49,7 +49,9 @@ src_unpack() {
 src_install() {
 	local dir="/opt/${PN}"
 
-	rm -r game/lib$(usex amd64 "" "64") \
+	rm -r game/legal \
+		game/lib$(usex amd64 "" "64") \
+		game/COPYING-*.txt \
 		game/ToTheMoon.bin.$(usex amd64 "x86" "x86_64") || die
 
 	find game/lib$(usex amd64 "64" "") -type f \
