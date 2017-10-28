@@ -52,6 +52,7 @@ src_install() {
 
 	rm -r game/run.sh \
 		game/bin/amd64 \
+		game/bin/common-licenses \
 		game/bin/i386 \
 		game/bin/libSDL2-2.0.so.1 || die
 
