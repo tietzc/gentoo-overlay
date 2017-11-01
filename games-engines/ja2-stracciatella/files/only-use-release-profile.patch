@@ -1,5 +1,5 @@
---- a/rust/Cargo.toml	2017-10-14 12:34:44.000000000 +0200
-+++ b/rust/Cargo.toml	2017-10-15 02:47:16.092231905 +0200
+--- a/rust/Cargo.toml	2017-10-31 23:29:00.000000000 +0100
++++ b/rust/Cargo.toml	2017-11-01 01:36:21.144544152 +0100
 @@ -4,8 +4,6 @@
  authors = ["Stefan Lau <github@stefanlau.com>"]
  release-debuginfo = true
@@ -11,8 +11,8 @@
  
 @@ -19,12 +17,3 @@
  libc = "0.2"
- serde = "0.8"
- serde_json = "0.8"
+ serde = "1"
+ serde_json = "1"
 -
 -[dev-dependencies]
 -regex = "0.1"

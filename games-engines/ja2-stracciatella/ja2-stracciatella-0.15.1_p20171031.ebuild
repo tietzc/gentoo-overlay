@@ -4,15 +4,15 @@
 EAPI=6
 
 CRATES="
-	dtoa-0.2.2
+	dtoa-0.4.2
 	getopts-0.2.15
-	itoa-0.1.1
-	libc-0.2.21
-	num-traits-0.1.37
-	serde-0.8.23
-	serde_json-0.8.6"
+	itoa-0.3.4
+	libc-0.2.33
+	num-traits-0.1.40
+	serde-1.0.17
+	serde_json-1.0.5"
 
-COMMIT="37efe63e1c8d95d748a2cc9e10a77b06be36b4f0"
+COMMIT="7520f79d2d4d536f6842977cdc257f98788900e9"
 
 inherit cargo cmake-utils gnome2-utils
 
