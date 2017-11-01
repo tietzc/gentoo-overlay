@@ -32,8 +32,7 @@ RDEPEND="
 	media-libs/libsdl2[X,opengl,sound,video]"
 
 DEPEND="${RDEPEND}
-	dev-libs/rapidjson
-	dev-util/cargo"
+	dev-libs/rapidjson"
 
 PATCHES=( "${FILESDIR}"/only-use-release-profile.patch )
 
