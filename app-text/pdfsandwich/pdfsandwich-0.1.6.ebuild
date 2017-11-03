@@ -8,8 +8,8 @@ HOMEPAGE="http://www.tobias-elze.de/pdfsandwich"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 RESTRICT="mirror"
 
@@ -18,7 +18,6 @@ RDEPEND="
 	app-text/poppler[png,utils]
 	app-text/tesseract
 	app-text/unpaper
-	media-gfx/exact-image
 	virtual/imagemagick-tools[png]"
 
 DEPEND="
@@ -28,6 +27,8 @@ DEPEND="
 src_prepare() {
 	default
 
-	sed -i "/^OCAMLOPTFLAGS/s/$/ -ccopt \"\$(CFLAGS) \$(LDFLAGS)\"/" Makefile || die
-	sed -i "s/install -s/install/" Makefile || die
+	sed -i \
+		-e "/^OCAMLOPTFLAGS/s/$/ -ccopt \"\$(CFLAGS) \$(LDFLAGS)\"/" \
+		-e "s/install -s/install/" \
+		Makefile || die
 }
