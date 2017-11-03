@@ -16,7 +16,7 @@ RESTRICT="mirror"
 RDEPEND="
 	app-text/ghostscript-gpl
 	app-text/poppler[png,utils]
-	app-text/tesseract
+	app-text/tesseract[osd,png]
 	app-text/unpaper
 	virtual/imagemagick-tools[png]"
 
