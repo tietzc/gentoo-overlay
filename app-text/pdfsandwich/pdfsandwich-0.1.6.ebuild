@@ -20,9 +20,7 @@ RDEPEND="
 	app-text/unpaper
 	virtual/imagemagick-tools[png]"
 
-DEPEND="
-	dev-lang/ocaml[ocamlopt]
-	sys-apps/gawk"
+DEPEND="dev-lang/ocaml[ocamlopt]"
 
 src_prepare() {
 	default
