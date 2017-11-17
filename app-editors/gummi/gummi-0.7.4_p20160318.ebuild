@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools eutils vcs-snapshot
+inherit autotools vcs-snapshot
 
 COMMIT="e6134ec1dbd96bb455c9daa4c35e615118092c4f"
 
@@ -16,12 +16,6 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 RESTRICT="mirror"
-
-LANGS="ar ca cs da de el es fr hu it nl pl pt pt_BR ro ru sv zh_CN zh_TW"
-
-for X in ${LANGS} ; do
-	IUSE+=" linguas_${X}"
-done
 
 RDEPEND="
 	dev-libs/glib:2
@@ -37,7 +31,6 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	default
-	strip-linguas ${LANGS}
 	eautoreconf
 }
 
