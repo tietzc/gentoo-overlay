@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools vcs-snapshot
+inherit autotools vcs-snapshot xdg-utils
 
 COMMIT="e6134ec1dbd96bb455c9daa4c35e615118092c4f"
 
@@ -38,4 +38,10 @@ pkg_postinst() {
 	elog "Gummi supports spell-checking through gtkspell. Support for"
 	elog "additional languages can be added by installing myspell-**"
 	elog "packages for your language of choice."
+
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
 }
