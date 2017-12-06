@@ -8,4 +8,7 @@
 	<upstream>
 		<remote-id type="github">vkohaupt/vokoscreen</remote-id>
 	</upstream>
+	<use>
+		<flag name="x265">Enables HEVC encoding with <pkg>media-libs/x265</pkg></flag>
+	</use>
 </pkgmetadata>

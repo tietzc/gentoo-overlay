@@ -12,17 +12,18 @@ SRC_URI="https://github.com/vkohaupt/${PN}/archive/${PV}-beta.tar.gz -> ${P}.tar
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="+v4l +x265"
 
 RDEPEND="
+	dev-qt/qtdbus:5
 	dev-qt/qtgui:5
 	dev-qt/qtmultimedia:5
 	dev-qt/qtnetwork:5
 	dev-qt/qttest:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
+	media-video/ffmpeg[encode,mp3,v4l?,vorbis,x264,x265?]
 	sys-process/lsof
-	virtual/ffmpeg
 	x11-libs/libXrandr"
 
 DEPEND="${RDEPEND}
