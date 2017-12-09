@@ -3,7 +3,7 @@
 
 EAPI=6
 
-COMMIT="a9d29eae78e4ef69d4cf9e6144fc06f3fd65670e"
+COMMIT="b1e6a520a00557045bc52972d228c0f2e1ab547d"
 
 PLOCALES="
 	ar ast be bg bn bs ca cs da de el en_AU en_CA en_GB eo es et eu fa fi fo fr
@@ -43,7 +43,7 @@ python_prepare_all() {
 	l10n_for_each_disabled_locale_do rem_locale
 
 	# choose correct Python implementation, bug #465254
-	sed -i -e 's/python/$(PYTHON)/g' po/Makefile || die
+	sed -i 's/python/$(PYTHON)/g' po/Makefile || die
 
 	distutils-r1_python_prepare_all
 }
