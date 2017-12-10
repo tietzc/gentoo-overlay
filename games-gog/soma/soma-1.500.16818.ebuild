@@ -7,7 +7,7 @@ inherit check-reqs eutils gnome2-utils unpacker versionator
 
 DESCRIPTION="Soma"
 HOMEPAGE="https://www.gog.com/game/soma"
-SRC_URI="soma_en_$(version_format_string '$1$2_$3').sh"
+SRC_URI="soma_en_$(version_format_string '$1$2r_$3').sh"
 
 LICENSE="GOG-EULA"
 SLOT="0"
