@@ -3,7 +3,7 @@
 
 EAPI=6
 
-COMMIT="b1e6a520a00557045bc52972d228c0f2e1ab547d"
+COMMIT="fc8e1ddb17b96e9819bd545aec744cb57bfb1da0"
 
 PLOCALES="
 	ar ast be bg bn bs ca cs da de el en_AU en_CA en_GB eo es et eu fa fi fo fr
