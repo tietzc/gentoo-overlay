@@ -15,7 +15,7 @@ KEYWORDS="-* ~amd64"
 IUSE=""
 RESTRICT="bindist fetch"
 
-# use bundled dev-games/newton, dev-libs/angelscript, and media-libs/fmod for now
+# use bundled media-libs/fmod for now
 
 RDEPEND="
 	dev-libs/expat
@@ -40,7 +40,7 @@ CHECKREQS_DISK_BUILD="22G"
 QA_PREBUILT="
 	opt/${PN}/ModLauncher.bin.x86_64
 	opt/${PN}/Soma.bin.x86_64
-	opt/${PN}/lib64/lib*"
+	opt/${PN}/lib64/libfmod*"
 
 pkg_nofetch() {
 	einfo
@@ -58,14 +58,8 @@ src_install() {
 	local dir="/opt/${PN}"
 
 	find game/lib64 -type f \
-		! -name "libangelscript.a" \
-		! -name "libfbxsdk-2012.2-static.a" \
-		! -name "libfmod*" \
-		! -name "libNewton.a" \
-		-delete || die
-
-	find game/lib64 -type l \
-		! -name "libfmod*" \
+		! -name "libfmodevent64-4.44.62.so" \
+		! -name "libfmodex64-4.44.62.so" \
 		-delete || die
 
 	dodir "${dir}"
