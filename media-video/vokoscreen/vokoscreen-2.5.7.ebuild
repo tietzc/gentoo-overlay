@@ -12,7 +12,7 @@ SRC_URI="https://github.com/vkohaupt/${PN}/archive/${PV}-beta.tar.gz -> ${P}.tar
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="pulseaudio +v4l +x265"
+IUSE="pulseaudio +v4l +vpx +x265"
 
 RDEPEND="
 	dev-qt/qtcore:5
@@ -23,7 +23,7 @@ RDEPEND="
 	dev-qt/qttest:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
-	media-video/ffmpeg[encode,mp3,pulseaudio?,v4l?,vorbis,x264,x265?]
+	media-video/ffmpeg[encode,mp3,pulseaudio?,v4l?,vorbis,vpx?,x264,x265?]
 	sys-process/lsof
 	x11-libs/libX11"
 
