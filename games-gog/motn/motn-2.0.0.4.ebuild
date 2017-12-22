@@ -32,8 +32,8 @@ DEPEND="app-arch/unzip"
 S="${WORKDIR}/data/noarch"
 
 QA_PREBUILT="
-	opt/motn/bin/lib*/lib*
-	opt/motn/bin/ninja-bin*"
+	opt/gog/motn/bin/lib*/lib*
+	opt/gog/motn/bin/ninja-bin*"
 
 pkg_nofetch() {
 	einfo
@@ -54,7 +54,7 @@ src_unpack() {
 }
 
 src_install() {
-	local dir="/opt/${PN}"
+	local dir="/opt/gog/${PN}"
 
 	rm -r game/bin/lib$(usex amd64 "32" "64") \
 		game/bin/lib$(usex amd64 "64" "32")/libSDL* \

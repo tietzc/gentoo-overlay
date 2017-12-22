@@ -32,9 +32,9 @@ S="${WORKDIR}/data/noarch"
 CHECKREQS_DISK_BUILD="10G"
 
 QA_PREBUILT="
-	opt/${PN}/*
-	opt/${PN}/*/Mono/x86/libmono.so
-	opt/${PN}/*/Plugins/x86/libRenderingPlugin.so"
+	opt/gog/${PN}/*
+	opt/gog/${PN}/*/Mono/x86/libmono.so
+	opt/gog/${PN}/*/Plugins/x86/libRenderingPlugin.so"
 
 pkg_nofetch() {
 	einfo
@@ -49,7 +49,7 @@ src_unpack() {
 }
 
 src_install() {
-	local dir="/opt/${PN}"
+	local dir="/opt/gog/${PN}"
 
 	insinto "${dir}"
 	doins -r game/.

@@ -31,8 +31,8 @@ DEPEND="app-arch/unzip"
 S="${WORKDIR}/data/noarch"
 
 QA_PREBUILT="
-	opt/${PN}/lib*/*
-	opt/${PN}/ToTheMoon.bin.x86*"
+	opt/gog/${PN}/lib*/*
+	opt/gog/${PN}/ToTheMoon.bin.x86*"
 
 pkg_nofetch() {
 	einfo
@@ -47,7 +47,7 @@ src_unpack() {
 }
 
 src_install() {
-	local dir="/opt/${PN}"
+	local dir="/opt/gog/${PN}"
 
 	rm -r game/legal \
 		game/lib$(usex amd64 "" "64") \

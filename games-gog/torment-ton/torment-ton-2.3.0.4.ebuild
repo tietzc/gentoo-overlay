@@ -31,10 +31,10 @@ DEPEND="app-arch/unzip"
 S="${WORKDIR}/data/noarch"
 
 QA_PREBUILT="
-	opt/${PN}/TidesOfNumenera
-	opt/${PN}/TidesOfNumenera_Data/Mono/x86_64/libmono.so
-	opt/${PN}/TidesOfNumenera_Data/Plugins/libAkSoundEngine.so
-	opt/${PN}/TidesOfNumenera_Data/Plugins/x86_64/*.so"
+	opt/gog/${PN}/TidesOfNumenera
+	opt/gog/${PN}/TidesOfNumenera_Data/Mono/x86_64/libmono.so
+	opt/gog/${PN}/TidesOfNumenera_Data/Plugins/libAkSoundEngine.so
+	opt/gog/${PN}/TidesOfNumenera_Data/Plugins/x86_64/*.so"
 
 pkg_nofetch() {
 	einfo
@@ -49,7 +49,7 @@ src_unpack() {
 }
 
 src_install() {
-	local dir="/opt/${PN}"
+	local dir="/opt/gog/${PN}"
 
 	rm game/TidesOfNumenera_Data/Plugins/x86_64/libCSteamworks.so \
 		game/TidesOfNumenera_Data/Plugins/x86_64/libsteam_api.so || die

@@ -26,7 +26,7 @@ DEPEND="app-arch/unzip"
 
 S="${WORKDIR}/data/noarch"
 
-QA_PREBUILT="opt/${PN}/BS2Remastered_i386"
+QA_PREBUILT="opt/gog/${PN}/BS2Remastered_i386"
 
 pkg_nofetch() {
 	einfo
@@ -41,7 +41,7 @@ src_unpack() {
 }
 
 src_install() {
-	local dir="/opt/${PN}"
+	local dir="/opt/gog/${PN}"
 
 	rm game/{libopenal.so.1,libSDL-1.2.so.0} || die
 

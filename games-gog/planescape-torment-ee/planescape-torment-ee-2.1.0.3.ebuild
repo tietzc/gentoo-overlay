@@ -26,7 +26,7 @@ DEPEND="app-arch/unzip"
 
 S="${WORKDIR}/data/noarch"
 
-QA_PREBUILT="opt/${PN}/Torment*"
+QA_PREBUILT="opt/gog/${PN}/Torment*"
 
 pkg_nofetch() {
 	einfo
@@ -41,7 +41,7 @@ src_unpack() {
 }
 
 src_install() {
-	local dir="/opt/${PN}"
+	local dir="/opt/gog/${PN}"
 
 	rm game/Torment$(usex amd64 "" "64") || die
 

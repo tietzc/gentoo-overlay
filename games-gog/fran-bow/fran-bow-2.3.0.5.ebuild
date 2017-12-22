@@ -26,7 +26,7 @@ DEPEND="app-arch/unzip"
 
 S="${WORKDIR}/data/noarch"
 
-QA_PREBUILT="opt/${PN}/runner"
+QA_PREBUILT="opt/gog/${PN}/runner"
 
 pkg_nofetch() {
 	einfo
@@ -41,7 +41,7 @@ src_unpack() {
 }
 
 src_install() {
-	local dir="/opt/${PN}"
+	local dir="/opt/gog/${PN}"
 
 	insinto "${dir}"
 	doins -r game/.

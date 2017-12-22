@@ -40,10 +40,10 @@ S="${WORKDIR}/data/noarch"
 CHECKREQS_DISK_BUILD="15G"
 
 QA_PREBUILT="
-	opt/${PN}/Tyranny
-	opt/${PN}/Tyranny.x86
-	opt/${PN}/Tyranny_Data/Mono/x86*/libmono.so
-	opt/${PN}/Tyranny_Data/Plugins/x86*/libpops_api.so"
+	opt/gog/${PN}/Tyranny
+	opt/gog/${PN}/Tyranny.x86
+	opt/gog/${PN}/Tyranny_Data/Mono/x86*/libmono.so
+	opt/gog/${PN}/Tyranny_Data/Plugins/x86*/libpops_api.so"
 
 pkg_nofetch() {
 	einfo
@@ -74,7 +74,7 @@ src_unpack() {
 }
 
 src_install() {
-	local dir="/opt/${PN}"
+	local dir="/opt/gog/${PN}"
 
 	rm -r game/Tyranny$(usex amd64 ".x86" "") \
 		game/Tyranny_Data/Mono/$(usex amd64 "x86" "x86_64") \

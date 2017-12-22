@@ -70,7 +70,7 @@ src_unpack() {
 }
 
 src_install() {
-	local dir="/opt/${PN}"
+	local dir="/opt/gog/${PN}"
 
 	insinto "${dir}"
 	doins -r data/.

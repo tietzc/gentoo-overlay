@@ -32,9 +32,9 @@ DEPEND="app-arch/unzip"
 S="${WORKDIR}/data/noarch"
 
 QA_PREBUILT="
-	opt/${PN}/lib*/*
-	opt/${PN}/ModLauncher.bin.x86*
-	opt/${PN}/Torchlight2.bin.x86*"
+	opt/gog/${PN}/lib*/*
+	opt/gog/${PN}/ModLauncher.bin.x86*
+	opt/gog/${PN}/Torchlight2.bin.x86*"
 
 pkg_nofetch() {
 	einfo
@@ -49,7 +49,7 @@ src_unpack() {
 }
 
 src_install() {
-	local dir="/opt/${PN}"
+	local dir="/opt/gog/${PN}"
 
 	rm -r game/lib$(usex amd64 "" "64") \
 		game/lib$(usex amd64 "64" "")/{libfreeimage.so.3,libfreetype.so.6,libSDL2-2.0.so.0} \

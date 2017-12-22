@@ -27,7 +27,7 @@ DEPEND="app-arch/unzip"
 
 S="${WORKDIR}/data/noarch"
 
-QA_PREBUILT="opt/${PN}/IcewindDale"
+QA_PREBUILT="opt/gog/${PN}/IcewindDale"
 
 pkg_nofetch() {
 	einfo
@@ -42,7 +42,7 @@ src_unpack() {
 }
 
 src_install() {
-	local dir="/opt/${PN}"
+	local dir="/opt/gog/${PN}"
 	local ABI="x86"
 
 	insinto "${dir}"

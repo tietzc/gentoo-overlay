@@ -30,8 +30,8 @@ DEPEND="app-arch/unzip"
 S="${WORKDIR}/data/noarch"
 
 QA_PREBUILT="
-	opt/${PN}/GoneHome.x86*
-	opt/${PN}/GoneHome_Data/Mono/x86*/libmono.so"
+	opt/gog/${PN}/GoneHome.x86*
+	opt/gog/${PN}/GoneHome_Data/Mono/x86*/libmono.so"
 
 pkg_nofetch() {
 	einfo
@@ -46,7 +46,7 @@ src_unpack() {
 }
 
 src_install() {
-	local dir="/opt/${PN}"
+	local dir="/opt/gog/${PN}"
 
 	rm -r game/GoneHome.$(usex amd64 "x86" "x86_64") \
 		game/GoneHome_Data/Mono/$(usex amd64 "x86" "x86_64") \

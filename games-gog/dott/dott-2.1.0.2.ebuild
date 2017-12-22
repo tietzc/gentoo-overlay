@@ -28,8 +28,8 @@ DEPEND="app-arch/unzip"
 S="${WORKDIR}/data/noarch"
 
 QA_PREBUILT="
-	opt/${PN}/lib/libfmod.so.8
-	opt/${PN}/Dott"
+	opt/gog/${PN}/lib/libfmod.so.8
+	opt/gog/${PN}/Dott"
 
 pkg_nofetch() {
 	einfo
@@ -44,7 +44,7 @@ src_unpack() {
 }
 
 src_install() {
-	local dir="/opt/${PN}"
+	local dir="/opt/gog/${PN}"
 
 	rm game/lib/libsteam_api.so || die
 

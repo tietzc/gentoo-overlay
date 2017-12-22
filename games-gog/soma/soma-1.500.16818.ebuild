@@ -38,9 +38,9 @@ S="${WORKDIR}/data/noarch"
 CHECKREQS_DISK_BUILD="22G"
 
 QA_PREBUILT="
-	opt/${PN}/ModLauncher.bin.x86_64
-	opt/${PN}/Soma.bin.x86_64
-	opt/${PN}/lib64/libfmod*"
+	opt/gog/${PN}/ModLauncher.bin.x86_64
+	opt/gog/${PN}/Soma.bin.x86_64
+	opt/gog/${PN}/lib64/libfmod*"
 
 pkg_nofetch() {
 	einfo
@@ -55,7 +55,7 @@ src_unpack() {
 }
 
 src_install() {
-	local dir="/opt/${PN}"
+	local dir="/opt/gog/${PN}"
 
 	find game/lib64 -type f \
 		! -name "libfmodevent64-4.44.62.so" \

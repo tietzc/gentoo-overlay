@@ -39,7 +39,7 @@ src_unpack() {
 }
 
 src_install() {
-	local dir="/opt/${PN}"
+	local dir="/opt/gog/${PN}"
 
 	icotool -x app/GK2.ICO || die
 

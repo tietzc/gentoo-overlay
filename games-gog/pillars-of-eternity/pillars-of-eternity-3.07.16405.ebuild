@@ -44,8 +44,8 @@ DEPEND="
 S="${WORKDIR}/data/noarch"
 
 QA_PREBUILT="
-	opt/${PN}/PillarsOfEternity
-	opt/${PN}/PillarsOfEternity_Data/Mono/x86_64/libmono.so"
+	opt/gog/${PN}/PillarsOfEternity
+	opt/gog/${PN}/PillarsOfEternity_Data/Mono/x86_64/libmono.so"
 
 pkg_nofetch() {
 	einfo
@@ -93,7 +93,7 @@ src_unpack() {
 }
 
 src_install() {
-	local dir="/opt/${PN}"
+	local dir="/opt/gog/${PN}"
 
 	rm game/PillarsOfEternity_Data/Plugins/x86_64/libCSteamworks.so \
 		game/PillarsOfEternity_Data/Plugins/x86_64/libsteam_api.so || die

@@ -26,8 +26,8 @@ DEPEND="app-arch/unzip"
 S="${WORKDIR}/data/noarch"
 
 QA_PREBUILT="
-	opt/${PN}/BS5_i386
-	opt/${PN}/BS5_x86_64"
+	opt/gog/${PN}/BS5_i386
+	opt/gog/${PN}/BS5_x86_64"
 
 pkg_nofetch() {
 	einfo
@@ -42,7 +42,7 @@ src_unpack() {
 }
 
 src_install() {
-	local dir="/opt/${PN}"
+	local dir="/opt/gog/${PN}"
 
 	mv game/$(usex amd64 "x86_64" "i386")/BS5_$(usex amd64 "x86_64" "i386") game/ || die
 

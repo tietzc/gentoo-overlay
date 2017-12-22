@@ -30,9 +30,9 @@ DEPEND="
 S="${WORKDIR}/data/noarch"
 
 QA_PREBUILT="
-	opt/${PN}/GrimFandango
-	opt/${PN}/libchore.so
-	opt/${PN}/libLua.so"
+	opt/gog/${PN}/GrimFandango
+	opt/gog/${PN}/libchore.so
+	opt/gog/${PN}/libLua.so"
 
 pkg_nofetch() {
 	einfo
@@ -47,7 +47,7 @@ src_unpack() {
 }
 
 src_install() {
-	local dir="/opt/${PN}"
+	local dir="/opt/gog/${PN}"
 	local ABI="x86"
 
 	rm -r game/run.sh \

@@ -30,8 +30,8 @@ DEPEND="app-arch/unzip"
 S="${WORKDIR}/data/noarch"
 
 QA_PREBUILT="
-	opt/${PN}/Aragami.x86*
-	opt/${PN}/Aragami_Data/Mono/x86*/*.so"
+	opt/gog/${PN}/Aragami.x86*
+	opt/gog/${PN}/Aragami_Data/Mono/x86*/*.so"
 
 pkg_nofetch() {
 	einfo
@@ -46,7 +46,7 @@ src_unpack() {
 }
 
 src_install() {
-	local dir="/opt/${PN}"
+	local dir="/opt/gog/${PN}"
 
 	rm -r game/Aragami.$(usex amd64 "x86" "x86_64") \
 		game/Aragami_Data/Mono/$(usex amd64 "x86" "x86_64") \

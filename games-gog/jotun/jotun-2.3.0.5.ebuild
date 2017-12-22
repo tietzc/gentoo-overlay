@@ -30,8 +30,8 @@ DEPEND="app-arch/unzip"
 S="${WORKDIR}/data/noarch"
 
 QA_PREBUILT="
-	opt/${PN}/Jotun.x86*
-	opt/${PN}/Jotun_Data/Mono/x86*/libmono.so"
+	opt/gog/${PN}/Jotun.x86*
+	opt/gog/${PN}/Jotun_Data/Mono/x86*/libmono.so"
 
 pkg_nofetch() {
 	einfo
@@ -46,7 +46,7 @@ src_unpack() {
 }
 
 src_install() {
-	local dir="/opt/${PN}"
+	local dir="/opt/gog/${PN}"
 
 	rm -r game/Jotun.x86$(usex amd64 "" "_64") \
 		game/Jotun_Data/Mono/$(usex amd64 "x86" "x86_64") \
