@@ -3,8 +3,6 @@
 
 EAPI=6
 
-COMMIT="fc8e1ddb17b96e9819bd545aec744cb57bfb1da0"
-
 PLOCALES="
 	ar ast be bg bn bs ca cs da de el en_AU en_CA en_GB eo es et eu fa fi fo fr
 	gl he hi hr hu hy ia id it ja ko ku ky lt lv ms my nb nds nl nn pl pt pt_BR
@@ -16,7 +14,7 @@ inherit distutils-r1 eutils l10n
 
 DESCRIPTION="Clean junk to free disk space and to maintain privacy"
 HOMEPAGE="https://www.bleachbit.org"
-SRC_URI="https://github.com/${PN}/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -31,8 +29,6 @@ DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )"
 
 DOCS=( README.md )
-
-S="${WORKDIR}/${PN}-${COMMIT}"
 
 python_prepare_all() {
 	rem_locale() {
