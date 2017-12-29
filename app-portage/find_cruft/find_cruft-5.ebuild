@@ -19,7 +19,7 @@ src_prepare() {
 	default
 	use prefix || sed -i \
 		-e '1s"^#!/usr/bin/env perl$"#!'"${EPREFIX}/usr/bin/perl"'"' \
-		-- bin/* || die
+		-- bin/${PN} || die
 }
 
 src_install() {
