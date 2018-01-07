@@ -1,17 +1,17 @@
---- a/rust/Cargo.toml	2017-10-31 23:29:00.000000000 +0100
-+++ b/rust/Cargo.toml	2017-11-01 01:36:21.144544152 +0100
-@@ -4,8 +4,6 @@
+--- a/rust/Cargo.toml	2017-12-30 09:32:55.000000000 +0100
++++ b/rust/Cargo.toml	2018-01-07 14:18:08.909742416 +0100
+@@ -3,8 +3,6 @@
+ version = "0.1.0"
  authors = ["Stefan Lau <github@stefanlau.com>"]
- release-debuginfo = true
  
 -[profile.dev]
 -rpath = true
  [profile.release]
  rpath = true
- 
-@@ -19,12 +17,3 @@
- libc = "0.2"
+ debug = true
+@@ -20,12 +18,3 @@
  serde = "1"
+ serde_derive = "1"
  serde_json = "1"
 -
 -[dev-dependencies]

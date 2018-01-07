@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,19 +7,23 @@ CRATES="
 	dtoa-0.4.2
 	getopts-0.2.15
 	itoa-0.3.4
-	libc-0.2.33
-	num-traits-0.1.40
-	serde-1.0.17
-	serde_json-1.0.5"
+	libc-0.2.35
+	num-traits-0.1.41
+	quote-0.3.15
+	serde-1.0.27
+	serde_derive-1.0.27
+	serde_derive_internals-0.19.0
+	serde_json-1.0.9
+	syn-0.11.11
+	synom-0.11.3
+	unicode-xid-0.0.4"
 
-COMMIT="7520f79d2d4d536f6842977cdc257f98788900e9"
-
-inherit cargo cmake-utils gnome2-utils
+inherit cargo cmake-utils flag-o-matic gnome2-utils
 
 DESCRIPTION="A port of Jagged Alliance 2 to SDL"
 HOMEPAGE="https://ja2-stracciatella.github.io https://github.com/ja2-stracciatella/ja2-stracciatella"
 SRC_URI="$(cargo_crate_uris ${CRATES})
-	https://github.com/${PN}/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+	https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="SFI-SCLA"
 SLOT="0"
@@ -29,7 +33,8 @@ RESTRICT="mirror"
 
 RDEPEND="
 	dev-libs/boost:=
-	media-libs/libsdl2[X,opengl,sound,video]"
+	media-libs/libsdl2[X,opengl,sound,video]
+	x11-libs/fltk"
 
 DEPEND="${RDEPEND}
 	dev-libs/rapidjson"
@@ -39,8 +44,6 @@ PATCHES=( "${FILESDIR}"/only-use-release-profile.patch )
 DOCS=( README.md changes.md contributors.txt )
 
 GAMES_DATADIR="/usr/share/ja2"
-
-S="${WORKDIR}/${PN}-${COMMIT}"
 
 src_unpack() {
 	default
@@ -59,7 +62,10 @@ src_prepare() {
 }
 
 src_configure() {
+	append-cppflags "-I/usr/include/fltk"
+
 	local mycmakeargs=(
+		-DBUILD_LAUNCHER=ON
 		-DEXTRA_DATA_DIR="${GAMES_DATADIR}"
 		-DINSTALL_LIB_DIR="/usr/$(get_libdir)"
 		-DLOCAL_BOOST_LIB=OFF
