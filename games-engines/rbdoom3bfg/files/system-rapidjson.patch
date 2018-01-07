@@ -1,11 +1,7 @@
 Description: Patch to be able to use Debian's rapidjson
- This patch adds the CMake-snippet and the necessary changes to be able to
- compile with the pacakged rapidjson.
 Author: Tobias Frost <tobi@debian.org>
-Forwarded: https://github.com/RobertBeckebans/RBDOOM-3-BFG/pull/351
-Last-Update: 2016-10-11
----
-This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+Date: 2016-10-11
+
 --- a/neo/CMakeLists.txt
 +++ b/neo/CMakeLists.txt
 @@ -41,6 +41,9 @@

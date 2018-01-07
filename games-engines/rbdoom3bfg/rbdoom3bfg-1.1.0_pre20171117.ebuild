@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,7 +15,7 @@ SRC_URI="https://github.com/RobertBeckebans/${MY_PN}/archive/${COMMIT}.tar.gz ->
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="libav"
+IUSE=""
 RESTRICT="mirror"
 
 RDEPEND="
@@ -25,8 +25,7 @@ RDEPEND="
 	>=media-libs/mesa-17.2
 	media-libs/openal:=
 	sys-libs/zlib:=[minizip]
-	libav? ( media-video/libav:= )
-	!libav? ( media-video/ffmpeg:= )"
+	virtual/ffmpeg"
 
 DEPEND="${RDEPEND}
 	dev-libs/rapidjson"
@@ -58,7 +57,7 @@ src_configure() {
 		-DSDL2=ON
 		-DUSE_PRECOMPILED_HEADERS=OFF
 		-DUSE_SYSTEM_LIBGLEW=ON
-		-DUSE_SYSTEM_LIBJPEG=OFF # fails with media-libs/libjpeg-turbo-1.5.1
+		-DUSE_SYSTEM_LIBJPEG=OFF # needs jpegint.h
 		-DUSE_SYSTEM_LIBPNG=ON
 		-DUSE_SYSTEM_RAPIDJSON=ON
 		-DUSE_SYSTEM_ZLIB=ON

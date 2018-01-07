@@ -1,9 +1,7 @@
 Description: Patch for libpng1.6's changed API
 Author: Tobias Frost <tobi@debian.org>
-Forwarded: https://github.com/RobertBeckebans/RBDOOM-3-BFG/pull/293
-Last-Update: 2016-02-01
----
-This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+Date: 2016-02-01
+
 --- a/neo/renderer/Image_files.cpp
 +++ b/neo/renderer/Image_files.cpp
 @@ -621,6 +621,7 @@
