@@ -95,6 +95,13 @@ src_unpack() {
 src_install() {
 	local dir="/opt/gog/${PN}"
 
+	# work around wrong folder name
+	if use dlc3 ; then
+		mv game/PillarsOfEternity_data/assetbundles/px4.unity3d \
+			game/PillarsOfEternity_Data/assetbundles/ || die
+		rm -r game/PillarsOfEternity_data || die
+	fi
+
 	rm game/steam_api.dll \
 		game/SteamworksNative.dll \
 		game/PillarsOfEternity_Data/Plugins/x86_64/libCSteamworks.so \
