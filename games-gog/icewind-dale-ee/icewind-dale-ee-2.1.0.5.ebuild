@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -51,7 +51,7 @@ src_install() {
 	fperms +x "${dir}"/IcewindDale
 
 	dodir "${dir}"/lib
-	dosym ../../../usr/$(get_libdir)/libjson-c.so "${dir}"/lib/libjson.so.0
+	dosym ../../../../usr/$(get_libdir)/libjson-c.so "${dir}"/lib/libjson.so.0
 
 	make_wrapper ${PN} "./IcewindDale" "${dir}" "${dir}/lib"
 	newicon -s 256 support/icon.png ${PN}.png
