@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -59,7 +59,7 @@ src_install() {
 	insinto "${dir}"
 	doins -r game/bin/.
 
-	dosym ../../usr/$(get_libdir)/libSDL2.so "${dir}"/libSDL2-2.0.so.1
+	dosym ../../../usr/$(get_libdir)/libSDL2.so "${dir}"/libSDL2-2.0.so.1
 
 	if use savedir-patch ; then
 		pushd "${D%/}/${dir}" >/dev/null || die
