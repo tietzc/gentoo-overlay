@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,9 +18,8 @@ RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
 	dev-qt/qtgui:5
-	dev-qt/qtmultimedia:5
+	dev-qt/qtmultimedia:5[pulseaudio?]
 	dev-qt/qtnetwork:5
-	dev-qt/qttest:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
 	media-video/ffmpeg[encode,mp3,pulseaudio?,v4l?,vorbis,vpx?,x264,x265?]
@@ -29,6 +28,7 @@ RDEPEND="
 
 DEPEND="${RDEPEND}
 	dev-qt/linguist-tools:5
+	dev-qt/qttest:5
 	virtual/pkgconfig"
 
 DOCS=( AUTHORS CHANGE README.md )
