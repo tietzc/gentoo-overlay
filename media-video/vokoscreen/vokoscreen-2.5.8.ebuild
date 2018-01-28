@@ -13,14 +13,14 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="pulseaudio +v4l +vpx +x265"
+RESTRICT="mirror"
 
 RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
 	dev-qt/qtgui:5
-	dev-qt/qtmultimedia:5[pulseaudio?]
+	dev-qt/qtmultimedia:5[pulseaudio?,widgets]
 	dev-qt/qtnetwork:5
-	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
 	media-video/ffmpeg[encode,mp3,pulseaudio?,v4l?,vorbis,vpx?,x264,x265?]
 	sys-process/lsof
