@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 DESCRIPTION="Jagged Alliance 2 (data files)"
 HOMEPAGE="https://www.gog.com/game/jagged_alliance_2"
-SRC_URI="setup_jagged_alliance2_${PV}.exe"
+SRC_URI="setup_jagged_alliance_2_${PV}_(17794).exe"
 
 LICENSE="GOG-EULA"
 SLOT="0"
