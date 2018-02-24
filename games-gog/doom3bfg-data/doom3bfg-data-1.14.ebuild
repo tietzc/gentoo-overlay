@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -39,7 +39,7 @@ src_unpack() {
 src_install() {
 	rm app/base/default.cfg || die
 
-	insinto /usr/share/doom3bfg/base
+	insinto /usr/share/games/doom3bfg/base
 	doins -r app/base/.
 
 	newicon -s 128 app/language_setup.png doom3bfg.png
