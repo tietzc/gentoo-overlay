@@ -37,19 +37,9 @@ PATCHES=(
 
 DOCS=( README.txt RELEASE-NOTES.txt )
 
-GAMES_DATADIR="/usr/share/doom3bfg"
-
 S="${WORKDIR}/${MY_PN}-${COMMIT}"
 
 CMAKE_USE_DIR="${S}"/neo
-
-src_prepare() {
-	sed -i \
-		-e "s:/usr/share/games/doom3bfg:${GAMES_DATADIR}:g" \
-		neo/framework/Licensee.h || die
-
-	cmake-utils_src_prepare
-}
 
 src_configure() {
 	local mycmakeargs=(
@@ -68,6 +58,8 @@ src_configure() {
 }
 
 src_install() {
+	GAMES_DATADIR="/usr/share/games/doom3bfg"
+
 	dobin "${BUILD_DIR}"/RBDoom3BFG
 
 	insinto "${GAMES_DATADIR}"/base
