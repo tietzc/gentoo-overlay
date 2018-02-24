@@ -58,7 +58,7 @@ src_configure() {
 }
 
 src_install() {
-	GAMES_DATADIR="/usr/share/games/doom3bfg"
+	local GAMES_DATADIR="/usr/share/games/doom3bfg"
 
 	dobin "${BUILD_DIR}"/RBDoom3BFG
 
