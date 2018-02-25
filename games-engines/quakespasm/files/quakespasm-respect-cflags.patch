@@ -1,0 +1,12 @@
+--- a/Quake/Makefile	2017-08-09 14:10:13.000000000 +0200
++++ b/Quake/Makefile	2018-02-25 21:26:03.837109529 +0100
+@@ -62,9 +62,6 @@
+ do_strip=
+ else
+ DFLAGS += -DNDEBUG
+-CFLAGS += -O2
+-CFLAGS += $(call check_gcc,-fweb,)
+-CFLAGS += $(call check_gcc,-frename-registers,)
+ cmd_strip=$(STRIP) $(1)
+ define do_strip
+ 	$(call cmd_strip,$(1));
