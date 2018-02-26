@@ -5,4 +5,7 @@
 		<email>christian.tietz@mailbox.org</email>
 		<name>Christian Tietz</name>
 	</maintainer>
+	<use>
+		<flag name="music">Enable music support</flag>
+	</use>
 </pkgmetadata>

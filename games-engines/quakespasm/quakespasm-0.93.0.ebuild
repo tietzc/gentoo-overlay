@@ -12,13 +12,15 @@ SRC_URI="mirror://sourceforge/quakespasm/Source/${P}.tgz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="music"
 RESTRICT="mirror"
 
 RDEPEND="
-	media-libs/libmad
 	media-libs/libsdl2[X,opengl,sound,video]
-	media-libs/libvorbis"
+	music? (
+		media-libs/libmad
+		media-libs/libvorbis
+	)"
 
 DEPEND="${RDEPEND}"
 
@@ -35,7 +37,12 @@ src_prepare() {
 
 src_compile() {
 	cd Quake || die
-	emake DO_USERDIRS=1 USE_SDL2=1
+	emake \
+		DO_USERDIRS=1 \
++		USE_CODEC_MP3=$(usex music 1 0) \
++		USE_CODEC_VORBIS=$(usex music 1 0) \
++		USE_CODEC_WAVE=$(usex music 1 0) \
++		USE_SDL2=1
 }
 
 src_install() {
