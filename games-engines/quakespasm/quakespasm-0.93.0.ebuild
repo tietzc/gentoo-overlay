@@ -36,13 +36,15 @@ src_prepare() {
 }
 
 src_compile() {
-	cd Quake || die
-	emake \
-		DO_USERDIRS=1 \
-+		USE_CODEC_MP3=$(usex music 1 0) \
-+		USE_CODEC_VORBIS=$(usex music 1 0) \
-+		USE_CODEC_WAVE=$(usex music 1 0) \
-+		USE_SDL2=1
+	local myconf=(
+		DO_USERDIRS=1
+		USE_CODEC_MP3=$(usex music 1 0)
+		USE_CODEC_VORBIS=$(usex music 1 0)
+		USE_CODEC_WAVE=$(usex music 1 0)
+		USE_SDL2=1
+	)
+
+	emake -C Quake ${myconf[@]}
 }
 
 src_install() {
