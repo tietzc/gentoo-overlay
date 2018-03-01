@@ -7,7 +7,7 @@ ENABLE=no
 SEND_EMAIL=no
 
 # Variables
-HOSTNAME="$(hostname)"
+HOSTNAME="$(uname -n)"
 EMAIL_SUBJECT="${HOSTNAME}: lynis report"
 EMAIL_RECIPIENT="root"
 EMAIL_CMD="| mail -s \"${EMAIL_SUBJECT}\" ${EMAIL_RECIPIENT}"
