@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,15 +17,16 @@ RDEPEND="dev-lang/perl"
 
 src_prepare() {
 	default
-	use prefix || sed -i \
+
+	sed -i \
 		-e '1s"^#!/usr/bin/env perl$"#!'"${EPREFIX}/usr/bin/perl"'"' \
-		-- bin/${PN} || die
+		bin/${PN} || die
 }
 
 src_install() {
 	dobin bin/${PN}
 
-	insinto /usr/lib/${PN}
+	insinto /usr/lib/find_cruft
 	doins -r etc/.
 
 	insinto /usr/share/zsh/site-functions
@@ -35,7 +36,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	if ! has_version app-portage/eix ; then
+	if ! has_version app-portage/eix; then
 		elog "Consider installing app-portage/eix for faster execution."
 	fi
 }
