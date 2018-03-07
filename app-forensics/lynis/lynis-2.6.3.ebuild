@@ -35,15 +35,15 @@ src_install() {
 	diropts -m0700
 	insopts -m0600
 
-	insinto /usr/share/${PN}
+	insinto /usr/share/lynis
 	doins -r db include plugins
 
-	insinto /etc/${PN}
+	insinto /etc/lynis
 	doins default.prf
 }
 
 pkg_postinst() {
-	if [[ -z ${REPLACING_VERSIONS} ]] ; then
+	if [[ -z ${REPLACING_VERSIONS} ]]; then
 		elog "A cron script has been installed to /etc/cron.weekly/${PN}."
 		elog "To enable it, edit /etc/cron.weekly/${PN} and follow the"
 		elog "directions."
