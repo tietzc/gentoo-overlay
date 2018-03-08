@@ -3,9 +3,11 @@
 
 EAPI=6
 
+MY_PN="CardBook"
+
 DESCRIPTION="A new Thunderbird address book based on the CardDAV and vCard standards"
 HOMEPAGE="https://addons.mozilla.org/thunderbird/addon/cardbook"
-SRC_URI="https://addons.cdn.mozilla.net/user-media/addons/634298/${P}-tb.xpi"
+SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MPL-2.0"
 SLOT="0"
@@ -15,14 +17,9 @@ RESTRICT="mirror"
 
 RDEPEND="mail-client/thunderbird[lightning]"
 
-DEPEND="${RDEPEND}
-	app-arch/unzip"
+DEPEND="${RDEPEND}"
 
-S="${WORKDIR}"
-
-src_unpack() {
-	unzip -qo "${DISTDIR}/${P}-tb.xpi" || die
-}
+S="${WORKDIR}/${MY_PN}-${PV}"
 
 src_install() {
 	local emid
