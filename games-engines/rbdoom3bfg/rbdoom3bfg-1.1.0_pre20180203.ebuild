@@ -31,8 +31,8 @@ DEPEND="${RDEPEND}
 	dev-libs/rapidjson"
 
 PATCHES=(
-	"${FILESDIR}"/libpng16.patch
-	"${FILESDIR}"/system-rapidjson.patch
+	"${FILESDIR}"/${PN}-libpng16.patch
+	"${FILESDIR}"/${PN}-system-rapidjson.patch
 )
 
 DOCS=( README.txt RELEASE-NOTES.txt )
@@ -58,16 +58,14 @@ src_configure() {
 }
 
 src_install() {
-	local GAMES_DATADIR="/usr/share/games/doom3bfg"
-
 	dobin "${BUILD_DIR}"/RBDoom3BFG
 
-	insinto "${GAMES_DATADIR}"/base
+	insinto /usr/share/games/doom3bfg/base
 	doins base/{default,extract_resources}.cfg
 
 	einstalldocs
 
-	cat <<- EOF >> "${D%/}/${GAMES_DATADIR}/base/default.cfg"
+	cat <<- EOF >> "${D%/}"/usr/share/games/doom3bfg/base/default.cfg
 		//
 		// Set default language to English
 		//
