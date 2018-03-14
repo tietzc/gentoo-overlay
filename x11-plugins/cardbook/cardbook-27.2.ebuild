@@ -28,5 +28,7 @@ src_install() {
 		|| die "Failed to determine extension id"
 
 	insinto "/usr/$(get_libdir)/thunderbird/extensions/${emid}"
-	doins -r .
+	doins -r chrome components modules chrome.manifest install.rdf
+
+	einstalldocs
 }
