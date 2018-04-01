@@ -6,16 +6,15 @@ ENABLE=no
 # Set this to 'yes' if you wish the output to be mailed to you
 SEND_EMAIL=no
 
-# Variables
-HOSTNAME="$(uname -n)"
-EMAIL_SUBJECT="${HOSTNAME}: lynis report"
+# Email variables
+EMAIL_SUBJECT="$(uname -n): lynis report"
 EMAIL_RECIPIENT="root"
-EMAIL_CMD="| mail -s \"${EMAIL_SUBJECT}\" ${EMAIL_RECIPIENT}"
+EMAIL_CMD="mail -s \"${EMAIL_SUBJECT}\" ${EMAIL_RECIPIENT}"
 
 # Exit immediately, unless enabled
-[ "${ENABLE}" = "yes" ] || exit 0
+[ ${ENABLE} = yes ] || exit 0
 
 # Run lynis
 CMD="/usr/sbin/lynis audit system --auditor automated --cronjob"
-[ "${SEND_EMAIL}" = "yes" ] && CMD="${CMD} ${EMAIL_CMD}"
+[ ${SEND_EMAIL} = yes ] && CMD="${CMD} | ${EMAIL_CMD}"
 eval "${CMD}"
