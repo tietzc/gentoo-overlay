@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,7 +16,6 @@ IUSE=""
 RESTRICT="bindist fetch"
 
 RDEPEND="
-	media-libs/flac[abi_x86_32(-)]
 	media-libs/libsdl[abi_x86_32(-),X,opengl,sound,video]
 	media-libs/libvorbis[abi_x86_32(-)]
 	media-libs/openal[abi_x86_32(-)]
