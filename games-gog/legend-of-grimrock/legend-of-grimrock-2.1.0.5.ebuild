@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,13 +22,7 @@ RDEPEND="
 	media-libs/libsdl2[X,opengl,sound,video]
 	media-libs/libvorbis
 	media-libs/openal
-	sys-libs/zlib[minizip]
-	virtual/opengl
-	x11-libs/libX11
-	|| (
-		media-libs/libtxc_dxtn
-		x11-drivers/nvidia-drivers
-	)"
+	sys-libs/zlib[minizip]"
 
 DEPEND="app-arch/unzip"
 
