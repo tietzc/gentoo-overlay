@@ -56,11 +56,6 @@ src_install() {
 
 pkg_postinst() {
 	gnome2_icon_cache_update
-
-	if ! has_version media-libs/libtxc_dxtn ; then
-		elog "If you are using opensource drivers you should consider installing:"
-		elog "  media-libs/libtxc_dxtn"
-	fi
 }
 
 pkg_postrm() {
