@@ -12,21 +12,21 @@ SRC_URI="mirror://sourceforge/quakespasm/Source/${P}.tgz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="music"
+IUSE="flac mp3 opus vorbis"
 RESTRICT="mirror"
 
 RDEPEND="
 	media-libs/libsdl2[X,opengl,sound,video]
-	music? (
-		media-libs/libmad
-		media-libs/libvorbis
-	)"
+	flac? ( media-libs/flac )
+	mp3? ( media-libs/libmad )
+	opus? ( media-libs/opus )
+	vorbis? ( media-libs/libvorbis )"
 
 DEPEND="${RDEPEND}"
 
 PATCHES=( "${FILESDIR}"/${PN}-respect-cflags.patch )
 
-DOCS=( Quakespasm.txt )
+DOCS=( Quakespasm.txt Quakespasm-Music.txt )
 
 src_prepare() {
 	default
@@ -38,9 +38,11 @@ src_prepare() {
 src_compile() {
 	local myconf=(
 		DO_USERDIRS=1
-		USE_CODEC_MP3=$(usex music 1 0)
-		USE_CODEC_VORBIS=$(usex music 1 0)
-		USE_CODEC_WAVE=$(usex music 1 0)
+		USE_CODEC_FLAC=$(usex flac 1 0)
+		USE_CODEC_MP3=$(usex mp3 1 0)
+		USE_CODEC_OPUS=$(usex opus 1 0)
+		USE_CODEC_VORBIS=$(usex vorbis 1 0)
+		USE_CODEC_WAVE=1
 		USE_SDL2=1
 	)
 
