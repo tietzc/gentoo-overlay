@@ -11,7 +11,7 @@ HOMEPAGE="https://www.gog.com/game/pillars_of_eternity_hero_edition"
 BASE_SRC_URI="pillars_of_eternity_en_$(replace_all_version_separators '_')_17461.sh"
 DLC1_SRC_URI="pillars_of_eternity_white_march_part_1_dlc_en_$(replace_all_version_separators '_')_17464.sh"
 DLC2_SRC_URI="pillars_of_eternity_white_march_part_2_dlc_en_$(replace_all_version_separators '_')_17464.sh"
-DLC3_SRC_URI="pillars_of_eternity_deadfire_pack_dlc_en_$(replace_all_version_separators '_')_17462.sh"
+DLC3_SRC_URI="pillars_of_eternity_deadfire_pack_dlc_en_$(replace_all_version_separators '_')_20099.sh"
 DLC4_SRC_URI="gog_pillars_of_eternity_preorder_item_and_pet_dlc_2.0.0.2.sh"
 DE_SRC_URI="PoE_v3.07.1280_PX1_PX2_German_Fix.7z"
 SRC_URI="${BASE_SRC_URI}
@@ -94,13 +94,6 @@ src_unpack() {
 
 src_install() {
 	local dir="/opt/gog/${PN}"
-
-	# work around wrong folder name
-	if use dlc3 ; then
-		mv game/PillarsOfEternity_data/assetbundles/px4.unity3d \
-			game/PillarsOfEternity_Data/assetbundles/ || die
-		rm -r game/PillarsOfEternity_data || die
-	fi
 
 	rm game/steam_api.dll \
 		game/SteamworksNative.dll \
