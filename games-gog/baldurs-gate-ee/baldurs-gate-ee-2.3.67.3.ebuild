@@ -3,13 +3,13 @@
 
 EAPI=6
 
-inherit eutils gnome2-utils unpacker
+inherit eutils gnome2-utils unpacker versionator
 
 DESCRIPTION="Baldur's Gate: Enhanced Edition"
 HOMEPAGE="https://www.gog.com/game/baldurs_gate_enhanced_edition"
 
-BASE_SRC_URI="gog_baldur_s_gate_enhanced_edition_${PV}.sh"
-SOD_SRC_URI="gog_baldur_s_gate_siege_of_dragonspear_2.3.0.4.sh"
+BASE_SRC_URI="baldur_s_gate_enhanced_edition_en_$(replace_all_version_separators '_')_20146.sh"
+SOD_SRC_URI="baldur_s_gate_siege_of_dragonspear_en_2_3_0_4_20148.sh"
 SRC_URI="${BASE_SRC_URI}
 	sod? ( ${SOD_SRC_URI} )"
 
