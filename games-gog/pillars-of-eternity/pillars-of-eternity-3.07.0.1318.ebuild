@@ -13,7 +13,7 @@ DLC1_SRC_URI="pillars_of_eternity_white_march_part_1_dlc_en_$(replace_all_versio
 DLC2_SRC_URI="pillars_of_eternity_white_march_part_2_dlc_en_$(replace_all_version_separators '_')_17464.sh"
 DLC3_SRC_URI="pillars_of_eternity_deadfire_pack_dlc_en_$(replace_all_version_separators '_')_20099.sh"
 DLC4_SRC_URI="gog_pillars_of_eternity_preorder_item_and_pet_dlc_2.0.0.2.sh"
-DE_SRC_URI="PoE_v3.07.1280_PX1_PX2_German_Fix.7z"
+DE_SRC_URI="PoE_v3.07.1318_PX1_PX2_German_Fix.7z-6-1-1-0.7z"
 SRC_URI="${BASE_SRC_URI}
 	dlc1? ( ${DLC1_SRC_URI} )
 	dlc2? ( ${DLC2_SRC_URI} )
@@ -61,7 +61,7 @@ pkg_nofetch() {
 
 	if use l10n_de ; then
 		einfo "Please also download \"${DE_SRC_URI}\" from:"
-		einfo "  https://github.com/Xaratas/pillarsofeternity-german-patch-with-expansions/releases"
+		einfo "  https://www.nexusmods.com/pillarsofeternity/mods/6"
 		einfo "and move/link it to \"${DISTDIR}\""
 		einfo
 	fi
