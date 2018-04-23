@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -34,7 +34,6 @@ DEPEND="app-arch/unzip"
 S="${WORKDIR}/data/noarch"
 
 pkg_nofetch() {
-	einfo
 	einfo "Please buy & download"
 	use l10n_de && einfo "\"${DE_SRC_URI}\""
 	use l10n_en && einfo "\"${EN_SRC_URI}\""
@@ -43,30 +42,15 @@ pkg_nofetch() {
 	use l10n_it && einfo "\"${IT_SRC_URI}\""
 	einfo "from:"
 	einfo "  ${HOMEPAGE}"
-	einfo "and move/link it to \"${DISTDIR}\""
-	einfo
+	einfo "and place it in your DISTDIR directory."
 }
 
 src_unpack() {
-	if use l10n_de ; then
-		unpack_zip "${DISTDIR}/${DE_SRC_URI}"
-	fi
-
-	if use l10n_en ; then
-		unpack_zip "${DISTDIR}/${EN_SRC_URI}"
-	fi
-
-	if use l10n_es ; then
-		unpack_zip "${DISTDIR}/${ES_SRC_URI}"
-	fi
-
-	if use l10n_fr ; then
-		unpack_zip "${DISTDIR}/${FR_SRC_URI}"
-	fi
-
-	if use l10n_it ; then
-		unpack_zip "${DISTDIR}/${IT_SRC_URI}"
-	fi
+	use l10n_de && unpack_zip "${DISTDIR}/${DE_SRC_URI}"
+	use l10n_en && unpack_zip "${DISTDIR}/${EN_SRC_URI}"
+	use l10n_es && unpack_zip "${DISTDIR}/${ES_SRC_URI}"
+	use l10n_fr && unpack_zip "${DISTDIR}/${FR_SRC_URI}"
+	use l10n_it && unpack_zip "${DISTDIR}/${IT_SRC_URI}"
 }
 
 src_install() {

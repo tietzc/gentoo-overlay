@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -29,11 +29,9 @@ S="${WORKDIR}/data/noarch"
 QA_PREBUILT="opt/gog/${PN}/runner"
 
 pkg_nofetch() {
-	einfo
 	einfo "Please buy & download \"${SRC_URI}\" from:"
 	einfo "  ${HOMEPAGE}"
-	einfo "and move/link it to \"${DISTDIR}\""
-	einfo
+	einfo "and place it in your DISTDIR directory."
 }
 
 src_unpack() {

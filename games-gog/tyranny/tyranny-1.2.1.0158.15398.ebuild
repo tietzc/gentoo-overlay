@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -46,31 +46,20 @@ QA_PREBUILT="
 	opt/gog/${PN}/Tyranny_Data/Plugins/x86*/libpops_api.so"
 
 pkg_nofetch() {
-	einfo
 	einfo "Please buy & download \"${BASE_SRC_URI}\""
 	use dlc1 && einfo "and \"${DLC1_SRC_URI}\""
 	use dlc2 && einfo "and \"${DLC2_SRC_URI}\""
 	use dlc3 && einfo "and \"${DLC3_SRC_URI}\""
 	einfo "from:"
 	einfo "  ${HOMEPAGE}"
-	einfo "and move/link it to \"${DISTDIR}\""
-	einfo
+	einfo "and place it in your DISTDIR directory."
 }
 
 src_unpack() {
 	unpack_zip "${DISTDIR}/${BASE_SRC_URI}"
-
-	if use dlc1 ; then
-		unpack_zip "${DISTDIR}/${DLC1_SRC_URI}"
-	fi
-
-	if use dlc2 ; then
-		unpack_zip "${DISTDIR}/${DLC2_SRC_URI}"
-	fi
-
-	if use dlc3 ; then
-		unpack_zip "${DISTDIR}/${DLC3_SRC_URI}"
-	fi
+	use dlc1 && unpack_zip "${DISTDIR}/${DLC1_SRC_URI}"
+	use dlc2 && unpack_zip "${DISTDIR}/${DLC2_SRC_URI}"
+	use dlc3 && unpack_zip "${DISTDIR}/${DLC3_SRC_URI}"
 }
 
 src_install() {

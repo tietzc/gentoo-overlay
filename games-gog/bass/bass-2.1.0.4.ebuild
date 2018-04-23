@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,11 +22,9 @@ DEPEND="app-arch/unzip"
 S="${WORKDIR}/data/noarch"
 
 pkg_nofetch() {
-	einfo
 	einfo "Please download \"${SRC_URI}\" from:"
 	einfo "  ${HOMEPAGE}"
-	einfo "and move/link it to \"${DISTDIR}\""
-	einfo
+	einfo "and place it in your DISTDIR directory."
 }
 
 src_unpack() {
@@ -42,8 +40,8 @@ src_install() {
 
 	newicon -s 256 support/icon.png ${PN}.png
 
-	for lang in de es fr it ; do
-		if use l10n_${lang} ; then
+	for lang in de es fr it; do
+		if use l10n_${lang}; then
 			make_wrapper ${PN}-${i} "scummvm -f -p "${dir}" -q ${lang} sky"
 			make_desktop_entry ${PN}-${lang} "Beneath A Steel Sky (${lang})"
 		else

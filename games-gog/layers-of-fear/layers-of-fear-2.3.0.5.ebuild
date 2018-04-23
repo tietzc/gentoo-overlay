@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -38,19 +38,17 @@ QA_PREBUILT="
 	opt/gog/${PN}/LOF_Data/Mono/x86_64/libmono.so"
 
 pkg_nofetch() {
-	einfo
 	einfo "Please buy & download \"${BASE_SRC_URI}\""
 	use dlc && einfo "and \"${DLC_SRC_URI}\""
 	einfo "from:"
 	einfo "  ${HOMEPAGE}"
-	einfo "and move/link it to \"${DISTDIR}\""
-	einfo
+	einfo "and place it in your DISTDIR directory."
 }
 
 src_unpack() {
 	unpack_zip "${DISTDIR}/${BASE_SRC_URI}"
 
-	if use dlc ; then
+	if use dlc; then
 		unpack_zip "${DISTDIR}/${DLC_SRC_URI}"
 	fi
 }

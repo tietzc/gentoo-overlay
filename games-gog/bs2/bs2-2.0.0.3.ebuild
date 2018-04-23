@@ -28,11 +28,9 @@ S="${WORKDIR}/data/noarch"
 QA_PREBUILT="opt/gog/${PN}/BS2Remastered_i386"
 
 pkg_nofetch() {
-	einfo
 	einfo "Please buy & download \"${SRC_URI}\" from:"
 	einfo "  ${HOMEPAGE}"
-	einfo "and move/link it to \"${DISTDIR}\""
-	einfo
+	einfo "and place it in your DISTDIR directory."
 }
 
 src_unpack() {

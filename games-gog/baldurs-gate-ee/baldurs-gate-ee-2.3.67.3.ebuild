@@ -34,19 +34,17 @@ S="${WORKDIR}/data/noarch"
 QA_PREBUILT="opt/gog/${PN}/BaldursGate"
 
 pkg_nofetch() {
-	einfo
 	einfo "Please buy & download \"${BASE_SRC_URI}\""
 	use sod && einfo "and \"${SOD_SRC_URI}\""
 	einfo "from:"
 	einfo "  ${HOMEPAGE}"
-	einfo "and move/link it to \"${DISTDIR}\""
-	einfo
+	einfo "and place it in your DISTDIR directory."
 }
 
 src_unpack() {
 	unpack_zip "${DISTDIR}/${BASE_SRC_URI}"
 
-	if use sod ; then
+	if use sod; then
 		unpack_zip "${DISTDIR}/${SOD_SRC_URI}"
 	fi
 }

@@ -35,11 +35,9 @@ QA_PREBUILT="
 	opt/gog/${PN}/libLua.so"
 
 pkg_nofetch() {
-	einfo
 	einfo "Please buy & download \"${SRC_URI}\" from:"
 	einfo "  ${HOMEPAGE}"
-	einfo "and move/link it to \"${DISTDIR}\""
-	einfo
+	einfo "and place it in your DISTDIR directory."
 }
 
 src_unpack() {
@@ -61,7 +59,7 @@ src_install() {
 
 	dosym ../../../usr/$(get_libdir)/libSDL2.so "${dir}"/libSDL2-2.0.so.1
 
-	if use savedir-patch ; then
+	if use savedir-patch; then
 		pushd "${D%/}/${dir}" >/dev/null || die
 		xdelta3 -d -s GrimFandango "${FILESDIR}"/SaveDir-Patch.xdelta3 GrimFandango.new || die
 		mv GrimFandango.new GrimFandango || die
@@ -78,7 +76,7 @@ src_install() {
 pkg_postinst() {
 	gnome2_icon_cache_update
 
-	if ! use savedir-patch ; then
+	if ! use savedir-patch; then
 		elog "You did not enable 'savedir-patch' USE flag."
 		elog "Saving configuration and savegames will not work."
 	fi

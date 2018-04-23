@@ -48,7 +48,6 @@ QA_PREBUILT="
 	opt/gog/${PN}/PillarsOfEternity_Data/Mono/x86_64/libmono.so"
 
 pkg_nofetch() {
-	einfo
 	einfo "Please buy & download \"${BASE_SRC_URI}\""
 	use dlc1 && einfo "and \"${DLC1_SRC_URI}\""
 	use dlc2 && einfo "and \"${DLC2_SRC_URI}\""
@@ -56,14 +55,12 @@ pkg_nofetch() {
 	use dlc4 && einfo "and \"${DLC4_SRC_URI}\""
 	einfo "from:"
 	einfo "  ${HOMEPAGE}"
-	einfo "and move/link it to \"${DISTDIR}\""
-	einfo
+	einfo "and place it in your DISTDIR directory."
 
-	if use l10n_de ; then
+	if use l10n_de; then
 		einfo "Please also download \"${DE_SRC_URI}\" from:"
 		einfo "  https://www.nexusmods.com/pillarsofeternity/mods/6"
-		einfo "and move/link it to \"${DISTDIR}\""
-		einfo
+		einfo "and place it in your DISTDIR directory."
 	fi
 }
 
@@ -71,7 +68,7 @@ pkg_pretend() {
 	local build_size=15
 	use dlc1 && build_size=21
 
-	if use dlc2 ; then
+	if use dlc2; then
 		(( build_size += 5 ))
 	fi
 
