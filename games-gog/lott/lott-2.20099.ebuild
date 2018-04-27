@@ -8,11 +8,11 @@ inherit eutils gnome2-utils unpacker
 DESCRIPTION="Lure of the Temptress"
 HOMEPAGE="https://www.gog.com/game/lure_of_the_temptress"
 
-DE_SRC_URI="gog_lure_of_the_temptress_german_${PV}.sh"
-EN_SRC_URI="gog_lure_of_the_temptress_${PV}.sh"
-ES_SRC_URI="gog_lure_of_the_temptress_spanish_${PV}.sh"
-FR_SRC_URI="gog_lure_of_the_temptress_french_${PV}.sh"
-IT_SRC_URI="gog_lure_of_the_temptress_italian_${PV}.sh"
+DE_SRC_URI="lure_of_the_temptress_de_gog_${PV//./_}.sh"
+EN_SRC_URI="lure_of_the_temptress_en_gog_${PV//./_}.sh"
+ES_SRC_URI="lure_of_the_temptress_es_gog_${PV//./_}.sh"
+FR_SRC_URI="lure_of_the_temptress_fr_gog_${PV//./_}.sh"
+IT_SRC_URI="lure_of_the_temptress_it_gog_${PV//./_}.sh"
 SRC_URI="
 	l10n_de? ( ${DE_SRC_URI} )
 	l10n_en? ( ${EN_SRC_URI} )
