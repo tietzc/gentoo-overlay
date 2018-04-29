@@ -8,11 +8,11 @@ inherit eutils gnome2-utils unpacker
 DESCRIPTION="The Dig"
 HOMEPAGE="https://www.gog.com/game/the_dig"
 
-DE_SRC_URI="gog_the_dig_german_${PV}.sh"
-EN_SRC_URI="gog_the_dig_${PV}.sh"
-ES_SRC_URI="gog_the_dig_spanish_${PV}.sh"
-FR_SRC_URI="gog_the_dig_french_${PV}.sh"
-IT_SRC_URI="gog_the_dig_italian_${PV}.sh"
+DE_SRC_URI="the_dig_de_gog_${PV//./_}.sh"
+EN_SRC_URI="the_dig_en_gog_${PV//./_}.sh"
+ES_SRC_URI="the_dig_es_gog_${PV//./_}.sh"
+FR_SRC_URI="the_dig_fr_gog_${PV//./_}.sh"
+IT_SRC_URI="the_dig_it_gog_${PV//./_}.sh"
 SRC_URI="
 	l10n_de? ( ${DE_SRC_URI} )
 	l10n_en? ( ${EN_SRC_URI} )
