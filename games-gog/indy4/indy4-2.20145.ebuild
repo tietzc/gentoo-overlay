@@ -8,11 +8,11 @@ inherit eutils gnome2-utils unpacker
 DESCRIPTION="Indiana Jones and the Fate of Atlantis"
 HOMEPAGE="https://www.gog.com/game/indiana_jones_and_the_fate_of_atlantis"
 
-DE_SRC_URI="gog_indiana_jones_and_the_fate_of_atlantis_german_${PV}.sh"
-EN_SRC_URI="gog_indiana_jones_and_the_fate_of_atlantis_${PV}.sh"
-ES_SRC_URI="gog_indiana_jones_and_the_fate_of_atlantis_spanish_${PV}.sh"
-FR_SRC_URI="gog_indiana_jones_and_the_fate_of_atlantis_french_${PV}.sh"
-IT_SRC_URI="gog_indiana_jones_and_the_fate_of_atlantis_italian_${PV}.sh"
+DE_SRC_URI="indiana_jones_and_the_fate_of_atlantis_de_gog_${PV//./_}.sh"
+EN_SRC_URI="indiana_jones_and_the_fate_of_atlantis_en_gog_${PV//./_}.sh"
+ES_SRC_URI="indiana_jones_and_the_fate_of_atlantis_es_gog_${PV//./_}.sh"
+FR_SRC_URI="indiana_jones_and_the_fate_of_atlantis_fr_gog_${PV//./_}.sh"
+IT_SRC_URI="indiana_jones_and_the_fate_of_atlantis_it_gog_${PV//./_}.sh"
 SRC_URI="
 	l10n_de? ( ${DE_SRC_URI} )
 	l10n_en? ( ${EN_SRC_URI} )
