@@ -7,7 +7,7 @@ inherit eutils gnome2-utils unpacker
 
 DESCRIPTION="Loom"
 HOMEPAGE="https://www.gog.com/game/loom"
-SRC_URI="gog_loom_${PV}.sh"
+SRC_URI="loom_en_gog_${PV//./_}.sh"
 
 LICENSE="GOG-EULA"
 SLOT="0"
