@@ -7,7 +7,7 @@ inherit eutils gnome2-utils unpacker
 
 DESCRIPTION="Indiana Jones and the Last Crusade"
 HOMEPAGE="https://www.gog.com/game/indiana_jones_and_the_last_crusade"
-SRC_URI="gog_indiana_jones_and_the_last_crusade_${PV}.sh"
+SRC_URI="indiana_jones_and_the_last_crusade_en_gog_${PV//./_}.sh"
 
 LICENSE="GOG-EULA"
 SLOT="0"
