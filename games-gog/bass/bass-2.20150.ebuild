@@ -7,7 +7,7 @@ inherit eutils gnome2-utils unpacker
 
 DESCRIPTION="Beneath a Steel Sky"
 HOMEPAGE="https://www.gog.com/game/beneath_a_steel_sky"
-SRC_URI="gog_beneath_a_steel_sky_${PV}.sh"
+SRC_URI="beneath_a_steel_sky_en_gog_${PV//./_}.sh"
 
 LICENSE="GOG-EULA"
 SLOT="0"
