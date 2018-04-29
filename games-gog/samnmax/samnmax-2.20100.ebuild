@@ -8,11 +8,11 @@ inherit eutils gnome2-utils unpacker
 DESCRIPTION="Sam & Max Hit the Road"
 HOMEPAGE="https://www.gog.com/game/sam_max_hit_the_road"
 
-DE_SRC_URI="gog_sam_max_hit_the_road_german_${PV}.sh"
-EN_SRC_URI="gog_sam_max_hit_the_road_${PV}.sh"
-ES_SRC_URI="gog_sam_max_hit_the_road_spanish_${PV}.sh"
-FR_SRC_URI="gog_sam_max_hit_the_road_french_${PV}.sh"
-IT_SRC_URI="gog_sam_max_hit_the_road_italian_${PV}.sh"
+DE_SRC_URI="sam_and_max_hit_the_road_de_gog_${PV//./_}.sh"
+EN_SRC_URI="sam_and_max_hit_the_road_en_gog_${PV//./_}.sh"
+ES_SRC_URI="sam_and_max_hit_the_road_es_gog_${PV//./_}.sh"
+FR_SRC_URI="sam_and_max_hit_the_road_fr_gog_${PV//./_}.sh"
+IT_SRC_URI="sam_and_max_hit_the_road_it_gog_${PV//./_}.sh"
 SRC_URI="
 	l10n_de? ( ${DE_SRC_URI} )
 	l10n_en? ( ${EN_SRC_URI} )
