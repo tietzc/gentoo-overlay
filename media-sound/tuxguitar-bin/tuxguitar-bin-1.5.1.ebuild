@@ -6,7 +6,7 @@ EAPI=6
 inherit eutils gnome2-utils
 
 DESCRIPTION="TuxGuitar is a multitrack guitar tablature editor and player written in Java-SWT"
-HOMEPAGE="http://www.tuxguitar.pw"
+HOMEPAGE="http://www.tuxguitar.com.ar"
 SRC_URI="
 	x86? ( https://sourceforge.net/projects/tuxguitar/files/TuxGuitar/TuxGuitar-${PV}/tuxguitar-${PV}-linux-x86.tar.gz )
 	amd64? ( https://sourceforge.net/projects/tuxguitar/files/TuxGuitar/TuxGuitar-${PV}/tuxguitar-${PV}-linux-x86_64.tar.gz )"
