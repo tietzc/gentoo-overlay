@@ -39,7 +39,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-libs/rapidjson"
 
-PATCHES=( "${FILESDIR}"/only-use-release-profile.patch )
+PATCHES=( "${FILESDIR}"/${PN}-only-use-release-profile.patch )
 
 DOCS=( README.md changes.md contributors.txt )
 
