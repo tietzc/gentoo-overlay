@@ -3,11 +3,9 @@
 
 EAPI=6
 
-MY_PN="CardBook"
-
 DESCRIPTION="A new Thunderbird address book based on the CardDAV and vCard standards"
 HOMEPAGE="https://addons.mozilla.org/thunderbird/addon/cardbook"
-SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://addons.cdn.mozilla.net/user-media/addons/634298/${P}-tb.xpi"
 
 LICENSE="MPL-2.0"
 SLOT="0"
@@ -17,9 +15,14 @@ RESTRICT="mirror"
 
 RDEPEND="mail-client/thunderbird[lightning]"
 
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	app-arch/unzip"
 
-S="${WORKDIR}/${MY_PN}-${PV}"
+S="${WORKDIR}"
+
+src_unpack() {
+	unzip -qo "${DISTDIR}/${P}-tb.xpi" || die
+}
 
 src_install() {
 	local emid
@@ -28,7 +31,5 @@ src_install() {
 		|| die "Failed to determine extension id"
 
 	insinto "/usr/$(get_libdir)/thunderbird/extensions/${emid}"
-	doins -r chrome components modules chrome.manifest install.rdf
-
-	einstalldocs
+	doins -r .
 }
