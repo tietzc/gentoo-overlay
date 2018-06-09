@@ -3,7 +3,7 @@
 
 EAPI=6
 
-COMMIT="0e2890f923398761ddd571c817226ee888adce5c"
+COMMIT="a05b8cdf02142c247db16173883565e0e1a47cc6"
 MY_PN="RBDOOM-3-BFG"
 
 inherit cmake-utils
@@ -22,7 +22,6 @@ RDEPEND="
 	media-libs/glew:=
 	media-libs/libpng:=
 	media-libs/libsdl2[X,opengl,sound,video]
-	>=media-libs/mesa-17.2
 	media-libs/openal:=
 	sys-libs/zlib:=[minizip]
 	virtual/ffmpeg"
