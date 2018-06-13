@@ -8,9 +8,8 @@ inherit eutils gnome2-utils
 DESCRIPTION="Doom 3 BFG (data files)"
 HOMEPAGE="https://www.gog.com/game/doom_3_bfg_edition"
 SRC_URI="
-	setup_doom_3_bfg_${PV}_(13452)_(g).exe
-	setup_doom_3_bfg_${PV}_(13452)_(g)-1.bin
-	setup_doom_3_bfg_${PV}_(13452)_(g)-2.bin"
+	setup_doom_3_bfg_${PV}_(13452).exe
+	setup_doom_3_bfg_${PV}_(13452)-1.bin"
 
 LICENSE="GOG-EULA"
 SLOT="0"
@@ -20,7 +19,7 @@ RESTRICT="bindist fetch"
 
 RDEPEND="games-engines/rbdoom3bfg"
 
-DEPEND=">=app-arch/innoextract-1.6"
+DEPEND=">=app-arch/innoextract-1.7"
 
 S="${WORKDIR}"
 
@@ -31,7 +30,7 @@ pkg_nofetch() {
 }
 
 src_unpack() {
-	innoextract --gog "${DISTDIR}/setup_doom_3_bfg_${PV}_(13452)_(g).exe" || die
+	innoextract "${DISTDIR}/setup_doom_3_bfg_${PV}_(13452).exe" || die
 }
 
 src_install() {
