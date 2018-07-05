@@ -7,7 +7,7 @@ inherit eutils gnome2-utils unpacker
 
 DESCRIPTION="Icewind Dale: Enhanced Edition"
 HOMEPAGE="https://www.gog.com/game/icewind_dale_enhanced_edition"
-SRC_URI="icewind_dale_enhanced_edition_en_${PV//./_}_20626.sh"
+SRC_URI="icewind_dale_enhanced_edition_en_${PV//./_}.sh"
 
 LICENSE="GOG-EULA"
 SLOT="0"
