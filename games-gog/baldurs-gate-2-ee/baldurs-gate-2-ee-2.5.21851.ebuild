@@ -7,7 +7,7 @@ inherit eutils gnome2-utils unpacker
 
 DESCRIPTION="Baldur's Gate 2: Enhanced Edition"
 HOMEPAGE="https://www.gog.com/game/baldurs_gate_2_enhanced_edition"
-SRC_URI="gog_baldur_s_gate_2_enhanced_edition_${PV}.sh"
+SRC_URI="baldur_s_gate_2_enhanced_edition_en_${PV//./_}.sh"
 
 LICENSE="GOG-EULA"
 SLOT="0"
@@ -16,12 +16,11 @@ IUSE=""
 RESTRICT="bindist fetch"
 
 RDEPEND="
-	dev-libs/expat[abi_x86_32(-)]
-	dev-libs/json-c[abi_x86_32(-)]
-	dev-libs/openssl[abi_x86_32(-)]
-	media-libs/openal[abi_x86_32(-)]
-	virtual/opengl[abi_x86_32(-)]
-	x11-libs/libX11[abi_x86_32(-)]"
+	dev-libs/expat
+	dev-libs/openssl
+	media-libs/openal
+	virtual/opengl
+	x11-libs/libX11"
 
 DEPEND="app-arch/unzip"
 
@@ -41,17 +40,15 @@ src_unpack() {
 
 src_install() {
 	local dir="/opt/gog/${PN}"
-	local ABI="x86"
+
+	rm game/BaldursGateII$(usex amd64 "" "64") || die
 
 	insinto "${dir}"
 	doins -r game/.
 
-	fperms +x "${dir}"/BaldursGateII
+	fperms +x "${dir}"/BaldursGateII$(usex amd64 "64" "")
 
-	dodir "${dir}"/lib
-	dosym ../../../../usr/$(get_libdir)/libjson-c.so "${dir}"/lib/libjson.so.0
-
-	make_wrapper ${PN} "./BaldursGateII" "${dir}" "${dir}/lib"
+	make_wrapper ${PN} "./BaldursGateII$(usex amd64 "64" "")" "${dir}"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Baldurs Gate 2: Enhanced Edition"
 }
