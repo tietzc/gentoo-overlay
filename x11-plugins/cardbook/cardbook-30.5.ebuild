@@ -4,7 +4,7 @@
 EAPI=7
 
 DESCRIPTION="A new Thunderbird address book based on the CardDAV and vCard standards"
-HOMEPAGE="https://addons.mozilla.org/thunderbird/addon/cardbook"
+HOMEPAGE="https://addons.thunderbird.net/thunderbird/addon/cardbook"
 SRC_URI="https://addons.thunderbird.net/user-media/addons/634298/${P}-tb.xpi"
 
 LICENSE="MPL-2.0"
