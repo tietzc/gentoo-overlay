@@ -26,7 +26,7 @@ DEPEND="app-arch/unzip"
 
 S="${WORKDIR}/data/noarch"
 
-QA_PREBUILT="opt/gog/${PN}/BaldursGateII"
+QA_PREBUILT="opt/gog/${PN}/BaldursGateII*"
 
 pkg_nofetch() {
 	einfo "Please buy & download \"${SRC_URI}\" from:"
