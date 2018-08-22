@@ -3,13 +3,13 @@
 
 EAPI=6
 
-inherit eutils gnome2-utils unpacker versionator
+inherit eutils gnome2-utils unpacker
 
 DESCRIPTION="Baldur's Gate: Enhanced Edition"
 HOMEPAGE="https://www.gog.com/game/baldurs_gate_enhanced_edition"
 
-BASE_SRC_URI="baldur_s_gate_enhanced_edition_en_$(replace_all_version_separators '_')_20146.sh"
-SOD_SRC_URI="baldur_s_gate_siege_of_dragonspear_en_2_3_0_4_20148.sh"
+BASE_SRC_URI="baldur_s_gate_enhanced_edition_en_${PV//./_}.sh"
+SOD_SRC_URI="baldur_s_gate_siege_of_dragonspear_en_${PV//./_}.sh"
 SRC_URI="${BASE_SRC_URI}
 	sod? ( ${SOD_SRC_URI} )"
 
@@ -20,18 +20,17 @@ IUSE="+sod"
 RESTRICT="bindist fetch"
 
 RDEPEND="
-	dev-libs/expat[abi_x86_32(-)]
-	dev-libs/json-c[abi_x86_32(-)]
-	dev-libs/openssl[abi_x86_32(-)]
-	media-libs/openal[abi_x86_32(-)]
-	virtual/opengl[abi_x86_32(-)]
-	x11-libs/libX11[abi_x86_32(-)]"
+	dev-libs/expat
+	dev-libs/openssl
+	media-libs/openal
+	virtual/opengl
+	x11-libs/libX11"
 
 DEPEND="app-arch/unzip"
 
 S="${WORKDIR}/data/noarch"
 
-QA_PREBUILT="opt/gog/${PN}/BaldursGate"
+QA_PREBUILT="opt/gog/${PN}/BaldursGate*"
 
 pkg_nofetch() {
 	einfo "Please buy & download \"${BASE_SRC_URI}\""
@@ -51,17 +50,15 @@ src_unpack() {
 
 src_install() {
 	local dir="/opt/gog/${PN}"
-	local ABI="x86"
+
+	rm game/BaldursGate$(usex amd64 "" "64") || die
 
 	insinto "${dir}"
 	doins -r game/.
 
-	fperms +x "${dir}"/BaldursGate
+	fperms +x "${dir}"/BaldursGate$(usex amd64 "64" "")
 
-	dodir "${dir}"/lib
-	dosym ../../../../usr/$(get_libdir)/libjson-c.so "${dir}"/lib/libjson.so.0
-
-	make_wrapper ${PN} "./BaldursGate" "${dir}" "${dir}/lib"
+	make_wrapper ${PN} "./BaldursGate$(usex amd64 "64" "")" "${dir}"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Baldurs Gate: Enhanced Edition"
 }
