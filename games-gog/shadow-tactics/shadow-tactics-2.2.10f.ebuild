@@ -3,11 +3,11 @@
 
 EAPI=6
 
-inherit check-reqs eutils gnome2-utils unpacker versionator
+inherit check-reqs eutils gnome2-utils unpacker
 
 DESCRIPTION="Shadow Tactics: Blades of the Shogun"
 HOMEPAGE="https://www.gog.com/game/shadow_tactics_blades_of_the_shogun"
-SRC_URI="shadow_tactics_blades_of_the_shogun_en_$(version_format_string '$1_$2_$3_$4')_21297.sh"
+SRC_URI="shadow_tactics_blades_of_the_shogun_en_2_2_10_f_21297.sh"
 
 LICENSE="GOG-EULA"
 SLOT="0"
