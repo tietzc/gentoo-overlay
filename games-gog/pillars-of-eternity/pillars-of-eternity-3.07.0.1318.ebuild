@@ -3,15 +3,15 @@
 
 EAPI=6
 
-inherit check-reqs eutils gnome2-utils unpacker versionator
+inherit check-reqs eutils gnome2-utils unpacker
 
 DESCRIPTION="Pillars of Eternity"
 HOMEPAGE="https://www.gog.com/game/pillars_of_eternity_hero_edition"
 
-BASE_SRC_URI="pillars_of_eternity_en_$(replace_all_version_separators '_')_17461.sh"
-DLC1_SRC_URI="pillars_of_eternity_white_march_part_1_dlc_en_$(replace_all_version_separators '_')_17464.sh"
-DLC2_SRC_URI="pillars_of_eternity_white_march_part_2_dlc_en_$(replace_all_version_separators '_')_17464.sh"
-DLC3_SRC_URI="pillars_of_eternity_deadfire_pack_dlc_en_$(replace_all_version_separators '_')_20099.sh"
+BASE_SRC_URI="pillars_of_eternity_en_${PV//./_}_17461.sh"
+DLC1_SRC_URI="pillars_of_eternity_white_march_part_1_dlc_en_${PV//./_}_17464.sh"
+DLC2_SRC_URI="pillars_of_eternity_white_march_part_2_dlc_en_${PV//./_}_17464.sh"
+DLC3_SRC_URI="pillars_of_eternity_deadfire_pack_dlc_en_${PV//./_}_20099.sh"
 DLC4_SRC_URI="gog_pillars_of_eternity_preorder_item_and_pet_dlc_2.0.0.2.sh"
 DE_SRC_URI="PoE_v3.07.1318_PX1_PX2_German_Fix.7z"
 SRC_URI="${BASE_SRC_URI}
