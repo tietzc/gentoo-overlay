@@ -22,9 +22,9 @@ RDEPEND="
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
 	media-libs/libpng:0=
-	media-libs/tiff:0=
-	sys-libs/zlib:=
-	virtual/jpeg:0=
+	media-libs/tiff:0
+	sys-libs/zlib
+	virtual/jpeg:0
 	x11-libs/libXrender"
 
 DEPEND="${RDEPEND}
