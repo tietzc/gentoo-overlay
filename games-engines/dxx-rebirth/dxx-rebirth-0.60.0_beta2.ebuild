@@ -3,12 +3,11 @@
 
 EAPI=6
 
-inherit eutils scons-utils toolchain-funcs xdg
+inherit desktop scons-utils toolchain-funcs xdg
 
-MY_P="${PN}_v${PV}-src"
 DESCRIPTION="Descent Rebirth - enhanced Descent 1 & 2 engine"
 HOMEPAGE="https://www.dxx-rebirth.com/"
-SRC_URI="https://www.dxx-rebirth.com/download/dxx/${MY_P}.tar.gz
+SRC_URI="https://github.com/dxx-rebirth/dxx-rebirth/archive/${PV//_/-}.tar.gz -> ${P}.tar.gz
 	opl3-musicpack? (
 		descent1? ( https://www.dxx-rebirth.com/download/dxx/res/d1xr-opl3-music.dxa )
 		descent2? ( https://www.dxx-rebirth.com/download/dxx/res/d2xr-opl3-music.dxa ) )
@@ -49,23 +48,25 @@ RDEPEND="${DEPEND}
 	!games-action/d1x-rebirth
 	!games-action/d2x-rebirth"
 
-S="${WORKDIR}/${MY_P}"
+PATCHES=( "${FILESDIR}"/${P}-respect-cflags.patch "${FILESDIR}"/${P}-sharepath.patch )
 
-# Remove hardcoded optimisation flags.
-# Change share path to use old d1x/d2x locations.
-PATCHES=( "${FILESDIR}"/${P}-{flags,sharepath}.patch )
+S="${WORKDIR}/${P//_/-}"
 
 src_compile() {
 	tc-export CXX
-	escons \
-		prefix="${EPREFIX}"/usr \
-		d1x=$(usex descent1 1 0) \
-		d2x=$(usex descent2 1 0) \
-		debug=$(usex debug 1 0) \
-		ipv6=$(usex ipv6 1 0) \
-		opengl=$(usex opengl 1 0) \
-		sdlmixer=$(usex music 1 0) \
+
+	local MYSCONS=(
+		prefix="${EPREFIX}"/usr
+		d1x=$(usex descent1 1 0)
+		d2x=$(usex descent2 1 0)
+		debug=$(usex debug 1 0)
+		ipv6=$(usex ipv6 1 0)
+		opengl=$(usex opengl 1 0)
+		sdlmixer=$(usex music 1 0)
 		verbosebuild=1
+	)
+
+	escons "${MYSCONS[@]}"
 }
 
 src_install() {
@@ -76,7 +77,6 @@ src_install() {
 		PROGRAM=d${DV}x-rebirth
 
 		docinto ${PROGRAM}
-		edos2unix ${PROGRAM}/*.txt
 		dodoc ${PROGRAM}/*.txt
 
 		insinto /usr/share/games/d${DV}x

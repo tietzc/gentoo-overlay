@@ -1,0 +1,10 @@
+--- a/SConstruct	2018-04-15 21:43:38.000000000 +0200
++++ b/SConstruct	2018-09-09 17:58:15.868549236 +0200
+@@ -3997,7 +3997,6 @@
+ 		# appended to this list and will override these defaults.  The
+ 		# defaults are present to ensure that a user who does not set
+ 		# any options gets a good default experience.
+-		env.Prepend(CXXFLAGS = ['-g', '-O2'])
+ 		# Raspberry Pi?
+ 		if user_settings.raspberrypi == 'yes':
+ 			rpi_vc_path = user_settings.rpi_vc_path

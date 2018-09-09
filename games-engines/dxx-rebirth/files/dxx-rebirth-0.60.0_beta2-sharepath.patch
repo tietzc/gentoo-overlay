@@ -1,8 +1,8 @@
---- dxx-rebirth_v0.59.100-src/SConstruct	2016-12-12 02:47:40.000000000 +0300
-+++ dxx-rebirth_v0.59.100-src/SConstruct	2016-12-29 19:26:58.987760410 +0300
-@@ -2875,7 +2875,7 @@
- 				return 'GLESv2'
- 			return self.default_OGLES_LIB
+--- a/SConstruct	2018-04-15 21:43:38.000000000 +0200
++++ b/SConstruct	2018-09-09 18:02:43.128113454 +0200
+@@ -3341,7 +3341,7 @@
+ 				return 'brcmEGL'
+ 			return self.default_EGL_LIB
  		def __default_DATA_DIR(self):
 -			return '%s/share/games/%s' % (self.prefix, self._program.target)
 +			return '%s/share/games/%s' % (self.prefix, self._program.shortname)
