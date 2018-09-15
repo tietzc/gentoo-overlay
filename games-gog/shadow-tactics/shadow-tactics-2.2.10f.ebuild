@@ -49,7 +49,8 @@ src_unpack() {
 src_install() {
 	local dir="/opt/gog/${PN}"
 
-	rm game/Shadow\ Tactics_Data/Plugins/x86/libsteam_api.so || die
+	rm game/Shadow\ Tactics_Data/Plugins/x86/libCSteamworks.so \
+		game/Shadow\ Tactics_Data/Plugins/x86/libsteam_api.so || die
 
 	insinto "${dir}"
 	doins -r game/.
