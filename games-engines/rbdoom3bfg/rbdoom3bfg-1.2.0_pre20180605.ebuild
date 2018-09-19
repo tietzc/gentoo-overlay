@@ -50,7 +50,7 @@ src_configure() {
 		-DUSE_SYSTEM_LIBPNG=ON
 		-DUSE_SYSTEM_RAPIDJSON=ON
 		-DUSE_SYSTEM_ZLIB=ON
-		-Wno-dev ../neo
+		-Wno-dev
 	)
 
 	cmake-utils_src_configure
