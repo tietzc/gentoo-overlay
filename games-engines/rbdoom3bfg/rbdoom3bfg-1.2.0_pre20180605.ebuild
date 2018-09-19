@@ -57,7 +57,7 @@ src_configure() {
 }
 
 src_install() {
-	dobin "${BUILD_DIR}"/RBDoom3BFG
+	newbin "${BUILD_DIR}"/RBDoom3BFG ${PN}
 
 	insinto /usr/share/games/doom3bfg/base
 	doins base/{default,extract_resources}.cfg
