@@ -40,7 +40,7 @@ src_install() {
 	doins -r app/base/.
 
 	newicon -s 128 app/language_setup.png doom3bfg.png
-	make_desktop_entry RBDoom3BFG "Doom 3: BFG Edition" doom3bfg
+	make_desktop_entry rbdoom3bfg "Doom 3: BFG Edition" doom3bfg
 }
 
 pkg_postinst() {
