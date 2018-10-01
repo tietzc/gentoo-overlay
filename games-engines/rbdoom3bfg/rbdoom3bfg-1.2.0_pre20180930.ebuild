@@ -3,7 +3,7 @@
 
 EAPI=6
 
-COMMIT="a05b8cdf02142c247db16173883565e0e1a47cc6"
+COMMIT="694809f9ff9417bae1acc3aa7bab51f9b2a8424b"
 MY_PN="RBDOOM-3-BFG"
 
 inherit cmake-utils
@@ -42,6 +42,8 @@ CMAKE_USE_DIR="${S}"/neo
 
 src_configure() {
 	local mycmakeargs=(
+		-DBINKDEC=OFF
+		-DFFMPEG=ON
 		-DOPENAL=ON
 		-DSDL2=ON
 		-DUSE_PRECOMPILED_HEADERS=OFF
