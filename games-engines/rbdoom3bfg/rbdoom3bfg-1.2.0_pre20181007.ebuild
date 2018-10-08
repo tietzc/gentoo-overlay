@@ -24,12 +24,16 @@ RDEPEND="
 	media-libs/libsdl2[X,opengl,sound,video]
 	media-libs/openal:=
 	sys-libs/zlib:=[minizip]
-	virtual/ffmpeg"
+	virtual/ffmpeg
+	virtual/jpeg:0"
 
 DEPEND="${RDEPEND}
 	dev-libs/rapidjson"
 
-PATCHES=( "${FILESDIR}"/${PN}-libpng16.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-libpng16.patch
+	"${FILESDIR}"/${PN}-system-libjpeg.patch
+)
 
 DOCS=( README.txt RELEASE-NOTES.txt )
 
@@ -45,7 +49,7 @@ src_configure() {
 		-DSDL2=ON
 		-DUSE_PRECOMPILED_HEADERS=OFF
 		-DUSE_SYSTEM_LIBGLEW=ON
-		-DUSE_SYSTEM_LIBJPEG=OFF # needs jpegint.h
+		-DUSE_SYSTEM_LIBJPEG=ON
 		-DUSE_SYSTEM_LIBPNG=ON
 		-DUSE_SYSTEM_RAPIDJSON=ON
 		-DUSE_SYSTEM_ZLIB=ON

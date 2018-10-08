@@ -1,0 +1,10 @@
+--- a/neo/renderer/Cinematic.cpp	2018-10-07 22:06:02.000000000 +0200
++++ b/neo/renderer/Cinematic.cpp	2018-10-09 00:42:29.638478192 +0200
+@@ -34,7 +34,6 @@
+ 
+ extern idCVar s_noSound;
+ 
+-#define JPEG_INTERNALS
+ //extern "C" {
+ #include <jpeglib.h>
+ //}
