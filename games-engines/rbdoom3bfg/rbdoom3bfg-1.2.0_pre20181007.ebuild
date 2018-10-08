@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-COMMIT="694809f9ff9417bae1acc3aa7bab51f9b2a8424b"
+COMMIT="e9e1347a05d6d56f3c8322e449a212ca868115bb"
 MY_PN="RBDOOM-3-BFG"
 
 inherit cmake-utils
@@ -29,10 +29,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-libs/rapidjson"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-libpng16.patch
-	"${FILESDIR}"/${PN}-system-rapidjson.patch
-)
+PATCHES=( "${FILESDIR}"/${PN}-libpng16.patch )
 
 DOCS=( README.txt RELEASE-NOTES.txt )
 
