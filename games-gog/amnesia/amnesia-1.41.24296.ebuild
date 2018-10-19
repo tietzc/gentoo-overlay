@@ -7,7 +7,7 @@ inherit eutils gnome2-utils unpacker
 
 DESCRIPTION="Amnesia: The Dark Descent"
 HOMEPAGE="https://www.gog.com/game/amnesia_the_dark_descent"
-SRC_URI="amnesia_the_dark_descent_gog_${PV//./_}.sh"
+SRC_URI="amnesia_the_dark_descent_${PV//./_}.sh"
 
 LICENSE="GOG-EULA"
 SLOT="0"
