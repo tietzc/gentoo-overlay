@@ -8,9 +8,9 @@ inherit check-reqs eutils gnome2-utils unpacker
 DESCRIPTION="Tyranny"
 HOMEPAGE="https://www.gog.com/game/tyranny_commander_edition"
 
-BASE_SRC_URI="tyranny_en_${PV//./_}.sh"
-DLC1_SRC_URI="tyranny_bastard_s_wound_dlc_en_${PV//./_}.sh"
-DLC2_SRC_URI="tyranny_tales_from_the_tiers_dlc_en_${PV//./_}.sh"
+BASE_SRC_URI="tyranny_v${PV//./_}_v2_25169.sh"
+DLC1_SRC_URI="tyranny_bastard_s_wound_dlc_en_1_2_1_0158_15398.sh"
+DLC2_SRC_URI="tyranny_tales_from_the_tiers_dlc_en_1_2_1_0158_15398.sh"
 DLC3_SRC_URI="tyranny_pre_order_dlc_en_1_0_14773.sh"
 SRC_URI="${BASE_SRC_URI}
 	dlc1? ( ${DLC1_SRC_URI} )
@@ -40,8 +40,7 @@ S="${WORKDIR}/data/noarch"
 CHECKREQS_DISK_BUILD="15G"
 
 QA_PREBUILT="
-	opt/gog/${PN}/Tyranny
-	opt/gog/${PN}/Tyranny.x86
+	opt/gog/${PN}/Tyranny.x86*
 	opt/gog/${PN}/Tyranny_Data/Mono/x86*/libmono.so
 	opt/gog/${PN}/Tyranny_Data/Plugins/x86*/libpops_api.so"
 
@@ -65,7 +64,7 @@ src_unpack() {
 src_install() {
 	local dir="/opt/gog/${PN}"
 
-	rm -r game/Tyranny$(usex amd64 ".x86" "") \
+	rm -r game/Tyranny.x86$(usex amd64 "" "_64") \
 		game/Tyranny_Data/Mono/$(usex amd64 "x86" "x86_64") \
 		game/Tyranny_Data/Plugins/$(usex amd64 "x86" "x86_64") \
 		game/Tyranny_Data/Plugins/$(usex amd64 "x86_64" "x86")/libCSteamworks.so \
@@ -77,9 +76,9 @@ src_install() {
 	# ensure sane permissions
 	find "${D%/}/${dir}" -type f -exec chmod 0644 '{}' + || die
 	find "${D%/}/${dir}" -type d -exec chmod 0755 '{}' + || die
-	fperms +x "${dir}"/Tyranny$(usex amd64 "" ".x86")
+	fperms +x "${dir}"/Tyranny.x86$(usex amd64 "_64" "")
 
-	make_wrapper ${PN} "./Tyranny$(usex amd64 "" ".x86")" "${dir}"
+	make_wrapper ${PN} "./Tyranny.x86$(usex amd64 "_64" "")" "${dir}"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Tyranny"
 }
