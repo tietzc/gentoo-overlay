@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,12 +8,12 @@ inherit eutils gnome2-utils unpacker
 DESCRIPTION="Neverwinter Nights: Enhanced Edition"
 HOMEPAGE="https://www.gog.com/game/neverwinter_nights_enhanced_edition_pack"
 
-DE_SRC_URI="neverwinter_nights_enhanced_edition_german_gog_${PV//./_}.sh"
-EN_SRC_URI="neverwinter_nights_enhanced_edition_gog_${PV//./_}.sh"
-ES_SRC_URI="neverwinter_nights_enhanced_edition_spanish_gog_${PV//./_}.sh"
-FR_SRC_URI="neverwinter_nights_enhanced_edition_french_gog_${PV//./_}.sh"
-IT_SRC_URI="neverwinter_nights_enhanced_edition_italian_gog_${PV//./_}.sh"
-PL_SRC_URI="neverwinter_nights_enhanced_edition_polish_gog_${PV//./_}.sh"
+DE_SRC_URI="neverwinter_nights_enhanced_edition_german_${PV//./_}.sh"
+EN_SRC_URI="neverwinter_nights_enhanced_edition_${PV//./_}.sh"
+ES_SRC_URI="neverwinter_nights_enhanced_edition_spanish_${PV//./_}.sh"
+FR_SRC_URI="neverwinter_nights_enhanced_edition_french_${PV//./_}.sh"
+IT_SRC_URI="neverwinter_nights_enhanced_edition_italian_${PV//./_}.sh"
+PL_SRC_URI="neverwinter_nights_enhanced_edition_polish_${PV//./_}.sh"
 SRC_URI="
 	l10n_de? ( ${DE_SRC_URI} )
 	l10n_en? ( ${EN_SRC_URI} )
