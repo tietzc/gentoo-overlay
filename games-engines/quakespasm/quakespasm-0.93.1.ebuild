@@ -24,12 +24,13 @@ RDEPEND="
 
 DEPEND="${RDEPEND}"
 
-PATCHES=( "${FILESDIR}"/${PN}-respect-cflags.patch )
-
 DOCS=( Quakespasm.txt Quakespasm-Music.txt )
 
 src_prepare() {
 	default
+
+	# respect CFLAGS
+	sed -i '/CFLAGS += -O2/d' Quake/Makefile || die
 
 	# disable automatic stripping of binary
 	sed -i '/\$(call cmd_strip,\$(1));/d' Quake/Makefile || die
@@ -46,7 +47,7 @@ src_compile() {
 		USE_SDL2=1
 	)
 
-	emake -C Quake ${myconf[@]}
+	emake -C Quake "${myconf[@]}"
 }
 
 src_install() {
