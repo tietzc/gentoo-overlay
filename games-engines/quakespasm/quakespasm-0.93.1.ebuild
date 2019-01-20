@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ inherit desktop gnome2-utils
 
 DESCRIPTION="Unix-friendly Quake engine based on the popular FitzQuake"
 HOMEPAGE="http://quakespasm.sourceforge.net"
-SRC_URI="mirror://sourceforge/quakespasm/Source/${P}.tgz"
+SRC_URI="https://sourceforge.net/projects/${PN}/files/Source/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
