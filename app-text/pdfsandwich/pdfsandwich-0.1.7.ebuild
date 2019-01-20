@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DESCRIPTION="Tool to generate 'sandwich' OCR pdf files"
 HOMEPAGE="http://www.tobias-elze.de/pdfsandwich"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+SRC_URI="https://sourceforge.net/projects/${PN}/files/${PN}%20${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
