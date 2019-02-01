@@ -25,8 +25,10 @@ BDEPEND="dev-lang/ocaml[ocamlopt]"
 src_prepare() {
 	default
 
+	# fix CFLAGS, LDFLAGS, install, and docs directory
 	sed -i \
 		-e "/^OCAMLOPTFLAGS/s/$/ -ccopt \"\$(CFLAGS) \$(LDFLAGS)\"/" \
 		-e "s/install -s/install/" \
+		-e "/INSTALLDOCDIR/s/"\(TARGET\)/\{PF\}"/" \
 		Makefile || die
 }
