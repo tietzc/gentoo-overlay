@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils gnome2-utils virtualx xdg-utils
+inherit cmake-utils virtualx xdg-utils
 
 DESCRIPTION="Interactive post-processing tool for scanned pages"
 HOMEPAGE="https://github.com/4lex4/scantailor-advanced"
@@ -29,8 +29,9 @@ RDEPEND="
 
 DEPEND="${RDEPEND}
 	dev-libs/boost
-	dev-qt/linguist-tools:5
 	!media-gfx/scantailor"
+
+BDEPEND="dev-qt/linguist-tools:5"
 
 src_test() {
 	cd "${CMAKE_BUILD_DIR}" || die
@@ -38,13 +39,13 @@ src_test() {
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
 	xdg_desktop_database_update
+	xdg_icon_cache_update
 	xdg_mimeinfo_database_update
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
 	xdg_desktop_database_update
+	xdg_icon_cache_update
 	xdg_mimeinfo_database_update
 }
