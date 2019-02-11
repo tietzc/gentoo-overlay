@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit eutils gnome2-utils unpacker
+inherit desktop eutils unpacker xdg-utils
 
 DESCRIPTION="Grim Fandango: Remastered"
 HOMEPAGE="https://www.gog.com/game/grim_fandango_remastered"
@@ -23,7 +23,7 @@ RDEPEND="
 	virtual/opengl[abi_x86_32(-)]
 	x11-libs/libX11[abi_x86_32(-)]"
 
-DEPEND="
+BDEPEND="
 	app-arch/unzip
 	savedir-patch? ( dev-util/xdelta:3 )"
 
@@ -60,7 +60,7 @@ src_install() {
 	dosym ../../../usr/$(get_libdir)/libSDL2.so "${dir}"/libSDL2-2.0.so.1
 
 	if use savedir-patch; then
-		pushd "${D%/}/${dir}" >/dev/null || die
+		pushd "${D}/${dir}" >/dev/null || die
 		xdelta3 -d -s GrimFandango "${FILESDIR}"/SaveDir-Patch.xdelta3 GrimFandango.new || die
 		mv GrimFandango.new GrimFandango || die
 		popd >/dev/null || die
@@ -74,7 +74,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 
 	if ! use savedir-patch; then
 		elog "You did not enable 'savedir-patch' USE flag."
@@ -83,5 +83,5 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }

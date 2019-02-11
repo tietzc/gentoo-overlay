@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit eutils gnome2-utils unpacker
+inherit desktop eutils unpacker xdg-utils
 
 DESCRIPTION="Broken Sword 5: The Serpent's Curse"
 HOMEPAGE="https://www.gog.com/game/broken_sword_5_the_serpents_curse"
@@ -21,7 +21,7 @@ RDEPEND="
 	virtual/opengl
 	x11-libs/libX11"
 
-DEPEND="app-arch/unzip"
+BDEPEND="app-arch/unzip"
 
 S="${WORKDIR}/data/noarch"
 
@@ -47,11 +47,11 @@ src_install() {
 	rm -r game/{BS5,i386,x86_64} || die
 
 	dodir "${dir}"
-	mv game/* "${D%/}/${dir}" || die
+	mv game/* "${D}/${dir}" || die
 
 	# ensure sane permissions
-	find "${D%/}/${dir}" -type f -exec chmod 0644 '{}' + || die
-	find "${D%/}/${dir}" -type d -exec chmod 0755 '{}' + || die
+	find "${D}/${dir}" -type f -exec chmod 0644 '{}' + || die
+	find "${D}/${dir}" -type d -exec chmod 0755 '{}' + || die
 	fperms +x "${dir}"/BS5_$(usex amd64 "x86_64" "i386")
 
 	make_wrapper ${PN} "./BS5_$(usex amd64 "x86_64" "i386")" "${dir}"
@@ -60,9 +60,9 @@ src_install() {
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }

@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit check-reqs eutils gnome2-utils unpacker
+inherit check-reqs desktop eutils unpacker xdg-utils
 
 DESCRIPTION="Pillars of Eternity"
 HOMEPAGE="https://www.gog.com/game/pillars_of_eternity_hero_edition"
@@ -37,7 +37,7 @@ RDEPEND="
 	x11-libs/gtk+:2
 	x11-libs/pango"
 
-DEPEND="
+BDEPEND="
 	app-arch/unzip
 	l10n_de? ( app-arch/p7zip )"
 
@@ -98,11 +98,11 @@ src_install() {
 		game/PillarsOfEternity_Data/Plugins/x86_64/libsteam_api.so || die
 
 	dodir "${dir}"
-	mv game/* "${D%/}/${dir}" || die
+	mv game/* "${D}/${dir}" || die
 
 	# ensure sane permissions
-	find "${D%/}/${dir}" -type f -exec chmod 0644 '{}' + || die
-	find "${D%/}/${dir}" -type d -exec chmod 0755 '{}' + || die
+	find "${D}/${dir}" -type f -exec chmod 0644 '{}' + || die
+	find "${D}/${dir}" -type d -exec chmod 0755 '{}' + || die
 	fperms +x "${dir}"/PillarsOfEternity
 
 	make_wrapper ${PN} "./PillarsOfEternity" "${dir}"
@@ -111,9 +111,9 @@ src_install() {
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }

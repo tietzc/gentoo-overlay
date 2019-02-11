@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit eutils gnome2-utils
+inherit desktop eutils xdg-utils
 
 DESCRIPTION="Gabriel Knight: Sins of the Fathers"
 HOMEPAGE="https://www.gog.com/game/gabriel_knight_sins_of_the_fathers"
@@ -17,7 +17,7 @@ RESTRICT="bindist fetch"
 
 RDEPEND=">=games-engines/scummvm-2.0.0"
 
-DEPEND="
+BDEPEND="
 	>=app-arch/innoextract-1.7
 	media-gfx/icoutils"
 
@@ -53,13 +53,13 @@ src_install() {
 	make_desktop_entry ${PN} "Gabriel Knight: Sins Of The Fathers"
 
 	# delete temporary icon
-	rm "${D%/}/${dir}"/GK1_1_32x32x4.png || die
+	rm "${D}/${dir}"/GK1_1_32x32x4.png || die
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }

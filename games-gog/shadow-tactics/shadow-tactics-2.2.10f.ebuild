@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit check-reqs eutils gnome2-utils unpacker
+inherit check-reqs desktop eutils unpacker xdg-utils
 
 DESCRIPTION="Shadow Tactics: Blades of the Shogun"
 HOMEPAGE="https://www.gog.com/game/shadow_tactics_blades_of_the_shogun"
@@ -25,7 +25,7 @@ RDEPEND="
 	x11-libs/gtk+:2[abi_x86_32(-)]
 	x11-libs/pango[abi_x86_32(-)]"
 
-DEPEND="app-arch/unzip"
+BDEPEND="app-arch/unzip"
 
 S="${WORKDIR}/data/noarch"
 
@@ -63,9 +63,9 @@ src_install() {
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }

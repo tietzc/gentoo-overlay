@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit check-reqs eutils gnome2-utils unpacker
+inherit check-reqs desktop eutils unpacker xdg-utils
 
 DESCRIPTION="Tyranny"
 HOMEPAGE="https://www.gog.com/game/tyranny_commander_edition"
@@ -33,7 +33,7 @@ RDEPEND="
 	x11-libs/gtk+:2
 	x11-libs/pango"
 
-DEPEND="app-arch/unzip"
+BDEPEND="app-arch/unzip"
 
 S="${WORKDIR}/data/noarch"
 
@@ -71,11 +71,11 @@ src_install() {
 		game/Tyranny_Data/Plugins/$(usex amd64 "x86_64" "x86")/libsteam_api.so || die
 
 	dodir "${dir}"
-	mv game/* "${D%/}/${dir}" || die
+	mv game/* "${D}/${dir}" || die
 
 	# ensure sane permissions
-	find "${D%/}/${dir}" -type f -exec chmod 0644 '{}' + || die
-	find "${D%/}/${dir}" -type d -exec chmod 0755 '{}' + || die
+	find "${D}/${dir}" -type f -exec chmod 0644 '{}' + || die
+	find "${D}/${dir}" -type d -exec chmod 0755 '{}' + || die
 	fperms +x "${dir}"/Tyranny.x86$(usex amd64 "_64" "")
 
 	make_wrapper ${PN} "./Tyranny.x86$(usex amd64 "_64" "")" "${dir}"
@@ -84,9 +84,9 @@ src_install() {
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }

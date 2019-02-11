@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit eutils gnome2-utils
+inherit desktop xdg-utils
 
 DESCRIPTION="Doom 3 BFG (data files)"
 HOMEPAGE="https://www.gog.com/game/doom_3_bfg_edition"
@@ -19,7 +19,7 @@ RESTRICT="bindist fetch"
 
 RDEPEND="games-engines/rbdoom3bfg"
 
-DEPEND=">=app-arch/innoextract-1.7"
+BDEPEND=">=app-arch/innoextract-1.7"
 
 S="${WORKDIR}"
 
@@ -44,9 +44,9 @@ src_install() {
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }

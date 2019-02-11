@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit eutils gnome2-utils unpacker
+inherit desktop eutils unpacker xdg-utils
 
 DESCRIPTION="Legend of Grimrock"
 HOMEPAGE="https://www.gog.com/game/legend_of_grimrock"
@@ -24,7 +24,7 @@ RDEPEND="
 	media-libs/openal
 	sys-libs/zlib[minizip]"
 
-DEPEND="app-arch/unzip"
+BDEPEND="app-arch/unzip"
 
 S="${WORKDIR}/data/noarch"
 
@@ -58,9 +58,9 @@ src_install() {
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
