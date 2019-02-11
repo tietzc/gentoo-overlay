@@ -1,9 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit desktop gnome2-utils
+inherit desktop xdg-utils
 
 DESCRIPTION="Unix-friendly Quake engine based on the popular FitzQuake"
 HOMEPAGE="http://quakespasm.sourceforge.net"
@@ -60,9 +60,9 @@ src_install() {
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
