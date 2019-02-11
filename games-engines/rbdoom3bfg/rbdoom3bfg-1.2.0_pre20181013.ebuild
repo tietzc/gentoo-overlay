@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 COMMIT="435637606d65efe1098683d133f348eb06f8b852"
 MY_PN="RBDOOM-3-BFG"
@@ -67,7 +67,7 @@ src_install() {
 
 	einstalldocs
 
-	cat <<- EOF >> "${D%/}"/usr/share/games/doom3bfg/base/default.cfg
+	cat <<- EOF >> "${D}"/usr/share/games/doom3bfg/base/default.cfg
 		//
 		// Set default language to English
 		//
