@@ -61,6 +61,7 @@ src_configure() {
 
 src_install() {
 	newbin "${BUILD_DIR}"/RBDoom3BFG ${PN}
+	dolib.so "${BUILD_DIR}"/idlib/libidlib.so
 
 	insinto /usr/share/games/doom3bfg/base
 	doins base/{default,extract_resources}.cfg
