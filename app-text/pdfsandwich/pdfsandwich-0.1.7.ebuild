@@ -22,13 +22,17 @@ RDEPEND="
 
 BDEPEND="dev-lang/ocaml[ocamlopt]"
 
+PATCHES=( "${FILESDIR}"/${PN}-no-manpages-and-docs-compression.patch )
+
 src_prepare() {
 	default
 
-	# fix CFLAGS, LDFLAGS, install, and docs directory
-	sed -i \
-		-e "/^OCAMLOPTFLAGS/s/$/ -ccopt \"\$(CFLAGS) \$(LDFLAGS)\"/" \
-		-e "s/install -s/install/" \
-		-e "/INSTALLDOCDIR/s/"\(TARGET\)/\{PF\}"/" \
-		Makefile || die
+	# respect CFLAGS, LDFLAGS
+	sed -i "/^OCAMLOPTFLAGS/s/$/ -ccopt \"\$(CFLAGS) \$(LDFLAGS)\"/" Makefile || die
+
+	# disable automatic stripping of binary
+	sed -i "s/install -s/install/" Makefile || die
+
+	# fix docs install directory
+	sed -i "/INSTALLDOCDIR/s/"\(TARGET\)/\(PF\)"/" Makefile || die
 }
