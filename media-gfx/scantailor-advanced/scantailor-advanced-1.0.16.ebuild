@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils virtualx xdg-utils
+inherit xdg cmake-utils virtualx
 
 DESCRIPTION="Interactive post-processing tool for scanned pages"
 HOMEPAGE="https://github.com/4lex4/scantailor-advanced"
@@ -36,16 +36,4 @@ BDEPEND="dev-qt/linguist-tools:5"
 src_test() {
 	cd "${CMAKE_BUILD_DIR}" || die
 	virtx emake test
-}
-
-pkg_postinst() {
-	xdg_desktop_database_update
-	xdg_icon_cache_update
-	xdg_mimeinfo_database_update
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
-	xdg_icon_cache_update
-	xdg_mimeinfo_database_update
 }
