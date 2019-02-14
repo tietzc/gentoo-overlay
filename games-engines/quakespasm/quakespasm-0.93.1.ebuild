@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop xdg-utils
+inherit desktop xdg
 
 DESCRIPTION="Unix-friendly Quake engine based on the popular FitzQuake"
 HOMEPAGE="http://quakespasm.sourceforge.net"
@@ -57,12 +57,4 @@ src_install() {
 
 	newicon -s 512 Misc/QuakeSpasm_512.png ${PN}.png
 	make_desktop_entry ${PN} "Quakespasm"
-}
-
-pkg_postinst() {
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
 }
