@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop eutils unpacker xdg-utils
+inherit desktop eutils unpacker xdg
 
 DESCRIPTION="Gone Home"
 HOMEPAGE="https://www.gog.com/game/gone_home"
@@ -60,13 +60,5 @@ src_install() {
 	make_desktop_entry ${PN} "Gone Home"
 
 	# work around localization issue
-	sed -i '2i\export LC_ALL=C\' "${D}/usr/bin/${PN}" || die
-}
-
-pkg_postinst() {
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
+	sed -i '2i\export LC_ALL=C\' "${D}"/usr/bin/${PN} || die
 }

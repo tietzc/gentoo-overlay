@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop eutils unpacker xdg-utils
+inherit desktop eutils unpacker xdg
 
 DESCRIPTION="Grim Fandango: Remastered"
 HOMEPAGE="https://www.gog.com/game/grim_fandango_remastered"
@@ -74,14 +74,8 @@ src_install() {
 }
 
 pkg_postinst() {
-	xdg_icon_cache_update
-
 	if ! use savedir-patch; then
 		elog "You did not enable 'savedir-patch' USE flag."
 		elog "Saving configuration and savegames will not work."
 	fi
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
 }

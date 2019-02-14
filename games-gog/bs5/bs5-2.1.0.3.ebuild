@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop eutils unpacker xdg-utils
+inherit desktop eutils unpacker xdg
 
 DESCRIPTION="Broken Sword 5: The Serpent's Curse"
 HOMEPAGE="https://www.gog.com/game/broken_sword_5_the_serpents_curse"
@@ -57,12 +57,4 @@ src_install() {
 	make_wrapper ${PN} "./BS5_$(usex amd64 "x86_64" "i386")" "${dir}"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Broken Sword 5: The Serpent's Curse"
-}
-
-pkg_postinst() {
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
 }

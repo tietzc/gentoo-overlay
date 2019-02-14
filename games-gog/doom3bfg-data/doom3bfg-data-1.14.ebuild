@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop xdg-utils
+inherit desktop xdg
 
 DESCRIPTION="Doom 3 BFG (data files)"
 HOMEPAGE="https://www.gog.com/game/doom_3_bfg_edition"
@@ -41,12 +41,4 @@ src_install() {
 
 	newicon -s 128 app/language_setup.png doom3bfg.png
 	make_desktop_entry rbdoom3bfg "Doom 3: BFG Edition" doom3bfg
-}
-
-pkg_postinst() {
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
 }

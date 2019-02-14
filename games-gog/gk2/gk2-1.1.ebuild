@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop eutils xdg-utils
+inherit desktop eutils xdg
 
 DESCRIPTION="Gabriel Knight 2: The Beast Within"
 HOMEPAGE="https://www.gog.com/game/gabriel_knight_2_the_beast_within"
@@ -56,12 +56,4 @@ src_install() {
 
 	# delete temporary icon
 	rm "${D}/${dir}"/GK2_1_32x32x4.png || die
-}
-
-pkg_postinst() {
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
 }

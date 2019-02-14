@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop eutils unpacker xdg-utils
+inherit desktop eutils unpacker xdg
 
 DESCRIPTION="Lure of the Temptress"
 HOMEPAGE="https://www.gog.com/game/lure_of_the_temptress"
@@ -62,12 +62,4 @@ src_install() {
 	make_wrapper ${PN} "scummvm -f -p "${dir}" lure"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Lure Of The Temptress"
-}
-
-pkg_postinst() {
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
 }

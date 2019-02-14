@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop eutils unpacker xdg-utils
+inherit desktop eutils unpacker xdg
 
 DESCRIPTION="Day of the Tentacle: Remastered"
 HOMEPAGE="https://www.gog.com/game/day_of_the_tentacle_remastered"
@@ -54,12 +54,4 @@ src_install() {
 	make_wrapper ${PN} "./Dott" "${dir}"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Day Of The Tentacle: Remastered"
-}
-
-pkg_postinst() {
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
 }

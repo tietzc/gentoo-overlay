@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop eutils unpacker xdg-utils
+inherit desktop eutils unpacker xdg
 
 DESCRIPTION="Beneath a Steel Sky"
 HOMEPAGE="https://www.gog.com/game/beneath_a_steel_sky"
@@ -49,12 +49,4 @@ src_install() {
 			make_desktop_entry ${PN} "Beneath A Steel Sky"
 		fi
 	done
-}
-
-pkg_postinst() {
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
 }

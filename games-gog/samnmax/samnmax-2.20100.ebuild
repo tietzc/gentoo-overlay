@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop eutils unpacker xdg-utils
+inherit desktop eutils unpacker xdg
 
 DESCRIPTION="Sam & Max Hit the Road"
 HOMEPAGE="https://www.gog.com/game/sam_max_hit_the_road"
@@ -62,12 +62,4 @@ src_install() {
 	make_wrapper ${PN} "scummvm -f -p "${dir}" samnmax"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Sam & Max Hit The Road"
-}
-
-pkg_postinst() {
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
 }

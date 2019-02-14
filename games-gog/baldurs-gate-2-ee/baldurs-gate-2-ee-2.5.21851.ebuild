@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop eutils unpacker xdg-utils
+inherit desktop eutils unpacker xdg
 
 DESCRIPTION="Baldur's Gate 2: Enhanced Edition"
 HOMEPAGE="https://www.gog.com/game/baldurs_gate_2_enhanced_edition"
@@ -51,12 +51,4 @@ src_install() {
 	make_wrapper ${PN} "./BaldursGateII$(usex amd64 "64" "")" "${dir}"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Baldurs Gate 2: Enhanced Edition"
-}
-
-pkg_postinst() {
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
 }

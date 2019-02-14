@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop eutils unpacker xdg-utils
+inherit desktop eutils unpacker xdg
 
 DESCRIPTION="Torment: Tides of Numenera"
 HOMEPAGE="https://www.gog.com/game/torment_tides_of_numenera"
@@ -60,12 +60,4 @@ src_install() {
 	make_wrapper ${PN} "./TidesOfNumenera" "${dir}"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Torment: Tides Of Numenera"
-}
-
-pkg_postinst() {
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
 }

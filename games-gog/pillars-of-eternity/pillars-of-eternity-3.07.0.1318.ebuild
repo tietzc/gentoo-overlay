@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit check-reqs desktop eutils unpacker xdg-utils
+inherit check-reqs desktop eutils unpacker xdg
 
 DESCRIPTION="Pillars of Eternity"
 HOMEPAGE="https://www.gog.com/game/pillars_of_eternity_hero_edition"
@@ -108,12 +108,4 @@ src_install() {
 	make_wrapper ${PN} "./PillarsOfEternity" "${dir}"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Pillars Of Eternity"
-}
-
-pkg_postinst() {
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
 }

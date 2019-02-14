@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop eutils unpacker xdg-utils
+inherit desktop eutils unpacker xdg
 
 DESCRIPTION="Neverwinter Nights: Enhanced Edition"
 HOMEPAGE="https://www.gog.com/game/neverwinter_nights_enhanced_edition_pack"
@@ -77,12 +77,4 @@ src_install() {
 	make_wrapper ${PN} "./nwmain-linux" "${dir}"/bin/linux
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Neverwinter Nights: Enhanced Edition"
-}
-
-pkg_postinst() {
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
 }

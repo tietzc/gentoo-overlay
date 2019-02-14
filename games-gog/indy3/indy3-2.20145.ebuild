@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop eutils unpacker xdg-utils
+inherit desktop eutils unpacker xdg
 
 DESCRIPTION="Indiana Jones and the Last Crusade"
 HOMEPAGE="https://www.gog.com/game/indiana_jones_and_the_last_crusade"
@@ -40,12 +40,4 @@ src_install() {
 	make_wrapper ${PN} "scummvm -f -p "${dir}" indy3"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Indiana Jones And The Last Crusade"
-}
-
-pkg_postinst() {
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
 }

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop eutils xdg-utils
+inherit desktop eutils xdg
 
 DESCRIPTION="Gabriel Knight: Sins of the Fathers"
 HOMEPAGE="https://www.gog.com/game/gabriel_knight_sins_of_the_fathers"
@@ -54,12 +54,4 @@ src_install() {
 
 	# delete temporary icon
 	rm "${D}/${dir}"/GK1_1_32x32x4.png || die
-}
-
-pkg_postinst() {
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
 }

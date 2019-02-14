@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit check-reqs desktop eutils unpacker xdg-utils
+inherit check-reqs desktop eutils unpacker xdg
 
 DESCRIPTION="Tyranny"
 HOMEPAGE="https://www.gog.com/game/tyranny_commander_edition"
@@ -81,12 +81,4 @@ src_install() {
 	make_wrapper ${PN} "./Tyranny.x86$(usex amd64 "_64" "")" "${dir}"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Tyranny"
-}
-
-pkg_postinst() {
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
 }

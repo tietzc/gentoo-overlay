@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop eutils unpacker xdg-utils
+inherit desktop eutils unpacker xdg
 
 DESCRIPTION="Torchlight II"
 HOMEPAGE="https://www.gog.com/game/torchlight_ii"
@@ -63,12 +63,4 @@ src_install() {
 	make_wrapper ${PN} "./Torchlight2.bin.$(usex amd64 "x86_64" "x86")" "${dir}"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Torchlight II"
-}
-
-pkg_postinst() {
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
 }

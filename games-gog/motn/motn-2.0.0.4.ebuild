@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop eutils unpacker xdg-utils
+inherit desktop eutils unpacker xdg
 
 DESCRIPTION="Mark of the Ninja: Special Edition"
 HOMEPAGE="https://www.gog.com/game/mark_of_the_ninja_special_edition"
@@ -67,12 +67,4 @@ src_install() {
 	make_wrapper ${PN} "./ninja-bin$(usex amd64 "64" "32")" "${dir}/bin"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Mark Of The Ninja: Special Edition"
-}
-
-pkg_postinst() {
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
 }

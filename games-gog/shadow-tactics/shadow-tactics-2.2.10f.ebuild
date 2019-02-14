@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit check-reqs desktop eutils unpacker xdg-utils
+inherit check-reqs desktop eutils unpacker xdg
 
 DESCRIPTION="Shadow Tactics: Blades of the Shogun"
 HOMEPAGE="https://www.gog.com/game/shadow_tactics_blades_of_the_shogun"
@@ -60,12 +60,4 @@ src_install() {
 	make_wrapper ${PN} "./Shadow\ Tactics" "${dir}"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Shadow Tactics: Blades Of The Shogun"
-}
-
-pkg_postinst() {
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
 }

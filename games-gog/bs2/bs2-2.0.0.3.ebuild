@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop eutils unpacker xdg-utils
+inherit desktop eutils unpacker xdg
 
 DESCRIPTION="Broken Sword 2: Remastered"
 HOMEPAGE="https://www.gog.com/game/broken_sword_2__the_smoking_mirror"
@@ -50,12 +50,4 @@ src_install() {
 	make_wrapper ${PN} "./BS2Remastered_i386" "${dir}"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Broken Sword 2: Remastered"
-}
-
-pkg_postinst() {
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
 }

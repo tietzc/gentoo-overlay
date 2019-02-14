@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop eutils xdg-utils
+inherit desktop eutils xdg
 
 DESCRIPTION="The Curse of Monkey Island"
 HOMEPAGE="https://www.gog.com/game/the_curse_of_monkey_island"
@@ -76,12 +76,4 @@ src_install() {
 	make_wrapper ${PN} "scummvm -f -p "${dir}" comi"
 	newicon -s 256 goggame-1528148981_7_256x256x32.png ${PN}.png
 	make_desktop_entry ${PN} "The Curse Of Monkey Island"
-}
-
-pkg_postinst() {
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
 }

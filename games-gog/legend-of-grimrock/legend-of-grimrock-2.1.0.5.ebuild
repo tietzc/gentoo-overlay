@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop eutils unpacker xdg-utils
+inherit desktop eutils unpacker xdg
 
 DESCRIPTION="Legend of Grimrock"
 HOMEPAGE="https://www.gog.com/game/legend_of_grimrock"
@@ -55,12 +55,4 @@ src_install() {
 	make_wrapper ${PN} "./Grimrock.bin.$(usex amd64 "x86_64" "x86")" "${dir}"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Legend Of Grimrock"
-}
-
-pkg_postinst() {
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
 }
