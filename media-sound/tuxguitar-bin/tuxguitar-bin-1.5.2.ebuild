@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop eutils xdg-utils
+inherit desktop eutils xdg
 
 DESCRIPTION="TuxGuitar is a multitrack guitar tablature editor and player written in Java-SWT"
 HOMEPAGE="http://www.tuxguitar.com.ar"
@@ -46,12 +46,4 @@ src_install() {
 	make_wrapper ${PN} "./tuxguitar.sh" "${dir}"
 	newicon -s 96 share/skins/Oxygen/icon.png ${PN}.png
 	make_desktop_entry ${PN} "TuxGuitar"
-}
-
-pkg_postinst() {
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
 }
