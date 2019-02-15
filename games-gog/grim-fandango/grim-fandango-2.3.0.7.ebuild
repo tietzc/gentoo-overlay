@@ -74,6 +74,8 @@ src_install() {
 }
 
 pkg_postinst() {
+	xdg_pkg_postinst
+
 	if ! use savedir-patch; then
 		elog "You did not enable 'savedir-patch' USE flag."
 		elog "Saving configuration and savegames will not work."
