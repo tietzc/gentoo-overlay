@@ -32,7 +32,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-libpng16.patch
-	"${FILESDIR}"/${PN}-system-libjpeg.patch
+	"${FILESDIR}"/${PN}-fix-system-libjpeg.patch
 )
 
 DOCS=( README.txt RELEASE-NOTES.txt )
