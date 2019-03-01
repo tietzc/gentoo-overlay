@@ -7,7 +7,7 @@ inherit desktop eutils unpacker xdg
 
 DESCRIPTION="Planescape Torment: Enhanced Edition"
 HOMEPAGE="https://www.gog.com/game/planescape_torment_enhanced_edition"
-SRC_URI="gog_planescape_torment_enhanced_edition_${PV}.sh"
+SRC_URI="planescape_torment_enhanced_edition_${PV//./_}.sh"
 
 LICENSE="GOG-EULA"
 SLOT="0"
