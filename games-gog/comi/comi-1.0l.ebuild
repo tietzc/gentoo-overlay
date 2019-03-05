@@ -71,7 +71,9 @@ src_install() {
 	icotool -x app/goggame-1528148981.ico || die
 
 	insinto "${dir}"
-	doins -r RESOURCE COMI.LA0 COMI.LA1 COMI.LA2 Guide.pdf
+	doins -r RESOURCE COMI.LA0 COMI.LA1 COMI.LA2
+
+	dodoc Guide.pdf
 
 	make_wrapper ${PN} "scummvm -f -p "${dir}" comi"
 	newicon -s 256 goggame-1528148981_7_256x256x32.png ${PN}.png
