@@ -51,7 +51,10 @@ src_unpack() {
 src_install() {
 	local dir="/opt/gog/${PN}"
 
-	rm game/BaldursGate$(usex amd64 "" "64") || die
+	dodoc -r game/Manuals/.
+
+	rm -r game/BaldursGate$(usex amd64 "" "64") \
+		game/Manuals || die
 
 	insinto "${dir}"
 	doins -r game/.
