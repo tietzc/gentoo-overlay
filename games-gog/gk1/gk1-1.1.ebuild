@@ -38,12 +38,15 @@ src_install() {
 
 	icotool -x GK1.ICO || die
 
+	dodoc Manual.pdf
+
 	rm -r __{redist,support} \
 		app \
 		commonappdata \
 		scummvm \
 		tmp \
-		goggame-1207658828.{hashdb,info,script} || die
+		goggame-1207658828.{hashdb,info,script} \
+		Manual.pdf || die
 
 	insinto "${dir}"
 	doins -r .
