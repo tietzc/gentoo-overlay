@@ -41,9 +41,12 @@ src_unpack() {
 src_install() {
 	local dir="/opt/gog/${PN}"
 
+	dodoc game/{Manual_en,Remember\ -\ Short\ Story\ Collection}.pdf
+
 	rm -r game/lib{,64} \
 		game/Amnesia.bin.$(usex amd64 "x86" "x86_64") \
-		game/Launcher.bin.x86{,_64} || die
+		game/Launcher.bin.x86{,_64} \
+		game/{Manual_en,Remember\ -\ Short\ Story\ Collection}.pdf || die
 
 	insinto "${dir}"
 	doins -r game/.
