@@ -25,7 +25,7 @@ RDEPEND="
 	media-libs/openal:=
 	sys-libs/zlib:=[minizip]
 	virtual/ffmpeg
-	virtual/jpeg:0"
+	virtual/jpeg:62"
 
 DEPEND="${RDEPEND}
 	dev-libs/rapidjson"
