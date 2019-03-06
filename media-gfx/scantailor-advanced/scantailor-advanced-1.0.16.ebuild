@@ -28,8 +28,7 @@ RDEPEND="
 	x11-libs/libXrender"
 
 DEPEND="${RDEPEND}
-	dev-libs/boost
-	!media-gfx/scantailor"
+	dev-libs/boost"
 
 BDEPEND="dev-qt/linguist-tools:5"
 
