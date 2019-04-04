@@ -6,7 +6,7 @@ EAPI=7
 COMMIT="fc9cb19ca4d831cc514e5c037cc0acb073603aed"
 MY_PN="devilutionX"
 
-inherit cmake-utils multilib
+inherit xdg cmake-utils desktop multilib
 
 DESCRIPTION="Diablo build for modern operating systems"
 HOMEPAGE="https://github.com/diasurgical/devilutionX"
@@ -26,7 +26,9 @@ RDEPEND="
 
 DEPEND="${RDEPEND}"
 
-BDEPEND="virtual/pkgconfig"
+BDEPEND="
+	media-gfx/icoutils
+	virtual/pkgconfig"
 
 S="${WORKDIR}/${MY_PN}-${COMMIT}"
 
@@ -43,4 +45,9 @@ src_configure() {
 
 src_install() {
 	dobin "${BUILD_DIR}"/${PN}
+
+	icotool -x Diablo.ico || die
+
+	newicon -s 32 Diablo_1_32x32x4.png ${PN}.png
+	make_desktop_entry ${PN} "Diablo"
 }
