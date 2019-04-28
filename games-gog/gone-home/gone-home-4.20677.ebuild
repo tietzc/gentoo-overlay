@@ -48,7 +48,8 @@ src_install() {
 
 	rm -r game/GoneHome.$(usex amd64 "x86" "x86_64") \
 		game/GoneHome_Data/Mono/$(usex amd64 "x86" "x86_64") \
-		game/GoneHome_Data/Plugins/x86{,_64}/libsteam_api.so || die
+		game/GoneHome_Data/Plugins/$(usex amd64 "x86" "x86_64") \
+		game/GoneHome_Data/Plugins/$(usex amd64 "x86_64" "x86")/libsteam_api.so || die
 
 	insinto "${dir}"
 	doins -r game/.
