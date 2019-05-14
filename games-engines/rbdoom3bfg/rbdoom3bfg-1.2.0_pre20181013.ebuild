@@ -23,7 +23,7 @@ RDEPEND="
 	media-libs/libpng:=
 	media-libs/libsdl2[X,opengl,sound,video]
 	media-libs/openal:=
-	sys-libs/zlib:=[minizip]
+	sys-libs/zlib:=
 	virtual/ffmpeg
 	virtual/jpeg:62"
 
