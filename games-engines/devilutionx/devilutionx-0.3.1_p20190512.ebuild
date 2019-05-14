@@ -3,7 +3,7 @@
 
 EAPI=7
 
-COMMIT="35b6b738afeb2a3091e9108c5929e42c8089c27a"
+COMMIT="b81ca8502db1af7cc5858538be03301e534b3818"
 MY_PN="devilutionX"
 
 inherit xdg cmake-utils desktop multilib
