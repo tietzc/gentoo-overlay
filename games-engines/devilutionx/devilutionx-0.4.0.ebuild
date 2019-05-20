@@ -3,14 +3,13 @@
 
 EAPI=7
 
-COMMIT="b81ca8502db1af7cc5858538be03301e534b3818"
 MY_PN="devilutionX"
 
 inherit xdg cmake-utils desktop multilib
 
 DESCRIPTION="Diablo build for modern operating systems"
 HOMEPAGE="https://github.com/diasurgical/devilutionX"
-SRC_URI="https://github.com/diasurgical/${MY_PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/diasurgical/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"
@@ -30,7 +29,7 @@ BDEPEND="
 	media-gfx/icoutils
 	virtual/pkgconfig"
 
-S="${WORKDIR}/${MY_PN}-${COMMIT}"
+S="${WORKDIR}/${MY_PN}-${PV}"
 
 src_configure() {
 	use amd64 && multilib_toolchain_setup x86
