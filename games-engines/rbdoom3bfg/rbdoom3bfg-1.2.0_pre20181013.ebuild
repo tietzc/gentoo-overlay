@@ -44,6 +44,7 @@ CMAKE_USE_DIR="${S}"/neo
 src_configure() {
 	local mycmakeargs=(
 		-DBINKDEC=OFF
+		-DBUILD_SHARED_LIBS=OFF
 		-DFFMPEG=ON
 		-DOPENAL=ON
 		-DSDL2=ON
@@ -61,7 +62,6 @@ src_configure() {
 
 src_install() {
 	newbin "${BUILD_DIR}"/RBDoom3BFG ${PN}
-	dolib.so "${BUILD_DIR}"/idlib/libidlib.so
 
 	insinto /usr/share/games/doom3bfg/base
 	doins base/{default,extract_resources}.cfg
