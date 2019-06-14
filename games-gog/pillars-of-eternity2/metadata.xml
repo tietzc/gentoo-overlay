@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>christian.tietz@mailbox.org</email>
+		<name>Christian Tietz</name>
+	</maintainer>
+	<use>
+		<flag name="dlc1">Install 'Beard and Hair Pack' dlc</flag>
+		<flag name="dlc2">Install 'Critical Role Pack' dlc</flag>
+		<flag name="dlc3">Install 'Deck of Many Things' dlc</flag>
+		<flag name="dlc4">Install 'Explorer's Pack - Pet Cosmo' dlc</flag>
+		<flag name="dlc5">Install 'Explorer's Pack - Tricorn Hat' dlc</flag>
+		<flag name="dlc6">Install 'Rum Runner's Pack' dlc</flag>
+		<flag name="dlc7">Install 'Scalawags Pack' dlc</flag>
+		<flag name="exp1">Install 'The Beast of Winter' expansion</flag>
+		<flag name="exp2">Install 'Seeker, Slayer, Survivor' expansion</flag>
+		<flag name="exp3">Install 'The Forgotten Sanctum' expansion</flag>
+	</use>
+</pkgmetadata>
