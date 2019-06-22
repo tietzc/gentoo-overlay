@@ -9,6 +9,7 @@ DESCRIPTION="Pillars of Eternity II: Deadfire"
 HOMEPAGE="https://www.gog.com/game/pillars_of_eternity_2_game"
 
 BASE_SRC_URI="pillars_of_eternity_ii_deadfire_v${PV//./_}_29222.sh"
+DE_SRC_URI="pillarsofeternity-2-german-patch-1.6.0.tar.gz"
 DLC1_SRC_URI="pillars_of_eternity_ii_deadfire_beard_and_hair_pack_v${PV//./_}_29222.sh"
 DLC2_SRC_URI="pillars_of_eternity_ii_deadfire_critical_role_pack_v${PV//./_}_29222.sh"
 DLC3_SRC_URI="pillars_of_eternity_ii_deadfire_deck_of_many_things_v${PV//./_}_29222.sh"
@@ -30,12 +31,13 @@ SRC_URI="${BASE_SRC_URI}
 	dlc7? ( ${DLC7_SRC_URI} )
 	exp1? ( ${EXP1_SRC_URI} )
 	exp2? ( ${EXP2_SRC_URI} )
-	exp3? ( ${EXP3_SRC_URI} )"
+	exp3? ( ${EXP3_SRC_URI} )
+	l10n_de? ( ${DE_SRC_URI} )"
 
 LICENSE="GOG-EULA"
 SLOT="0"
 KEYWORDS="-* ~amd64"
-IUSE="+exp1 +exp2 +exp3 +dlc1 +dlc2 +dlc3 +dlc4 +dlc5 +dlc6 +dlc7"
+IUSE="+dlc1 +dlc2 +dlc3 +dlc4 +dlc5 +dlc6 +dlc7 +exp1 +exp2 +exp3 l10n_de"
 RESTRICT="bindist fetch"
 
 RDEPEND="
@@ -75,6 +77,12 @@ pkg_nofetch() {
 	einfo "from:"
 	einfo "  ${HOMEPAGE}"
 	einfo "and place it in your DISTDIR directory."
+
+	if use l10n_de; then
+		einfo "Please also download \"${DE_SRC_URI}\" from:"
+		einfo "  https://github.com/AurelioSilver/pillarsofeternity-2-german-patch/releases"
+		einfo "and place it in your DISTDIR directory."
+	fi
 }
 
 src_unpack() {
@@ -89,6 +97,15 @@ src_unpack() {
 	use exp1 && unpack_zip "${DISTDIR}/${EXP1_SRC_URI}"
 	use exp2 && unpack_zip "${DISTDIR}/${EXP2_SRC_URI}"
 	use exp3 && unpack_zip "${DISTDIR}/${EXP3_SRC_URI}"
+
+	if use l10n_de; then
+		tar xvzf "${DISTDIR}/${DE_SRC_URI}" \
+			--strip 1 \
+			--exclude=README.md \
+			--exclude=translation_helper \
+			--exclude=.gitignore \
+			-C "${S}/game/PillarsOfEternityII_Data" || die
+	fi
 }
 
 src_install() {
