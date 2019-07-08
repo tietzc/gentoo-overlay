@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>christian.tietz@mailbox.org</email>
+		<name>Christian Tietz</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">netblue30/firejail</remote-id>
+	</upstream>
+	<use>
+		<flag name="apparmor">Enable support for custom AppArmor profiles</flag>
+		<flag name="chroot">Enable chrooting to custom directory</flag>
+		<flag name="contrib">Install contrib scripts</flag>
+		<flag name="file-transfer">Enable file transfers between sandboxes and the host system</flag>
+		<flag name="network">Enable networking features</flag>
+		<flag name="seccomp">Enable system call filtering</flag>
+		<flag name="userns">Enable attaching a new user namespace to a sandbox (--noroot option)</flag>
+		<flag name="x11">Enable X11 sandboxing</flag>
+	</use>
+</pkgmetadata>
