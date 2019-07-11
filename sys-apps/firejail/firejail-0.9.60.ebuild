@@ -18,6 +18,8 @@ RDEPEND="
 
 DEPEND="${RDEPEND}"
 
+PATCHES=( "${FILESDIR}"/${P}-no-manpages-compression.patch )
+
 RESTRICT="mirror test"
 
 src_prepare() {
