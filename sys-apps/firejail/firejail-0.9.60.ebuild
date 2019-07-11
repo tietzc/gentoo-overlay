@@ -10,15 +10,13 @@ SRC_URI="https://github.com/netblue30/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="apparmor +chroot contrib +file-transfer +network +seccomp +suid +userns x11"
+IUSE="apparmor +chroot +file-transfer +network +seccomp +suid +userns x11"
 
 RDEPEND="
 	!sys-apps/firejail-lts
 	apparmor? ( sys-libs/libapparmor )"
 
 DEPEND="${RDEPEND}"
-
-PATCHES=( "${FILESDIR}/${PV}-contrib-fix.patch" )
 
 RESTRICT="mirror test"
 
@@ -33,9 +31,9 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
+		--disable-contrib-install
 		$(use_enable apparmor)
 		$(use_enable chroot)
-		$(use_enable contrib contrib-install)
 		$(use_enable file-transfer)
 		$(use_enable network)
 		$(use_enable seccomp)
