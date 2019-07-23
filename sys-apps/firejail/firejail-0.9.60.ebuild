@@ -4,13 +4,14 @@
 EAPI=7
 
 DESCRIPTION="Security sandbox for any type of processes"
-HOMEPAGE="https://firejail.wordpress.com/"
+HOMEPAGE="https://firejail.wordpress.com"
 SRC_URI="https://github.com/netblue30/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="apparmor +chroot +file-transfer +network +seccomp +suid +userns x11"
+RESTRICT="mirror test"
 
 RDEPEND="
 	!sys-apps/firejail-lts
@@ -20,15 +21,13 @@ DEPEND="${RDEPEND}"
 
 PATCHES=( "${FILESDIR}"/${P}-no-manpages-compression.patch )
 
-RESTRICT="mirror test"
-
 src_prepare() {
 	default
 
 	find -name Makefile.in -exec sed -i -r \
-		-e '/^\tinstall .*COPYING /d' \
-		-e '/CFLAGS/s: (-O2|-ggdb) : :g' \
-		-e '1iCC=@CC@' {} + || die
+		-e "/^\tinstall .*COPYING /d" \
+		-e "/CFLAGS/s: (-O2|-ggdb) : :g" \
+		-e "1iCC=@CC@" '{}' + || die
 }
 
 src_configure() {
