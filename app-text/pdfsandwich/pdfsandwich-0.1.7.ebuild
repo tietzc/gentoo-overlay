@@ -16,9 +16,19 @@ RESTRICT="mirror"
 RDEPEND="
 	app-text/ghostscript-gpl
 	app-text/poppler[png,utils]
-	app-text/tesseract[osd,png]
 	app-text/unpaper
-	virtual/imagemagick-tools[png]"
+	virtual/imagemagick-tools[png]
+	|| (
+		<=app-text/tesseract-4.0.0[osd,png]
+		(
+			>=app-text/tesseract-4.1.0[png]
+			|| (
+				>=app-text/tessdata_fast-4.0.0[osd]
+				>=app-text/tessdata_best-4.0.0[osd]
+				>=app-text/tessdata_legacy-4.0.0[osd]
+			)
+		)
+	)"
 
 BDEPEND="dev-lang/ocaml[ocamlopt]"
 
