@@ -3,7 +3,7 @@
 
 EAPI=7
 
-COMMIT="435637606d65efe1098683d133f348eb06f8b852"
+COMMIT="76d69ee1a76fb739651a8699d5f00d155c83839d"
 MY_PN="RBDOOM-3-BFG"
 
 inherit cmake-utils
@@ -54,7 +54,6 @@ src_configure() {
 		-DUSE_SYSTEM_LIBPNG=ON
 		-DUSE_SYSTEM_RAPIDJSON=ON
 		-DUSE_SYSTEM_ZLIB=ON
-		-Wno-dev
 	)
 
 	cmake-utils_src_configure
