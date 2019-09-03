@@ -5,7 +5,7 @@ EAPI=7
 
 MY_PN="devilutionX"
 
-inherit xdg cmake-utils desktop multilib
+inherit cmake-utils desktop multilib xdg
 
 DESCRIPTION="Diablo build for modern operating systems"
 HOMEPAGE="https://github.com/diasurgical/devilutionX"
@@ -18,18 +18,25 @@ IUSE=""
 RESTRICT="mirror"
 
 RDEPEND="
-	dev-libs/libsodium[abi_x86_32]
-	media-libs/libsdl2[abi_x86_32,X,haptic,opengl,sound,video]
-	media-libs/sdl2-mixer[abi_x86_32]
-	media-libs/sdl2-ttf[abi_x86_32]"
-
-DEPEND="${RDEPEND}"
-
+	dev-libs/libsodium[abi_x86_32(-)]
+	media-libs/libsdl2[abi_x86_32(-),X,haptic,opengl,sound,video]
+	media-libs/sdl2-mixer[abi_x86_32(-)]
+	media-libs/sdl2-ttf[abi_x86_32(-)]
+"
+DEPEND="
+	${RDEPEND}
+"
 BDEPEND="
 	media-gfx/icoutils
-	virtual/pkgconfig"
+	virtual/pkgconfig
+"
 
 S="${WORKDIR}/${MY_PN}-${PV}"
+
+src_prepare() {
+	default
+	cmake-utils_src_prepare
+}
 
 src_configure() {
 	use amd64 && multilib_toolchain_setup x86
