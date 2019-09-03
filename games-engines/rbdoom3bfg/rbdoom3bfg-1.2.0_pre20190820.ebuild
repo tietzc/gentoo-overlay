@@ -25,10 +25,15 @@ RDEPEND="
 	media-libs/openal:=
 	sys-libs/zlib:=
 	virtual/ffmpeg
-	virtual/jpeg:0"
-
-DEPEND="${RDEPEND}
-	dev-libs/rapidjson"
+	virtual/jpeg:0
+"
+DEPEND="
+	${RDEPEND}
+	dev-libs/rapidjson
+"
+BDEPEND="
+	virtual/pkgconfig
+"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-libpng16.patch
