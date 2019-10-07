@@ -17,7 +17,7 @@ RESTRICT="bindist fetch"
 
 RDEPEND="
 	dev-libs/expat
-	dev-libs/openssl
+	dev-libs/openssl-compat
 	media-libs/openal
 	virtual/opengl
 	x11-libs/libX11"
