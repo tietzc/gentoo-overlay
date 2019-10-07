@@ -31,7 +31,6 @@ RESTRICT="bindist fetch"
 
 RDEPEND="
 	dev-libs/expat[abi_x86_32(-)]
-	dev-libs/openssl[abi_x86_32(-)]
 	media-libs/openal[abi_x86_32(-)]
 	virtual/opengl[abi_x86_32(-)]
 	x11-libs/libX11[abi_x86_32(-)]"
