@@ -3,9 +3,10 @@
 
 EAPI=7
 
+CMAKE_MAKEFILE_GENERATOR="emake"
 MY_PN="devilutionX"
 
-inherit cmake-utils desktop multilib xdg
+inherit cmake-utils desktop xdg
 
 DESCRIPTION="Diablo build for modern operating systems"
 HOMEPAGE="https://github.com/diasurgical/devilutionX"
@@ -18,29 +19,27 @@ IUSE=""
 RESTRICT="mirror"
 
 RDEPEND="
-	dev-libs/libsodium[abi_x86_32(-)]
-	media-libs/libsdl2[abi_x86_32(-),X,haptic,opengl,sound,video]
-	media-libs/sdl2-mixer[abi_x86_32(-)]
-	media-libs/sdl2-ttf[abi_x86_32(-)]
+	dev-libs/libsodium
+	media-libs/libsdl2[X,haptic,opengl,sound,video]
+	media-libs/sdl2-mixer
+	media-libs/sdl2-ttf
 "
 DEPEND="
 	${RDEPEND}
 "
 BDEPEND="
-	media-gfx/icoutils
 	virtual/pkgconfig
 "
 
 S="${WORKDIR}/${MY_PN}-${PV}"
 
 src_prepare() {
-	default
+	eapply -R "${FILESDIR}"/${PN}-facebookincubator_find_libsodium.patch
+
 	cmake-utils_src_prepare
 }
 
 src_configure() {
-	use amd64 && multilib_toolchain_setup x86
-
 	local mycmakeargs=(
 		-DBINARY_RELEASE=ON
 		-DDEBUG=OFF
@@ -52,8 +51,6 @@ src_configure() {
 src_install() {
 	dobin "${BUILD_DIR}"/${PN}
 
-	icotool -x Diablo.ico || die
-
-	newicon -s 32 Diablo_1_32x32x4.png ${PN}.png
+	newicon -s 48 Packaging/resources/Diablo_48.png ${PN}.png
 	make_desktop_entry ${PN} "Diablo"
 }
