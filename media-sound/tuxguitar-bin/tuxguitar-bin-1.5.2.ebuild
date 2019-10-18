@@ -5,11 +5,12 @@ EAPI=7
 
 inherit desktop eutils xdg
 
-DESCRIPTION="TuxGuitar is a multitrack guitar tablature editor and player written in Java-SWT"
+DESCRIPTION="Multitrack guitar tablature editor and player. Binary package"
 HOMEPAGE="http://www.tuxguitar.com.ar"
 SRC_URI="
+	amd64? ( https://sourceforge.net/projects/tuxguitar/files/TuxGuitar/TuxGuitar-${PV}/tuxguitar-${PV}-linux-x86_64.tar.gz )
 	x86? ( https://sourceforge.net/projects/tuxguitar/files/TuxGuitar/TuxGuitar-${PV}/tuxguitar-${PV}-linux-x86.tar.gz )
-	amd64? ( https://sourceforge.net/projects/tuxguitar/files/TuxGuitar/TuxGuitar-${PV}/tuxguitar-${PV}-linux-x86_64.tar.gz )"
+"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
@@ -21,7 +22,8 @@ RDEPEND="
 	virtual/jre
 	alsa? ( media-libs/alsa-lib )
 	fluidsynth? ( media-sound/fluidsynth[alsa?] )
-	timidity? ( media-sound/timidity++[alsa?,oss?] )"
+	timidity? ( media-sound/timidity++[alsa?,oss?] )
+"
 
 DOCS=( doc/{AUTHORS,CHANGES,README} )
 
