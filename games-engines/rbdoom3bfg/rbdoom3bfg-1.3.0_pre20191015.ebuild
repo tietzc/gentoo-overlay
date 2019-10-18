@@ -3,7 +3,7 @@
 
 EAPI=7
 
-COMMIT="76d69ee1a76fb739651a8699d5f00d155c83839d"
+COMMIT="f18ccd63d6b2b6ddcf6265326ddd67dbc3f5f90d"
 MY_PN="RBDOOM-3-BFG"
 
 inherit cmake-utils
