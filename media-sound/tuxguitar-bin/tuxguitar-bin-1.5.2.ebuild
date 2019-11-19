@@ -15,14 +15,14 @@ SRC_URI="
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
-IUSE="alsa fluidsynth oss timidity"
+IUSE="alsa fluidsynth timidity"
 RESTRICT="mirror"
 
 RDEPEND="
 	virtual/jre
 	alsa? ( media-libs/alsa-lib )
 	fluidsynth? ( media-sound/fluidsynth[alsa?] )
-	timidity? ( media-sound/timidity++[alsa?,oss?] )
+	timidity? ( media-sound/timidity++[alsa?] )
 "
 
 DOCS=( doc/{AUTHORS,CHANGES,README} )
