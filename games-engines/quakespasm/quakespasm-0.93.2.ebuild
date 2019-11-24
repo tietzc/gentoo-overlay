@@ -20,9 +20,11 @@ RDEPEND="
 	flac? ( media-libs/flac )
 	mp3? ( media-libs/libmad )
 	opus? ( media-libs/opus )
-	vorbis? ( media-libs/libvorbis )"
-
-DEPEND="${RDEPEND}"
+	vorbis? ( media-libs/libvorbis )
+"
+DEPEND="
+	${RDEPEND}
+"
 
 DOCS=( Quakespasm.txt Quakespasm-Music.txt )
 
