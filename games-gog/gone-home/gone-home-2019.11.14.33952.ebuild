@@ -7,7 +7,7 @@ inherit desktop eutils unpacker xdg
 
 DESCRIPTION="Gone Home"
 HOMEPAGE="https://www.gog.com/game/gone_home"
-SRC_URI="gone_home_en_version_${PV//./_}.sh"
+SRC_URI="gone_home_${PV//./_}.sh"
 
 LICENSE="GOG-EULA"
 SLOT="0"
@@ -48,8 +48,7 @@ src_install() {
 
 	rm -r game/GoneHome.$(usex amd64 "x86" "x86_64") \
 		game/GoneHome_Data/Mono/$(usex amd64 "x86" "x86_64") \
-		game/GoneHome_Data/Plugins/$(usex amd64 "x86" "x86_64") \
-		game/GoneHome_Data/Plugins/$(usex amd64 "x86_64" "x86")/libsteam_api.so || die
+		game/GoneHome_Data/Plugins/$(usex amd64 "x86" "x86_64") || die
 
 	insinto "${dir}"
 	doins -r game/.
