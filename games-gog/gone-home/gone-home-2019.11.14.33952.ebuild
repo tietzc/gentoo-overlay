@@ -58,7 +58,4 @@ src_install() {
 	make_wrapper ${PN} "./GoneHome.$(usex amd64 "x86_64" "x86")" "${dir}"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Gone Home"
-
-	# work around localization issue
-	sed -i '2i\export LC_ALL=C\' "${D}"/usr/bin/${PN} || die
 }
