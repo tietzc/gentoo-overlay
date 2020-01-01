@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 CMAKE_MAKEFILE_GENERATOR="emake"
 MY_PN="devilutionX"
 
-inherit cmake-utils desktop xdg
+inherit cmake desktop xdg
 
 DESCRIPTION="Diablo build for modern operating systems"
 HOMEPAGE="https://github.com/diasurgical/devilutionX"
@@ -36,7 +36,7 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 src_prepare() {
 	eapply -R "${FILESDIR}"/${PN}-facebookincubator_find_libsodium.patch
 
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -45,7 +45,7 @@ src_configure() {
 		-DDEBUG=OFF
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
