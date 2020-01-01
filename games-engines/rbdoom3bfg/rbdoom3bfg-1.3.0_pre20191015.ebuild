@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 COMMIT="f18ccd63d6b2b6ddcf6265326ddd67dbc3f5f90d"
 MY_PN="RBDOOM-3-BFG"
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="Doom 3 BFG GPL source modification"
 HOMEPAGE="https://github.com/RobertBeckebans/RBDOOM-3-BFG"
@@ -61,7 +61,7 @@ src_configure() {
 		-DUSE_SYSTEM_ZLIB=ON
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
