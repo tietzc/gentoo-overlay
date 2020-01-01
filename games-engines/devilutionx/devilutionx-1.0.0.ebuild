@@ -34,8 +34,7 @@ BDEPEND="
 S="${WORKDIR}/${MY_PN}-${PV}"
 
 src_prepare() {
-	eapply -R "${FILESDIR}"/${PN}-facebookincubator_find_libsodium.patch
-
+	default
 	cmake_src_prepare
 }
 
