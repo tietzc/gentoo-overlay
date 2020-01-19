@@ -9,7 +9,8 @@ DESCRIPTION="Gabriel Knight 2: The Beast Within"
 HOMEPAGE="https://www.gog.com/game/gabriel_knight_2_the_beast_within"
 SRC_URI="
 	setup_gabriel_knight_2_-_the_beast_within_${PV}_(20239).exe
-	setup_gabriel_knight_2_-_the_beast_within_${PV}_(20239)-1.bin"
+	setup_gabriel_knight_2_-_the_beast_within_${PV}_(20239)-1.bin
+"
 
 LICENSE="GOG-EULA"
 SLOT="0"
@@ -17,11 +18,13 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 RESTRICT="bindist fetch"
 
-RDEPEND=">=games-engines/scummvm-2.0.0"
-
+RDEPEND="
+	>=games-engines/scummvm-2.0.0
+"
 BDEPEND="
 	>=app-arch/innoextract-1.7
-	media-gfx/icoutils"
+	media-gfx/icoutils
+"
 
 S="${WORKDIR}"
 

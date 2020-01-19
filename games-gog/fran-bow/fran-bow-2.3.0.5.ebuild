@@ -20,13 +20,13 @@ RDEPEND="
 	dev-libs/openssl-compat:1.0.0[abi_x86_32(-)]
 	media-libs/openal[abi_x86_32(-)]
 	virtual/opengl[abi_x86_32(-)]
-	x11-libs/libX11[abi_x86_32(-)]"
-
-BDEPEND="app-arch/unzip"
+	x11-libs/libX11[abi_x86_32(-)]
+"
+BDEPEND="
+	app-arch/unzip
+"
 
 S="${WORKDIR}/data/noarch"
-
-QA_PREBUILT="opt/gog/${PN}/runner"
 
 pkg_nofetch() {
 	einfo "Please buy & download \"${SRC_URI}\" from:"

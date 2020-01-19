@@ -15,12 +15,14 @@ DLC2_SRC_URI="gog_pillars_of_eternity_preorder_item_and_pet_dlc_2.0.0.2.sh"
 EXP1_SRC_URI="pillars_of_eternity_white_march_part_1_dlc_en_${PV//./_}_17464.sh"
 EXP2_SRC_URI="pillars_of_eternity_white_march_part_2_dlc_en_${PV//./_}_17464.sh"
 
-SRC_URI="${BASE_SRC_URI}
+SRC_URI="
+	${BASE_SRC_URI}
 	dlc1? ( ${DLC1_SRC_URI} )
 	dlc2? ( ${DLC2_SRC_URI} )
 	exp1? ( ${EXP1_SRC_URI} )
 	exp2? ( ${EXP2_SRC_URI} )
-	l10n_de? ( ${DE_SRC_URI} )"
+	l10n_de? ( ${DE_SRC_URI} )
+"
 
 LICENSE="GOG-EULA"
 SLOT="0"
@@ -36,17 +38,14 @@ RDEPEND="
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:2
-	x11-libs/pango"
-
+	x11-libs/pango
+"
 BDEPEND="
 	app-arch/unzip
-	l10n_de? ( app-arch/p7zip )"
+	l10n_de? ( app-arch/p7zip )
+"
 
 S="${WORKDIR}/data/noarch"
-
-QA_PREBUILT="
-	opt/gog/${PN}/PillarsOfEternity
-	opt/gog/${PN}/PillarsOfEternity_Data/Mono/x86_64/libmono.so"
 
 pkg_nofetch() {
 	einfo "Please buy & download \"${BASE_SRC_URI}\""

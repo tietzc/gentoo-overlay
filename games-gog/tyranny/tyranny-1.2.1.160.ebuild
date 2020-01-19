@@ -12,10 +12,13 @@ BASE_SRC_URI="tyranny_v${PV//./_}_v2_25169.sh"
 DLC1_SRC_URI="tyranny_bastard_s_wound_dlc_en_1_2_1_0158_15398.sh"
 DLC2_SRC_URI="tyranny_tales_from_the_tiers_dlc_en_1_2_1_0158_15398.sh"
 DLC3_SRC_URI="tyranny_pre_order_dlc_en_1_0_14773.sh"
-SRC_URI="${BASE_SRC_URI}
+
+SRC_URI="
+	${BASE_SRC_URI}
 	dlc1? ( ${DLC1_SRC_URI} )
 	dlc2? ( ${DLC2_SRC_URI} )
-	dlc3? ( ${DLC3_SRC_URI} )"
+	dlc3? ( ${DLC3_SRC_URI} )
+"
 
 LICENSE="GOG-EULA"
 SLOT="0"
@@ -31,18 +34,15 @@ RDEPEND="
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:2
-	x11-libs/pango"
-
-BDEPEND="app-arch/unzip"
+	x11-libs/pango
+"
+BDEPEND="
+	app-arch/unzip
+"
 
 S="${WORKDIR}/data/noarch"
 
 CHECKREQS_DISK_BUILD="15G"
-
-QA_PREBUILT="
-	opt/gog/${PN}/Tyranny.x86*
-	opt/gog/${PN}/Tyranny_Data/Mono/x86*/libmono.so
-	opt/gog/${PN}/Tyranny_Data/Plugins/x86*/libpops_api.so"
 
 pkg_nofetch() {
 	einfo "Please buy & download \"${BASE_SRC_URI}\""

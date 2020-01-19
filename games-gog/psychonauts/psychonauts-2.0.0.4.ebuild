@@ -19,13 +19,13 @@ RDEPEND="
 	media-libs/libsdl[abi_x86_32(-),X,opengl,sound,video]
 	media-libs/libvorbis[abi_x86_32(-)]
 	media-libs/openal[abi_x86_32(-)]
-	x11-libs/libX11[abi_x86_32(-)]"
-
-BDEPEND="app-arch/unzip"
+	x11-libs/libX11[abi_x86_32(-)]
+"
+BDEPEND="
+	app-arch/unzip
+"
 
 S="${WORKDIR}/data/noarch"
-
-QA_PREBUILT="opt/gog/${PN}/Psychonauts"
 
 pkg_nofetch() {
 	einfo "Please buy & download \"${SRC_URI}\" from:"

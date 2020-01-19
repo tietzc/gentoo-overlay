@@ -19,15 +19,13 @@ RDEPEND="
 	media-libs/libsdl[X,opengl,sound,video]
 	media-libs/libvorbis
 	media-libs/openal
-	x11-libs/libX11"
-
-BDEPEND="app-arch/unzip"
+	x11-libs/libX11
+"
+BDEPEND="
+	app-arch/unzip
+"
 
 S="${WORKDIR}/data/noarch"
-
-QA_PREBUILT="
-	opt/gog/${PN}/bs1dc_i386
-	opt/gog/${PN}/bs1dc_x86_64"
 
 pkg_nofetch() {
 	einfo "Please buy & download \"${SRC_URI}\" from:"

@@ -23,18 +23,15 @@ RDEPEND="
 	x11-libs/cairo[abi_x86_32(-)]
 	x11-libs/gdk-pixbuf:2[abi_x86_32(-)]
 	x11-libs/gtk+:2[abi_x86_32(-)]
-	x11-libs/pango[abi_x86_32(-)]"
-
-BDEPEND="app-arch/unzip"
+	x11-libs/pango[abi_x86_32(-)]
+"
+BDEPEND="
+	app-arch/unzip
+"
 
 S="${WORKDIR}/data/noarch"
 
 CHECKREQS_DISK_BUILD="10G"
-
-QA_PREBUILT="
-	opt/gog/${PN}/*
-	opt/gog/${PN}/*/Mono/x86/libmono.so
-	opt/gog/${PN}/*/Plugins/x86/libRenderingPlugin.so"
 
 pkg_nofetch() {
 	einfo "Please buy & download \"${SRC_URI}\" from:"

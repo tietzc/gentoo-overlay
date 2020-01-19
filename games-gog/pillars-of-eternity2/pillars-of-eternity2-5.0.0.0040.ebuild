@@ -21,7 +21,8 @@ EXP1_SRC_URI="pillars_of_eternity_ii_deadfire_beast_of_winter_v${PV//./_}_29222.
 EXP2_SRC_URI="pillars_of_eternity_ii_deadfire_seeker_slayer_survivor_v${PV//./_}_29222.sh"
 EXP3_SRC_URI="pillars_of_eternity_ii_deadfire_the_forgotten_sanctum_v${PV//./_}_29222.sh"
 
-SRC_URI="${BASE_SRC_URI}
+SRC_URI="
+	${BASE_SRC_URI}
 	dlc1? ( ${DLC1_SRC_URI} )
 	dlc2? ( ${DLC2_SRC_URI} )
 	dlc3? ( ${DLC3_SRC_URI} )
@@ -32,7 +33,8 @@ SRC_URI="${BASE_SRC_URI}
 	exp1? ( ${EXP1_SRC_URI} )
 	exp2? ( ${EXP2_SRC_URI} )
 	exp3? ( ${EXP3_SRC_URI} )
-	l10n_de? ( ${DE_SRC_URI} )"
+	l10n_de? ( ${DE_SRC_URI} )
+"
 
 LICENSE="GOG-EULA"
 SLOT="0"
@@ -49,18 +51,15 @@ RDEPEND="
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:2
-	x11-libs/pango"
-
-BDEPEND="app-arch/unzip"
+	x11-libs/pango
+"
+BDEPEND="
+	app-arch/unzip
+"
 
 S="${WORKDIR}/data/noarch"
 
 CHECKREQS_DISK_BUILD="50G"
-
-QA_PREBUILT="
-	opt/gog/${PN}/PillarsOfEternityII
-	opt/gog/${PN}/PillarsOfEternityII_Data/Mono/x86_64/libmono.so
-	opt/gog/${PN}/PillarsOfEternityII_Data/Plugins/x86_64/*.so"
 
 pkg_nofetch() {
 	einfo "Please buy & download \"${BASE_SRC_URI}\""

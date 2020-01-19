@@ -20,13 +20,13 @@ RDEPEND="
 	dev-libs/openssl-compat:1.0.0
 	media-libs/openal
 	virtual/opengl
-	x11-libs/libX11"
-
-BDEPEND="app-arch/unzip"
+	x11-libs/libX11
+"
+BDEPEND="
+	app-arch/unzip
+"
 
 S="${WORKDIR}/data/noarch"
-
-QA_PREBUILT="opt/gog/${PN}/BaldursGateII*"
 
 pkg_nofetch() {
 	einfo "Please buy & download \"${SRC_URI}\" from:"

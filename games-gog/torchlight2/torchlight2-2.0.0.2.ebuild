@@ -25,16 +25,13 @@ RDEPEND="
 	media-libs/libvorbis
 	sys-libs/zlib
 	virtual/opengl
-	x11-libs/libX11"
-
-BDEPEND="app-arch/unzip"
+	x11-libs/libX11
+"
+BDEPEND="
+	app-arch/unzip
+"
 
 S="${WORKDIR}/data/noarch"
-
-QA_PREBUILT="
-	opt/gog/${PN}/lib*/*
-	opt/gog/${PN}/ModLauncher.bin.x86*
-	opt/gog/${PN}/Torchlight2.bin.x86*"
 
 pkg_nofetch() {
 	einfo "Please buy & download \"${SRC_URI}\" from:"

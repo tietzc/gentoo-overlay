@@ -23,15 +23,13 @@ RDEPEND="
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:2
-	x11-libs/pango"
-
-BDEPEND="app-arch/unzip"
+	x11-libs/pango
+"
+BDEPEND="
+	app-arch/unzip
+"
 
 S="${WORKDIR}/data/noarch"
-
-QA_PREBUILT="
-	opt/gog/${PN}/GoneHome.x86*
-	opt/gog/${PN}/GoneHome_Data/Mono/x86*/libmono.so"
 
 pkg_nofetch() {
 	einfo "Please buy & download \"${SRC_URI}\" from:"

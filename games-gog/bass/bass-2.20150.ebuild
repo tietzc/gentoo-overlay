@@ -15,9 +15,12 @@ KEYWORDS="~amd64 ~x86"
 IUSE="l10n_de l10n_es l10n_fr l10n_it"
 RESTRICT="bindist fetch"
 
-RDEPEND="games-engines/scummvm"
-
-BDEPEND="app-arch/unzip"
+RDEPEND="
+	games-engines/scummvm
+"
+BDEPEND="
+	app-arch/unzip
+"
 
 S="${WORKDIR}/data/noarch"
 

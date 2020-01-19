@@ -15,11 +15,13 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 RESTRICT="bindist fetch"
 
-RDEPEND=">=games-engines/scummvm-2.0.0"
-
+RDEPEND="
+	>=games-engines/scummvm-2.0.0
+"
 BDEPEND="
 	>=app-arch/innoextract-1.7
-	media-gfx/icoutils"
+	media-gfx/icoutils
+"
 
 S="${WORKDIR}"
 

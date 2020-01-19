@@ -20,13 +20,13 @@ RDEPEND="
 	media-libs/libsdl2[X,opengl,sound,video]
 	media-libs/libtheora
 	media-libs/libvorbis
-	media-libs/openal"
-
-BDEPEND="app-arch/unzip"
+	media-libs/openal
+"
+BDEPEND="
+	app-arch/unzip
+"
 
 S="${WORKDIR}/data/noarch"
-
-QA_PREBUILT="opt/gog/${PN}/Amnesia.bin.x86*"
 
 pkg_nofetch() {
 	einfo "Please buy & download \"${SRC_URI}\" from:"

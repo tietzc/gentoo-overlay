@@ -10,8 +10,10 @@ HOMEPAGE="https://www.gog.com/game/layers_of_fear"
 
 BASE_SRC_URI="gog_layers_of_fear_${PV}.sh"
 DLC_SRC_URI="gog_layers_of_fear_inheritance_dlc_2.0.0.2.sh"
-SRC_URI="${BASE_SRC_URI}
-	dlc? ( ${DLC_SRC_URI} )"
+SRC_URI="
+	${BASE_SRC_URI}
+	dlc? ( ${DLC_SRC_URI} )
+"
 
 LICENSE="GOG-EULA"
 SLOT="0"
@@ -27,15 +29,13 @@ RDEPEND="
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:2
-	x11-libs/pango"
-
-BDEPEND="app-arch/unzip"
+	x11-libs/pango
+"
+BDEPEND="
+	app-arch/unzip
+"
 
 S="${WORKDIR}/data/noarch"
-
-QA_PREBUILT="
-	opt/gog/${PN}/LOF
-	opt/gog/${PN}/LOF_Data/Mono/x86_64/libmono.so"
 
 pkg_nofetch() {
 	einfo "Please buy & download \"${BASE_SRC_URI}\""

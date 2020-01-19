@@ -18,7 +18,8 @@ SRC_URI="
 	l10n_en? ( ${EN_SRC_URI} )
 	l10n_es? ( ${ES_SRC_URI} )
 	l10n_fr? ( ${FR_SRC_URI} )
-	l10n_it? ( ${IT_SRC_URI} )"
+	l10n_it? ( ${IT_SRC_URI} )
+"
 
 LICENSE="GOG-EULA"
 SLOT="0"
@@ -27,9 +28,12 @@ IUSE="l10n_de l10n_en l10n_es l10n_fr l10n_it"
 REQUIRED_USE="^^ ( ${IUSE} )"
 RESTRICT="bindist fetch"
 
-RDEPEND="games-engines/scummvm"
-
-BDEPEND="app-arch/unzip"
+RDEPEND="
+	games-engines/scummvm
+"
+BDEPEND="
+	app-arch/unzip
+"
 
 S="${WORKDIR}/data/noarch"
 

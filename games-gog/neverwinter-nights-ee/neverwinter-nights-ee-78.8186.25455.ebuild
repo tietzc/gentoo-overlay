@@ -20,7 +20,8 @@ SRC_URI="
 	l10n_es? ( ${ES_SRC_URI} )
 	l10n_fr? ( ${FR_SRC_URI} )
 	l10n_it? ( ${IT_SRC_URI} )
-	l10n_pl? ( ${PL_SRC_URI} )"
+	l10n_pl? ( ${PL_SRC_URI} )
+"
 
 LICENSE="GOG-EULA"
 SLOT="0"
@@ -33,15 +34,13 @@ RDEPEND="
 	dev-libs/expat[abi_x86_32(-)]
 	media-libs/openal[abi_x86_32(-)]
 	virtual/opengl[abi_x86_32(-)]
-	x11-libs/libX11[abi_x86_32(-)]"
-
-BDEPEND="app-arch/unzip"
+	x11-libs/libX11[abi_x86_32(-)]
+"
+BDEPEND="
+	app-arch/unzip
+"
 
 S="${WORKDIR}/data/noarch"
-
-QA_PREBUILT="
-	opt/gog/${PN}/bin/linux/nwmain-linux
-	opt/gog/${PN}/bin/linux/nwserver-linux"
 
 pkg_nofetch() {
 	einfo "Please buy & download"

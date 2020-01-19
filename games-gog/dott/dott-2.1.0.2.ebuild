@@ -21,15 +21,13 @@ RDEPEND="
 	dev-libs/expat[abi_x86_32(-)]
 	media-libs/alsa-lib[abi_x86_32(-)]
 	virtual/opengl[abi_x86_32(-)]
-	x11-libs/libX11[abi_x86_32(-)]"
-
-BDEPEND="app-arch/unzip"
+	x11-libs/libX11[abi_x86_32(-)]
+"
+BDEPEND="
+	app-arch/unzip
+"
 
 S="${WORKDIR}/data/noarch"
-
-QA_PREBUILT="
-	opt/gog/${PN}/lib/libfmod.so.8
-	opt/gog/${PN}/Dott"
 
 pkg_nofetch() {
 	einfo "Please buy & download \"${SRC_URI}\" from:"

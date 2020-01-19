@@ -9,7 +9,8 @@ DESCRIPTION="Doom 3 BFG (data files)"
 HOMEPAGE="https://www.gog.com/game/doom_3_bfg_edition"
 SRC_URI="
 	setup_doom_3_bfg_${PV}_(13452).exe
-	setup_doom_3_bfg_${PV}_(13452)-1.bin"
+	setup_doom_3_bfg_${PV}_(13452)-1.bin
+"
 
 LICENSE="GOG-EULA"
 SLOT="0"
@@ -17,9 +18,12 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 RESTRICT="bindist fetch"
 
-RDEPEND="games-engines/rbdoom3bfg"
-
-BDEPEND=">=app-arch/innoextract-1.7"
+RDEPEND="
+	games-engines/rbdoom3bfg
+"
+BDEPEND="
+	>=app-arch/innoextract-1.7
+"
 
 S="${WORKDIR}"
 

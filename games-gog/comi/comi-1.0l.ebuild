@@ -10,25 +10,31 @@ HOMEPAGE="https://www.gog.com/game/the_curse_of_monkey_island"
 
 DE_SRC_URI="
 	setup_the_curse_of_monkey_islandtm_${PV}_(german)_(20628).exe
-	setup_the_curse_of_monkey_islandtm_${PV}_(german)_(20628)-1.bin"
+	setup_the_curse_of_monkey_islandtm_${PV}_(german)_(20628)-1.bin
+"
 EN_SRC_URI="
 	setup_the_curse_of_monkey_islandtm_${PV}_(20628).exe
-	setup_the_curse_of_monkey_islandtm_${PV}_(20628)-1.bin"
+	setup_the_curse_of_monkey_islandtm_${PV}_(20628)-1.bin
+"
 ES_SRC_URI="
 	setup_the_curse_of_monkey_islandtm_${PV}_(spanish)_(20628).exe
-	setup_the_curse_of_monkey_islandtm_${PV}_(spanish)_(20628)-1.bin"
+	setup_the_curse_of_monkey_islandtm_${PV}_(spanish)_(20628)-1.bin
+"
 FR_SRC_URI="
 	setup_the_curse_of_monkey_islandtm_${PV}_(french)_(20628).exe
-	setup_the_curse_of_monkey_islandtm_${PV}_(french)_(20628)-1.bin"
+	setup_the_curse_of_monkey_islandtm_${PV}_(french)_(20628)-1.bin
+"
 IT_SRC_URI="
 	setup_the_curse_of_monkey_islandtm_${PV}_(italian)_(20628).exe
-	setup_the_curse_of_monkey_islandtm_${PV}_(italian)_(20628)-1.bin"
+	setup_the_curse_of_monkey_islandtm_${PV}_(italian)_(20628)-1.bin
+"
 SRC_URI="
 	l10n_de? ( ${DE_SRC_URI} )
 	l10n_en? ( ${EN_SRC_URI} )
 	l10n_es? ( ${ES_SRC_URI} )
 	l10n_fr? ( ${FR_SRC_URI} )
-	l10n_it? ( ${IT_SRC_URI} )"
+	l10n_it? ( ${IT_SRC_URI} )
+"
 
 LICENSE="GOG-EULA"
 SLOT="0"
@@ -37,11 +43,13 @@ IUSE="l10n_de l10n_en l10n_es l10n_fr l10n_it"
 REQUIRED_USE="^^ ( ${IUSE} )"
 RESTRICT="bindist fetch"
 
-RDEPEND="games-engines/scummvm"
-
+RDEPEND="
+	games-engines/scummvm
+"
 BDEPEND="
 	>=app-arch/innoextract-1.7
-	media-gfx/icoutils"
+	media-gfx/icoutils
+"
 
 S="${WORKDIR}"
 
