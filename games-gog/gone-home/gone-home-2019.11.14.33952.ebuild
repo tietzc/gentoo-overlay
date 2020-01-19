@@ -48,7 +48,8 @@ src_install() {
 
 	rm -r game/GoneHome.$(usex amd64 "x86" "x86_64") \
 		game/GoneHome_Data/Mono/$(usex amd64 "x86" "x86_64") \
-		game/GoneHome_Data/Plugins/$(usex amd64 "x86" "x86_64") || die
+		game/GoneHome_Data/Plugins/$(usex amd64 "x86" "x86_64") \
+		game/goggame-1207665163.{hashdb,info}|| die
 
 	insinto "${dir}"
 	doins -r game/.
