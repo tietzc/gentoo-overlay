@@ -111,6 +111,7 @@ src_install() {
 	local dir="/opt/gog/${PN}"
 
 	rm -r game/Docs \
+		game/{Galaxy64,GalaxyCSharpGlue,GlaxayPeer64}.dll \
 		game/PillarsOfEternityII_Data/Plugins/x86_64/libSDL2-2.0.so \
 		game/PillarsOfEternityII_Data/Plugins/x86_64/libsteam_api.so || die
 
