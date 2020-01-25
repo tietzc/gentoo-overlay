@@ -92,8 +92,8 @@ src_unpack() {
 src_install() {
 	local dir="/opt/gog/${PN}"
 
-	rm game/steam_api.dll \
-		game/SteamworksNative.dll \
+	rm game/steam_appid.txt \
+		game/{steam_api,Galaxy,GalaxyCSharpGlue,SteamworksNative}.dll \
 		game/PillarsOfEternity_Data/Plugins/x86_64/libCSteamworks.so \
 		game/PillarsOfEternity_Data/Plugins/x86_64/libsteam_api.so || die
 
