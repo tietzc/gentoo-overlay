@@ -44,7 +44,8 @@ src_unpack() {
 src_install() {
 	local dir="/opt/gog/${PN}"
 
-	rm -r game/GoneHome.$(usex amd64 "x86" "x86_64") \
+	rm -r game/Launch.sh \
+		game/GoneHome.$(usex amd64 "x86" "x86_64") \
 		game/GoneHome_Data/Mono/$(usex amd64 "x86" "x86_64") \
 		game/GoneHome_Data/Plugins/$(usex amd64 "x86" "x86_64") \
 		game/goggame-1207665163.{hashdb,info}|| die
