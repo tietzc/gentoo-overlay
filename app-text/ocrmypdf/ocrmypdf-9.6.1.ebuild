@@ -37,6 +37,8 @@ BDEPEND="
 	dev-python/setuptools_scm_git_archive[${PYTHON_USEDEP}]
 "
 
+DOCS=( README.md docs/release_notes.rst )
+
 S="${WORKDIR}/${MY_PN}-${PV}"
 
 python_prepare_all() {
