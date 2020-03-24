@@ -8,9 +8,9 @@ inherit desktop eutils unpacker xdg
 DESCRIPTION="Neverwinter Nights: Enhanced Edition"
 HOMEPAGE="https://www.gog.com/game/neverwinter_nights_enhanced_edition_pack"
 
-BASE_SRC_URI="neverwinter_nights_enhanced_edition_jenkins_neverwinter_nights_gog_build_and_upload_to_nightly_98_34746.sh"
-EXP1_SRC_URI="neverwinter_nights_enhanced_edition_darkness_over_daggerford_jenkins_neverwinter_nights_gog_build_and_upload_to_nightly_98_34746.sh"
-EXP2_SRC_URI="neverwinter_nights_enhanced_edition_tyrants_of_the_moonsea_jenkins_neverwinter_nights_gog_build_and_upload_to_nightly_98_34746.sh"
+BASE_SRC_URI="neverwinter_nights_enhanced_edition_${PV//./_}_37029.sh"
+EXP1_SRC_URI="neverwinter_nights_enhanced_edition_darkness_over_daggerford_${PV//./_}_37029.sh"
+EXP2_SRC_URI="neverwinter_nights_enhanced_edition_tyrants_of_the_moonsea_${PV//./_}_37029.sh"
 
 SRC_URI="
 	${BASE_SRC_URI}
@@ -56,7 +56,7 @@ src_install() {
 
 	dodoc game/lang/en/docs/legacy/{NWN_OnlineManual,NWN_SoU_OnlineManual,NWNHordes_Manual}.pdf
 
-	rm -r game/{lang,util} \
+	rm -r game/util \
 		game/bin/{macos,win32} \
 		game/goggame-*.{hashdb,info} || die
 
