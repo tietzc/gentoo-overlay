@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit distutils-r1
 
-DESCRIPTION="Fork of PDFMiner using six for Python 2+3 compatibility"
+DESCRIPTION="Community maintained fork of pdfminer"
 HOMEPAGE="https://github.com/pdfminer/pdfminer.six"
 SRC_URI="https://github.com/pdfminer/pdfminer.six/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
