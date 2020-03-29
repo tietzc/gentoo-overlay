@@ -19,7 +19,6 @@ RESTRICT="mirror"
 RDEPEND="
 	dev-python/chardet[${PYTHON_USEDEP}]
 	dev-python/pycryptodome[${PYTHON_USEDEP}]
-	dev-python/six[${PYTHON_USEDEP}]
 	dev-python/sortedcontainers[${PYTHON_USEDEP}]
 "
 
