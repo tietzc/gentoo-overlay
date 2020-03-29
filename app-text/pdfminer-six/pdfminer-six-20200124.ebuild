@@ -14,7 +14,6 @@ SRC_URI="https://github.com/pdfminer/pdfminer.six/archive/${PV}.tar.gz -> ${P}.t
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 RESTRICT="mirror"
 
 RDEPEND="
@@ -23,5 +22,7 @@ RDEPEND="
 	dev-python/six[${PYTHON_USEDEP}]
 	dev-python/sortedcontainers[${PYTHON_USEDEP}]
 "
+
+distutils_enable_tests nose
 
 S="${WORKDIR}/${PN//-/.}-${PV}"
