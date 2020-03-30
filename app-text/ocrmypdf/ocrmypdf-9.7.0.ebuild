@@ -4,8 +4,9 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
-MY_PN="OCRmyPDF"
 PYTHON_COMPAT=( python3_6 )
+
+MY_PN="OCRmyPDF"
 
 inherit bash-completion-r1 distutils-r1
 
