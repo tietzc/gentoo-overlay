@@ -1,0 +1,48 @@
+Description: Avoid FTBFS for imgui. Upstream uses relative paths, this seems to break on Linux.
+Author: Tobias Frost <tobi@debian.org>
+Last-Update: 2020-03-31
+
+--- a/neo/renderer/Image_intrinsic.cpp
++++ b/neo/renderer/Image_intrinsic.cpp
+@@ -30,7 +30,7 @@
+ #pragma hdrstop
+ #include "precompiled.h"
+ 
+-#include "../../libs/imgui/imgui.h"
++#include "libs/imgui/imgui.h"
+ 
+ #include "RenderCommon.h"
+ #include "SMAA/AreaTex.h"
+--- a/neo/renderer/OpenGL/RenderBackend_GL.cpp
++++ b/neo/renderer/OpenGL/RenderBackend_GL.cpp
+@@ -2156,7 +2156,7 @@
+ 
+ ==============================================================================================
+ */
+-#include "../../libs/imgui/imgui.h"
++#include "libs/imgui/imgui.h"
+ 
+ int          g_ShaderHandle = 0, g_VertHandle = 0, g_FragHandle = 0;
+ int          g_AttribLocationTex = 0, g_AttribLocationProjMtx = 0;
+--- a/neo/renderer/Vulkan/RenderBackend_VK.cpp
++++ b/neo/renderer/Vulkan/RenderBackend_VK.cpp
+@@ -2571,7 +2571,7 @@
+ 
+ ==============================================================================================
+ */
+-#include "../../libs/imgui/imgui.h"
++#include "libs/imgui/imgui.h"
+ 
+ void idRenderBackend::ImGui_Init()
+ {
+--- a/neo/imgui/BFGimgui.h
++++ b/neo/imgui/BFGimgui.h
+@@ -2,7 +2,7 @@
+ #ifndef NEO_IMGUI_BFGIMGUI_H_
+ #define NEO_IMGUI_BFGIMGUI_H_
+ 
+-#include "../../libs/imgui/imgui.h"
++#include "libs/imgui/imgui.h"
+ 
+ #include "../idlib/math/Vector.h"
+ 

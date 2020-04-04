@@ -3,7 +3,7 @@
 
 EAPI=7
 
-COMMIT="f18ccd63d6b2b6ddcf6265326ddd67dbc3f5f90d"
+COMMIT="163a31f96c95b118e995b4aa988e4eb423368525"
 MY_PN="RBDOOM-3-BFG"
 
 inherit cmake
@@ -37,10 +37,11 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-libpng16.patch
+	"${FILESDIR}"/${PN}-fix-includepath.patch
 	"${FILESDIR}"/${PN}-fix-system-libjpeg.patch
 )
 
-DOCS=( README.txt RELEASE-NOTES.txt )
+DOCS=( README.md RELEASE-NOTES.md )
 
 S="${WORKDIR}/${MY_PN}-${COMMIT}"
 
@@ -50,6 +51,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DBINKDEC=OFF
 		-DBUILD_SHARED_LIBS=OFF
+		-DCPU_OPTIMIZATION=
 		-DFFMPEG=ON
 		-DOPENAL=ON
 		-DSDL2=ON
