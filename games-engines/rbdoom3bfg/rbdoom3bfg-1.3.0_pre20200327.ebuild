@@ -19,13 +19,13 @@ IUSE=""
 RESTRICT="mirror"
 
 RDEPEND="
-	media-libs/glew:=
+	media-libs/glew:0=
 	media-libs/libpng:=
 	media-libs/libsdl2[X,opengl,sound,video]
 	media-libs/openal:=
 	sys-libs/zlib:=
 	virtual/ffmpeg
-	virtual/jpeg:0
+	virtual/jpeg
 "
 DEPEND="
 	${RDEPEND}
