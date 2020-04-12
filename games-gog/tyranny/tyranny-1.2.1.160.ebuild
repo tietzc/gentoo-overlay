@@ -22,7 +22,7 @@ SRC_URI="
 
 LICENSE="GOG-EULA"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* ~amd64"
 IUSE="+dlc1 +dlc2 +dlc3"
 RESTRICT="bindist fetch"
 
@@ -64,11 +64,11 @@ src_unpack() {
 src_install() {
 	local dir="/opt/gog/${PN}"
 
-	rm -r game/Tyranny.x86$(usex amd64 "" "_64") \
-		game/Tyranny_Data/Mono/$(usex amd64 "x86" "x86_64") \
-		game/Tyranny_Data/Plugins/$(usex amd64 "x86" "x86_64") \
-		game/Tyranny_Data/Plugins/$(usex amd64 "x86_64" "x86")/libCSteamworks.so \
-		game/Tyranny_Data/Plugins/$(usex amd64 "x86_64" "x86")/libsteam_api.so || die
+	rm -r game/Tyranny.x86 \
+		game/Tyranny_Data/Mono/x86 \
+		game/Tyranny_Data/Plugins/x86 \
+		game/Tyranny_Data/Plugins/x86_64/libCSteamworks.so \
+		game/Tyranny_Data/Plugins/x86_64/libsteam_api.so || die
 
 	dodir "${dir}"
 	mv game/* "${D}/${dir}" || die
@@ -76,9 +76,9 @@ src_install() {
 	# ensure sane permissions
 	find "${D}/${dir}" -type f -exec chmod 0644 '{}' + || die
 	find "${D}/${dir}" -type d -exec chmod 0755 '{}' + || die
-	fperms +x "${dir}"/Tyranny.x86$(usex amd64 "_64" "")
+	fperms +x "${dir}"/Tyranny.x86_64
 
-	make_wrapper ${PN} "./Tyranny.x86$(usex amd64 "_64" "")" "${dir}"
+	make_wrapper ${PN} "./Tyranny.x86_64" "${dir}"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Tyranny"
 }
