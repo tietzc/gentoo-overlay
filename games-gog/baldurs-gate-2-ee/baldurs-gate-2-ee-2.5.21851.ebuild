@@ -11,7 +11,7 @@ SRC_URI="baldur_s_gate_2_enhanced_edition_en_${PV//./_}.sh"
 
 LICENSE="GOG-EULA"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* ~amd64"
 IUSE=""
 RESTRICT="bindist fetch"
 
@@ -43,15 +43,15 @@ src_install() {
 
 	dodoc -r game/Manuals/.
 
-	rm -r game/BaldursGateII$(usex amd64 "" "64") \
+	rm -r game/BaldursGateII \
 		game/Manuals || die
 
 	insinto "${dir}"
 	doins -r game/.
 
-	fperms +x "${dir}"/BaldursGateII$(usex amd64 "64" "")
+	fperms +x "${dir}"/BaldursGateII64
 
-	make_wrapper ${PN} "./BaldursGateII$(usex amd64 "64" "")" "${dir}"
+	make_wrapper ${PN} "./BaldursGateII64" "${dir}"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Baldurs Gate 2: Enhanced Edition"
 }
