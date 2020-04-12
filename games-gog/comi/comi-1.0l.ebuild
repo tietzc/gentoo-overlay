@@ -28,6 +28,7 @@ IT_SRC_URI="
 	setup_the_curse_of_monkey_islandtm_${PV}_(italian)_(20628).exe
 	setup_the_curse_of_monkey_islandtm_${PV}_(italian)_(20628)-1.bin
 "
+
 SRC_URI="
 	l10n_de? ( ${DE_SRC_URI} )
 	l10n_en? ( ${EN_SRC_URI} )
@@ -38,7 +39,7 @@ SRC_URI="
 
 LICENSE="GOG-EULA"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE="l10n_de l10n_en l10n_es l10n_fr l10n_it"
 REQUIRED_USE="^^ ( ${IUSE} )"
 RESTRICT="bindist fetch"
