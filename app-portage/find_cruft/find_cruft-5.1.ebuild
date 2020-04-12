@@ -9,7 +9,7 @@ SRC_URI="https://github.com/vaeth/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE=""
 RESTRICT="mirror"
 
@@ -18,9 +18,8 @@ RDEPEND="dev-lang/perl"
 src_prepare() {
 	default
 
-	sed -i \
-		-e '1s"^#!/usr/bin/env perl$"#!'"${EPREFIX}/usr/bin/perl"'"' \
-		bin/${PN} || die
+	sed -e '1s"^#!/usr/bin/env perl$"#!'"${EPREFIX}/usr/bin/perl"'"' \
+		-i bin/${PN} || die
 }
 
 src_install() {
