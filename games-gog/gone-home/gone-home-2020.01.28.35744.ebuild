@@ -11,7 +11,7 @@ SRC_URI="gone_home_${PV//./_}.sh"
 
 LICENSE="GOG-EULA"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* ~amd64"
 IUSE=""
 RESTRICT="bindist fetch"
 
@@ -45,17 +45,17 @@ src_install() {
 	local dir="/opt/gog/${PN}"
 
 	rm -r game/Launch.sh \
-		game/GoneHome.$(usex amd64 "x86" "x86_64") \
-		game/GoneHome_Data/Mono/$(usex amd64 "x86" "x86_64") \
-		game/GoneHome_Data/Plugins/$(usex amd64 "x86" "x86_64") \
+		game/GoneHome.x86 \
+		game/GoneHome_Data/Mono/x86 \
+		game/GoneHome_Data/Plugins/x86 \
 		game/goggame-1207665163.{hashdb,info}|| die
 
 	insinto "${dir}"
 	doins -r game/.
 
-	fperms +x "${dir}"/GoneHome.$(usex amd64 "x86_64" "x86")
+	fperms +x "${dir}"/GoneHome.x86_64
 
-	make_wrapper ${PN} "./GoneHome.$(usex amd64 "x86_64" "x86")" "${dir}"
+	make_wrapper ${PN} "./GoneHome.x86_64" "${dir}"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Gone Home"
 }
