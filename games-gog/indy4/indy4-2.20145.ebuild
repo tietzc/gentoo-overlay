@@ -13,6 +13,7 @@ EN_SRC_URI="indiana_jones_and_the_fate_of_atlantis_en_gog_${PV//./_}.sh"
 ES_SRC_URI="indiana_jones_and_the_fate_of_atlantis_es_gog_${PV//./_}.sh"
 FR_SRC_URI="indiana_jones_and_the_fate_of_atlantis_fr_gog_${PV//./_}.sh"
 IT_SRC_URI="indiana_jones_and_the_fate_of_atlantis_it_gog_${PV//./_}.sh"
+
 SRC_URI="
 	l10n_de? ( ${DE_SRC_URI} )
 	l10n_en? ( ${EN_SRC_URI} )
@@ -23,7 +24,7 @@ SRC_URI="
 
 LICENSE="GOG-EULA"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE="l10n_de l10n_en l10n_es l10n_fr l10n_it"
 REQUIRED_USE="^^ ( ${IUSE} )"
 RESTRICT="bindist fetch"
