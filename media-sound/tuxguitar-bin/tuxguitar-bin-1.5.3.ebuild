@@ -5,16 +5,15 @@ EAPI=7
 
 inherit desktop eutils xdg
 
+MY_P="tuxguitar-${PV}-linux-x86_64"
+
 DESCRIPTION="Multitrack guitar tablature editor and player. Binary package"
 HOMEPAGE="http://www.tuxguitar.com.ar"
-SRC_URI="
-	amd64? ( https://sourceforge.net/projects/tuxguitar/files/TuxGuitar/TuxGuitar-${PV}/tuxguitar-${PV}-linux-x86_64.tar.gz )
-	x86? ( https://sourceforge.net/projects/tuxguitar/files/TuxGuitar/TuxGuitar-${PV}/tuxguitar-${PV}-linux-x86.tar.gz )
-"
+SRC_URI="https://sourceforge.net/projects/tuxguitar/files/TuxGuitar/TuxGuitar-${PV}/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* ~amd64"
 IUSE="alsa fluidsynth timidity"
 RESTRICT="mirror"
 
@@ -27,12 +26,7 @@ RDEPEND="
 
 DOCS=( doc/{AUTHORS,CHANGES,README} )
 
-src_unpack() {
-	unpack ${A}
-	mkdir -p "${S}" || die
-	mv "${WORKDIR}"/tuxguitar-${PV}-linux-*/* "${S}" || die
-	rmdir tuxguitar-${PV}-linux-* || die
-}
+S="${WORKDIR}/${MY_P}"
 
 src_install() {
 	local dir="/opt/${PN}"
