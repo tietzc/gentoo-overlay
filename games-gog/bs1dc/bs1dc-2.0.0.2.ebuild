@@ -11,7 +11,7 @@ SRC_URI="gog_broken_sword_director_s_cut_${PV}.sh"
 
 LICENSE="GOG-EULA"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* ~amd64"
 IUSE=""
 RESTRICT="bindist fetch"
 
@@ -40,16 +40,16 @@ src_unpack() {
 src_install() {
 	local dir="/opt/gog/${PN}"
 
-	mv game/$(usex amd64 "x86_64" "i386")/bs1dc_$(usex amd64 "x86_64" "i386") game/ || die
+	mv game/x86_64/bs1dc_x86_64 game/ || die
 
 	rm -r game/{BS1DC,i386,x86_64} || die
 
 	insinto "${dir}"
 	doins -r game/.
 
-	fperms +x "${dir}"/bs1dc_$(usex amd64 "x86_64" "i386")
+	fperms +x "${dir}"/bs1dc_x86_64
 
-	make_wrapper ${PN} "./bs1dc_$(usex amd64 "x86_64" "i386")" "${dir}"
+	make_wrapper ${PN} "./bs1dc_x86_64" "${dir}"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Broken Sword: Director's Cut"
 }
