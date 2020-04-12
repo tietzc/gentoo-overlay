@@ -11,7 +11,7 @@ SRC_URI="aragami_en_${PV//./_}.sh"
 
 LICENSE="GOG-EULA"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* ~amd64"
 IUSE=""
 RESTRICT="bindist fetch"
 
@@ -44,16 +44,16 @@ src_unpack() {
 src_install() {
 	local dir="/opt/gog/${PN}"
 
-	rm -r game/Aragami.$(usex amd64 "x86" "x86_64") \
-		game/Aragami_Data/Mono/$(usex amd64 "x86" "x86_64") \
-		game/Aragami_Data/Plugins/$(usex amd64 "x86" "x86_64") || die
+	rm -r game/Aragami.x86 \
+		game/Aragami_Data/Mono/x86 \
+		game/Aragami_Data/Plugins/x86 || die
 
 	insinto "${dir}"
 	doins -r game/.
 
-	fperms +x "${dir}"/Aragami.$(usex amd64 "x86_64" "x86")
+	fperms +x "${dir}"/Aragami.x86_64
 
-	make_wrapper ${PN} "./Aragami.$(usex amd64 "x86_64" "x86")" "${dir}"
+	make_wrapper ${PN} "./Aragami.x86_64" "${dir}"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Aragami"
 }
