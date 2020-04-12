@@ -11,7 +11,7 @@ SRC_URI="indiana_jones_and_the_last_crusade_en_gog_${PV//./_}.sh"
 
 LICENSE="GOG-EULA"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE=""
 RESTRICT="bindist fetch"
 
