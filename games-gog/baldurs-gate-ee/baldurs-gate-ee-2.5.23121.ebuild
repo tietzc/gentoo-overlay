@@ -15,7 +15,7 @@ SRC_URI="${BASE_SRC_URI}
 
 LICENSE="GOG-EULA"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* ~amd64"
 IUSE="+sod"
 RESTRICT="bindist fetch"
 
@@ -53,15 +53,15 @@ src_install() {
 
 	dodoc -r game/Manuals/.
 
-	rm -r game/BaldursGate$(usex amd64 "" "64") \
+	rm -r game/BaldursGate \
 		game/Manuals || die
 
 	insinto "${dir}"
 	doins -r game/.
 
-	fperms +x "${dir}"/BaldursGate$(usex amd64 "64" "")
+	fperms +x "${dir}"/BaldursGate64
 
-	make_wrapper ${PN} "./BaldursGate$(usex amd64 "64" "")" "${dir}"
+	make_wrapper ${PN} "./BaldursGate64" "${dir}"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Baldurs Gate: Enhanced Edition"
 }
