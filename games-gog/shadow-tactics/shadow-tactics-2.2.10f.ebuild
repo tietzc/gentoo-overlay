@@ -11,7 +11,7 @@ SRC_URI="shadow_tactics_blades_of_the_shogun_en_2_2_10_f_21297.sh"
 
 LICENSE="GOG-EULA"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* ~amd64"
 IUSE=""
 RESTRICT="bindist fetch"
 
