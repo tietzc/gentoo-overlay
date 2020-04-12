@@ -11,7 +11,7 @@ SRC_URI="amnesia_the_dark_descent_${PV//./_}.sh"
 
 LICENSE="GOG-EULA"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* ~amd64"
 IUSE=""
 RESTRICT="bindist fetch"
 
@@ -44,16 +44,16 @@ src_install() {
 	dodoc game/{Manual_en,Remember\ -\ Short\ Story\ Collection}.pdf
 
 	rm -r game/lib{,64} \
-		game/Amnesia.bin.$(usex amd64 "x86" "x86_64") \
+		game/Amnesia.bin.x86 \
 		game/Launcher.bin.x86{,_64} \
 		game/{Manual_en,Remember\ -\ Short\ Story\ Collection}.pdf || die
 
 	insinto "${dir}"
 	doins -r game/.
 
-	fperms +x "${dir}"/Amnesia.bin.$(usex amd64 "x86_64" "x86")
+	fperms +x "${dir}"/Amnesia.bin.x86_64
 
-	make_wrapper ${PN} "./Amnesia.bin.$(usex amd64 "x86_64" "x86")" "${dir}"
+	make_wrapper ${PN} "./Amnesia.bin.x86_64" "${dir}"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Amnesia: The Dark Descent"
 }
