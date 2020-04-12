@@ -11,7 +11,7 @@ SRC_URI="planescape_torment_enhanced_edition_${PV//./_}.sh"
 
 LICENSE="GOG-EULA"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* ~amd64"
 IUSE=""
 RESTRICT="bindist fetch"
 
@@ -41,14 +41,14 @@ src_unpack() {
 src_install() {
 	local dir="/opt/gog/${PN}"
 
-	rm game/Torment$(usex amd64 "" "64") || die
+	rm game/Torment || die
 
 	insinto "${dir}"
 	doins -r game/.
 
-	fperms +x "${dir}"/Torment$(usex amd64 "64" "")
+	fperms +x "${dir}"/Torment64
 
-	make_wrapper ${PN} "./Torment$(usex amd64 "64" "")" "${dir}"
+	make_wrapper ${PN} "./Torment64" "${dir}"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Planescape Torment: Enhanced Edition"
 }
