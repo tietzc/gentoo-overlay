@@ -11,7 +11,7 @@ SRC_URI="gog_broken_sword_5_the_serpent_s_curse_${PV}.sh"
 
 LICENSE="GOG-EULA"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* ~amd64"
 IUSE=""
 RESTRICT="bindist fetch"
 
@@ -40,7 +40,7 @@ src_unpack() {
 src_install() {
 	local dir="/opt/gog/${PN}"
 
-	mv game/$(usex amd64 "x86_64" "i386")/BS5_$(usex amd64 "x86_64" "i386") game/ || die
+	mv game/x86_64/BS5_x86_64 game/ || die
 
 	rm -r game/{BS5,i386,x86_64} || die
 
@@ -50,9 +50,9 @@ src_install() {
 	# ensure sane permissions
 	find "${D}/${dir}" -type f -exec chmod 0644 '{}' + || die
 	find "${D}/${dir}" -type d -exec chmod 0755 '{}' + || die
-	fperms +x "${dir}"/BS5_$(usex amd64 "x86_64" "i386")
+	fperms +x "${dir}"/BS5_x86_64
 
-	make_wrapper ${PN} "./BS5_$(usex amd64 "x86_64" "i386")" "${dir}"
+	make_wrapper ${PN} "./BS5_x86_64" "${dir}"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Broken Sword 5: The Serpent's Curse"
 }
