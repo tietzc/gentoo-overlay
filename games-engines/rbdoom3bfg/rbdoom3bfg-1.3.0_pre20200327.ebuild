@@ -23,8 +23,8 @@ RDEPEND="
 	media-libs/libpng:=
 	media-libs/libsdl2[X,opengl,sound,video]
 	media-libs/openal:=
+	media-video/ffmpeg:=
 	sys-libs/zlib:=
-	virtual/ffmpeg
 	virtual/jpeg
 "
 DEPEND="
