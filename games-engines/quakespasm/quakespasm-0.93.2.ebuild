@@ -13,7 +13,6 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="flac mp3 opus vorbis"
-RESTRICT="mirror"
 
 RDEPEND="
 	media-libs/libsdl2[X,opengl,sound,video]
