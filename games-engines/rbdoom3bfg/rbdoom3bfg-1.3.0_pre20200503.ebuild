@@ -3,7 +3,7 @@
 
 EAPI=7
 
-COMMIT="163a31f96c95b118e995b4aa988e4eb423368525"
+COMMIT="7eddea53f574da860fa36909fe06ad5b37ea2031"
 MY_PN="RBDOOM-3-BFG"
 
 inherit cmake
@@ -35,7 +35,6 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-libpng16.patch
 	"${FILESDIR}"/${PN}-fix-includepath.patch
 	"${FILESDIR}"/${PN}-fix-system-libjpeg.patch
 )
