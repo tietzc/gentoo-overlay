@@ -56,6 +56,7 @@ src_configure() {
 		-DCPU_OPTIMIZATION=
 		-DFFMPEG=ON
 		-DOPENAL=ON
+		-DOpenGL_GL_PREFERENCE=GLVND
 		-DSDL2=ON
 		-DUSE_PRECOMPILED_HEADERS=OFF
 		-DUSE_SYSTEM_LIBGLEW=ON
@@ -80,6 +81,6 @@ src_install() {
 		//
 		// Set default language to English
 		//
-		seta sys_lang "english"
+		set sys_lang "english"
 	EOF
 }
