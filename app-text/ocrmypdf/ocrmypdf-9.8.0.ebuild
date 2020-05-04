@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{6,7,8} )
 
 MY_PN="OCRmyPDF"
 
-inherit bash-completion-r1 distutils-r1
+inherit bash-completion-r1 distutils-r1 eutils
 
 DESCRIPTION="Tool to add an OCR text layer to scanned PDF files, allowing them to be searched"
 HOMEPAGE="https://github.com/jbarlow83/OCRmyPDF"
@@ -23,7 +23,6 @@ RDEPEND="
 	app-text/ghostscript-gpl
 	app-text/pdfminer-six[${PYTHON_USEDEP}]
 	app-text/tesseract
-	app-text/unpaper
 	dev-python/chardet[${PYTHON_USEDEP}]
 	dev-python/cffi[${PYTHON_USEDEP}]
 	dev-python/pikepdf[${PYTHON_USEDEP}]
@@ -31,7 +30,6 @@ RDEPEND="
 	dev-python/reportlab[${PYTHON_USEDEP}]
 	dev-python/tqdm[${PYTHON_USEDEP}]
 	media-gfx/img2pdf[${PYTHON_USEDEP}]
-	media-libs/jbig2enc
 "
 BDEPEND="
 	dev-python/cffi[${PYTHON_USEDEP}]
@@ -52,4 +50,10 @@ python_prepare_all() {
 python_install_all() {
 	distutils-r1_python_install_all
 	newbashcomp misc/completion/${PN}.bash ${PN}
+}
+
+pkg_postinst() {
+	optfeature "scan post-processing" app-text/unpaper
+	optfeature "lossy quantization and compression" media-gfx/pngquant
+	optfeature "high-qualitiy loseless and lossy compression" media-libs/jbig2enc
 }
