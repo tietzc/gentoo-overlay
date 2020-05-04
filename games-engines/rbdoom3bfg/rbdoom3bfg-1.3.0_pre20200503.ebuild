@@ -34,16 +34,20 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-fix-includepath.patch
-	"${FILESDIR}"/${PN}-fix-system-libjpeg.patch
-)
+PATCHES=( "${FILESDIR}"/${PN}-fix-includepath.patch )
 
 DOCS=( README.md RELEASE-NOTES.md )
 
 S="${WORKDIR}/${MY_PN}-${COMMIT}"
 
 CMAKE_USE_DIR="${S}"/neo
+
+src_prepare() {
+	# fix build with system-jpeg
+	sed -i -e "/#define JPEG_INTERNALS/d" neo/renderer/Cinematic.cpp || die
+
+	cmake_src_prepare
+}
 
 src_configure() {
 	local mycmakeargs=(
