@@ -14,14 +14,8 @@ SRC_URI="https://sourceforge.net/projects/tuxguitar/files/TuxGuitar/TuxGuitar-${
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="-* ~amd64"
-IUSE="alsa fluidsynth timidity"
 
-RDEPEND="
-	virtual/jre
-	alsa? ( media-libs/alsa-lib )
-	fluidsynth? ( media-sound/fluidsynth[alsa?] )
-	timidity? ( media-sound/timidity++[alsa?] )
-"
+RDEPEND="virtual/jre"
 
 DOCS=( doc/{AUTHORS,CHANGES,README} )
 
