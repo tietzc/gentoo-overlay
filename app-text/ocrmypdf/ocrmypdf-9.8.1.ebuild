@@ -23,8 +23,8 @@ RDEPEND="
 	app-text/ghostscript-gpl
 	app-text/pdfminer-six[${PYTHON_USEDEP}]
 	app-text/tesseract
-	dev-python/chardet[${PYTHON_USEDEP}]
 	dev-python/cffi[${PYTHON_USEDEP}]
+	dev-python/chardet[${PYTHON_USEDEP}]
 	dev-python/pikepdf[${PYTHON_USEDEP}]
 	dev-python/pillow[${PYTHON_USEDEP}]
 	dev-python/reportlab[${PYTHON_USEDEP}]
