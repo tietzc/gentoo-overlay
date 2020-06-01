@@ -3,7 +3,7 @@
 
 EAPI=7
 
-COMMIT="7eddea53f574da860fa36909fe06ad5b37ea2031"
+COMMIT="c0e76c492a0a13b308ac57edb222be070d21db2a"
 MY_PN="RBDOOM-3-BFG"
 
 inherit cmake
@@ -33,8 +33,6 @@ DEPEND="
 BDEPEND="
 	virtual/pkgconfig
 "
-
-PATCHES=( "${FILESDIR}"/${PN}-fix-includepath.patch )
 
 DOCS=( README.md RELEASE-NOTES.md )
 
