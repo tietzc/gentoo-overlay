@@ -46,7 +46,8 @@ src_install() {
 	rm -r game/lib{,64} \
 		game/Amnesia.bin.x86 \
 		game/Launcher.bin.x86{,_64} \
-		game/{Manual_en,Remember\ -\ Short\ Story\ Collection}.pdf || die
+		game/{Manual_en,Remember\ -\ Short\ Story\ Collection}.pdf \
+		game/goggame-*.{hashdb,info} || die
 
 	insinto "${dir}"
 	doins -r game/.
