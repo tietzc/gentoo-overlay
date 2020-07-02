@@ -21,12 +21,13 @@ IUSE=""
 
 RDEPEND="
 	app-text/ghostscript-gpl
-	app-text/pdfminer-six[${PYTHON_USEDEP}]
-	app-text/tesseract
+	>=app-text/pdfminer-six-20191110[${PYTHON_USEDEP}]
+	>=app-text/tesseract-4.0.0
 	dev-python/cffi[${PYTHON_USEDEP}]
 	dev-python/chardet[${PYTHON_USEDEP}]
-	dev-python/pikepdf[${PYTHON_USEDEP}]
-	dev-python/pillow[${PYTHON_USEDEP}]
+	>=dev-python/pikepdf-1.14.0[${PYTHON_USEDEP}]
+	>=dev-python/pillow-7.0.0[${PYTHON_USEDEP}]
+	>=dev-python/pluggy-0.13.0[${PYTHON_USEDEP}]
 	dev-python/reportlab[${PYTHON_USEDEP}]
 	dev-python/tqdm[${PYTHON_USEDEP}]
 	media-gfx/img2pdf[${PYTHON_USEDEP}]
@@ -44,6 +45,9 @@ python_prepare_all() {
 	# remove hard dependency on pytest-runner
 	sed -i -e "/pytest-runner/d" setup.py || die
 
+	# strictly optional, hence add to optfeatures
+	sed -i -e "/coloredlogs/d" setup.py || die
+
 	distutils-r1_python_prepare_all
 }
 
@@ -54,6 +58,7 @@ python_install_all() {
 
 pkg_postinst() {
 	optfeature "scan post-processing" app-text/unpaper
+	optfeature "colored output" dev-python/coloredlogs
 	optfeature "lossy quantization and compression" media-gfx/pngquant
 	optfeature "high-qualitiy loseless and lossy compression" media-libs/jbig2enc
 }
