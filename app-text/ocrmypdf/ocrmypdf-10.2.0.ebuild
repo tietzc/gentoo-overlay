@@ -17,7 +17,6 @@ SRC_URI="https://github.com/jbarlow83/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
 
 RDEPEND="
 	app-text/ghostscript-gpl
@@ -35,7 +34,16 @@ RDEPEND="
 BDEPEND="
 	dev-python/cffi[${PYTHON_USEDEP}]
 	dev-python/setuptools_scm_git_archive[${PYTHON_USEDEP}]
+	test? (
+		>=dev-python/pytest-5.0.0[${PYTHON_USEDEP}]
+		dev-python/pytest-cov[${PYTHON_USEDEP}]
+		dev-python/pytest-helpers-namespace[${PYTHON_USEDEP}]
+		>=dev-python/pytest-xdist-1.31[${PYTHON_USEDEP}]
+		dev-python/python-xmp-toolkit[${PYTHON_USEDEP}]
+	)
 "
+
+distutils_enable_tests pytest
 
 DOCS=( README.md docs/release_notes.rst )
 
