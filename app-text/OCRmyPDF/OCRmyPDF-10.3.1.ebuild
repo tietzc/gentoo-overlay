@@ -6,13 +6,11 @@ EAPI=7
 DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-MY_PN="OCRmyPDF"
-
 inherit bash-completion-r1 distutils-r1 eutils
 
 DESCRIPTION="Tool to add an OCR text layer to scanned PDF files, allowing them to be searched"
 HOMEPAGE="https://github.com/jbarlow83/OCRmyPDF"
-SRC_URI="https://github.com/jbarlow83/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/jbarlow83/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -47,8 +45,6 @@ distutils_enable_tests pytest
 
 DOCS=( README.md docs/release_notes.rst )
 
-S="${WORKDIR}/${MY_PN}-${PV}"
-
 python_prepare_all() {
 	# remove hard dependency on pytest-runner
 	sed -i -e "/pytest-runner/d" setup.py || die
@@ -61,7 +57,7 @@ python_prepare_all() {
 
 python_install_all() {
 	distutils-r1_python_install_all
-	newbashcomp misc/completion/${PN}.bash ${PN}
+	newbashcomp misc/completion/ocrmypdf.bash ocrmypdf
 }
 
 pkg_postinst() {
