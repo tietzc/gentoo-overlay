@@ -3,23 +3,15 @@
 
 EAPI=7
 
-DESCRIPTION="Find cruft files not managed by portage"
+DESCRIPTION="Find cruft files not managed by Portage"
 HOMEPAGE="https://github.com/vaeth/find_cruft"
 SRC_URI="https://github.com/vaeth/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
 
 RDEPEND="dev-lang/perl"
-
-src_prepare() {
-	default
-
-	sed -e '1s"^#!/usr/bin/env perl$"#!'"${EPREFIX}/usr/bin/perl"'"' \
-		-i bin/${PN} || die
-}
 
 src_install() {
 	dobin bin/${PN}
