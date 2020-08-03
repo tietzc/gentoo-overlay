@@ -12,7 +12,6 @@ SRC_URI="gog_broken_sword_director_s_cut_${PV}.sh"
 LICENSE="GOG-EULA"
 SLOT="0"
 KEYWORDS="-* ~amd64"
-IUSE=""
 RESTRICT="bindist fetch"
 
 RDEPEND="

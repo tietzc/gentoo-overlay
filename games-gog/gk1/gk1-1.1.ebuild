@@ -12,7 +12,6 @@ SRC_URI="setup_gabriel_knight_-_sins_of_the_fathers_${PV}_(20239).exe"
 LICENSE="GOG-EULA"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
 RESTRICT="bindist fetch"
 
 RDEPEND="

@@ -12,7 +12,6 @@ SRC_URI="aragami_en_${PV//./_}.sh"
 LICENSE="GOG-EULA"
 SLOT="0"
 KEYWORDS="-* ~amd64"
-IUSE=""
 RESTRICT="bindist fetch"
 
 RDEPEND="

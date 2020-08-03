@@ -15,7 +15,6 @@ SRC_URI="
 LICENSE="GOG-EULA"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
 RESTRICT="bindist fetch"
 
 RDEPEND="

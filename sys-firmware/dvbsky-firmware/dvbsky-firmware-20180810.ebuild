@@ -10,7 +10,6 @@ SRC_URI="http://www.dvbsky.net/download/linux/firmware.zip -> ${P}.zip"
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
 RESTRICT="bindist mirror"
 
 BDEPEND="app-arch/unzip"

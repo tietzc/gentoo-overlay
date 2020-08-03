@@ -12,7 +12,6 @@ SRC_URI="gog_day_of_the_tentacle_remastered_${PV}.sh"
 LICENSE="GOG-EULA"
 SLOT="0"
 KEYWORDS="-* ~amd64"
-IUSE=""
 RESTRICT="bindist fetch"
 
 RDEPEND="

@@ -12,7 +12,6 @@ SRC_URI="amnesia_the_dark_descent_${PV//./_}.sh"
 LICENSE="GOG-EULA"
 SLOT="0"
 KEYWORDS="-* ~amd64"
-IUSE=""
 RESTRICT="bindist fetch"
 
 RDEPEND="
