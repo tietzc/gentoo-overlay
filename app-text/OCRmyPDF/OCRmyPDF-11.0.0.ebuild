@@ -12,7 +12,7 @@ DESCRIPTION="Tool to add an OCR text layer to scanned PDF files, allowing them t
 HOMEPAGE="https://github.com/jbarlow83/OCRmyPDF"
 SRC_URI="https://github.com/jbarlow83/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPL-3"
+LICENSE="MPL-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
 
