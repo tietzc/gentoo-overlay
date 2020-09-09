@@ -36,7 +36,7 @@ BDEPEND="
 		>=dev-python/pytest-5.0.0[${PYTHON_USEDEP}]
 		dev-python/pytest-cov[${PYTHON_USEDEP}]
 		dev-python/pytest-helpers-namespace[${PYTHON_USEDEP}]
-		>=dev-python/pytest-xdist-1.31[${PYTHON_USEDEP}]
+		dev-python/pytest-xdist[${PYTHON_USEDEP}]
 		dev-python/python-xmp-toolkit[${PYTHON_USEDEP}]
 	)
 "
