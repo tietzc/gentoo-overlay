@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop eutils unpacker xdg
+inherit desktop unpacker wrapper xdg
 
 DESCRIPTION="Aragami"
 HOMEPAGE="https://www.gog.com/game/aragami"

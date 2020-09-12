@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop eutils unpacker xdg
+inherit desktop unpacker wrapper xdg
 
 DESCRIPTION="Broken Sword 2: Remastered"
 HOMEPAGE="https://www.gog.com/game/broken_sword_2__the_smoking_mirror"

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop eutils unpacker xdg
+inherit desktop unpacker wrapper xdg
 
 DESCRIPTION="Broken Sword 5: The Serpent's Curse"
 HOMEPAGE="https://www.gog.com/game/broken_sword_5_the_serpents_curse"

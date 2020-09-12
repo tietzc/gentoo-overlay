@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop eutils unpacker xdg
+inherit desktop unpacker wrapper xdg
 
 DESCRIPTION="Icewind Dale: Enhanced Edition"
 HOMEPAGE="https://www.gog.com/game/icewind_dale_enhanced_edition"

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop eutils unpacker xdg
+inherit desktop unpacker wrapper xdg
 
 DESCRIPTION="Layers of Fear"
 HOMEPAGE="https://www.gog.com/game/layers_of_fear"

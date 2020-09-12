@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit check-reqs desktop eutils unpacker xdg
+inherit check-reqs desktop unpacker wrapper xdg
 
 DESCRIPTION="Shadow Tactics: Blades of the Shogun"
 HOMEPAGE="https://www.gog.com/game/shadow_tactics_blades_of_the_shogun"

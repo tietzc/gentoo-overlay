@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop eutils xdg
+inherit desktop wrapper xdg
 
 DESCRIPTION="The Curse of Monkey Island"
 HOMEPAGE="https://www.gog.com/game/the_curse_of_monkey_island"

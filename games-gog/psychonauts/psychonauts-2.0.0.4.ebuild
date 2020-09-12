@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop eutils unpacker xdg
+inherit desktop unpacker wrapper xdg
 
 DESCRIPTION="Psychonauts"
 HOMEPAGE="https://www.gog.com/game/psychonauts"

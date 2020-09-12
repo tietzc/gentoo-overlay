@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit check-reqs desktop eutils unpacker xdg
+inherit check-reqs desktop unpacker wrapper xdg
 
 DESCRIPTION="Pillars of Eternity"
 HOMEPAGE="https://www.gog.com/game/pillars_of_eternity_hero_edition"

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop eutils unpacker xdg
+inherit desktop unpacker wrapper xdg
 
 DESCRIPTION="Indiana Jones and the Last Crusade"
 HOMEPAGE="https://www.gog.com/game/indiana_jones_and_the_last_crusade"

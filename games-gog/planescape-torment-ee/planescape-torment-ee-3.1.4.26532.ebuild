@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop eutils unpacker xdg
+inherit desktop unpacker wrapper xdg
 
 DESCRIPTION="Planescape Torment: Enhanced Edition"
 HOMEPAGE="https://www.gog.com/game/planescape_torment_enhanced_edition"

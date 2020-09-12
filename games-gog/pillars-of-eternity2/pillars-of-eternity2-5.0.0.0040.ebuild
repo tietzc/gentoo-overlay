@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit check-reqs desktop eutils unpacker xdg
+inherit check-reqs desktop unpacker wrapper xdg
 
 DESCRIPTION="Pillars of Eternity II: Deadfire"
 HOMEPAGE="https://www.gog.com/game/pillars_of_eternity_2_game"
@@ -111,7 +111,7 @@ src_install() {
 	local dir="/opt/gog/${PN}"
 
 	rm -r game/Docs \
-		game/{Galaxy64,GalaxyCSharpGlue,GlaxayPeer64}.dll \
+		game/{Galaxy64,GalaxyCSharpGlue,GalaxyPeer64}.dll \
 		game/PillarsOfEternityII_Data/Plugins/x86_64/libSDL2-2.0.so \
 		game/PillarsOfEternityII_Data/Plugins/x86_64/libsteam_api.so || die
 

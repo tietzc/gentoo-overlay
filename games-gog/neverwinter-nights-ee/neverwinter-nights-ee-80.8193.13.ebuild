@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop eutils unpacker xdg
+inherit desktop unpacker wrapper xdg
 
 DESCRIPTION="Neverwinter Nights: Enhanced Edition"
 HOMEPAGE="https://www.gog.com/game/neverwinter_nights_enhanced_edition_pack"

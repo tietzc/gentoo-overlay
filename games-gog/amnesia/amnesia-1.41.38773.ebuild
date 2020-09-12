@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop eutils unpacker xdg
+inherit desktop unpacker wrapper xdg
 
 DESCRIPTION="Amnesia: The Dark Descent"
 HOMEPAGE="https://www.gog.com/game/amnesia_the_dark_descent"

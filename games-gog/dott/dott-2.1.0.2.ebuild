@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop eutils unpacker xdg
+inherit desktop unpacker wrapper xdg
 
 DESCRIPTION="Day of the Tentacle: Remastered"
 HOMEPAGE="https://www.gog.com/game/day_of_the_tentacle_remastered"

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop eutils xdg
+inherit desktop wrapper xdg
 
 DESCRIPTION="Gabriel Knight: Sins of the Fathers"
 HOMEPAGE="https://www.gog.com/game/gabriel_knight_sins_of_the_fathers"

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop eutils xdg
+inherit desktop wrapper xdg
 
 DESCRIPTION="Gabriel Knight 2: The Beast Within"
 HOMEPAGE="https://www.gog.com/game/gabriel_knight_2_the_beast_within"

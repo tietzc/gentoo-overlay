@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop eutils xdg
+inherit desktop wrapper xdg
 
 MY_P="tuxguitar-${PV}-linux-x86_64"
 

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop eutils unpacker xdg
+inherit desktop unpacker wrapper xdg
 
 DESCRIPTION="Indiana Jones and the Fate of Atlantis"
 HOMEPAGE="https://www.gog.com/game/indiana_jones_and_the_fate_of_atlantis"
