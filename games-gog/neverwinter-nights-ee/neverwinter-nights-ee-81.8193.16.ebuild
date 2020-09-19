@@ -8,11 +8,11 @@ inherit desktop unpacker wrapper xdg
 DESCRIPTION="Neverwinter Nights: Enhanced Edition"
 HOMEPAGE="https://www.gog.com/game/neverwinter_nights_enhanced_edition_pack"
 
-BASE_SRC_URI="neverwinter_nights_enhanced_edition_${PV//./_}_38276.sh"
-DLC1_SRC_URI="neverwinter_nights_enhanced_edition_pirates_of_the_sword_coast_${PV//./_}_38276.sh"
-DLC2_SRC_URI="neverwinter_nights_enhanced_edition_wyvern_crown_of_cormyr_${PV//./_}_38276.sh"
-EXP1_SRC_URI="neverwinter_nights_enhanced_edition_darkness_over_daggerford_${PV//./_}_38276.sh"
-EXP2_SRC_URI="neverwinter_nights_enhanced_edition_tyrants_of_the_moonsea_${PV//./_}_38276.sh"
+BASE_SRC_URI="neverwinter_nights_enhanced_edition_${PV//./_}_41300.sh"
+DLC1_SRC_URI="neverwinter_nights_enhanced_edition_pirates_of_the_sword_coast_${PV//./_}_41300.sh"
+DLC2_SRC_URI="neverwinter_nights_enhanced_edition_wyvern_crown_of_cormyr_${PV//./_}_41300.sh"
+EXP1_SRC_URI="neverwinter_nights_enhanced_edition_darkness_over_daggerford_${PV//./_}_41300.sh"
+EXP2_SRC_URI="neverwinter_nights_enhanced_edition_tyrants_of_the_moonsea_${PV//./_}_41300.sh"
 
 SRC_URI="
 	${BASE_SRC_URI}
@@ -66,8 +66,7 @@ src_install() {
 
 	rm -r game/util \
 		game/bin/{macos,win32} \
-		game/lang/{de,es,fr,it,pl} \
-		game/lang/en/docs \
+		game/lang/{de,en,es,fr,it,pl}/docs \
 		game/goggame-*.{hashdb,info} || die
 
 	insinto "${dir}"
