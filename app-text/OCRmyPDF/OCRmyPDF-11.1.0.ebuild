@@ -41,9 +41,8 @@ BDEPEND="
 	)
 "
 
+distutils_enable_sphinx docs dev-python/sphinx_rtd_theme
 distutils_enable_tests pytest
-
-DOCS=( README.md docs/release_notes.rst )
 
 python_prepare_all() {
 	# remove hard dependency on pytest-runner
