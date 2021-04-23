@@ -22,10 +22,10 @@ RDEPEND="
 	>=app-text/tesseract-4.0.0
 	dev-python/cffi[${PYTHON_USEDEP}]
 	dev-python/chardet[${PYTHON_USEDEP}]
-	>=dev-python/pikepdf-1.14.0[${PYTHON_USEDEP}]
-	>=dev-python/pillow-7.0.0[${PYTHON_USEDEP}]
+	>=dev-python/pikepdf-2.10.0[${PYTHON_USEDEP}]
+	>=dev-python/pillow-8.1.2[${PYTHON_USEDEP}]
 	>=dev-python/pluggy-0.13.0[${PYTHON_USEDEP}]
-	dev-python/reportlab[${PYTHON_USEDEP}]
+	>=dev-python/reportlab-3.5.66[${PYTHON_USEDEP}]
 	dev-python/tqdm[${PYTHON_USEDEP}]
 	media-gfx/img2pdf[${PYTHON_USEDEP}]
 "
@@ -34,7 +34,6 @@ BDEPEND="
 	dev-python/setuptools_scm_git_archive[${PYTHON_USEDEP}]
 	test? (
 		dev-python/pytest-cov[${PYTHON_USEDEP}]
-		dev-python/pytest-helpers-namespace[${PYTHON_USEDEP}]
 		dev-python/pytest-xdist[${PYTHON_USEDEP}]
 		dev-python/python-xmp-toolkit[${PYTHON_USEDEP}]
 	)
@@ -62,5 +61,5 @@ pkg_postinst() {
 	optfeature "scan post-processing" app-text/unpaper
 	optfeature "colored output" dev-python/coloredlogs
 	optfeature "lossy quantization and compression" media-gfx/pngquant
-	optfeature "high-qualitiy loseless and lossy compression" media-libs/jbig2enc
+	optfeature "high-quality loseless and lossy compression" media-libs/jbig2enc
 }
