@@ -23,7 +23,7 @@ RDEPEND="
 	dev-python/cffi[${PYTHON_USEDEP}]
 	dev-python/chardet[${PYTHON_USEDEP}]
 	>=dev-python/pikepdf-2.10.0[${PYTHON_USEDEP}]
-	>=dev-python/pillow-8.1.2[${PYTHON_USEDEP}]
+	>=dev-python/pillow-8.2.0[${PYTHON_USEDEP}]
 	>=dev-python/pluggy-0.13.0[${PYTHON_USEDEP}]
 	>=dev-python/reportlab-3.5.66[${PYTHON_USEDEP}]
 	dev-python/tqdm[${PYTHON_USEDEP}]
@@ -43,11 +43,8 @@ distutils_enable_sphinx docs dev-python/sphinx_rtd_theme
 distutils_enable_tests pytest
 
 python_prepare_all() {
-	# remove hard dependency on pytest-runner
-	sed -i -e "/pytest-runner/d" setup.py || die
-
 	# strictly optional, hence add to optfeatures
-	sed -i -e "/coloredlogs/d" setup.py || die
+	sed -i -e "/coloredlogs/d" setup.cfg || die
 
 	distutils-r1_python_prepare_all
 }
