@@ -39,7 +39,7 @@ BDEPEND="
 	)
 "
 
-distutils_enable_sphinx docs dev-python/sphinx_rtd_theme
+distutils_enable_sphinx docs dev-python/sphinx-issues dev-python/sphinx_rtd_theme
 distutils_enable_tests pytest
 
 python_prepare_all() {
