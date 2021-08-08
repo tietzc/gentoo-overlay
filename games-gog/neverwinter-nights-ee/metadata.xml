@@ -8,6 +8,8 @@
 	<use>
 		<flag name="dlc1">Install 'Pirates of the Sword Coast' dlc</flag>
 		<flag name="dlc2">Install 'Wyvern Crown of Cormyr' dlc</flag>
+		<flag name="dlc3">Install 'Infinite Dungeons' dlc</flag>
+		<flag name="dlc4">Install 'Dark Dreams of Furiae' dlc</flag>
 		<flag name="exp1">Install 'Darkness over Daggerford' addon</flag>
 		<flag name="exp2">Install 'Tyrants of the Moonsea' addon</flag>
 	</use>
