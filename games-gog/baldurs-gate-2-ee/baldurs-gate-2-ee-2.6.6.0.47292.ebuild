@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ inherit desktop unpacker wrapper xdg
 
 DESCRIPTION="Baldur's Gate 2: Enhanced Edition"
 HOMEPAGE="https://www.gog.com/game/baldurs_gate_2_enhanced_edition"
-SRC_URI="baldur_s_gate_2_enhanced_edition_en_${PV//./_}.sh"
+SRC_URI="baldur_s_gate_ii_enhanced_edition_${PV//./_}.sh"
 
 LICENSE="GOG-EULA"
 SLOT="0"
@@ -42,15 +42,14 @@ src_install() {
 
 	dodoc -r game/Manuals/.
 
-	rm -r game/BaldursGateII \
-		game/Manuals || die
+	rm -r game/Manuals || die
 
 	insinto "${dir}"
 	doins -r game/.
 
-	fperms +x "${dir}"/BaldursGateII64
+	fperms +x "${dir}"/BaldursGateII
 
-	make_wrapper ${PN} "./BaldursGateII64" "${dir}"
+	make_wrapper ${PN} "./BaldursGateII" "${dir}"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Baldurs Gate 2: Enhanced Edition"
 }
