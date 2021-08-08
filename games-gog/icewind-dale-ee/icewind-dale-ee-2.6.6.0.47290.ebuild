@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ inherit desktop unpacker wrapper xdg
 
 DESCRIPTION="Icewind Dale: Enhanced Edition"
 HOMEPAGE="https://www.gog.com/game/icewind_dale_enhanced_edition"
-SRC_URI="icewind_dale_enhanced_edition_en_${PV//./_}.sh"
+SRC_URI="icewind_dale_enhanced_edition_${PV//./_}.sh"
 
 LICENSE="GOG-EULA"
 SLOT="0"
@@ -40,14 +40,12 @@ src_unpack() {
 src_install() {
 	local dir="/opt/gog/${PN}"
 
-	rm game/IcewindDale || die
-
 	insinto "${dir}"
 	doins -r game/.
 
-	fperms +x "${dir}"/IcewindDale64
+	fperms +x "${dir}"/IcewindDale
 
-	make_wrapper ${PN} "./IcewindDale64" "${dir}"
+	make_wrapper ${PN} "./IcewindDale" "${dir}"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Icewind Dale: Enhanced Edition"
 }
