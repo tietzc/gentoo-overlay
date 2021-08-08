@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,8 +8,8 @@ inherit desktop unpacker wrapper xdg
 DESCRIPTION="Baldur's Gate: Enhanced Edition"
 HOMEPAGE="https://www.gog.com/game/baldurs_gate_enhanced_edition"
 
-BASE_SRC_URI="baldur_s_gate_enhanced_edition_en_${PV//./_}.sh"
-SOD_SRC_URI="baldur_s_gate_siege_of_dragonspear_en_${PV//./_}.sh"
+BASE_SRC_URI="baldur_s_gate_enhanced_edition_${PV//./_}.sh"
+SOD_SRC_URI="baldur_s_gate_siege_of_dragonspear_${PV//./_}.sh"
 SRC_URI="${BASE_SRC_URI}
 	sod? ( ${SOD_SRC_URI} )"
 
@@ -53,15 +53,14 @@ src_install() {
 
 	dodoc -r game/Manuals/.
 
-	rm -r game/BaldursGate \
-		game/Manuals || die
+	rm -r game/Manuals || die
 
 	insinto "${dir}"
 	doins -r game/.
 
-	fperms +x "${dir}"/BaldursGate64
+	fperms +x "${dir}"/BaldursGate
 
-	make_wrapper ${PN} "./BaldursGate64" "${dir}"
+	make_wrapper ${PN} "./BaldursGate" "${dir}"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Baldurs Gate: Enhanced Edition"
 }
