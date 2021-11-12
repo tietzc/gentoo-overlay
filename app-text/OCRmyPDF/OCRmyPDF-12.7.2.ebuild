@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( python3_{7,8,9} )
@@ -10,7 +10,7 @@ inherit bash-completion-r1 distutils-r1 optfeature
 
 DESCRIPTION="Tool to add an OCR text layer to scanned PDF files, allowing them to be searched"
 HOMEPAGE="https://github.com/jbarlow83/OCRmyPDF"
-SRC_URI="https://github.com/jbarlow83/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/jbarlow83/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MPL-2.0"
 SLOT="0"
