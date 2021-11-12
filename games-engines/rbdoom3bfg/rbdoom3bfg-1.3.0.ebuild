@@ -1,16 +1,15 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-
-COMMIT="42d5436d154c3f4759c9a683444c4225fefe1c1e"
-MY_PN="RBDOOM-3-BFG"
+EAPI=8
 
 inherit cmake
 
+MY_PN="RBDOOM-3-BFG"
+
 DESCRIPTION="Doom 3 BFG GPL source modification"
 HOMEPAGE="https://github.com/RobertBeckebans/RBDOOM-3-BFG"
-SRC_URI="https://github.com/RobertBeckebans/${MY_PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/RobertBeckebans/${MY_PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -35,7 +34,7 @@ BDEPEND="
 
 DOCS=( README.md RELEASE-NOTES.md )
 
-S="${WORKDIR}/${MY_PN}-${COMMIT}"
+S="${WORKDIR}/${MY_PN}-${PV}"
 
 CMAKE_USE_DIR="${S}"/neo
 
@@ -50,10 +49,8 @@ src_configure() {
 	local mycmakeargs=(
 		-DBINKDEC=OFF
 		-DBUILD_SHARED_LIBS=OFF
-		-DCPU_OPTIMIZATION=
 		-DFFMPEG=ON
 		-DOPENAL=ON
-		-DOpenGL_GL_PREFERENCE=GLVND
 		-DSDL2=ON
 		-DUSE_PRECOMPILED_HEADERS=OFF
 		-DUSE_SYSTEM_LIBGLEW=ON
