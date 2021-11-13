@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit desktop unpacker wrapper xdg
 
@@ -46,8 +46,7 @@ src_install() {
 	rm -r game/Launch.sh \
 		game/GoneHome.x86 \
 		game/GoneHome_Data/Mono/x86 \
-		game/GoneHome_Data/Plugins/x86 \
-		game/goggame-1207665163.{hashdb,info}|| die
+		game/GoneHome_Data/Plugins/x86 || die
 
 	insinto "${dir}"
 	doins -r game/.
