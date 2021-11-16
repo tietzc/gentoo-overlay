@@ -27,6 +27,7 @@ RDEPEND="
 	>=dev-python/reportlab-3.5.66[${PYTHON_USEDEP}]
 	dev-python/tqdm[${PYTHON_USEDEP}]
 	media-gfx/img2pdf[${PYTHON_USEDEP}]
+	media-libs/leptonica
 "
 BDEPEND="
 	dev-python/cffi[${PYTHON_USEDEP}]
@@ -57,5 +58,5 @@ pkg_postinst() {
 	optfeature "scan post-processing" app-text/unpaper
 	optfeature "colored output" dev-python/coloredlogs
 	optfeature "lossy quantization and compression" media-gfx/pngquant
-	optfeature "high-quality loseless and lossy compression" media-libs/jbig2enc
+	optfeature "high-quality lossless and lossy compression" media-libs/jbig2enc
 }
