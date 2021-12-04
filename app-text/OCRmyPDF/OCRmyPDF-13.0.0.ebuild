@@ -19,20 +19,17 @@ RDEPEND="
 	app-text/ghostscript-gpl
 	>=app-text/pdfminer-six-20191110[${PYTHON_USEDEP}]
 	>=app-text/tesseract-4.0.0
-	dev-python/cffi[${PYTHON_USEDEP}]
-	dev-python/chardet[${PYTHON_USEDEP}]
-	>=dev-python/pikepdf-2.10.0[${PYTHON_USEDEP}]
+	>=dev-python/pikepdf-4.0.0[${PYTHON_USEDEP}]
 	>=dev-python/pillow-8.2.0[${PYTHON_USEDEP}]
 	>=dev-python/pluggy-0.13.0[${PYTHON_USEDEP}]
 	>=dev-python/reportlab-3.5.66[${PYTHON_USEDEP}]
 	dev-python/tqdm[${PYTHON_USEDEP}]
 	media-gfx/img2pdf[${PYTHON_USEDEP}]
-	media-libs/leptonica
 "
 BDEPEND="
-	dev-python/cffi[${PYTHON_USEDEP}]
 	dev-python/setuptools_scm_git_archive[${PYTHON_USEDEP}]
 	test? (
+		dev-python/coverage[${PYTHON_USEDEP}]
 		dev-python/pytest-cov[${PYTHON_USEDEP}]
 		dev-python/pytest-xdist[${PYTHON_USEDEP}]
 		dev-python/python-xmp-toolkit[${PYTHON_USEDEP}]
