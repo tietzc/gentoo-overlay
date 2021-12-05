@@ -31,10 +31,10 @@ src_prepare() {
 	default
 
 	# respect CFLAGS
-	sed -i '/CFLAGS += -O2/d' Quake/Makefile || die
+	sed -i -e "/CFLAGS += -O2/d" Quake/Makefile || die
 
 	# disable automatic stripping of binary
-	sed -i '/\$(call cmd_strip,\$(1));/d' Quake/Makefile || die
+	sed -i -e "/\$(call cmd_strip,\$(1));/d" Quake/Makefile || die
 }
 
 src_compile() {
