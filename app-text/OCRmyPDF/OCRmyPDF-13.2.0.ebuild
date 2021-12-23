@@ -27,6 +27,8 @@ RDEPEND="
 	media-gfx/img2pdf[${PYTHON_USEDEP}]
 "
 BDEPEND="
+	dev-python/packaging[${PYTHON_USEDEP}]
+	dev-python/setuptools_scm[${PYTHON_USEDEP}]
 	dev-python/setuptools_scm_git_archive[${PYTHON_USEDEP}]
 	test? (
 		dev-python/coverage[${PYTHON_USEDEP}]
