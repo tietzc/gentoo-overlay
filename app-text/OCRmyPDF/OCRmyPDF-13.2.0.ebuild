@@ -19,6 +19,7 @@ RDEPEND="
 	app-text/ghostscript-gpl
 	>=app-text/pdfminer-six-20191110[${PYTHON_USEDEP}]
 	>=app-text/tesseract-4.0.0
+	>=dev-python/packaging-20.0[${PYTHON_USEDEP}]
 	>=dev-python/pikepdf-4.0.0[${PYTHON_USEDEP}]
 	>=dev-python/pillow-8.2.0[${PYTHON_USEDEP}]
 	>=dev-python/pluggy-0.13.0[${PYTHON_USEDEP}]
@@ -27,7 +28,6 @@ RDEPEND="
 	media-gfx/img2pdf[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	dev-python/packaging[${PYTHON_USEDEP}]
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]
 	dev-python/setuptools_scm_git_archive[${PYTHON_USEDEP}]
 	test? (
