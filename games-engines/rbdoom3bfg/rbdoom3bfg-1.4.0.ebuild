@@ -34,6 +34,8 @@ BDEPEND="
 
 DOCS=( README.md RELEASE-NOTES.md )
 
+PATCHES=( "${FILESDIR}"/${PN}-imgui.patch )
+
 S="${WORKDIR}/${MY_PN}-${PV}"
 
 CMAKE_USE_DIR="${S}"/neo
