@@ -3,13 +3,14 @@
 
 EAPI=8
 
+DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1
 
 DESCRIPTION="Community maintained fork of pdfminer"
 HOMEPAGE="https://github.com/pdfminer/pdfminer.six"
-SRC_URI="https://github.com/pdfminer/pdfminer.six/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/pdfminer/pdfminer.six/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
@@ -18,7 +19,6 @@ KEYWORDS="~amd64"
 RDEPEND="
 	dev-python/chardet[${PYTHON_USEDEP}]
 	dev-python/cryptography[${PYTHON_USEDEP}]
-	dev-python/sortedcontainers[${PYTHON_USEDEP}]
 "
 
 distutils_enable_tests nose
