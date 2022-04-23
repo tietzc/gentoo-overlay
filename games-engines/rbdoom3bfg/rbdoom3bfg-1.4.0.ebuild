@@ -17,12 +17,12 @@ KEYWORDS="~amd64"
 
 RDEPEND="
 	media-libs/glew:0=
+	media-libs/libjpeg-turbo:0=
 	media-libs/libpng:=
 	media-libs/libsdl2[X,opengl,sound,video]
 	media-libs/openal:=
 	media-video/ffmpeg:=
 	sys-libs/zlib:=
-	virtual/jpeg
 "
 DEPEND="
 	${RDEPEND}
