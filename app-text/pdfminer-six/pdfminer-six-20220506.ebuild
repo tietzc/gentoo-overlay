@@ -17,10 +17,10 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 RDEPEND="
-	dev-python/chardet[${PYTHON_USEDEP}]
+	dev-python/charset_normalizer[${PYTHON_USEDEP}]
 	dev-python/cryptography[${PYTHON_USEDEP}]
 "
 
-distutils_enable_tests nose
+distutils_enable_tests pytest
 
 S="${WORKDIR}/${PN//-/.}-${PV}"
