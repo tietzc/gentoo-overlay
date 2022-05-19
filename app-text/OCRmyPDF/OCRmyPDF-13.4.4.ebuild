@@ -18,7 +18,7 @@ KEYWORDS="~amd64"
 
 RDEPEND="
 	app-text/ghostscript-gpl
-	>=app-text/pdfminer-six-20191110[${PYTHON_USEDEP}]
+	>=app-text/pdfminer-20220506[${PYTHON_USEDEP}]
 	>=app-text/tesseract-4.0.0
 	>=dev-python/packaging-20.0[${PYTHON_USEDEP}]
 	>=dev-python/pikepdf-4.0.0[${PYTHON_USEDEP}]
