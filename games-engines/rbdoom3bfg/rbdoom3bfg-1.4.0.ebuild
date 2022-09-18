@@ -17,7 +17,7 @@ KEYWORDS="~amd64"
 
 RDEPEND="
 	media-libs/glew:0=
-	media-libs/libjpeg-turbo:0=
+	media-libs/libjpeg-turbo:=
 	media-libs/libpng:=
 	media-libs/libsdl2[X,opengl,sound,video]
 	media-libs/openal:=
