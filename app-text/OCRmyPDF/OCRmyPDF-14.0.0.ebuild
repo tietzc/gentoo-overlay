@@ -19,9 +19,11 @@ KEYWORDS="~amd64"
 RDEPEND="
 	app-text/ghostscript-gpl
 	>=app-text/pdfminer-20220506[${PYTHON_USEDEP}]
-	>=app-text/tesseract-4.0.0
+	>=app-text/tesseract-4.1.1
+	>=dev-python/coloredlogs-14.0[${PYTHON_USEDEP}]
+	>=dev-python/deprecation-2.1.0[${PYTHON_USEDEP}]
 	>=dev-python/packaging-20.0[${PYTHON_USEDEP}]
-	>=dev-python/pikepdf-4.0.0[${PYTHON_USEDEP}]
+	>=dev-python/pikepdf-5.0.1[${PYTHON_USEDEP}]
 	>=dev-python/pillow-8.2.0[${PYTHON_USEDEP}]
 	>=dev-python/pluggy-0.13.0[${PYTHON_USEDEP}]
 	>=dev-python/reportlab-3.5.66[${PYTHON_USEDEP}]
@@ -30,7 +32,6 @@ RDEPEND="
 "
 BDEPEND="
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]
-	dev-python/setuptools_scm_git_archive[${PYTHON_USEDEP}]
 	test? (
 		dev-python/coverage[${PYTHON_USEDEP}]
 		dev-python/pytest-cov[${PYTHON_USEDEP}]
@@ -42,13 +43,6 @@ BDEPEND="
 distutils_enable_sphinx docs dev-python/sphinx-issues dev-python/sphinx_rtd_theme
 distutils_enable_tests pytest
 
-python_prepare_all() {
-	# strictly optional, hence add to optfeatures
-	sed -i -e "/coloredlogs/d" setup.cfg || die
-
-	distutils-r1_python_prepare_all
-}
-
 python_install_all() {
 	distutils-r1_python_install_all
 	newbashcomp misc/completion/ocrmypdf.bash ocrmypdf
@@ -56,7 +50,6 @@ python_install_all() {
 
 pkg_postinst() {
 	optfeature "scan post-processing" app-text/unpaper
-	optfeature "colored output" dev-python/coloredlogs
 	optfeature "lossy quantization and compression" media-gfx/pngquant
 	optfeature "high-quality lossless and lossy compression" media-libs/jbig2enc
 }
