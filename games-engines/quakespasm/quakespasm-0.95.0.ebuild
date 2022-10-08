@@ -16,10 +16,10 @@ IUSE="flac mp3 opus vorbis"
 
 RDEPEND="
 	media-libs/libsdl2[X,opengl,sound,video]
-	flac? ( media-libs/flac )
-	mp3? ( media-libs/libmad )
-	opus? ( media-libs/opus )
-	vorbis? ( media-libs/libvorbis )
+	flac? ( media-libs/flac:= )
+	mp3? ( media-libs/libmad:= )
+	opus? ( media-libs/opus:= )
+	vorbis? ( media-libs/libvorbis:= )
 "
 DEPEND="
 	${RDEPEND}
