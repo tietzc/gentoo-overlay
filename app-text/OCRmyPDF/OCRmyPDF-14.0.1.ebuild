@@ -18,7 +18,7 @@ KEYWORDS="~amd64"
 
 RDEPEND="
 	app-text/ghostscript-gpl
-	>=app-text/pdfminer-20230506[${PYTHON_USEDEP}]
+	>=app-text/pdfminer-20220506[${PYTHON_USEDEP}]
 	>=app-text/tesseract-4.1.1
 	>=dev-python/coloredlogs-14.0[${PYTHON_USEDEP}]
 	>=dev-python/deprecation-2.1.0[${PYTHON_USEDEP}]
