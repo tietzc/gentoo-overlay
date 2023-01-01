@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,7 @@ KEYWORDS="~amd64"
 
 RDEPEND="
 	app-text/ghostscript-gpl
-	>=app-text/pdfminer-20220506[${PYTHON_USEDEP}]
+	>=app-text/pdfminer-20230506[${PYTHON_USEDEP}]
 	>=app-text/tesseract-4.1.1
 	>=dev-python/coloredlogs-14.0[${PYTHON_USEDEP}]
 	>=dev-python/deprecation-2.1.0[${PYTHON_USEDEP}]
