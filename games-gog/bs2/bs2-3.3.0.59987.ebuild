@@ -7,7 +7,7 @@ inherit desktop unpacker wrapper xdg
 
 DESCRIPTION="Broken Sword 2: Remastered"
 HOMEPAGE="https://www.gog.com/game/broken_sword_2__the_smoking_mirror"
-SRC_URI="gog_broken_sword_2_remastered_${PV}.sh"
+SRC_URI="broken_sword_2_remastered_${PV//./_}.sh"
 
 LICENSE="GOG-EULA"
 SLOT="0"
@@ -15,10 +15,10 @@ KEYWORDS="-* ~amd64"
 RESTRICT="bindist fetch"
 
 RDEPEND="
-	media-libs/libsdl[abi_x86_32(-),X,opengl,sound,video]
-	media-libs/libvorbis[abi_x86_32(-)]
-	media-libs/openal[abi_x86_32(-)]
-	x11-libs/libX11[abi_x86_32(-)]
+	media-libs/libsdl2[X,opengl,sound,video]
+	media-libs/libvorbis
+	media-libs/openal
+	x11-libs/libX11
 "
 BDEPEND="
 	app-arch/unzip
@@ -39,14 +39,14 @@ src_unpack() {
 src_install() {
 	local dir="/opt/gog/${PN}"
 
-	rm game/{libopenal.so.1,libSDL-1.2.so.0} || die
+	rm game/{BrokenSword2_i386,BS2} || die
 
 	insinto "${dir}"
 	doins -r game/.
 
-	fperms +x "${dir}"/BS2Remastered_i386
+	fperms +x "${dir}"/BrokenSword2_x86_64
 
-	make_wrapper ${PN} "./BS2Remastered_i386" "${dir}"
+	make_wrapper ${PN} "./BrokenSword2_x86_64" "${dir}"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Broken Sword 2: Remastered"
 }
