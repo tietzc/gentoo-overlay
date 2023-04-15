@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{9..11} )
 
 inherit bash-completion-r1 distutils-r1 optfeature
 
@@ -31,7 +31,7 @@ RDEPEND="
 	media-gfx/img2pdf[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? (
 		dev-python/coverage[${PYTHON_USEDEP}]
 		dev-python/pytest-cov[${PYTHON_USEDEP}]
@@ -40,7 +40,7 @@ BDEPEND="
 	)
 "
 
-distutils_enable_sphinx docs dev-python/sphinx-issues dev-python/sphinx_rtd_theme
+distutils_enable_sphinx docs dev-python/sphinx-issues dev-python/sphinx-rtd-theme
 distutils_enable_tests pytest
 
 python_install_all() {
