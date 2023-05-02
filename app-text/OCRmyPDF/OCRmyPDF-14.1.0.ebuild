@@ -34,6 +34,7 @@ BDEPEND="
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? (
 		dev-python/coverage[${PYTHON_USEDEP}]
+		dev-python/hypothesis[${PYTHON_USEDEP}]
 		dev-python/pytest-cov[${PYTHON_USEDEP}]
 		dev-python/pytest-xdist[${PYTHON_USEDEP}]
 		dev-python/python-xmp-toolkit[${PYTHON_USEDEP}]
