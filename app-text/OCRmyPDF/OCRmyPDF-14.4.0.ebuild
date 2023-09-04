@@ -27,6 +27,7 @@ RDEPEND="
 	>=dev-python/pillow-8.2.0[${PYTHON_USEDEP}]
 	>=dev-python/pluggy-0.13.0[${PYTHON_USEDEP}]
 	>=dev-python/reportlab-3.5.66[${PYTHON_USEDEP}]
+	dev-python/rich[${PYTHON_USEDEP}]
 	dev-python/tqdm[${PYTHON_USEDEP}]
 	media-gfx/img2pdf[${PYTHON_USEDEP}]
 "
