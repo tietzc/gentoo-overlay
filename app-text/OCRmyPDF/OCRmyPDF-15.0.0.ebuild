@@ -20,15 +20,13 @@ RDEPEND="
 	app-text/ghostscript-gpl
 	>=app-text/pdfminer-20220506[${PYTHON_USEDEP}]
 	>=app-text/tesseract-4.1.1
-	>=dev-python/coloredlogs-14.0[${PYTHON_USEDEP}]
 	>=dev-python/deprecation-2.1.0[${PYTHON_USEDEP}]
 	>=dev-python/packaging-20.0[${PYTHON_USEDEP}]
-	>=dev-python/pikepdf-5.0.1[${PYTHON_USEDEP}]
-	>=dev-python/pillow-8.2.0[${PYTHON_USEDEP}]
+	>=dev-python/pikepdf-8[${PYTHON_USEDEP}]
+	>=dev-python/pillow-9.0.1[${PYTHON_USEDEP}]
 	>=dev-python/pluggy-0.13.0[${PYTHON_USEDEP}]
-	>=dev-python/reportlab-3.5.66[${PYTHON_USEDEP}]
+	>=dev-python/reportlab-3.6.8[${PYTHON_USEDEP}]
 	dev-python/rich[${PYTHON_USEDEP}]
-	dev-python/tqdm[${PYTHON_USEDEP}]
 	media-gfx/img2pdf[${PYTHON_USEDEP}]
 "
 BDEPEND="
