@@ -9,8 +9,8 @@ PYTHON_COMPAT=( python3_{9..11} )
 inherit bash-completion-r1 distutils-r1 optfeature
 
 DESCRIPTION="Tool to add an OCR text layer to scanned PDF files, allowing them to be searched"
-HOMEPAGE="https://github.com/jbarlow83/OCRmyPDF"
-SRC_URI="https://github.com/jbarlow83/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/ocrmypdf/OCRmyPDF"
+SRC_URI="https://github.com/ocrmypdf/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MPL-2.0"
 SLOT="0"
@@ -22,7 +22,7 @@ RDEPEND="
 	>=app-text/tesseract-4.1.1
 	>=dev-python/deprecation-2.1.0[${PYTHON_USEDEP}]
 	>=dev-python/packaging-20.0[${PYTHON_USEDEP}]
-	>=dev-python/pikepdf-8.0.0[${PYTHON_USEDEP}]
+	>=dev-python/pikepdf-8.7.1[${PYTHON_USEDEP}]
 	>=dev-python/pillow-10.0.1[${PYTHON_USEDEP}]
 	>=dev-python/pluggy-0.13.0[${PYTHON_USEDEP}]
 	>=dev-python/reportlab-3.6.8[${PYTHON_USEDEP}]
