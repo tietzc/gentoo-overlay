@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..12} )
 
 inherit bash-completion-r1 distutils-r1 optfeature
 
@@ -22,21 +22,23 @@ RDEPEND="
 	>=app-text/tesseract-4.1.1
 	>=dev-python/deprecation-2.1.0[${PYTHON_USEDEP}]
 	>=dev-python/packaging-20.0[${PYTHON_USEDEP}]
-	>=dev-python/pikepdf-8.7.1[${PYTHON_USEDEP}]
+	>=dev-python/pikepdf-8.10.1[${PYTHON_USEDEP}]
 	>=dev-python/pillow-10.0.1[${PYTHON_USEDEP}]
-	>=dev-python/pluggy-0.13.0[${PYTHON_USEDEP}]
-	>=dev-python/reportlab-3.6.8[${PYTHON_USEDEP}]
+	>=dev-python/pluggy-1.0.0[${PYTHON_USEDEP}]
 	dev-python/rich[${PYTHON_USEDEP}]
-	media-gfx/img2pdf[${PYTHON_USEDEP}]
+	>=media-gfx/img2pdf-0.5.0[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	test? (
+		app-text/unpaper
 		dev-python/coverage[${PYTHON_USEDEP}]
 		dev-python/hypothesis[${PYTHON_USEDEP}]
 		dev-python/pytest-cov[${PYTHON_USEDEP}]
 		dev-python/pytest-xdist[${PYTHON_USEDEP}]
 		dev-python/python-xmp-toolkit[${PYTHON_USEDEP}]
+		dev-python/reportlab[${PYTHON_USEDEP}]
+		media-gfx/pngquant
 	)
 "
 
