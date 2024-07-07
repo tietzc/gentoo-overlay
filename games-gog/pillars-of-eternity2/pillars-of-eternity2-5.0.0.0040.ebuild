@@ -79,7 +79,7 @@ pkg_nofetch() {
 
 	if use l10n_de; then
 		einfo "Please also download \"${DE_SRC_URI}\" from:"
-		einfo "  https://github.com/AurelioSilver/pillarsofeternity-2-german-patch/releases"
+		einfo "  https://github.com/AurelioSilver/pillarsofeternity-2-german-patch/tags"
 		einfo "and place it in your DISTDIR directory."
 	fi
 }
