@@ -9,7 +9,7 @@ DESCRIPTION="Pillars of Eternity II: Deadfire"
 HOMEPAGE="https://www.gog.com/game/pillars_of_eternity_2_game"
 
 BASE_SRC_URI="pillars_of_eternity_ii_deadfire_v${PV//./_}_29222.sh"
-DE_SRC_URI="pillarsofeternity-2-german-patch-1.6.0.tar.gz"
+DE_SRC_URI="pillarsofeternity-2-german-patch-1.8.0.tar.gz"
 DLC1_SRC_URI="pillars_of_eternity_ii_deadfire_beard_and_hair_pack_v${PV//./_}_29222.sh"
 DLC2_SRC_URI="pillars_of_eternity_ii_deadfire_critical_role_pack_v${PV//./_}_29222.sh"
 DLC3_SRC_URI="pillars_of_eternity_ii_deadfire_deck_of_many_things_v${PV//./_}_29222.sh"
