@@ -3,7 +3,7 @@
 
 EAPI=8
 
-DISTUTILS_USE_PEP517=setuptools
+DISTUTILS_USE_PEP517=hatchling
 PYTHON_COMPAT=( python3_{10..12} )
 
 inherit bash-completion-r1 distutils-r1 optfeature
@@ -29,7 +29,7 @@ RDEPEND="
 	>=media-gfx/img2pdf-0.5.0[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	dev-python/setuptools-scm[${PYTHON_USEDEP}]
+	dev-python/hatch-vcs[${PYTHON_USEDEP}]
 	test? (
 		app-text/unpaper
 		dev-python/coverage[${PYTHON_USEDEP}]
