@@ -42,7 +42,7 @@ RDEPEND="
 "
 BDEPEND="
 	app-arch/unzip
-	l10n_de? ( app-arch/p7zip )
+	l10n_de? ( app-arch/7zip )
 "
 
 S="${WORKDIR}/data/noarch"
@@ -86,7 +86,7 @@ src_unpack() {
 	use dlc2 && unpack_zip "${DISTDIR}/${DLC2_SRC_URI}"
 	use exp1 && unpack_zip "${DISTDIR}/${EXP1_SRC_URI}"
 	use exp2 && unpack_zip "${DISTDIR}/${EXP2_SRC_URI}"
-	use l10n_de && 7za x -bd -o"${S}/game" "${DISTDIR}/${DE_SRC_URI}" || die
+	use l10n_de && 7zz x -bd -o"${S}/game" "${DISTDIR}/${DE_SRC_URI}" || die
 }
 
 src_install() {
