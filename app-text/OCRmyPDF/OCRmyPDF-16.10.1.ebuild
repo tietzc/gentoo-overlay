@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit bash-completion-r1 distutils-r1 optfeature
 
@@ -39,6 +39,7 @@ BDEPEND="
 		dev-python/python-xmp-toolkit[${PYTHON_USEDEP}]
 		dev-python/reportlab[${PYTHON_USEDEP}]
 		media-gfx/pngquant
+		media-libs/jbig2enc
 	)
 "
 
