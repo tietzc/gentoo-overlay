@@ -8,12 +8,12 @@ inherit check-reqs desktop unpacker wrapper xdg
 DESCRIPTION="Pillars of Eternity"
 HOMEPAGE="https://www.gog.com/game/pillars_of_eternity_hero_edition"
 
-BASE_SRC_URI="pillars_of_eternity_en_${PV//./_}_17461.sh"
+BASE_SRC_URI="pillars_of_eternity_${PV//./_}.sh"
 DE_SRC_URI="PoE_v3.07.1318_PX1_PX2_German_Fix.7z"
-DLC1_SRC_URI="pillars_of_eternity_deadfire_pack_dlc_en_${PV//./_}_20099.sh"
-DLC2_SRC_URI="gog_pillars_of_eternity_preorder_item_and_pet_dlc_2.0.0.2.sh"
-EXP1_SRC_URI="pillars_of_eternity_white_march_part_1_dlc_en_${PV//./_}_17464.sh"
-EXP2_SRC_URI="pillars_of_eternity_white_march_part_2_dlc_en_${PV//./_}_17464.sh"
+DLC1_SRC_URI="pillars_of_eternity_deadfire_pack_${PV//./_}.sh"
+DLC2_SRC_URI="pillars_of_eternity_preorder_item_and_pet_${PV//./_}.sh"
+EXP1_SRC_URI="pillars_of_eternity_the_white_march_part_1_${PV//./_}.sh"
+EXP2_SRC_URI="pillars_of_eternity_the_white_march_part_2_${PV//./_}.sh"
 
 SRC_URI="
 	${BASE_SRC_URI}
@@ -92,10 +92,9 @@ src_unpack() {
 src_install() {
 	local dir="/opt/gog/${PN}"
 
-	rm game/steam_appid.txt \
-		game/{steam_api,Galaxy,GalaxyCSharpGlue,SteamworksNative}.dll \
-		game/PillarsOfEternity_Data/Plugins/x86_64/libCSteamworks.so \
-		game/PillarsOfEternity_Data/Plugins/x86_64/libsteam_api.so || die
+	rm game/libsteam_api.so \
+		game/PillarsOfEternity_Data/Plugins/libCSteamworks.so \
+		game/PillarsOfEternity_Data/Plugins/libsteam_api.so || die
 
 	dodir "${dir}"
 	mv game/* "${D}/${dir}" || die
