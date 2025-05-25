@@ -65,8 +65,8 @@ pkg_nofetch() {
 }
 
 pkg_pretend() {
-	local build_size=15
-	use exp1 && build_size=21
+	local build_size=19
+	use exp1 && build_size=25
 
 	if use exp2; then
 		(( build_size += 5 ))
