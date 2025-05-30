@@ -6,11 +6,10 @@ EAPI=8
 DISTUTILS_USE_PEP517=hatchling
 PYTHON_COMPAT=( python3_{11..13} )
 
-inherit bash-completion-r1 distutils-r1 optfeature
+inherit bash-completion-r1 distutils-r1 optfeature pypi
 
 DESCRIPTION="Tool to add an OCR text layer to scanned PDF files, allowing them to be searched"
 HOMEPAGE="https://github.com/ocrmypdf/OCRmyPDF"
-SRC_URI="https://github.com/ocrmypdf/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MPL-2.0"
 SLOT="0"
