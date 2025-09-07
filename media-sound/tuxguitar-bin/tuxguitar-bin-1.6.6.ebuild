@@ -14,10 +14,11 @@ SRC_URI="https://github.com/helge17/tuxguitar/releases/download/${PV}/${MY_P}.ta
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="-* ~amd64"
+IUSE="+fluidsynth"
 
 RDEPEND="
-	media-sound/fluidsynth
 	>=virtual/jre-11:*
+	fluidsynth? ( media-sound/fluidsynth )
 "
 
 DOCS=( doc/{AUTHORS,CHANGES,README.md} )
