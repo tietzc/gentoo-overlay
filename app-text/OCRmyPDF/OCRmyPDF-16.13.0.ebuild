@@ -1,10 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit bash-completion-r1 distutils-r1 optfeature pypi
 
@@ -21,7 +21,7 @@ RDEPEND="
 	>=app-text/tesseract-4.1.1
 	>=dev-python/deprecation-2.1.0[${PYTHON_USEDEP}]
 	>=dev-python/packaging-20.0[${PYTHON_USEDEP}]
-	>=dev-python/pikepdf-8.10.1[${PYTHON_USEDEP}]
+	>=dev-python/pikepdf-10.0.0[${PYTHON_USEDEP}]
 	>=dev-python/pillow-10.0.1[${PYTHON_USEDEP}]
 	>=dev-python/pluggy-1.0.0[${PYTHON_USEDEP}]
 	dev-python/rich[${PYTHON_USEDEP}]
