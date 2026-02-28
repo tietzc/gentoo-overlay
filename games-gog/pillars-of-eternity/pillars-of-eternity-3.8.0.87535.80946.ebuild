@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -30,16 +30,6 @@ KEYWORDS="-* ~amd64"
 IUSE="+dlc1 +dlc2 +exp1 +exp2 l10n_de"
 RESTRICT="bindist fetch"
 
-RDEPEND="
-	dev-libs/atk
-	media-libs/fontconfig
-	media-libs/freetype:2
-	virtual/opengl
-	x11-libs/cairo
-	x11-libs/gdk-pixbuf:2
-	x11-libs/gtk+:2
-	x11-libs/pango
-"
 BDEPEND="
 	app-arch/unzip
 	l10n_de? ( app-arch/7zip )
