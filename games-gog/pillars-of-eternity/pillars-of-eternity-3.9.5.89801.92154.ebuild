@@ -9,7 +9,6 @@ DESCRIPTION="Pillars of Eternity"
 HOMEPAGE="https://www.gog.com/game/pillars_of_eternity_hero_edition"
 
 BASE_SRC_URI="pillars_of_eternity_${PV//./_}.sh"
-DE_SRC_URI="PoE_v3.07.1318_PX1_PX2_German_Fix.7z"
 DLC1_SRC_URI="pillars_of_eternity_deadfire_pack_${PV//./_}.sh"
 DLC2_SRC_URI="pillars_of_eternity_preorder_item_and_pet_${PV//./_}.sh"
 EXP1_SRC_URI="pillars_of_eternity_the_white_march_part_1_${PV//./_}.sh"
@@ -21,18 +20,16 @@ SRC_URI="
 	dlc2? ( ${DLC2_SRC_URI} )
 	exp1? ( ${EXP1_SRC_URI} )
 	exp2? ( ${EXP2_SRC_URI} )
-	l10n_de? ( ${DE_SRC_URI} )
 "
 
 LICENSE="GOG-EULA"
 SLOT="0"
 KEYWORDS="-* ~amd64"
-IUSE="+dlc1 +dlc2 +exp1 +exp2 l10n_de"
+IUSE="+dlc1 +dlc2 +exp1 +exp2"
 RESTRICT="bindist fetch"
 
 BDEPEND="
 	app-arch/unzip
-	l10n_de? ( app-arch/7zip )
 "
 
 S="${WORKDIR}/data/noarch"
@@ -46,12 +43,6 @@ pkg_nofetch() {
 	einfo "from:"
 	einfo "  ${HOMEPAGE}"
 	einfo "and place it in your DISTDIR directory."
-
-	if use l10n_de; then
-		einfo "Please also download \"${DE_SRC_URI}\" from:"
-		einfo "  https://github.com/Xaratas/pillarsofeternity-german-patch-with-expansions/releases"
-		einfo "and place it in your DISTDIR directory."
-	fi
 }
 
 pkg_pretend() {
@@ -75,16 +66,19 @@ src_unpack() {
 	use dlc1 && unpack_zip "${DISTDIR}/${DLC1_SRC_URI}"
 	use dlc2 && unpack_zip "${DISTDIR}/${DLC2_SRC_URI}"
 	use exp1 && unpack_zip "${DISTDIR}/${EXP1_SRC_URI}"
-	use exp2 && unpack_zip "${DISTDIR}/${EXP2_SRC_URI}"
-	use l10n_de && 7zz x -bd -o"${S}/game" "${DISTDIR}/${DE_SRC_URI}" || die
+	use exp2 && unpack_zip "${DISTDIR}/${EXP2_SRC_URI}" || die
 }
 
 src_install() {
 	local dir="/opt/gog/${PN}"
 
-	rm game/libsteam_api.so \
+	dodoc game/Docs/pe-game-manual.pdf
+
+	rm -r game/libsteam_api.so \
 		game/PillarsOfEternity_Data/Plugins/libCSteamworks.so \
-		game/PillarsOfEternity_Data/Plugins/libsteam_api.so || die
+		game/PillarsOfEternity_Data/Plugins/libsteam_api.so \
+		game/Docs \
+		game/Links || die
 
 	dodir "${dir}"
 	mv game/* "${D}/${dir}" || die
