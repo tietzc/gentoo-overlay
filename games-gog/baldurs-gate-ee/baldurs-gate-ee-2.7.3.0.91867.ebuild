@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,8 +8,8 @@ inherit desktop unpacker wrapper xdg
 DESCRIPTION="Baldur's Gate: Enhanced Edition"
 HOMEPAGE="https://www.gog.com/game/baldurs_gate_enhanced_edition"
 
-BASE_SRC_URI="baldur_s_gate_enhanced_edition_${PV//./_}.sh"
-SOD_SRC_URI="baldur_s_gate_siege_of_dragonspear_${PV//./_}.sh"
+BASE_SRC_URI="baldur_s_gate_enhanced_edition_2_7_3_0_s_91867.sh"
+SOD_SRC_URI="baldur_s_gate_siege_of_dragonspear_2_7_3_0_s_91867.sh"
 SRC_URI="${BASE_SRC_URI}
 	sod? ( ${SOD_SRC_URI} )"
 
@@ -21,7 +21,6 @@ RESTRICT="bindist fetch"
 
 RDEPEND="
 	dev-libs/expat
-	dev-libs/openssl-compat:1.0.0
 	media-libs/openal
 	virtual/opengl
 	x11-libs/libX11
