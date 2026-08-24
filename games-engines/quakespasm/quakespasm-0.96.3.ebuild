@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,9 +17,9 @@ IUSE="flac mp3 opus vorbis"
 RDEPEND="
 	media-libs/libsdl2[X,opengl,sound,video]
 	flac? ( media-libs/flac:= )
-	mp3? ( media-libs/libmad:= )
-	opus? ( media-libs/opus:= )
-	vorbis? ( media-libs/libvorbis:= )
+	mp3? ( media-libs/libmad )
+	opus? ( media-libs/opus )
+	vorbis? ( media-libs/libvorbis )
 "
 DEPEND="
 	${RDEPEND}
@@ -49,10 +49,14 @@ src_compile() {
 	)
 
 	emake -C Quake "${myconf[@]}"
+	emake -C Misc/qs_pak
 }
 
 src_install() {
 	dobin Quake/${PN}
+
+	insinto /usr/share/quakespasm
+	doins Misc/qs_pak/quakespasm.pak
 
 	einstalldocs
 
