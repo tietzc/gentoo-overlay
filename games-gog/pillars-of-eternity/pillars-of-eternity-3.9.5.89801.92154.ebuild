@@ -66,7 +66,7 @@ src_unpack() {
 	use dlc1 && unpack_zip "${DISTDIR}/${DLC1_SRC_URI}"
 	use dlc2 && unpack_zip "${DISTDIR}/${DLC2_SRC_URI}"
 	use exp1 && unpack_zip "${DISTDIR}/${EXP1_SRC_URI}"
-	use exp2 && unpack_zip "${DISTDIR}/${EXP2_SRC_URI}" || die
+	use exp2 && unpack_zip "${DISTDIR}/${EXP2_SRC_URI}"
 }
 
 src_install() {
