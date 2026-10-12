@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,7 +16,6 @@ RESTRICT="bindist fetch"
 
 RDEPEND="
 	dev-libs/expat
-	dev-libs/openssl-compat:1.0.0
 	media-libs/openal
 	virtual/opengl
 	x11-libs/libX11
@@ -40,14 +39,12 @@ src_unpack() {
 src_install() {
 	local dir="/opt/gog/${PN}"
 
-	rm game/Torment || die
-
 	insinto "${dir}"
 	doins -r game/.
 
-	fperms +x "${dir}"/Torment64
+	fperms +x "${dir}"/Torment
 
-	make_wrapper ${PN} "./Torment64" "${dir}"
+	make_wrapper ${PN} "./Torment" "${dir}"
 	newicon -s 256 support/icon.png ${PN}.png
 	make_desktop_entry ${PN} "Planescape Torment: Enhanced Edition"
 }
