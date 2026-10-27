@@ -17,7 +17,7 @@ KEYWORDS="-* ~amd64"
 IUSE="+fluidsynth"
 
 RDEPEND="
-	>=virtual/jre-11:*
+	>=virtual/jre-17:*
 	fluidsynth? ( media-sound/fluidsynth )
 "
 
