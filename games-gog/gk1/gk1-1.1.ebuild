@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,7 +7,7 @@ inherit desktop wrapper xdg
 
 DESCRIPTION="Gabriel Knight: Sins of the Fathers"
 HOMEPAGE="https://www.gog.com/game/gabriel_knight_sins_of_the_fathers"
-SRC_URI="setup_gabriel_knight_-_sins_of_the_fathers_${PV}_(20239).exe"
+SRC_URI="setup_gabriel_knight_-_sins_of_the_fathers_1.1_gog_v2_(94834).exe"
 
 LICENSE="GOG-EULA"
 SLOT="0"
@@ -31,7 +31,7 @@ pkg_nofetch() {
 }
 
 src_unpack() {
-	innoextract "${DISTDIR}/setup_gabriel_knight_-_sins_of_the_fathers_${PV}_(20239).exe" || die
+	innoextract "${DISTDIR}/setup_gabriel_knight_-_sins_of_the_fathers_1.1_gog_v2_(94834).exe" || die
 }
 
 src_install() {
@@ -41,20 +41,10 @@ src_install() {
 
 	dodoc Manual.pdf
 
-	rm -r __{redist,support} \
-		app \
-		commonappdata \
-		scummvm \
-		tmp \
-		Manual.pdf || die
-
 	insinto "${dir}"
-	doins -r .
+	doins -r GK1/.
 
 	make_wrapper ${PN} "scummvm -f -p "${dir}" gk1"
 	newicon -s 32 GK1_1_32x32x4.png ${PN}.png
 	make_desktop_entry ${PN} "Gabriel Knight: Sins Of The Fathers"
-
-	# delete temporary icon
-	rm "${D}/${dir}"/GK1_1_32x32x4.png || die
 }
