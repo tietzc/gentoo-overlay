@@ -6,11 +6,10 @@ EAPI=8
 DISTUTILS_USE_PEP517=hatchling
 PYTHON_COMPAT=( python3_{12..14} )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="Subtitles extremely clean"
 HOMEPAGE="https://github.com/ratoaq2/cleanit"
-SRC_URI="https://github.com/ratoaq2/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
