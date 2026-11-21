@@ -6,11 +6,10 @@ EAPI=8
 DISTUTILS_USE_PEP517=hatchling
 PYTHON_COMPAT=( python3_{12..14} )
 
-inherit distutils-r1
+inherit distutils-r1 pypi
 
 DESCRIPTION="Rip your PGS subtitles"
 HOMEPAGE="https://github.com/ratoaq2/pgsrip"
-SRC_URI="https://github.com/ratoaq2/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
