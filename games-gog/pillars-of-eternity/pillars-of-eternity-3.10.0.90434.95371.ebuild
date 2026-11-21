@@ -11,6 +11,7 @@ HOMEPAGE="https://www.gog.com/game/pillars_of_eternity_hero_edition"
 BASE_SRC_URI="pillars_of_eternity_${PV//./_}.sh"
 DLC1_SRC_URI="pillars_of_eternity_deadfire_pack_${PV//./_}.sh"
 DLC2_SRC_URI="pillars_of_eternity_preorder_item_and_pet_${PV//./_}.sh"
+DLC3_SRC_URI="pillars_of_eternity_owner_s_bonus_gaun_s_pledge_dlc_for_pillars_of_eternity_ii_deadfire_${PV//./_}.sh"
 EXP1_SRC_URI="pillars_of_eternity_the_white_march_part_1_${PV//./_}.sh"
 EXP2_SRC_URI="pillars_of_eternity_the_white_march_part_2_${PV//./_}.sh"
 
@@ -18,6 +19,7 @@ SRC_URI="
 	${BASE_SRC_URI}
 	dlc1? ( ${DLC1_SRC_URI} )
 	dlc2? ( ${DLC2_SRC_URI} )
+	dlc3? ( ${DLC3_SRC_URI} )
 	exp1? ( ${EXP1_SRC_URI} )
 	exp2? ( ${EXP2_SRC_URI} )
 "
@@ -25,7 +27,7 @@ SRC_URI="
 LICENSE="GOG-EULA"
 SLOT="0"
 KEYWORDS="-* ~amd64"
-IUSE="+dlc1 +dlc2 +exp1 +exp2"
+IUSE="+dlc1 +dlc2 +dlc3 +exp1 +exp2"
 RESTRICT="bindist fetch"
 
 BDEPEND="
@@ -38,6 +40,7 @@ pkg_nofetch() {
 	einfo "Please buy & download \"${BASE_SRC_URI}\""
 	use dlc1 && einfo "and \"${DLC1_SRC_URI}\""
 	use dlc2 && einfo "and \"${DLC2_SRC_URI}\""
+	use dlc3 && einfo "and \"${DLC3_SRC_URI}\""
 	use exp1 && einfo "and \"${EXP1_SRC_URI}\""
 	use exp2 && einfo "and \"${EXP2_SRC_URI}\""
 	einfo "from:"
@@ -65,6 +68,7 @@ src_unpack() {
 	unpack_zip "${DISTDIR}/${BASE_SRC_URI}"
 	use dlc1 && unpack_zip "${DISTDIR}/${DLC1_SRC_URI}"
 	use dlc2 && unpack_zip "${DISTDIR}/${DLC2_SRC_URI}"
+	use dlc3 && unpack_zip "${DISTDIR}/${DLC3_SRC_URI}"
 	use exp1 && unpack_zip "${DISTDIR}/${EXP1_SRC_URI}"
 	use exp2 && unpack_zip "${DISTDIR}/${EXP2_SRC_URI}"
 }
@@ -75,7 +79,6 @@ src_install() {
 	dodoc game/Docs/pe-game-manual.pdf
 
 	rm -r game/libsteam_api.so \
-		game/PillarsOfEternity_Data/Plugins/libCSteamworks.so \
 		game/PillarsOfEternity_Data/Plugins/libsteam_api.so \
 		game/Docs \
 		game/Links || die
