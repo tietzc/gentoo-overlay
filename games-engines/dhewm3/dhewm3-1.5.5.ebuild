@@ -32,10 +32,10 @@ DOCS=( ../{Changelog,README}.md )
 
 src_configure() {
 	local mycmakeargs=(
-		-DDEDICATED=$(usex dedicated ON OFF)
 		-DBASE=$(usex dedicated OFF ON)
 		-DCORE=$(usex dedicated OFF ON)
 		-DD3XP=$(usex dedicated OFF ON)
+		-DDEDICATED=$(usex dedicated ON OFF)
 		-DSDL2=OFF
 		-DSDL3=ON
 	)
@@ -46,7 +46,7 @@ src_configure() {
 src_install() {
 	cmake_src_install
 
-	if use !dedicated; then
+	if ! use dedicated; then
 		doicon dist/linux/share/icons/hicolor/scalable/apps/org.${PN}.Dhewm3.svg
 		domenu dist/linux/share/applications/org.${PN}.Dhewm3.desktop
 		domenu dist/linux/share/applications/org.${PN}.Dhewm3.d3xp.desktop
